@@ -2100,6 +2100,11 @@
             buff覆盖时重新设置buff参数
             </summary>
         </member>
+        <member name="M:AscensionServer.BattleBuffEventBase.ToTransferData">
+            <summary>
+            转为发送数据
+            </summary>
+        </member>
         <member name="T:AscensionServer.BattleBuffEvent_CallOtherShareDamage">
             <summary>
             喊别人为我承担伤害
@@ -2190,7 +2195,7 @@
             设置该角色的敌方和友方
             </summary>
         </member>
-        <member name="M:AscensionServer.BattleCharacterEntity.ToBattleDataBase``1">
+        <member name="M:AscensionServer.BattleCharacterEntity.ToBattleDataBase">
             <summary>
             转换成发送用的人物初始化数据
             </summary>

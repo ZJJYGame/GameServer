@@ -105,8 +105,10 @@ namespace AscensionServer
                                     #region 更新数据至数据库 redis
                                     await RedisHelper.Hash.HashSetAsync<Bottleneck>(RedisKeyDefine._RoleBottleneckPostfix, roleID.ToString(), bottleneckObj);
                                     await RedisHelper.Hash.HashSetAsync<RoleGongFaDTO>(RedisKeyDefine._RoleGongfaPerfix, roleID.ToString(), redisGongfa);
+                                    await RedisHelper.Hash.HashSetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleID.ToString(), role);
                                     await NHibernateQuerier.UpdateAsync(bottleneckObj);
                                     await NHibernateQuerier.UpdateAsync(ChangeDataType(redisGongfa));
+                                    await NHibernateQuerier.UpdateAsync(role);
                                     #endregion
                                 }
                             }
@@ -164,7 +166,7 @@ namespace AscensionServer
             {
                 var rolestatusObj = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatsuPerfix, onOff.RoleID.ToString()).Result;
                 var bottleneckObj = RedisHelper.Hash.HashGetAsync<BottleneckDTO>(RedisKeyDefine._RoleBottleneckPostfix, onOff.RoleID.ToString()).Result;
-                var roleObj = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, onOff.RoleID.ToString()).Result;
+                var roleObj = RedisHelper.Hash.HashGetAsync<Role>(RedisKeyDefine._RolePostfix, onOff.RoleID.ToString()).Result;
                 Utility.Debug.LogInfo("YZQ自动加经验进来了Redis1"+">>>>"+ onOff.MsGfID);
                 switch (onOff.ExpType)
                 {
@@ -196,9 +198,12 @@ namespace AscensionServer
 
                                         await NHibernateQuerier.UpdateAsync(ChangeDataType(gongfaObj));
                                         await NHibernateQuerier.UpdateAsync(bottleneckData);
-
+                                        await NHibernateQuerier.UpdateAsync(roleObj);
                                         await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleBottleneckPostfix, onOff.RoleID.ToString(), bottleneckData);
                                         await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleGongfaPerfix, onOff.RoleID.ToString(), gongfaObj);
+   
+                                        await RedisHelper.Hash.HashSetAsync<Role>(RedisKeyDefine._RolePostfix, onOff.RoleID.ToString(), roleObj);
+
                                     }
                                     else
                                         ResultFailS2C(onOff.RoleID, PracticeOpcode.UploadingExp);
@@ -277,7 +282,7 @@ namespace AscensionServer
         /// <param name="roleID"></param>
         async void GetOffLineExpMySql(int roleID)
         {
-            Utility.Debug.LogInfo("YZQ获取离线经验进来了3");
+            Utility.Debug.LogInfo("YZQonoffLine获取离线经验进来了3");
             var exp = 0;
             Dictionary<byte, object> dict;
             NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
@@ -290,7 +295,7 @@ namespace AscensionServer
             TimeSpan interval;
             if (onOffLineObj!=null&& redisRoleStatus!=null&& role!=null)
             {
-                Utility.Debug.LogInfo("YZQ得到的功法ID为" + onOffLineObj.MsGfID);
+                Utility.Debug.LogInfo("YZQonoffLine得到的功法ID为" + onOffLineObj.MsGfID);
                 NHCriteria nHCriteriaid = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
                 var gongfa = NHibernateQuerier.CriteriaSelectAsync<RoleGongFa>(nHCriteriaid).Result;
                 var mishu = NHibernateQuerier.CriteriaSelectAsync<RoleMiShu >(nHCriteriaid).Result;
@@ -329,8 +334,10 @@ namespace AscensionServer
                                 #region 更新数据至数据库 redis
                                 await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleBottleneckPostfix, roleID.ToString(), bottleneckObj);
                                 await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._GongfaPerfix, roleID.ToString(), rolegongfaObj);
+                                await RedisHelper.Hash.HashSetAsync<Role>(RedisKeyDefine._RolePostfix, roleID.ToString(), role);
                                 await NHibernateQuerier.UpdateAsync(bottleneckObj);
                                 await NHibernateQuerier.UpdateAsync(ChangeDataType(rolegongfaObj));
+                                await NHibernateQuerier.UpdateAsync(role);
                                 #endregion
                             }
                         }
@@ -404,6 +411,9 @@ namespace AscensionServer
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleGongfaPerfix, onOffLine.RoleID.ToString(), rolegongfa);
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleBottleneckPostfix, onOffLine.RoleID.ToString(), bottleneckData);
 
+                            await RedisHelper.Hash.HashSetAsync<Role>(RedisKeyDefine._RolePostfix, onOffLine.RoleID.ToString(), roleObj);
+
+                            await NHibernateQuerier.UpdateAsync(roleObj);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(rolegongfa));
                             await NHibernateQuerier.UpdateAsync(bottleneckData);
                         }
@@ -453,16 +463,15 @@ namespace AscensionServer
             GameEntry. DataManager.TryGetValue<Dictionary<int, RoleLevelData>>(out var roleDict);
             CultivationMethodDTO cultivationDTO = new CultivationMethodDTO();
             var result = roleDict.TryGetValue(cultivation.CultivationMethodLevel,out var roleData);
-            Utility.Debug.LogInfo("YZQonoffLine計算的功法经验為" + exp+ result);
             if (result)
             {
                 if (roleData.ExpLevelUp <= cultivation.CultivationMethodExp + exp)
                 {
-                    //Utility.Debug.LogInfo("YZQonoffLineEXP:" + (cultivation.CultivationMethodExp + exp)+"升级需要的"+ roleData.ExpLevelUp);
-                    //Utility.Debug.LogInfo("YZQonoffLineEXP2:" + (cultivation.CultivationMethodExp ) );
+                    Utility.Debug.LogInfo("YZQonoffLineEXP:" + (cultivation.CultivationMethodExp + exp) + "升级需要的" + roleData.ExpLevelUp);
+                    Utility.Debug.LogInfo("YZQonoffLineEXP2:" + (cultivation.CultivationMethodExp));
 
-                    //Utility.Debug.LogInfo("YZQonoffLine計算的功法经验升级进来了等级为" + cultivation.CultivationMethodLevel);
-                    bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out  isbottleneck);
+                    Utility.Debug.LogInfo("YZQonoffLine計算的功法经验升级进来了等级为" + cultivation.CultivationMethodLevel);
+                    bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);
                     if (bottleneck != null)
                     {
                         if (isbottleneck)
@@ -475,18 +484,29 @@ namespace AscensionServer
                             obj = cultivationDTO;
                             return bottleneck;
                         }
+                        else
+                        {
+                            cultivation.CultivationMethodExp = cultivation.CultivationMethodExp + exp - roleData.ExpLevelUp;
+                            cultivation.CultivationMethodLevel = (short)roleData.NextLevelID;
+                            AddGongFaExp(roleID, cultivation, cultivation.CultivationMethodExp, out obj);
+                        }
                     }
-                    cultivation.CultivationMethodExp = cultivation.CultivationMethodExp + exp - roleData.ExpLevelUp;
-                    cultivation.CultivationMethodLevel = (short)roleData.NextLevelID;
-                    AddGongFaExp(roleID,cultivation, cultivation.CultivationMethodExp, out obj);
+ 
+                }
+                else
+                {
+                    Utility.Debug.LogInfo("YZQonoffLine未升級的離綫經驗:" + exp);
+                    bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);
+                    cultivationDTO.CultivationMethodExp = cultivation.CultivationMethodExp + exp;
+                    cultivationDTO.CultivationMethodID = cultivation.CultivationMethodID;
+                    cultivationDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
+                    cultivationDTO.CultivationMethodLevelSkillArray = cultivation.CultivationMethodLevelSkillArray;
+                    obj = cultivationDTO;
+                    return bottleneck;
                 }
             }
-             bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out  isbottleneck);
-            cultivationDTO.CultivationMethodExp = cultivation.CultivationMethodExp+exp;
-            cultivationDTO.CultivationMethodID = cultivation.CultivationMethodID;
-            cultivationDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
-            cultivationDTO.CultivationMethodLevelSkillArray = cultivation.CultivationMethodLevelSkillArray;
-            obj = cultivationDTO;
+
+            obj = cultivation;
             return bottleneck;
         }
         /// <summary>
