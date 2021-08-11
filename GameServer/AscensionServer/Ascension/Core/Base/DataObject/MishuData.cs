@@ -27,25 +27,25 @@ namespace AscensionServer
     {
         public int MishuFloor { get; set; }
         public int NeedLevelID { get; set; }
-        public byte MishuType { get; set; }
-        public byte MishuQuality { get; set; }
-        public byte MishuProperty { get; set; }
+        public int MishuType { get; set; }
+        public int MishuQuality { get; set; }
+        public int MishuProperty { get; set; }
         public List<int> SkillArrayOne { get; set; }
         public List<int> SkillArrayTwo { get; set; }
         public int ExpLevelUp { get; set; }
         public int RoleHP { get; set; }
         public int RoleMP { get; set; }
         public int RoleSoul { get; set; }
-        public float BestBlood { get; set; }
+        public int BestBlood { get; set; }
         public int AttactPhysical { get; set; }
         public int DefendPhysical { get; set; }
         public int AttactPower { get; set; }
         public int DefendPower { get; set; }
         public int AttactSpeed { get; set; }
-        public float MoveSpeed { get; set; }
-        public float PhysicalCritProb { get; set; }
-        public float MagicCritProb { get; set; }
-        public float ReduceCritProb { get; set; }
+        public int MoveSpeed { get; set; }
+        public int PhysicalCritProb { get; set; }
+        public int MagicCritProb { get; set; }
+        public int ReduceCritProb { get; set; }
         public int PhysicalCritDamage { get; set; }
         public int MagicCritDamage { get; set; }
         public int ReduceCritDamage { get; set; }

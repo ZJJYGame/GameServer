@@ -251,12 +251,12 @@ namespace AscensionServer
         /// <summary>
         /// 处理角色宗门失败发送
         /// </summary>
-        void RoleStatusFailS2C(int roleID, AllianceOpCode oPcode)
+        void RoleStatusFailS2C(int roleID, AllianceOpCode oPcode,string tips =null)
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncRoleAlliance;
             opData.SubOperationCode = (byte)oPcode;
-            opData.DataMessage = Utility.Json.ToJson(null);
+            opData.DataMessage = tips;
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }
 

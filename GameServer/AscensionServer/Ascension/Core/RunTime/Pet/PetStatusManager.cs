@@ -173,13 +173,13 @@ namespace AscensionServer
         /// <summary>
         /// 失败返回
         /// </summary>
-        void ResultFailS2C(int roleID, RolePetOpCode opcode)
+        void ResultFailS2C(int roleID, RolePetOpCode opcode,string tips=null)
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncRolePet;
             opData.SubOperationCode = (byte)opcode;
             var dataDict = new Dictionary<byte, object>();
-            dataDict.Add((byte)opcode, null);
+            dataDict.Add((byte)opcode, tips);
             opData.ReturnCode = (short)ReturnCode.Fail;
             opData.DataMessage = Utility.Json.ToJson(dataDict);
             GameEntry.RoleManager.SendMessage(roleID, opData);

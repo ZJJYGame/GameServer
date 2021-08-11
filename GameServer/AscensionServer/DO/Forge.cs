@@ -16,7 +16,7 @@ namespace AscensionServer.Model
 
         public Forge()
         {
-            JobLevel = 4;
+            JobLevel = 1;
             Recipe_Array = null;
             JobLevelExp = 0;
         }

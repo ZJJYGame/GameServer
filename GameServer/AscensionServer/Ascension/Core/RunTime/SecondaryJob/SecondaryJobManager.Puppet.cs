@@ -18,13 +18,14 @@ namespace AscensionServer
        /// </summary>
        /// <param name="roleid"></param>
        /// <param name="useItemID"></param>
-      async  void CompoundPuppetS2C(int roleID, int useItemID)
+        async  void CompoundPuppetS2C(int roleID, int useItemID)
         {
             var puppetExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetPerfix, roleID.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
             var puppetUnitExist= RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
             NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (puppetExist && roleExist && assestExist&& puppetUnitExist)
             {
@@ -41,32 +42,55 @@ namespace AscensionServer
                         formulaDataDict.TryGetValue(useItemID, out var formulaData);
                         for (int i = 0; i < formulaData.NeedItemArray.Count; i++)
                         {
-                            if (!InventoryManager.VerifyIsExist(formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i], rolering.RingIdArray))
+                            Utility.Debug.LogInfo("YZQ合成傀儡部件id"+ formulaData.NeedItemArray[i]+"数量"+ formulaData.NeedItemNumber[i]);
+                            if (formulaData.NeedItemArray[i]!=0)
                             {
-                                Utility.Debug.LogInfo("YZQ收到的副职业请求1");
-                                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
-                                return;
+                                if (!InventoryManager.VerifyIsExist(formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i], rolering.RingIdArray))
+                                {
+                                    Utility.Debug.LogInfo("YZQ收到的副职业请求1");
+                                    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
+                                    return;
+                                }
                             }
-                            //if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
-                            //{
-                            //    Utility.Debug.LogInfo("YZQ收到的副职人物属性"+Utility.Json.ToJson(role));
-                            //    Utility.Debug.LogInfo("YZQ收到的副职业请求2灵石"+ assest.SpiritStonesLow+"活力"+ role.Vitality);
-                            //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
-                            //    return;
-                            //}
-                            var maxNum = 50 + (formulaData.SuccessRate / 2);
-                            var minNum = 50 - (formulaData.SuccessRate / 2);
-                            var randNum = NormalRandom2(maxNum, minNum);
-                            if (randNum >= maxNum || randNum <= minNum)
-                            {
+                        }
+                        //if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
+                        //{
+                        //    Utility.Debug.LogInfo("YZQ收到的副职人物属性"+Utility.Json.ToJson(role));
+                        //    Utility.Debug.LogInfo("YZQ收到的副职业请求2灵石"+ assest.SpiritStonesLow+"活力"+ role.Vitality);
+                        //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
+                        //    return;
+                        //}
+                        var randNum = drollRandom.Next(1, 101);
+                        Utility.Debug.LogError("随机出的数据为" + randNum + "成功率为" + formulaData.SuccessRate);
+                        if (randNum > formulaData.SuccessRate)
+                        {
                                 Utility.Debug.LogInfo("YZQ收到的副职业请求3");
-                                RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet, default);
+                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet, default);
                                 //鍛造失敗
                                 return;
                             }
                         
-                        }
                         puppet.JobLevelExp += formulaData.MasteryValue;
+                        secondary.TryGetValue((byte)FormulaDrugType.Puppet,out var secondaryJob);
+                        if (secondaryJob.SecondaryJobLevel.Contains(puppet.JobLevel))
+                        {
+                           var index =secondaryJob.SecondaryJobLevel.FindIndex(f=>f== puppet.JobLevel);
+                            if (puppet.JobLevel<5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= puppet.JobLevelExp)
+                                {
+                                    puppet.JobLevelExp -= secondaryJob.SecondaryJobExp[index];
+                                    puppet.JobLevel += 1;
+                                }
+                            }
+                            else if (puppet.JobLevel == 5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= puppet.JobLevelExp)
+                                {
+                                    puppet.JobLevelExp = secondaryJob.SecondaryJobExp[index];
+                                }
+                            }
+                        }
                         // role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
 
@@ -292,17 +316,21 @@ namespace AscensionServer
             var formulaExist = GameEntry.DataManager.TryGetValue<Dictionary<int, FormulaPuppetData>>(out var formulaDataDict);
             if (!formulaExist)
             {
+                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>1");
                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
             NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
-            if (ringServer == null)
+            var roleexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
+            if (ringServer == null|| !roleexist)
             {
+                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>2");
                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
-            if (InventoryManager.VerifyIsExist(id, 1, ringServer.RingIdArray))
+            var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
+            if (InventoryManager.VerifyIsExist(id, 1, ringServer.RingIdArray)&& role!=null)
             {
                 var tempid = Utility.Converter.RetainInt32(id, 5);
                 var puppetExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetPerfix, roleid.ToString()).Result;
@@ -315,9 +343,18 @@ namespace AscensionServer
                         {
                             if (formula.NeedJobLevel > puppet.JobLevel)
                             {
+                                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>3");
                                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
                                 return;
                             }
+                            #region 等级判断
+                            //if (formula.FormulaLevel > role.RoleLevel)
+                            //{
+                            //    Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>4");
+                            //    RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                            //    return;
+                            //}
+                            #endregion
 
                             if (!puppet.Recipe_Array.Contains(tempid))
                             {
@@ -335,14 +372,15 @@ namespace AscensionServer
 
                             }
                             else
+                            {
+                                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>1");
                                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                            }
+                               
                         }
                     }
                 }
             }
-
-
-
             }
         /// <summary>
         /// 傀儡部件属性值
@@ -421,7 +459,7 @@ namespace AscensionServer
                     dict.Add(unitInfo.AffixType, unitInfo.AffixAddition);
                 }
 
-                #region
+                #region 属性值
                 foreach (var item in dict)
                 {
                     switch ((AffixType)item.Key)

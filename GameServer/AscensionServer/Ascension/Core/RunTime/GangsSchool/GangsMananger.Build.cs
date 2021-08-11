@@ -329,6 +329,7 @@ namespace AscensionServer
                                 dict.Add((byte)ParameterCode.RoleAlliance, roleAllianceObj);
                                 dict.Add((byte)ParameterCode.RoleAssets, assetsObj);
                                 dict.Add((byte)ParameterCode.AllianceSignin, signinObj);
+                                dict.Add((byte)ParameterCode.AllianceStatus, statusObj);
                                 RoleStatusSuccessS2C(roleID, AllianceOpCode.UpdateAllianceSignin, dict);
 
                                 await RedisHelper.Hash.HashSetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString(), roleAllianceObj);

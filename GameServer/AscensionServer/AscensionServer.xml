@@ -1431,7 +1431,7 @@
             处理角色宗门成功发送
             </summary>
         </member>
-        <member name="M:AscensionServer.GangsMananger.RoleStatusFailS2C(System.Int32,AscensionProtocol.AllianceOpCode)">
+        <member name="M:AscensionServer.GangsMananger.RoleStatusFailS2C(System.Int32,AscensionProtocol.AllianceOpCode,System.String)">
             <summary>
             处理角色宗门失败发送
             </summary>
@@ -2859,7 +2859,7 @@
             <param name="opcode"></param>
             <param name="data"></param>
         </member>
-        <member name="M:AscensionServer.PetStatusManager.ResultFailS2C(System.Int32,AscensionProtocol.RolePetOpCode)">
+        <member name="M:AscensionServer.PetStatusManager.ResultFailS2C(System.Int32,AscensionProtocol.RolePetOpCode,System.String)">
             <summary>
             失败返回
             </summary>
@@ -2921,6 +2921,11 @@
             <param name="petID"></param>
             <param name="petName"></param>
             <param name="rolePet"></param>
+        </member>
+        <member name="M:AscensionServer.PetStatusManager.PetUpdateLevel(System.Collections.Generic.Dictionary{System.Int32,AscensionServer.PetLevelData},AscensionServer.Model.Pet,AscensionProtocol.DTO.RoleDTO,System.Int32)">
+            <summary>
+            宠物升级判断处理
+            </summary>
         </member>
         <member name="M:AscensionServer.PetStatusManager.VerifyPetAbilitypoint(AscensionServer.Model.Pet,System.Int32@)">
             <summary>
@@ -3021,6 +3026,21 @@
             <param name="roleStatus"></param>
             <returns></returns>
         </member>
+        <member name="M:AscensionServer.PracticeManager.AlgorithmGongFa(System.Int32)">
+            <summary>
+            计算所有功法属性
+            </summary>
+            <param name="roleID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.AlgorithmMiShu(System.Int32,AscensionProtocol.DTO.MiShuDTO)">
+            <summary>
+            计算所有秘术属性
+            </summary>
+            <param name="roleID"></param>
+            <param name="miShuDTO"></param>
+            <returns></returns>
+        </member>
         <member name="M:AscensionServer.PracticeManager.RoleAblility(AscensionProtocol.DTO.RoleStatusPointDTO,AscensionServer.Model.RoleStatus)">
             <summary>
             人物加点的加成
@@ -3054,7 +3074,7 @@
             <param name="roleStatus"></param>
             <returns></returns>
         </member>
-        <member name="M:AscensionServer.PracticeManager.SkillAlgorithm(System.Int32,AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleGongFaDTO,AscensionProtocol.DTO.RoleMiShuDTO)">
+        <member name="M:AscensionServer.PracticeManager.SkillAlgorithm(System.Int32,AscensionProtocol.DTO.RoleGongFaDTO,AscensionProtocol.DTO.RoleMiShuDTO)">
             <summary>
             计算技能加成
             </summary>
@@ -3062,7 +3082,7 @@
             计算技能加成
             </summary>
         </member>
-        <member name="M:AscensionServer.PracticeManager.RoleStatusAlgorithm(System.Int32,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleAllianceSkill)">
+        <member name="M:AscensionServer.PracticeManager.RoleStatusAlgorithm(System.Int32,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleAllianceSkill,System.Int32)">
             <summary>
             获取Redis各部分加成
             </summary>
@@ -3089,6 +3109,11 @@
             <param name="roleStatus"></param>
             <param name="obj"></param>
             <returns></returns>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.GetAllSkill">
+            <summary>
+            获取角色所有技能
+            </summary>
         </member>
         <member name="M:AscensionServer.PracticeManager.TriggerBottleneckS2C(System.Int32,System.Int32,System.Boolean@)">
             <summary>
@@ -3424,7 +3449,7 @@
             <param name="pointDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:AscensionServer.RoleStatusManager.GetRoleStatus(System.Int32,AscensionServer.RoleStatusDatas)">
+        <member name="M:AscensionServer.RoleStatusManager.GetRoleStatus(System.Int32)">
              <summary>
             获取数据库功法秘术数值
              </summary>
@@ -3818,6 +3843,21 @@
             装备锻造属性计算
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.SecondaryJobManager.DrollRandom.Next(System.Int32)">
+            <summary>
+            从0到maxValue,不包括maxValue
+            </summary>
+            <param name="maxValue">最大值</param>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.SecondaryJobManager.DrollRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            从minValue到maxValue,不包括maxValue
+            </summary>
+            <param name="minValue">最小值</param>
+            <param name="maxValue">最大值</param>
             <returns></returns>
         </member>
         <member name="T:AscensionServer.SkillEntity">

@@ -18,7 +18,7 @@ namespace AscensionServer
         /// <param name="gongfaList"></param>
         /// <param name="mishuList"></param>
         /// <param name="roleStatusDatas"></param>
-        public RoleStatusDTO GetRoleStatus(int roleID,RoleStatusDatas roleStatus)
+        public RoleStatusDTO GetRoleStatus(int roleID)
         {
             List<int> gongfaList = new List<int>();
             List<MishuSkillData> mishuList = new List<MishuSkillData>();
@@ -103,6 +103,7 @@ namespace AscensionServer
                 if (rolemishu != null)
                 {
                     var dict = Utility.Json.ToObject<Dictionary<int, int>>(rolemishu.MiShuIDDict);
+                    //TODO后续增加参数传入秘术替换，升级的秘术替换取值的秘术
                     foreach (var item in dict)
                     {
                         NHCriteria nHCriteriamishu = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", item.Key);
@@ -186,29 +187,6 @@ namespace AscensionServer
                 }
             }
 
-            #region 计算
-            roleStatusmishu.AttackPhysical += ((roleStatus.AttackPhysical * roleStatusGF.AttackPhysical / 100) + roleStatus.AttackPhysical);
-            roleStatusmishu.AttackPower += ((roleStatus.AttackPower * roleStatusGF.AttackPhysical / 100) + roleStatus.AttackPower);
-            roleStatusmishu.AttackSpeed += ((roleStatus.AttackSpeed * roleStatusGF.AttackPhysical / 100) + roleStatus.AttackSpeed);
-            roleStatusmishu.BestBlood += (short)((roleStatus.BestBlood * roleStatusGF.AttackPhysical / 100) + roleStatus.BestBlood);
-            roleStatusmishu.DefendPhysical += ((roleStatus.DefendPhysical * roleStatusGF.AttackPhysical / 100) + roleStatus.DefendPhysical);
-            roleStatusmishu.DefendPower += ((roleStatus.DefendPower * roleStatusGF.AttackPhysical / 100) + roleStatus.DefendPower);
-            roleStatusmishu.GongfaLearnSpeed += ((roleStatus.GongfaLearnSpeed * roleStatusGF.AttackPhysical / 100) + roleStatus.GongfaLearnSpeed);
-            roleStatusmishu.MagicCritDamage += ((roleStatus.MagicCritDamage * roleStatusGF.AttackPhysical / 100) + roleStatus.MagicCritDamage);
-            roleStatusmishu.MagicCritProb += ((roleStatus.MagicCritProb * roleStatusGF.AttackPhysical / 100) + roleStatus.MagicCritProb);
-            roleStatusmishu.MishuLearnSpeed += ((roleStatus.MishuLearnSpeed * roleStatusGF.AttackPhysical / 100) + roleStatus.MishuLearnSpeed);
-            roleStatusmishu.MoveSpeed += ((roleStatus.MoveSpeed * roleStatusGF.AttackPhysical / 100) + roleStatus.MoveSpeed);
-            roleStatusmishu.PhysicalCritDamage += ((roleStatus.PhysicalCritDamage * roleStatusGF.AttackPhysical / 100) + roleStatus.PhysicalCritDamage);
-            roleStatusmishu.PhysicalCritProb += ((roleStatus.PhysicalCritProb * roleStatusGF.AttackPhysical / 100) + roleStatus.PhysicalCritProb);
-            roleStatusmishu.ReduceCritDamage += ((roleStatus.ReduceCritDamage * roleStatusGF.AttackPhysical / 100) + roleStatus.ReduceCritDamage);
-            roleStatusmishu.ReduceCritProb += ((roleStatus.ReduceCritProb * roleStatusGF.AttackPhysical / 100) + roleStatus.ReduceCritProb);
-            roleStatusmishu.RoleHP += ((roleStatus.RoleHP * roleStatusGF.AttackPhysical / 100) + roleStatus.RoleHP);
-            roleStatusmishu.RoleMP += ((roleStatus.RoleMP * roleStatusGF.AttackPhysical / 100) + roleStatus.RoleMP);
-            roleStatusmishu.RolePopularity += ((roleStatus.RolePopularity * roleStatusGF.AttackPhysical / 100) + roleStatus.RolePopularity);
-            roleStatusmishu.RoleSoul += ((roleStatus.RoleSoul * roleStatusGF.AttackPhysical / 100) + roleStatus.RoleSoul);
-            roleStatusmishu.ValueHide += ((roleStatus.ValueHide * roleStatusGF.AttackPhysical / 100) + roleStatus.ValueHide);
-            roleStatusmishu.Vitality += ((roleStatus.Vitality * roleStatusGF.AttackPhysical / 100) + roleStatus.Vitality);
-            #endregion
             return roleStatusmishu;
         }
         /// <summary>

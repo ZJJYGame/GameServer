@@ -83,7 +83,7 @@ namespace AscensionServer
 
                             if (rolealliance != null && onofflineObj != null)
                             {
-                                if (rolealliance.AllianceID==0)
+                                if (rolealliance.AllianceID == 0)
                                 {
                                     if (onofflineObj.OffTime == "在线")
                                     {
@@ -108,6 +108,10 @@ namespace AscensionServer
 
                                     await RedisHelper.Hash.HashSetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, roleIDs[i].ToString(), rolealliance);
                                     await NHibernateQuerier.UpdateAsync(ChangeDataType(rolealliance));
+                                }
+                                else
+                                {
+                                    allianceObj.ApplyforMember.Remove(roleIDs[i]);
                                 }
                             }
                         }
@@ -501,16 +505,46 @@ namespace AscensionServer
         async void DissolveAllianceS2C(int roleid,int allianceid,string name)
         {
             DissolveAllianceDTO dissolve = new DissolveAllianceDTO();
-            await RedisHelper.String.StringSetAsync(RedisKeyDefine._DissolveAlliancePerfix+roleid,Utility.Json.ToJson(dissolve));
-
             //DailyMessageDTO dailyMessageDTO = new DailyMessageDTO();
             //dailyMessageDTO.Name = name;
             //dailyMessageDTO.Describe = "宗门";
             //dailyMessageDTO.Name = name;
             //dailyMessageDTO.Name = name;
+
+            await RedisHelper.String.StringSetAsync(RedisKeyDefine._DissolveAlliancePerfix+roleid,Utility.Json.ToJson(dissolve));
         }
         #endregion
 
+        #region Redis仙盟解散事件监听
+        void RefreshDissolve(string key)
+        { RedisManager.Instance.AddKeyExpireListener(key, DeleteSignin); }
+
+        async void DeleteDissolveAlliance(string key)
+        {
+            //TODO具体解散的逻辑，假设key包含仙盟id，先从仙盟列表删除，再删除每人的仙盟然后慢慢清除仙盟数据
+            int id = 0;
+            var allianceMemberExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AllianceMemberPerfix, id.ToString()).Result;
+            if (allianceMemberExist)
+            {
+                var alliance = RedisHelper.Hash.HashGetAsync<AllianceMemberDTO>(RedisKeyDefine._AllianceMemberPerfix, id.ToString()).Result;
+                for (int i = 0; i < alliance.Member.Count; i++)
+                {
+                    var roleAllianceExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAlliancePerfix, alliance.Member[i].ToString()).Result;
+                    if (roleAllianceExist)
+                    {
+                        var roleAlliance = RedisHelper.Hash.HashGetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, alliance.Member[i].ToString()).Result;
+                        if (roleAlliance!=null)
+                        {
+                            roleAlliance.AllianceID = 0;
+
+
+                            RoleStatusSuccessS2C(roleAlliance.RoleID, AllianceOpCode.DissolveAlliance, roleAlliance);
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
 
         #region MySql模塊
         /// <summary>

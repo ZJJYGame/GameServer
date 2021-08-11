@@ -38,15 +38,17 @@ namespace AscensionServer
                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
+            var roleexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleID.ToString()).Result;
             NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
-            if (ringServer==null)
+            if (ringServer== null||!roleexist)
             {
                 Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求z");
                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
-            if (InventoryManager.VerifyIsExist(UseItemID,1 , ringServer.RingIdArray))
+            var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleID.ToString()).Result;
+            if (InventoryManager.VerifyIsExist(UseItemID,1 , ringServer.RingIdArray)&& role != null)
             {
                 var tempid = Utility.Converter.RetainInt32(UseItemID, 5);
                 var alchemyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;
@@ -58,16 +60,25 @@ namespace AscensionServer
                         if (formulaDataDict.TryGetValue(tempid, out var formula))
                         {
                             Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求1");
-                            if (formula.FormulaLevel > alchemy.JobLevel)
+                            if (formula.NeedJobLevel > alchemy.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求2");
                                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
                                 return;
                             }
 
+                            #region 等级判断
+                            //if (formula.FormulaLevel > role.RoleLevel)
+                            //{
+                            //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                            //    return;
+                            //}
+                            #endregion
+                            Utility.Debug.LogInfo("YZQ收到的副职业学习配方配方"+tempid+"请求");
+                            Utility.Debug.LogInfo("YZQ当前副职业已学配方为" + tempid + "请求");
                             if (!alchemy.Recipe_Array.Contains(tempid))
                             {
-                                Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求3");
+                               
                                 alchemy.Recipe_Array.Add(tempid);
                                 Dictionary<byte, object> dict = new Dictionary<byte, object>();
                                 dict.Add((byte)ParameterCode.JobAlchemy, alchemy);
@@ -102,6 +113,7 @@ namespace AscensionServer
         /// <param name="nHCriteriarole"></param>
         void CompoundAlchemyS2C(int roleID, int UseItemID)
         {
+            GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
             var alchemyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
@@ -132,7 +144,9 @@ namespace AscensionServer
                             RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
                             return;
                         }
-                        if (Utility.Algorithm.CreateRandomInt(0, 101) > formulaData.SuccessRate)
+                        var randNum = drollRandom.Next(1, 101);
+                        Utility.Debug.LogError("随机出的数据为"+ randNum+"成功率为"+ formulaData.SuccessRate);
+                        if (randNum > formulaData.SuccessRate)
                         {
                             RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, default);
                             dict.Add((byte)ParameterCode.JobAlchemy, alchemy);
@@ -142,7 +156,30 @@ namespace AscensionServer
                             return;
                         }
 
+
                         alchemy.JobLevelExp += formulaData.MasteryValue;
+
+                        secondary.TryGetValue((byte)FormulaDrugType.Alchemy, out var secondaryJob);
+                        if (secondaryJob.SecondaryJobLevel.Contains(alchemy.JobLevel))
+                        {
+                            var index = secondaryJob.SecondaryJobLevel.FindIndex(f => f == alchemy.JobLevel);
+                            if (alchemy.JobLevel < 5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= alchemy.JobLevelExp)
+                                {
+                                    alchemy.JobLevelExp -= secondaryJob.SecondaryJobExp[index];
+                                    alchemy.JobLevel += 1;
+                                }
+                            }
+                            else if (alchemy.JobLevel == 5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= alchemy.JobLevelExp)
+                                {
+                                    alchemy.JobLevelExp = secondaryJob.SecondaryJobExp[index];
+                                }
+                            }
+                        }
+
                         role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
                         InventoryManager.AddNewItem(roleID, formulaData.ItemID, 1);
@@ -203,6 +240,7 @@ namespace AscensionServer
         /// <param name="UseItemID"></param>
         async void CompoundAlchemyMySql(int roleID, int UseItemID)
         {
+            GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
             NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
             var alchemy = NHibernateQuerier.CriteriaSelect<Alchemy>(nHCriteria);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
@@ -247,6 +285,26 @@ namespace AscensionServer
                         }
 
                         alchemy.JobLevelExp += formulaData.MasteryValue;
+                        secondary.TryGetValue((byte)FormulaDrugType.Alchemy, out var secondaryJob);
+                        if (secondaryJob.SecondaryJobLevel.Contains(alchemy.JobLevel))
+                        {
+                            var index = secondaryJob.SecondaryJobLevel.FindIndex(f => f == alchemy.JobLevel);
+                            if (alchemy.JobLevel < 5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= alchemy.JobLevelExp)
+                                {
+                                    alchemy.JobLevelExp -= secondaryJob.SecondaryJobExp[index];
+                                    alchemy.JobLevel += 1;
+                                }
+                            }
+                            else if (alchemy.JobLevel == 5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= alchemy.JobLevelExp)
+                                {
+                                    alchemy.JobLevelExp = secondaryJob.SecondaryJobExp[index];
+                                }
+                            }
+                        }
                         role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
                         InventoryManager.AddNewItem(roleID, formulaData.ItemID, 1);

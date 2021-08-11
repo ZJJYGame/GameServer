@@ -15,7 +15,7 @@ namespace AscensionServer.Model
         public virtual string Recipe_Array { get; set; }
         public Puppet()
         {
-            JobLevel = 4;
+            JobLevel = 1;
             Recipe_Array = null;
             JobLevelExp = 0;
         }

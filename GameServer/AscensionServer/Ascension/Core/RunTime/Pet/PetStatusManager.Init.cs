@@ -140,7 +140,7 @@ namespace AscensionServer
                 await NHibernateQuerier.DeleteAsync(petabitily);
                 await NHibernateQuerier.DeleteAsync(petaptutide);
                 await NHibernateQuerier.DeleteAsync(petstatus);
-                Utility.Debug.LogInfo("yzqData已经放生的寵物" + Utility.Json.ToJson(pet));
+                Utility.Debug.LogInfo("yzqData已经放生的寵物" + Utility.Json.ToJson(rolePet));
                 await NHibernateQuerier.UpdateAsync(rolePet);
                 ResultSuccseS2C(rolePet.RoleID,RolePetOpCode.RemovePet, rolePetDTO);
 
@@ -378,9 +378,11 @@ namespace AscensionServer
         /// <param name="pet"></param>
         public async void PetExpDrug(DrugData drugData, int itemid, Pet pet,int roleid)
         {
+
             GameEntry. DataManager.TryGetValue<Dictionary<int, PetLevelData>>(out var petLevelDataDict);
             PetDrugRefreshDTO petDrugRefreshDTO = new PetDrugRefreshDTO();
             petDrugRefreshDTO.PetUsedDrug = new Dictionary<int, int>();
+            var roleExist = RedisHelper.KeyExistsAsync(RedisKeyDefine._RolePostfix + roleid.ToString()).Result;
             if (RedisHelper.KeyExistsAsync(RedisKeyDefine._PetDrugRefreshPostfix + pet.ID.ToString()).Result)
             {
                 var petDrugRefreshJson = RedisHelper.String.StringGetAsync(RedisKeyDefine._PetDrugRefreshPostfix + pet.ID.ToString()).Result;
@@ -397,9 +399,9 @@ namespace AscensionServer
                     }
                 }
             }
-
-            if (drugData.Need_Level_ID <= pet.PetLevel && drugData.Max_Level_ID >= pet.PetLevel)
+            if (roleExist&&drugData.Need_Level_ID <= pet.PetLevel && drugData.Max_Level_ID >= pet.PetLevel)
             {
+                var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix , roleid.ToString()).Result;
                 pet.PetExp += drugData.Drug_Value;
                 Utility.Debug.LogInfo("yzqData宠物即将使用加经验丹药" + pet.PetExp);
                 if (petLevelDataDict[pet.PetLevel].ExpLevelUp <= pet.PetExp)
@@ -408,11 +410,27 @@ namespace AscensionServer
                     {
                         pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
                         Utility.Debug.LogInfo("yzqData使用加经验丹药即将进阶");
+                        //todo使用丹药失败                    
+                        ResultFailS2C(roleid, RolePetOpCode.PetDrugFresh);
+                        return;
                     }
                     else
                     {
                         pet.PetExp = pet.PetExp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                        pet.PetLevel += 1;
+                        var level = pet.PetLevel;
+                        if (level < role.RoleLevel)
+                        {
+                            pet.PetLevel += 1;
+                            pet= PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
+                        }
+                        else
+                        {
+                            //增加升级判断提示，不能大于人物等级
+                            //todo使用丹药失败
+                            ResultFailS2C(roleid, RolePetOpCode.PetDrugFresh);
+                            return;
+
+                        }
                         //TODO刷新寵物所有屬性
                         Utility.Debug.LogInfo("yzqData使用加经验丹药" + pet.PetExp);
                     }
@@ -440,16 +458,16 @@ namespace AscensionServer
                 dict.Add((byte)ParameterCode.PetAbility, petAbility);
                 dict.Add((byte)ParameterCode.PetAptitude, petAptitude);
 
-               var status = VerifyPetAllStatus(pet.ID,petAbility, petAptitudeObj, petStatuObj, pet);
+                var status = VerifyPetAllStatus(pet.ID, petAbility, petAptitudeObj, petStatuObj, pet);
                 status.PetID = pet.ID;
                 dict.Add((byte)ParameterCode.PetStatus, status);
                 ResultSuccseS2C(roleid, RolePetOpCode.PetCultivate, dict);
                 await RedisHelper.Hash.HashSetAsync<PetStatus>(RedisKeyDefine._PetStatusPerfix, pet.ID.ToString(), status);
 
-              
+
 
                 await NHibernateQuerier.UpdateAsync(status);
-             
+
                 if (petDrugRefreshDTO.PetUsedDrug.ContainsKey(drugData.Drug_ID))
                 {
                     petDrugRefreshDTO.PetUsedDrug[drugData.Drug_ID]++;
@@ -463,11 +481,12 @@ namespace AscensionServer
 
                 await RedisHelper.Hash.HashSetAsync<PetDrugRefreshDTO>(RedisKeyDefine._PetDrugRefreshPostfix, pet.ID.ToString(), petDrugRefreshDTO);
 
-                ResultSuccseS2C(roleid,RolePetOpCode.PetDrugFresh, petDrugRefreshDTO);
+                ResultSuccseS2C(roleid, RolePetOpCode.PetDrugFresh, petDrugRefreshDTO);
 
                 InventoryManager.UpdateNewItem(roleid, itemid, 1);
 
             }
+
 
         }
         /// <summary>
@@ -849,6 +868,7 @@ namespace AscensionServer
         /// <param name="rolePet"></param>
         public async void InitPet(int petID, string petName, int roleid)
         {
+            ///TODO增加可持有宠物数量判断
             NHCriteria nHCriteriaRolePet = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
             var rolePet = NHibernateQuerier.CriteriaSelect<RolePet>(nHCriteriaRolePet);
 
@@ -922,7 +942,34 @@ namespace AscensionServer
             ResultSuccseS2C(roleid,RolePetOpCode.AddPet,null);
         }
 
+        /// <summary>
+        /// 宠物升级判断处理
+        /// </summary>
+        Pet PetUpdateLevel(Dictionary<int, PetLevelData> petLevelDataDict,Pet pet, RoleDTO role,int exp)
+        {
+            
+            if (petLevelDataDict[pet.PetLevel].IsFinalLevel)
+            {
+                pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                Utility.Debug.LogInfo("yzqData使用加经验丹药即将进阶");
 
+            }
+            else
+            {
+                pet.PetExp = exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                var level = pet.PetLevel;
+                if (level < role.RoleLevel)
+                {
+                    pet.PetLevel += 1;
+                    PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
+                }
+                else
+                {
+                    pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                }
+            }
+            return pet;
+        }
     }
 }
 

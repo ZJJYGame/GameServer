@@ -62,6 +62,7 @@ namespace AscensionServer
                 obj.OffTime = DateTime.Now.ToString();
                 obj.RoleID = roleId;
                 NHibernateQuerier.Update(obj);
+                await RedisHelper.Hash.HashSetAsync<OnOffLine>(RedisKeyDefine._RoleOnOffLinePostfix, obj.RoleID.ToString(), obj);
             }
             else
             {
@@ -76,7 +77,9 @@ namespace AscensionServer
                 offLineTimeTmp.RoleID = roleId; ; ;
                 offLineTimeTmp.OffTime = DateTime.Now.ToString();
                 NHibernateQuerier.Insert(offLineTimeTmp);
+                await RedisHelper.Hash.HashSetAsync<OnOffLine>(RedisKeyDefine._RoleOnOffLinePostfix, offLineTimeTmp.RoleID.ToString(), offLineTimeTmp);
                 CosmosEntry.ReferencePoolManager.Despawn(offLineTimeTmp);
+
             }
             CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaOnOff);
             //Utility.Debug.LogInfo("yzqData同步离线时间成功"+"原来的角色id为"+ roleId + "新的角色id"+ newrole.RoleID);
