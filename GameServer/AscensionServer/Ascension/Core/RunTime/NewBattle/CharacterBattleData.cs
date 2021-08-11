@@ -406,7 +406,7 @@ namespace AscensionServer
         }
 
 
-        public void Clear()
+        public void Release()
         {
         }
     }

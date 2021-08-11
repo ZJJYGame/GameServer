@@ -131,7 +131,7 @@ namespace AscensionServer
                     critRange = (CharacterBattleData.MagicCritProb - target.CharacterBattleData.ReduceCritProb) * 100;
                 int additionCritProp = skillAdditionDatas.Sum(p => p.CritProp);
                 critRange += (CritProp + additionCritProp) *100;
-                int randomValue = Utility.Algorithm.CreateRandomInt(0, 10000 + 1);
+                int randomValue = Utility.Algorithm.RandomRange(0, 10000 + 1);
                 if (randomValue <= critRange)
                     isCrit = true;
             }
@@ -199,7 +199,7 @@ namespace AscensionServer
             targetProp = targetProp * battleSkillAddBuffData.targetAddBuffProbability.multiplyPropValue / 10000 + battleSkillAddBuffData.targetAddBuffProbability.fixedPropValue;
             targetProp = battleSkillAddBuffData.targetAddBuffProbability.addOrReduce ? selfProp : -selfProp;
             float finalProp = baseProp + selfProp + targetProp;
-            int randomValue = Utility.Algorithm.CreateRandomInt(0, 100);
+            int randomValue = Utility.Algorithm.RandomRange(0, 100);
             if (randomValue < finalProp)
                 return true;
             else

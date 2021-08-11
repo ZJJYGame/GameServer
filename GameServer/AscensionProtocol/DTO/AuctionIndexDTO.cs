@@ -12,7 +12,7 @@ namespace AscensionProtocol.DTO
         public virtual int GlobalID { get; set; }
         public List<AuctionGoodsIndex> AuctionGoodsIndexList { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             GlobalID = 0;
             AuctionGoodsIndexList = null;

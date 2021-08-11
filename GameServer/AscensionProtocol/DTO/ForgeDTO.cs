@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
         public virtual int JobLevelExp { get; set; }
         public virtual HashSet<int> Recipe_Array { get; set; }
       
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             JobLevel = 0;

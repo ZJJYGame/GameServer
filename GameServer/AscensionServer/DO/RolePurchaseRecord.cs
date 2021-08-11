@@ -18,7 +18,7 @@ namespace AscensionServer.Model
             RoleID = -1;
             GoodsPurchasedCount = null;
         }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             GoodsPurchasedCount = null;

@@ -18,7 +18,7 @@ namespace AscensionProtocol.DTO
         /// 是否签到
         /// </summary>
         public virtual bool IsSignin { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = 0;
             AllianceID = 0;

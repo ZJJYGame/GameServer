@@ -27,7 +27,7 @@ namespace AscensionServer.Model
         {
             return Utility.Text.Format("UUID : " + UUID + ">>" + "Role_Id_Array : " + RoleIDArray + "\n");
         }
-        public override void Clear()
+        public override void Release()
         {
             UUID = null;
             RoleIDArray = null;

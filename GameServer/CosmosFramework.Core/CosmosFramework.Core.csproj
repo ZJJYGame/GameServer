@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C39C9053-803D-429D-B60F-0B292D87DAAE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CosmosFramework.Core</RootNamespace>
+    <AssemblyName>CosmosFramework.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Attribute\MVVMCommandAttribute.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Attribute\MVVMMediatorAttribute.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Attribute\MVVMProxyAttribute.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Core\Model.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Core\MVVM.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Core\View.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Core\ViewModel.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Partten\Command.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Partten\Mediator.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Partten\NotifyArgs.cs" />
+    <Compile Include="CosmosFramework\Runtime\Architeture\MVVM\Partten\Proxy.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Attribute\ImplementerAttribute.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IBehaviour.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IControllable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IControllableBehaviour.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IElapesRefreshable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IOperable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IPreparatory.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IRefreshable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Behaviour\IRenewable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\BinaryTree.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\ConcurrentPool.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\DispatchableLocker.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\GenericValuePair.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\LinkedNodeList.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\Locker.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\LRUCache.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\LRUCacheIEnumerator.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\Pool.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\TinyLinkedList.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\DataStructure\TypeStringPair.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\ComponentQueue.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\ECSIdGenerater.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\ECSObjectPool.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\ECSPool.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\Entity.Create.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\Entity.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\IComponetData.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ECS\Object.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Event\ConcurrentLogicEventArgs.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Event\GameEventArgs.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Event\LogicEventArgs.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Event\LogicEventArgs.Generic.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Extensions\NetCoreExtensions.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ReferencePool\IReference.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ReferencePool\ReferencePool.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\ReferencePool\ReferencePoolInfo.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Singleton\ConcurrentSingleton.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Singleton\Singleton.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Algorithm.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Assembly.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Assert.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Converter.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Debug.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Encryption.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.IO.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Json.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.MessagePack.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Net.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Process.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Text.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Utility\Utility.Time.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Variable\GenericVariable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Base\Variable\Variable.cs" />
+    <Compile Include="CosmosFramework\Runtime\CosmosEntry.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Config\ConfigManager.ConfigData.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Config\ConfigManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Config\IConfigManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Config\IConfigProvider.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Coroutine\AsyncCoroutine.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Event\ConcurrentEventCore.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Event\ConcurrentStandardEventCore.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Event\EventCore.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Event\EventManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Event\IEventManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Event\StandardEventCore.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSM.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSMBase.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSMEventHandler.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSMGroup.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSMManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSMState.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\FSMTrigger.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\IFSM.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\IFSMGroup.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\FSM\IFSMManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Main\Attribute\ModuleAttribute.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Main\Attribute\TickRefreshAttribute.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Main\GameManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Main\IModuleManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Main\LifecycleMethodsConst.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Main\Module.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\Base\NetworkConsts.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\INetworkManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\INetworkMessage.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\INetworkService.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\IRemotePeer.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\ISerializable.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\Core\Kcp.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\Core\Segment.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\Core\Utils.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpChannel.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpClient.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpClientConnection.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpConnection.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpHeader.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KCPLog.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpServer.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\HightLevel\KcpServerConnection.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\Service\KcpClientService.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\Service\KcpServerService.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\KCP\Service\KcpServiceBase.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\NetworkChannel.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\NetworkManager.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\NetworkProtocol.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPConnection.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPConnectionData.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPConnectionState.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPInternalPacket.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPLog.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPPacket.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPPacketFlags.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPPacketType.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\RUDP\RUDPSocket.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\SUDP\SUDP.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\TCP\TcpChannel.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\TCP\TcpNetMessage.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\Heartbeat\Heartbeat.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\Heartbeat\IHeartbeat.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\Server\UdpServerService.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\UdpChannel.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\UdpClientPeer.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\UdpHeader.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\UdpNetMessage.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\UdpProtocol.cs" />
+    <Compile Include="CosmosFramework\Runtime\Modules\Network\UDP\UdpService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CosmosFramework\Runtime\Base\Utility\Helper\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

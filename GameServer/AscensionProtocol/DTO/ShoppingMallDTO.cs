@@ -15,7 +15,7 @@ namespace AscensionProtocol.DTO
         public virtual List<ShoppingGoods> QualifiedToBuy { get; set; }
         public virtual List<RechargeGoods> RechargeStore { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             Materials = null;

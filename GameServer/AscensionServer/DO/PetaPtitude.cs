@@ -38,7 +38,7 @@ namespace AscensionServer.Model
             PetAptitudeDrug ="{}";
         }
 
-        public override void Clear()
+        public override void Release()
         {
             PetID = -1;
             HPAptitude = 0;

@@ -67,7 +67,7 @@ namespace AscensionServer
 
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
             var rolegongfaExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleGongfaPerfix,roleid.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (rolegongfaExist && roleExist && ringServer != null)
             {
@@ -176,7 +176,7 @@ namespace AscensionServer
                 ResultFailS2C(roleid, PracticeOpcode.AddMiShu);
                 return;
             }
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var rolemishuExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleMiShuPerfix,roleid.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
@@ -249,7 +249,7 @@ namespace AscensionServer
         /// <param name="RoleID"></param>
         async void GetRoleGongFaMySql(int RoleID)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", RoleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", RoleID);
             var role = NHibernateQuerier.CriteriaSelectAsync<RoleGongFa>(nHCriteriaRole).Result;
             if (role != null)
             {
@@ -268,7 +268,7 @@ namespace AscensionServer
         async void GetRoleMiShuMySql(int RoleID)
         {
 
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", RoleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", RoleID);
             var role = NHibernateQuerier.CriteriaSelectAsync<RoleMiShu>(nHCriteriaRole).Result;
             if (role != null)
             {

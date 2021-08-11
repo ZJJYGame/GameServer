@@ -17,12 +17,12 @@ namespace AscensionServer
         public void InitPlayer(int roomID, int roleID,BattleFactionType battleFactionType)
         {
             Init();
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             RoleStatus roleStatus = NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteriaRoleID);
             Role role= NHibernateQuerier.CriteriaSelect<Role>(nHCriteriaRoleID);
             PetID = NHibernateQuerier.CriteriaSelect<RolePet>(nHCriteriaRoleID).PetIsBattle;
             //todo 从俞拿取正确的数据
-            CharacterBattleData = CosmosEntry.ReferencePoolManager.Spawn<CharacterBattleData>();
+            CharacterBattleData =ReferencePool.Accquire<CharacterBattleData>();
             CharacterBattleData.Init(roleStatus, this);
             UniqueID = roleID;
             GlobalID = 0;
@@ -39,7 +39,7 @@ namespace AscensionServer
                 UniqueId = UniqueID,
                 GlobalId=0,
                 MasterId=0,
-                ModelPath= Utility.IO.CombineRelativeFilePath("MC_fashion_Female_01_Prefab", "Prefabs/Model/Character/Monster"),
+                ModelPath= Utility.IO.WebPathCombine("MC_fashion_Female_01_Prefab", "Prefabs/Model/Character/Monster"),
                 CharacterName =Name,
                 MaxHealth = CharacterBattleData.MaxHp,
                 Health = CharacterBattleData.Hp,
@@ -81,7 +81,7 @@ namespace AscensionServer
             GameEntry.RoleManager.SendMessage(UniqueID, opData);
         }
 
-        public override void Clear()
+        public override void Release()
         {
 
         }

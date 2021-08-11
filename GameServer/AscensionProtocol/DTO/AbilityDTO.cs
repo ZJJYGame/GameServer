@@ -30,7 +30,7 @@ namespace AscensionProtocol.DTO
             SurplusAptitudePoint = 40;
             SlnName = null;
         }
-        public override void Clear()
+        public override void Release()
         {
             IsSet = false;
             Strength = 0;

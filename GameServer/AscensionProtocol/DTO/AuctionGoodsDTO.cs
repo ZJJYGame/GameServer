@@ -16,7 +16,7 @@ namespace AscensionProtocol.DTO
         public virtual string ItemData { get; set; }
         public virtual int Count { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             GUID = null;
             RoleID = 0;

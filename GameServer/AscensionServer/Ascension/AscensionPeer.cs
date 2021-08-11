@@ -65,7 +65,7 @@ namespace AscensionServer
         /// </summary>
         public void SendMessage(OperationData opData)
         {
-            var data = Utility.MessagePack.ToByteArray(opData);
+            var data = Utility.MessagePack.Serialize(opData);
             base.SendMessage(data, sendParam);
         }
         public void SendMessage(byte opCode, Dictionary<byte, object> userData)
@@ -73,7 +73,7 @@ namespace AscensionServer
             operationData.Dispose();
             operationData.OperationCode = opCode;
             operationData.DataMessage = Utility.Json.ToJson(userData);
-            var data = Utility.MessagePack.ToByteArray(operationData);
+            var data = Utility.MessagePack.Serialize(operationData);
             base.SendMessage(data, sendParam);
         }
         public void SendMessage(byte opCode,short subCode, Dictionary<byte, object> userData)
@@ -82,7 +82,7 @@ namespace AscensionServer
             operationData.OperationCode = opCode;
             operationData.SubOperationCode = subCode;
             operationData.DataMessage = Utility.Json.ToJson(userData);
-            var data = Utility.MessagePack.ToByteArray(operationData);
+            var data = Utility.MessagePack.Serialize(operationData);
             base.SendMessage(data, sendParam);
         }
         /// <summary>
@@ -96,7 +96,7 @@ namespace AscensionServer
             eventData.Parameters = data;
             base.SendEvent(eventData, sendParam);
         }
-        public void Clear()
+        public void Release()
         {
             SessionId = 0;
             Available = false;
@@ -121,7 +121,7 @@ namespace AscensionServer
         protected override void OnMessage(object message, SendParameters sendParameters)
         {
             //接收到客户端消息后，进行委托广播；
-            var opData = Utility.MessagePack.ToObject<OperationData>(message as byte[]);
+            var opData = Utility.MessagePack.Deserialize<OperationData>(message as byte[]);
             CommandEventCore.Instance.Dispatch(opData.OperationCode,SessionId, opData);
         }
         #endregion

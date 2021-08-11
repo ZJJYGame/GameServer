@@ -28,9 +28,9 @@ namespace AscensionServer
             roleidList = allianceObj.ApplyforMember;
             List<NHCriteria> NHCriterias = new List<NHCriteria>();
             Utility.Debug.LogInfo("进来的查找所有成员的数据 ");
-            NHCriteria nHCriteriallianceMember = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", allianceObj.AllianceID);
+            NHCriteria nHCriteriallianceMember =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", allianceObj.AllianceID);
             NHCriterias.Add(nHCriteriallianceMember);
-            NHCriteria nHCriterialliancer = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", allianceObj.AllianceID);
+            NHCriteria nHCriterialliancer =ReferencePool.Accquire<NHCriteria>().SetValue("ID", allianceObj.AllianceID);
             NHCriterias.Add(nHCriterialliancer);
             var allianceMemberTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceMember>(nHCriteriallianceMember).Result;
             var allianceStatusTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceStatus>(nHCriterialliancer).Result;
@@ -46,7 +46,7 @@ namespace AscensionServer
                 for (int i = 0; i < roleidList.Count; i++)
                 {
 
-                    NHCriteria nHCriteriRoleAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleidList[i]);
+                    NHCriteria nHCriteriRoleAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleidList[i]);
 
                     NHCriterias.Add(nHCriteriRoleAlliance);
                     var roleAllianceTemp = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriRoleAlliance).Result;
@@ -91,7 +91,7 @@ namespace AscensionServer
                         operationResponse.ReturnCode = (short)ReturnCode.Fail;
                     });
             }
-            CosmosEntry.ReferencePoolManager.Despawns(NHCriterias);
+            ReferencePool.Release(NHCriterias.ToArray());
             return operationResponse;
         }
     }

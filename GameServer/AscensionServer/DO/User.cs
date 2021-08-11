@@ -19,7 +19,7 @@ namespace AscensionServer.Model
             User user = obj as User;
             return user.Account == this.Account && user.Password == this.Password ;
         }
-        public override void Clear()
+        public override void Release()
         {
             Account = null;
             Password = null;

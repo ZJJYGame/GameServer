@@ -16,11 +16,7 @@ namespace AscensionServer
     [Module]
     public partial class InventoryManager: Module, IInventoryManager
     {
-        public override void OnPreparatory()
-        {
-            CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncInventory, ProcessInvHandlerC2S);
-            CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncTemInventory, ProcessTempInvHandlerC2S);
-        }
+
         /// <summary>
         /// 映射T
         /// </summary>
@@ -86,7 +82,7 @@ namespace AscensionServer
         /// <returns></returns>
         public static bool VerifyIsExist(int ItemId,int num ,int ID)
         {
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ID);
             var ringServerArray = CriteriaSelectMethod<Ring>(nHCriteria);
             var ServerDict = Utility.Json.ToObject<Dictionary<int, RingItemsDTO>>(ringServerArray.RingItems);
             var ServerDictAdorn = Utility.Json.ToObject<Dictionary<int, RingItemsDTO>>(ringServerArray.RingAdorn);
@@ -730,13 +726,13 @@ namespace AscensionServer
             Utility.Debug.LogInfo($"InventoryManager : ==>>\n接收roleId{ InventoryRoleData }\n接收背包的数据{InventoryData }");
             var InventoryRoleObj = Utility.Json.ToObject<RoleDTO>(InventoryRoleData);
             var InventoryObj = Utility.Json.ToObject<RingDTO>(InventoryData);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", InventoryRoleObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", InventoryRoleObj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleRing>(nHCriteriaRoleID);
             NHCriteria nHCriteriaRingID = null;
             if (exist)
             {
                 var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteriaRoleID);
-                nHCriteriaRingID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
+                nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
             }
             //数据就这样解析一下就行
             var areaSubCode = (InventoryInstructions)packet.SubOperationCode;
@@ -758,7 +754,13 @@ namespace AscensionServer
                     SortingCmdS2C(InventoryRoleObj.RoleID, InventoryObj, nHCriteriaRingID);
                     break;
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRingID);
+        }
+        protected override void OnPreparatory()
+        {
+            CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncInventory, ProcessInvHandlerC2S);
+            CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncTemInventory, ProcessTempInvHandlerC2S);
         }
     }
 }

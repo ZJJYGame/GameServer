@@ -91,7 +91,7 @@ namespace AscensionServer.Model
         public virtual int ValueHide { get; set; }
         public virtual int GongfaLearnSpeed { get; set; }
         public virtual int MishuLearnSpeed { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             FreeAttributes = 0;
             RoleHP = 0;

@@ -14,7 +14,7 @@ namespace AscensionServer
     [Module]
     public partial class PetStatusManager : Cosmos.Module, IPetStatusManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncRolePet, ProcessHandlerC2S);
         }

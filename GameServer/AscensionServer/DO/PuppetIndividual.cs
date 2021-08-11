@@ -38,7 +38,7 @@ namespace AscensionServer.Model
             Skills ="[]";
         }
 
-        public override void Clear()
+        public override void Release()
         {
           
         }

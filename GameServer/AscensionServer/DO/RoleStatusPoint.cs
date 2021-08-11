@@ -17,7 +17,7 @@ namespace AscensionServer.Model
             SlnNow = 0;
             AbilityPointSln = "{}";
         }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             SlnNow = 0;

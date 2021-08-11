@@ -13,7 +13,7 @@ namespace AscensionProtocol.DTO
         public virtual  Dictionary<int, DemonicSoulEntity> DemonicSouls { get; set; }
         public virtual DemonicSoulOperateType OperateType { get; set; }
         public virtual List<int> CompoundList { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             DemonicSouls.Clear();
@@ -29,7 +29,7 @@ namespace AscensionProtocol.DTO
         public virtual int UniqueID { get; set; }
         public virtual List<int> Skills { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             GlobalID = 0;
             UniqueID = 0;

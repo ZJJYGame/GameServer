@@ -19,7 +19,7 @@ namespace AscensionProtocol.DTO
             IsBattle = 0;
             PuppetDict = new Dictionary<int, int>();
         }
-        public override void Clear()
+        public override void Release()
         {
           
         }

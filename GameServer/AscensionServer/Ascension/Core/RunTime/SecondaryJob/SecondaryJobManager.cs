@@ -83,7 +83,7 @@ namespace AscensionServer
 
         }
         DrollRandom drollRandom = new DrollRandom();
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncSecondaryJob, ProcessHandlerC2S);
         }
@@ -197,7 +197,7 @@ namespace AscensionServer
 
         void GetSecondaryJobStatusS2C(int roleID)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             Dictionary<byte, object> dict = new Dictionary<byte, object>();
             #region
             var alchemyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;

@@ -12,7 +12,7 @@ namespace AscensionProtocol.DTO
         public virtual int RoleID { get; set; }
         public virtual long SpiritStonesLow { get; set; }
         public virtual long XianYu { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             SpiritStonesLow = 0;

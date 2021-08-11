@@ -165,8 +165,8 @@ namespace AscensionServer
             List<PetSkillData> passivitySkillList = new List<PetSkillData>();
            GameEntry. DataManager.TryGetValue<Dictionary<int, PetSkillData>>(out var petSkillDataDict);
             petAbilityStatus = new List<PetStatusDTO>();
-            var petstatusProp =  CosmosEntry.ReferencePoolManager.Spawn<PetStatusDTO>();
-            var petstatusFixed = CosmosEntry.ReferencePoolManager.Spawn<PetStatusDTO>();
+            var petstatusProp = ReferencePool.Accquire<PetStatusDTO>();
+            var petstatusFixed =ReferencePool.Accquire<PetStatusDTO>();
             for (int i = 0; i < skillid.Count; i++)
             {
                 if (!petSkillDataDict[skillid[i]].ISActiveSkill&& petSkillDataDict[skillid[i]].AttributionType.Count>0)

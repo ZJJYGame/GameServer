@@ -260,7 +260,7 @@ namespace AscensionServer
         #region MySql模块
         async void SwitchPracticeTypeMySql(OnOffLineDTO onOffLineDTO)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", onOffLineDTO.RoleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", onOffLineDTO.RoleID);
             var onOffLineObj= NHibernateQuerier.CriteriaSelectAsync<OnOffLine>(nHCriteriaRole).Result;
             if (onOffLineObj != null)
             {
@@ -290,7 +290,7 @@ namespace AscensionServer
             Utility.Debug.LogInfo("YZQonoffLine获取离线经验进来了3");
             var exp = 0;
             Dictionary<byte, object> dict;
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var onOffLineObj = NHibernateQuerier.CriteriaSelectAsync<OnOffLine>(nHCriteriaRole).Result;
 
             var bottleneck= NHibernateQuerier.CriteriaSelectAsync<Bottleneck>(nHCriteriaRole).Result;
@@ -301,7 +301,7 @@ namespace AscensionServer
             if (onOffLineObj!=null&& redisRoleStatus!=null&& role!=null)
             {
                 Utility.Debug.LogInfo("YZQonoffLine得到的功法ID为" + onOffLineObj.MsGfID);
-                NHCriteria nHCriteriaid = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+                NHCriteria nHCriteriaid =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
                 var gongfa = NHibernateQuerier.CriteriaSelectAsync<RoleGongFa>(nHCriteriaid).Result;
                 var mishu = NHibernateQuerier.CriteriaSelectAsync<RoleMiShu >(nHCriteriaid).Result;
                 interval = (DateTime.Now).Subtract(Convert.ToDateTime(onOffLineObj.OffTime));
@@ -395,8 +395,8 @@ namespace AscensionServer
             Utility.Debug.LogInfo("YZQ自动加经验MYSQL进来了"+Utility.Json.ToJson(onOffLine));
             Utility.Debug.LogInfo("YZQ自动加经验MYSQL进来了" + onOffLine.RoleID);
             Dictionary<byte, object>dict;
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", onOffLine.RoleID);
-            NHCriteria nHCriteriagf = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", onOffLine.MsGfID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", onOffLine.RoleID);
+            NHCriteria nHCriteriagf =ReferencePool.Accquire<NHCriteria>().SetValue("ID", onOffLine.MsGfID);
             var roleStatusObj = NHibernateQuerier.CriteriaSelectAsync<RoleStatus>(nHCriteriaRole).Result;
             var rolegongfaObj = NHibernateQuerier.CriteriaSelectAsync<RoleGongFa>(nHCriteriaRole).Result;
             var roleObj = NHibernateQuerier.CriteriaSelectAsync<Role>(nHCriteriaRole).Result;

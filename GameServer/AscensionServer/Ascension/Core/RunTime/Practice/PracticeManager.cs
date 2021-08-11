@@ -13,7 +13,7 @@ namespace AscensionServer
     [Module]
     public partial  class PracticeManager: Cosmos.Module, IPracticeManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncPractice, ProcessHandlerC2S);
         }

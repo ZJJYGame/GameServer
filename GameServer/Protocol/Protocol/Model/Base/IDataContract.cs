@@ -13,10 +13,10 @@ namespace Protocol
     [Union(6, typeof(DataParameters))]
     [Union(7, typeof(SessionRoleIds))]
     [Union(8, typeof(C2SSkillInput))]
-    [Union(9, typeof(C2STransformInput))]
+    //[Union(9, typeof(C2STransformInput))]
     [Union(10, typeof(C2SFlyMagicToolInput))]
     [Union(12, typeof(C2SMapRes))]
     [Union(13, typeof(S2CMapResource))]
-    [Union(14, typeof(ICmdDataContract))]
+    //[Union(14, typeof(ICmdDataContract))]
     public interface IDataContract { }
 }

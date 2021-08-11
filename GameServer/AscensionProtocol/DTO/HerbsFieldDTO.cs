@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
         //public virtual string  AllHerbs { get; set; }//list下标为灵田下标
         public virtual List<HerbFieldStatus> AllHerbs { get; set; }//list下标为灵田下标
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             jobLevel = 0;

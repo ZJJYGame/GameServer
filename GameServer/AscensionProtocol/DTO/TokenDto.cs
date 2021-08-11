@@ -10,7 +10,7 @@ namespace AscensionProtocol.DTO
     {
         public long Conv { get; set; }
         public string Token { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             Conv = 0;
             Token = null;

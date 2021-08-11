@@ -21,7 +21,7 @@ namespace AscensionServer
             string weaponJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.GetWeapon));
             var weaponObj = Utility.Json.ToObject<RoleWeaponDTO>(weaponJson);
 
-            NHCriteria nHCriteriaweapon = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", weaponObj.RoleID);
+            NHCriteria nHCriteriaweapon =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", weaponObj.RoleID);
             var weapontemp = NHibernateQuerier.CriteriaSelect<RoleWeapon>(nHCriteriaweapon);
 
             if (weapontemp != null)
@@ -46,7 +46,8 @@ namespace AscensionServer
                 });
             }
 
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaweapon);
+            ReferencePool.Release(nHCriteriaweapon);
+            //ReferencePool.Release(nHCriteriaweapon);
             return operationResponse;
         }
     }

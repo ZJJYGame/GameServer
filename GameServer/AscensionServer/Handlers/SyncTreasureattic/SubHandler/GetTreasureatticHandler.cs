@@ -23,7 +23,7 @@ namespace AscensionServer
 
             var schoolObj = Utility.Json.ToObject<SchoolDTO>(treasureatticJson);
             TreasureatticDTO treasureatticObj = new TreasureatticDTO();
-            NHCriteria nHCriteriaTreasureattic = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", schoolObj.TreasureAtticID);
+            NHCriteria nHCriteriaTreasureattic =ReferencePool.Accquire<NHCriteria>().SetValue("ID", schoolObj.TreasureAtticID);
 
   
             var treasureatticTemp = NHibernateQuerier.CriteriaSelect<Treasureattic>(nHCriteriaTreasureattic);

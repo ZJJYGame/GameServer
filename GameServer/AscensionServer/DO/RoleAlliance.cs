@@ -21,7 +21,7 @@ namespace AscensionServer.Model
         public virtual string ApplyForAlliance { get; set; }
         public virtual int RoleSchool { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             AllianceID = 0;

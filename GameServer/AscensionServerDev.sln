@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1401
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AscensionServer", "AscensionServer\AscensionServer.csproj", "{59C2ADFF-55D0-4139-9A85-0AC66ADFFCF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AscensionProtocol", "AscensionProtocol\AscensionProtocol.csproj", "{142CED7D-C56D-43B2-A11F-9DC0F302BD80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFramework", "Framework\CFramework.csproj", "{81A14E63-385F-4B83-B403-A6B7D6FC94D8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisService", "RedisService\RedisService.csproj", "{C1E88D49-8582-4CA4-BC91-0F6147C8F876}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpServer", "HttpServer\HttpServer.csproj", "{C5616C09-20C3-4135-8F08-26C54A69456A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosFramework.Core", "CosmosFramework.Core\CosmosFramework.Core.csproj", "{C39C9053-803D-429D-B60F-0B292D87DAAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Protocol", "Protocol\Protocol.csproj", "{160C188D-0392-4BD2-A93A-A5C5F87424B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,18 +27,18 @@ Global
 		{142CED7D-C56D-43B2-A11F-9DC0F302BD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142CED7D-C56D-43B2-A11F-9DC0F302BD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142CED7D-C56D-43B2-A11F-9DC0F302BD80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81A14E63-385F-4B83-B403-A6B7D6FC94D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81A14E63-385F-4B83-B403-A6B7D6FC94D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81A14E63-385F-4B83-B403-A6B7D6FC94D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81A14E63-385F-4B83-B403-A6B7D6FC94D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C1E88D49-8582-4CA4-BC91-0F6147C8F876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1E88D49-8582-4CA4-BC91-0F6147C8F876}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E88D49-8582-4CA4-BC91-0F6147C8F876}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1E88D49-8582-4CA4-BC91-0F6147C8F876}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5616C09-20C3-4135-8F08-26C54A69456A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5616C09-20C3-4135-8F08-26C54A69456A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5616C09-20C3-4135-8F08-26C54A69456A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5616C09-20C3-4135-8F08-26C54A69456A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C39C9053-803D-429D-B60F-0B292D87DAAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C39C9053-803D-429D-B60F-0B292D87DAAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C39C9053-803D-429D-B60F-0B292D87DAAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C39C9053-803D-429D-B60F-0B292D87DAAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

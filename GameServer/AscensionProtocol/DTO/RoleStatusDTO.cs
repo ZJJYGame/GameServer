@@ -56,7 +56,7 @@ namespace AscensionProtocol.DTO
             str += "roleid:" + RoleID + ">>roleHp" + RoleHP + ">>roleMP" + RoleMP + ">>roleShenhun" + RoleSoul + ">>roleJingxue" + BestBlood;
             return str;
         }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             FreeAttributes = 0;

@@ -12,7 +12,7 @@ namespace AscensionProtocol.DTO
         public virtual Dictionary<int, int> VareityPurchasedCount { get; set; }//goodsID为key,count为value
 
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             VareityPurchasedCount = null;

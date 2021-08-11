@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
             {
             GongFaIDDict = new Dictionary<int, CultivationMethodDTO>();
         }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             GongFaIDDict = null;
@@ -31,7 +31,7 @@ namespace AscensionProtocol.DTO
         {
             CultivationMethodLevelSkillArray = new List<int>();
         }
-        public override void Clear()
+        public override void Release()
         {
             CultivationMethodID = 0;
             CultivationMethodExp = 0;

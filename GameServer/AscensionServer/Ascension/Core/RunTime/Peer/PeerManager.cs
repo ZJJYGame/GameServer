@@ -55,7 +55,7 @@ namespace AscensionServer
         ConcurrentDictionary<int, IPeerEntity> peerDict;
 
 
-        public override void OnInitialization()
+        protected override void OnInitialization()
         {
             peerDict = new ConcurrentDictionary<int, IPeerEntity>();
         }

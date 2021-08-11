@@ -19,7 +19,7 @@ namespace AscensionServer.Model
         public virtual string RingItems { get; set; }
         public virtual string RingMagicDictServer { get; set; }
         public virtual string RingAdorn { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             RingId = 0;

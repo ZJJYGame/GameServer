@@ -53,7 +53,7 @@ namespace AscensionProtocol.DTO
         /// 玩家等级
         /// </summary>
         public virtual int RoleLevel { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             AllianceID = 0;

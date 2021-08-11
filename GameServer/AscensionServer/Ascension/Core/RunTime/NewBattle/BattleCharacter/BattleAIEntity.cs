@@ -13,7 +13,7 @@ namespace AscensionServer
         public void InitAI(int roomID, int aIID, int uniqueID,BattleFactionType battleFactionType)
         {
             Init();
-            CharacterBattleData = CosmosEntry.ReferencePoolManager.Spawn<CharacterBattleData>();
+            CharacterBattleData =ReferencePool.Accquire<CharacterBattleData>();
             GameEntry.DataManager.TryGetValue<Dictionary<int, MonsterDatas>>(out var monsterDict);
             if (monsterDict.ContainsKey(aIID))
                 CharacterBattleData.Init(monsterDict[aIID],this);
@@ -33,7 +33,7 @@ namespace AscensionServer
                 UniqueId = UniqueID,
                 GlobalId = GlobalID,
                 MasterId = 0,
-                ModelPath = Utility.IO.CombineRelativeFilePath(monsterDict[GlobalID].Moster_Model, "Prefabs/Model/Character/Monster"),
+                ModelPath = Utility.IO.WebPathCombine(monsterDict[GlobalID].Moster_Model, "Prefabs/Model/Character/Monster"),
                 CharacterName = Name,
                 MaxHealth = CharacterBattleData.MaxHp,
                 Health = CharacterBattleData.Hp,
@@ -59,7 +59,7 @@ namespace AscensionServer
             TargetIDList = GetTargetIdList(ActionID,true);
         }
 
-        public override void Clear()
+        public override void Release()
         {
         }
     }

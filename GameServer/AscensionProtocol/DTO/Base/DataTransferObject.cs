@@ -11,6 +11,6 @@ namespace AscensionProtocol.DTO
     [Serializable]
     public abstract class DataTransferObject : IReference
     {
-        public abstract void Clear();
+        public abstract void Release();
     }
 }

@@ -13,7 +13,7 @@ namespace AscensionServer
     public partial class AuctionManager: Cosmos. Module,IAuctionManager
     {
         public HashSet<string> occupyGuidHash;
-        public override void OnInitialization()
+        protected override void OnInitialization()
         {
             occupyGuidHash = new HashSet<string>();
         }

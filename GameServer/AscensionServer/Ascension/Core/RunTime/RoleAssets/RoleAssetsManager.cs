@@ -12,7 +12,7 @@ namespace AscensionServer
     [Module]
     public partial   class RoleAssetsManager : Cosmos.Module, IRoleAssetsManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncRoleAssets, ProcessHandlerC2S);
         }

@@ -20,7 +20,7 @@ namespace AscensionProtocol.DTO
         public virtual int  GetContributions { get; set; }
         public virtual int ContributionHistory { get; set; }
         public virtual bool IsSignin { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             SchoolID = 0;

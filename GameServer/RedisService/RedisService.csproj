@@ -101,14 +101,14 @@
     <Compile Include="RedisManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Framework\CFramework.csproj">
-      <Project>{81a14e63-385f-4b83-b403-a6b7d6fc94d8}</Project>
-      <Name>CFramework</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CosmosFramework.Core\CosmosFramework.Core.csproj">
+      <Project>{c39c9053-803d-429d-b60f-0b292d87daae}</Project>
+      <Name>CosmosFramework.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

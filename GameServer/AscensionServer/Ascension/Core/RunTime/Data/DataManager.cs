@@ -24,10 +24,10 @@ namespace AscensionServer
         /// </summary>
         ConcurrentDictionary<string, string> jsonDict=new ConcurrentDictionary<string, string>();
         List<IDataProvider> providerSet = new List<IDataProvider>();
-        public override void OnActive()
+        protected override void OnActive()
         {
             {
-                var objs = Utility.Assembly.GetInstancesByAttribute<ImplementProviderAttribute, IDataProvider>(GetType().Assembly);
+                var objs = Utility.Assembly.GetInstancesByAttribute<ImplementerAttribute, IDataProvider>(GetType().Assembly);
                 for (int i = 0; i < objs.Length; i++)
                 {
                     objs[i]?.LoadData();
@@ -36,7 +36,7 @@ namespace AscensionServer
                 latestRefreshTime = Utility.Time.SecondNow() + intervalSec;
             }
             {
-                var objs = Utility.Assembly.GetInstancesByAttribute<ImplementProviderAttribute, IDataConvertor>(GetType().Assembly);
+                var objs = Utility.Assembly.GetInstancesByAttribute<ImplementerAttribute, IDataConvertor>(GetType().Assembly);
                 for (int i = 0; i < objs.Length; i++)
                 {
                     objs[i].ConvertData();
@@ -48,7 +48,8 @@ namespace AscensionServer
         /// 自动更新服务器数据类型；
         /// </summary>
 #if SERVER
-        public override void OnRefresh()
+        [TickRefresh]
+        void OnRefresh()
         {
             //if (IsPause)
             //    return;

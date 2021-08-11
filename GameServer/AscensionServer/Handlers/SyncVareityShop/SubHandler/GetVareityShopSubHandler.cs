@@ -35,7 +35,7 @@ namespace AscensionServer
             if (string.IsNullOrEmpty(vareitycontent))
             {
                // Utility.Debug.LogInfo("储存进Redis成功了杂货铺名字是" + vareityname + "内容是" + vareitycontent);
-                NHCriteria nHCriteriavareitycontent = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", vareitypurchaseObj.RoleID);
+                NHCriteria nHCriteriavareitycontent =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", vareitypurchaseObj.RoleID);
                 var vareitycontentTemp = NHibernateQuerier.CriteriaSelect<VareityPurchaseRecord>(nHCriteriavareitycontent);
                 if (vareitycontentTemp != null)
                 {
@@ -65,7 +65,7 @@ namespace AscensionServer
 
             if (string.IsNullOrEmpty(content))
             {
-                NHCriteria nHCriteriavareity = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("VareityshopID", vareityObj.VareityshopID);
+                NHCriteria nHCriteriavareity =ReferencePool.Accquire<NHCriteria>().SetValue("VareityshopID", vareityObj.VareityshopID);
                 var vareityTemp = NHibernateQuerier.CriteriaSelect<VareityShop>(nHCriteriavareity);
 
                 if (vareityTemp != null)
@@ -76,7 +76,7 @@ namespace AscensionServer
                         AllGoodsList = Utility.Json.ToObject<Dictionary<int, List<GoodsStatus>>>(vareityTemp.AllGoods);
                         VareityShopDTO vareityShopDTO = new VareityShopDTO() { VareityshopID = vareityObj.VareityshopID, AllGoods = AllGoodsList };
                         shopDIct.Add("VareityShop", Utility.Json.ToJson(vareityShopDTO));
-                        CosmosEntry.ReferencePoolManager.Despawns(nHCriteriavareity);
+                        ReferencePool.Release(nHCriteriavareity);
                     }
                 }
             }

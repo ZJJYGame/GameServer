@@ -38,7 +38,7 @@ namespace AscensionProtocol.DTO
             Skills = new List<int>();
     }
 
-        public override void Clear()
+        public override void Release()
         {
 
         }

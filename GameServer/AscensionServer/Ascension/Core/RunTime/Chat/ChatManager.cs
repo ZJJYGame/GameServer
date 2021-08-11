@@ -10,7 +10,7 @@ namespace AscensionServer
     //[Module]
     public class ChatManager:Cosmos. Module
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             //CommandEventCore.Instance.AddEventListener(ProtocolDefine.PORT_CHAT,OnChatMessageC2S);
         }

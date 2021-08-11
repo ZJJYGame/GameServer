@@ -18,7 +18,7 @@ namespace AscensionServer.Model
         public virtual string PreemptFour { get; set; }
         public virtual string PreemptFive { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = - 1;
             SpiritRangeID = 0;

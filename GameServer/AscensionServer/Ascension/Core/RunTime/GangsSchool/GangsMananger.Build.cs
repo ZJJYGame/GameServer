@@ -364,8 +364,8 @@ namespace AscensionServer
         /// <param name="roleID"></param>
         void GetRoleAliianceConstructionMySql(int ID, int roleID)
         {
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", ID);
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", ID);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ID);
             var Construction = NHibernateQuerier.CriteriaSelect<AllianceConstruction>(nHCriteria);
             var Alliance = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteriaAlliance);
             Utility.Debug.LogInfo("获得数据库宗門建设数据" + Utility.Json.ToJson(Construction));
@@ -392,8 +392,8 @@ namespace AscensionServer
         async void BuildAllianceConstructionMySql(int ID, int roleID, AllianceConstructionDTO constructionDTO)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<byte, AllianceConstructionData>>(out var construction);
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", ID);
-            NHCriteria nHCriteriaAlliancestatus = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ID);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", ID);
+            NHCriteria nHCriteriaAlliancestatus =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ID);
             var Construction = NHibernateQuerier.CriteriaSelect<AllianceConstruction>(nHCriteriaAlliance);
             var alliance = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteriaAlliancestatus);
             if (Construction != null&& alliance!=null)
@@ -464,7 +464,7 @@ namespace AscensionServer
         void GetAllianceSkillMySql(int roleID)
         {
             Utility.Debug.LogInfo("获得角色宗門技能" + roleID);
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var skillObj = NHibernateQuerier.CriteriaSelect<RoleAllianceSkill>(nHCriteriarole);
             Utility.Debug.LogInfo("获得角色宗門技能" + Utility.Json.ToJson(skillObj));
             if (skillObj != null)
@@ -479,7 +479,7 @@ namespace AscensionServer
         {
             GameEntry.DataManager.TryGetValue<Dictionary<string, AllianceSkillsData>>(out var SkillDict);
             Utility.Debug.LogInfo("角色宗門技能升级2"+Utility.Json.ToJson(SkillDict));
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var skillObj = NHibernateQuerier.CriteriaSelect<RoleAllianceSkill>(nHCriteriarole);
             var assetsObj = NHibernateQuerier.CriteriaSelect<RoleAssets>(nHCriteriarole);
             if (skillObj != null && assetsObj != null)
@@ -562,7 +562,7 @@ namespace AscensionServer
         /// </summary>
         async void GetDongFuStatusMySql(int roleid, int id)
         {
-            NHCriteria nHCriteriAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteriAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
             var dongfu = NHibernateQuerier.CriteriaSelect<AllianceDongFu>(nHCriteriAlliance);
             if (dongfu != null)
             {

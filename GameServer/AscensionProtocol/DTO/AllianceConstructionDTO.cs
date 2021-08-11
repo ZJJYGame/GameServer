@@ -38,7 +38,7 @@ namespace AscensionProtocol.DTO
         public virtual int AllianceAssets { get; set; }
 
 
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = -1;
             AllianceArmsDrillSite = 0;

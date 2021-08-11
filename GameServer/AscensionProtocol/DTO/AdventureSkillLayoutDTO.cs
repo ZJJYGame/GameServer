@@ -15,7 +15,7 @@ namespace AscensionProtocol.DTO
         public Dictionary<string, int> SkillLayoutDict { get; set; }
         public Dictionary<string, int> PropLayoutDict { get; set; }
         public Dictionary<string, int> FlyToolLayoutDict { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             SkillLayoutDict.Clear();
             PropLayoutDict.Clear();

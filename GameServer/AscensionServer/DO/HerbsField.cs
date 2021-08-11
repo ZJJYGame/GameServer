@@ -20,7 +20,7 @@ namespace AscensionServer.Model
         }
 
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             jobLevel = 0;

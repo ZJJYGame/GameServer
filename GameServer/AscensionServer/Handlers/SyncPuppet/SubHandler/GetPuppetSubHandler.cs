@@ -19,7 +19,7 @@ namespace AscensionServer.Handlers.SyncPuppet.SubHandler
             var dict = operationRequest.Parameters;
             string puppetJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.JobPuppet));
             var puppetObj = Utility.Json.ToObject<PuppetDTO>(puppetJson);
-            NHCriteria nHCriteriapuppetObj = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", puppetObj.RoleID);
+            NHCriteria nHCriteriapuppetObj =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", puppetObj.RoleID);
             //AscensionServer._Log.Info("得到的锻造配方" );
             var puppettemp =NHibernateQuerier.CriteriaSelect<Puppet>(nHCriteriapuppetObj);
             if (puppettemp != null)
@@ -44,7 +44,7 @@ namespace AscensionServer.Handlers.SyncPuppet.SubHandler
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
                 subResponseParameters.Add((byte)ParameterCode.JobPuppet, Utility.Json.ToJson(new List<string>()));
             }
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriapuppetObj);
+            ReferencePool.Release(nHCriteriapuppetObj);
             return operationResponse;
         }
     }

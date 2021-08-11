@@ -21,7 +21,7 @@ namespace AscensionServer.Model
         public virtual int CraryVaule { get; set; }
         public virtual int DemonID { get; set; }
         public virtual int DrugNum { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             IsBottleneck = false;

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using RedisDotNet;
 namespace AscensionServer
 {
-    [ImplementProvider]
+    [Implementer]
     public class DefaultCreateRole : ICreateRoleHelper
     {
         Dictionary<int, int> RoleGFDict = new Dictionary<int, int>();
@@ -32,7 +32,7 @@ namespace AscensionServer
             var dict = dataMessage;
             string roleJsonTmp = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.Role));
             Role roleTmp = Utility.Json.ToObject<Role>(roleJsonTmp);
-            NHCriteria nHCriteriaRoleName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleName", roleTmp.RoleName);
+            NHCriteria nHCriteriaRoleName =ReferencePool.Accquire<NHCriteria>().SetValue("RoleName", roleTmp.RoleName);
             var isExisted = NHibernateQuerier.Verify<Role>(nHCriteriaRoleName);
             if (isExisted)
                 Utility.Debug.LogInfo("----------------------------  Role >>Role name:+" + roleTmp.RoleName + " already exist !!!  ---------------------------------");
@@ -41,7 +41,7 @@ namespace AscensionServer
             string userJsonTmp = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.User));
             User userTmp = Utility.Json.ToObject<User>(userJsonTmp);
             string str_uuid = userTmp.UUID;
-            NHCriteria nHCriteriaUUID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("UUID", str_uuid);
+            NHCriteria nHCriteriaUUID =ReferencePool.Accquire<NHCriteria>().SetValue("UUID", str_uuid);
             var userRole = NHibernateQuerier.CriteriaSelect<UserRole>(nHCriteriaUUID);
             string roleJson = userRole.RoleIDArray;
             string roleStatusJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.RoleStatus));
@@ -144,7 +144,7 @@ namespace AscensionServer
                 #endregion
                 #region 背包
                 NHibernateQuerier.Insert(new RoleRing() { RoleID = rolestatus.RoleID });
-                NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", rolestatus.RoleID);
+                NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", rolestatus.RoleID);
                 var ringArray = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteriaRoleID);
                 if (ringArray.RingIdArray == 0)
                 {
@@ -265,10 +265,10 @@ namespace AscensionServer
                 opData.ReturnCode = (short)ReturnCode.Fail;
             }
             //把上面的回应给客户端
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaUUID, nHCriteriaRoleName);
+            ReferencePool.Release(nHCriteriaUUID, nHCriteriaRoleName);
             return opData;
         }
-        public void Clear()
+        public void Release()
         {
             RoleGFDict.Clear();
            // RoleMiShuDict.Clear();

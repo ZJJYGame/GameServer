@@ -16,7 +16,7 @@ namespace AscensionProtocol.DTO
         public virtual List<int> PetSkillArray { get; set; }
         public virtual Dictionary<int,List<int>> DemonicSoul { get; set; }
         public virtual PetOperateType OperateType { get; set; }
-        public override void Clear()
+        public override void Release()
         {
 
             PetLevel = 0;

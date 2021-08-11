@@ -11,7 +11,7 @@ namespace AscensionServer
     [Module]
     public partial class RoleStatusManager:Cosmos.Module, IRoleStatusManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncRoleStatus, ProcessHandlerC2S);
         }

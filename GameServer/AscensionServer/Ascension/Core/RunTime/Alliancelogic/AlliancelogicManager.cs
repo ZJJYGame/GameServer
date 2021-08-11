@@ -24,10 +24,10 @@ namespace AscensionServer
         /// <returns></returns>
         public T GetNHCriteria<T>(  string  keyname,int key)
         {
-            NHCriteria nHCriteria  = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue(keyname, key);
+            NHCriteria nHCriteria  =ReferencePool.Accquire<NHCriteria>().SetValue(keyname, key);
             var dataObjectTemp = NHibernateQuerier.CriteriaSelectAsync<T>(nHCriteria).Result;
 
-                CosmosEntry.ReferencePoolManager.Despawns(nHCriteria);
+                ReferencePool.Release(nHCriteria);
                 return dataObjectTemp;
         }
         /// <summary>

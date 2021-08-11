@@ -71,7 +71,7 @@ namespace AscensionProtocol.DTO
         ///// </summary>
         //public virtual List<BufferBattleDataDTO> bufferUnits { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             throw new NotImplementedException();
         }

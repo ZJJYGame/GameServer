@@ -14,7 +14,7 @@ namespace AscensionServer
     [Module]
     public class FlyMagicToolManager: Cosmos.Module,IFlyMagicToolManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             Utility.Debug.LogInfo("添加YZQ飞行法器");
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncRoleFlyMagicTool, ProcessHandlerC2S);
@@ -80,7 +80,7 @@ namespace AscensionServer
             {
                 ResultFailS2C(flyMagic.RoleID,FlyMagicToolOpCode.AddTool);
             }
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", flyMagic.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", flyMagic.RoleID);
             var flyMagicObj = NHibernateQuerier.CriteriaSelectAsync<FlyMagicTool>(nHCriteria).Result;
             if (flyMagicObj!=null)
             {
@@ -182,7 +182,7 @@ namespace AscensionServer
         /// </summary>
          void  GetFlyMagicToolMySql(FlyMagicToolDTO flyMagic)
         {
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", flyMagic.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", flyMagic.RoleID);
             var flyMagicObj = NHibernateQuerier.CriteriaSelectAsync<FlyMagicTool>(nHCriteria).Result;
             if (flyMagicObj != null)
             {
@@ -198,7 +198,7 @@ namespace AscensionServer
         /// <param name="flyMagic"></param>
         async void UpdateFlyMagicTool(FlyMagicToolDTO flyMagic)
         {
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", flyMagic.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", flyMagic.RoleID);
             var flyMagicObj = NHibernateQuerier.CriteriaSelectAsync<FlyMagicTool>(nHCriteria).Result;
             var roleStatusObj = NHibernateQuerier.CriteriaSelectAsync<RoleStatus>(nHCriteria).Result;
             if (flyMagicObj != null&& roleStatusObj!=null)

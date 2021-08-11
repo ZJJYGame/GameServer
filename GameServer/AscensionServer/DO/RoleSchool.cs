@@ -17,7 +17,7 @@ namespace AscensionServer.Model
         public virtual string RoleSchoolHatred { get; set; }
 
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = 0;
             RoleJoiningSchool = 0;

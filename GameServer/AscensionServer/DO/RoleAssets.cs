@@ -22,7 +22,7 @@ namespace AscensionServer.Model
             return Utility.Text.Format("{ RoleID : " + RoleID + " ; " + " SpiritStonesLow : " + SpiritStonesLow 
                 +  " ; XianYu"+ XianYu+"}");
         }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             SpiritStonesLow = 0;

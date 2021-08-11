@@ -20,7 +20,7 @@ namespace AscensionServer.Handlers
             string herbsfieldJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.JobHerbsField));
             var hfObj = Utility.Json.ToObject<HerbsField>(herbsfieldJson);
 
-            NHCriteria nHCriteriahf = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", hfObj.RoleID);
+            NHCriteria nHCriteriahf =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", hfObj.RoleID);
             Utility.Debug.LogInfo("接收到的霛田信息"+ herbsfieldJson);
             var hfTemp = NHibernateQuerier.CriteriaSelect<HerbsField>(nHCriteriahf);
             if (hfTemp!=null)
@@ -36,7 +36,7 @@ namespace AscensionServer.Handlers
             }
             else
                 operationResponse.ReturnCode = (byte)ReturnCode.Fail;
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriahf);
+            ReferencePool.Release(nHCriteriahf);
             return operationResponse;
         }
     }

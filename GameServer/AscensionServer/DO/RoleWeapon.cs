@@ -25,7 +25,7 @@ namespace AscensionServer.Model
             MagicStatusDict = Utility.Json.ToJson(new Dictionary<int, WeaponDTO>()); ;
             Magicindex = Utility.Json.ToJson(new Dictionary<int, int>());
         }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             WeaponStatusDict = null;

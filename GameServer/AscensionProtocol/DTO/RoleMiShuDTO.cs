@@ -16,7 +16,7 @@ namespace AscensionProtocol.DTO
             MiShuIDDict = new Dictionary<int, MiShuDTO>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             MiShuIDDict = new Dictionary<int, MiShuDTO>();
@@ -42,7 +42,7 @@ namespace AscensionProtocol.DTO
             MiShuAdventureSkill = new List<int>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
 
             MiShuID = 0;

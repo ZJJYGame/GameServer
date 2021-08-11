@@ -18,7 +18,7 @@ namespace AscensionServer
             var roleFlyMagicToolJson = Convert.ToString(Utility.GetValue(operationRequest.Parameters, (byte)ParameterCode.RoleFlyMagicTool));
             Utility.Debug.LogInfo("yzqData获取角色飞行法器" + roleFlyMagicToolJson);
             var roleFlyMagicToolObj = Utility.Json.ToObject<FlyMagicToolDTO>(roleFlyMagicToolJson);
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleFlyMagicToolObj.RoleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleFlyMagicToolObj.RoleID);
             var roleFlyMagicTool= NHibernateQuerier.CriteriaSelectAsync<FlyMagicTool>(nHCriteriaRole).Result;
             Utility.Debug.LogInfo("yzqData获取角色飞行法器"+ roleFlyMagicToolJson);
             FlyMagicToolDTO flyMagicToolRedisObj = new FlyMagicToolDTO();

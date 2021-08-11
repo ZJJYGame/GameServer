@@ -15,12 +15,12 @@ namespace AscensionServer
             var playerJson = Convert.ToString(Utility.GetValue(operationRequest.Parameters, (byte)ParameterCode.Role));
             var playerObj = Utility.Json.ToObject<RoleDTO>(playerJson);
             Utility.Debug.LogInfo("yzqData收到的玩家信息" + playerJson);
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", playerObj.RoleID);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", playerObj.RoleID);
 
 
 
             var roleallianceTemp = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriarole);
-            NHCriteria nHCriteriaalliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", roleallianceTemp.AllianceID);
+            NHCriteria nHCriteriaalliance =ReferencePool.Accquire<NHCriteria>().SetValue("ID", roleallianceTemp.AllianceID);
             var allianceStatusTemp = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteriaalliance);
             if (allianceStatusTemp==null)
             {
@@ -51,7 +51,7 @@ namespace AscensionServer
             operationResponse.ReturnCode = (short)ReturnCode.Success;
             operationResponse.DebugMessage = Utility.Json.ToJson(adventurePlayerDTO);
 
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaalliance, nHCriteriarole);
+            ReferencePool.Release(nHCriteriaalliance, nHCriteriarole);
 
             return operationResponse;
         }

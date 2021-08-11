@@ -165,7 +165,7 @@ namespace AscensionServer
 
         void AddRoleAssets(AuctionGoodsDTO buyAuctionGoodsDTO)
         {
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", buyAuctionGoodsDTO.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", buyAuctionGoodsDTO.RoleID);
             bool roleExist = NHibernateQuerier.Verify<Role>(nHCriteriaRoleID);
             bool roleAssetsExist = NHibernateQuerier.Verify<RoleAssets>(nHCriteriaRoleID);
             if (roleExist && roleAssetsExist)

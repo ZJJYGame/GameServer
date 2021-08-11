@@ -42,7 +42,7 @@ namespace AscensionServer
             var TemRingRoleData = Utility.GetValue(dict, (byte)ParameterCode.RoleTemInventory) as string;
             Utility.Debug.LogInfo(">>>>>Add 临时背包" + TemRingRoleData + ">>>>>>>>>>>>>");
             var TemRingRoleObj = Utility.Json.ToObject<TemporaryRingDTO>(TemRingRoleData);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleRing>(nHCriteriaRoleID);
             if (exist)
             {
@@ -72,7 +72,7 @@ namespace AscensionServer
             {
                 opData.ReturnCode = (short)ReturnCode.Fail;
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             GameEntry.PeerManager.SendMessage(sessionId, opData);
         }
         void Get(int sessionId, OperationData packet)
@@ -86,7 +86,7 @@ namespace AscensionServer
             var TemRingRoleData = Utility.GetValue(dict, (byte)ParameterCode.RoleTemInventory) as string;
             Utility.Debug.LogInfo(">>>>>Get 临时背包 " + TemRingRoleData + ">>>>>>>>>>>>>");
             var TemRingRoleObj = Utility.Json.ToObject<TemporaryRingDTO>(TemRingRoleData);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleRing>(nHCriteriaRoleID);
             if (exist)
             {
@@ -100,7 +100,7 @@ namespace AscensionServer
             {
                 opData.ReturnCode = (short)ReturnCode.Fail;
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             GameEntry.PeerManager.SendMessage(sessionId, opData);
         }
         void Update(int sessionId, OperationData packet)
@@ -114,7 +114,7 @@ namespace AscensionServer
             var TemRingRoleData = Utility.GetValue(dict, (byte)ParameterCode.RoleTemInventory) as string;
             Utility.Debug.LogInfo(">>>>>Update 临时背包" + TemRingRoleData + ">>>>>>>>>>>>>");
             var TemRingRoleObj = Utility.Json.ToObject<TemporaryRingDTO>(TemRingRoleData);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleRing>(nHCriteriaRoleID);
             if (exist)
             {
@@ -148,7 +148,7 @@ namespace AscensionServer
             {
                 opData.ReturnCode = (short)ReturnCode.Fail;
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             GameEntry.PeerManager.SendMessage(sessionId, opData);
         }
         void Remove(int sessionId, OperationData packet)
@@ -162,7 +162,7 @@ namespace AscensionServer
             var TemRingRoleData = Utility.GetValue(dict, (byte)ParameterCode.RoleTemInventory) as string;
             Utility.Debug.LogInfo(">>>>>Remove 临时背包" + TemRingRoleData + ">>>>>>>>>>>>>");
             var TemRingRoleObj = Utility.Json.ToObject<TemporaryRingDTO>(TemRingRoleData);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", TemRingRoleObj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleRing>(nHCriteriaRoleID);
             if (exist)
             {
@@ -186,7 +186,7 @@ namespace AscensionServer
             {
                 opData.ReturnCode = (short)ReturnCode.Fail;
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             GameEntry.PeerManager.SendMessage(sessionId, opData);
         }
     }

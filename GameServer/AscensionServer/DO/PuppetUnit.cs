@@ -17,7 +17,7 @@ namespace AscensionServer.Model
             PuppetUnitInfoDict = "{}";
             UnitIndesDict = "{}";
         }
-        public override void Clear()
+        public override void Release()
         {
             
         }

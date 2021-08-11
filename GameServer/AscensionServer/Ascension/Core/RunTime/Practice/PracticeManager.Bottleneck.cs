@@ -74,7 +74,7 @@ namespace AscensionServer
         Bottleneck TriggerBottleneck(int roleID, int level, out bool isbottleneck)
         {
             isbottleneck = false;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var bottleneck = NHibernateQuerier.CriteriaSelectAsync<Bottleneck>(nHCriteria).Result;
             if (bottleneck == null)
             {

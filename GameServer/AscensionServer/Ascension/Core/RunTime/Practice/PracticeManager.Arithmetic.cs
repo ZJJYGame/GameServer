@@ -55,7 +55,7 @@ namespace AscensionServer
                 }
                 else
                 {
-                    NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+                    NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
                     var rolegongfa = NHibernateQuerier.CriteriaSelect<RoleGongFa>(nHCriteriaRole);
                     if (rolegongfa != null)
                     {
@@ -67,7 +67,7 @@ namespace AscensionServer
             }
             else
             {
-                NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+                NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
                 var rolegongfa = NHibernateQuerier.CriteriaSelect<RoleGongFa>(nHCriteriaRole);
                 if (rolegongfa != null)
                 {
@@ -134,7 +134,7 @@ namespace AscensionServer
                 {
                     foreach (var item in roleMiShu.MiShuIDDict)
                     {
-                        NHCriteria nHCriteriamishu = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", item.Key);
+                        NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
                         var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
                         var temp = mishuDict[item.Key].mishuSkillDatas.Find(t=>t.MishuFloor== mishuObj.MiShuLevel);
                         if (temp != null)
@@ -143,14 +143,14 @@ namespace AscensionServer
                 }
                 else
                 {
-                    NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+                    NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
                     var rolemishu = NHibernateQuerier.CriteriaSelect<RoleMiShu>(nHCriteriaRole);
                     if (rolemishu != null)
                     {
                         var dict = Utility.Json.ToObject<Dictionary<int, MiShuDTO>>(rolemishu.MiShuIDDict);
                         foreach (var item in dict)
                         {
-                            NHCriteria nHCriteriamishu = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", item.Key);
+                            NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
                             var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
                             var temp = mishuDict[item.Key].mishuSkillDatas.Find(t => t.MishuFloor == mishuObj.MiShuLevel);
                             if (temp != null)
@@ -161,7 +161,7 @@ namespace AscensionServer
             }
             else
             {
-                NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+                NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
                 var rolemishu = NHibernateQuerier.CriteriaSelect<RoleMiShu>(nHCriteriaRole);
                 if (rolemishu != null)
                 {
@@ -169,7 +169,7 @@ namespace AscensionServer
                     //TODO后续增加参数传入秘术替换，升级的秘术替换取值的秘术
                     foreach (var item in dict)
                     {
-                        NHCriteria nHCriteriamishu = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", item.Key);
+                        NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
                         var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
                         var temp = mishuDict[item.Value].mishuSkillDatas.Find(t => t.MishuFloor == mishuObj.MiShuLevel);
                         if (temp != null)

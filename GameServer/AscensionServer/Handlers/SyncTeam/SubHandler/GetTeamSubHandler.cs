@@ -20,7 +20,7 @@ namespace AscensionServer
             var teamData = Utility.GetValue(operationRequest.Parameters, (byte)ParameterCode.Role) as string;
             Utility.Debug.LogInfo(">>>>>创建队伍" + teamData + ">>>>>>>>>>>>>");
             var RoleObj = Utility.Json.ToObject<RoleDTO>(teamData);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", RoleObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", RoleObj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleRing>(nHCriteriaRoleID);
   
             if (exist)
@@ -73,7 +73,7 @@ namespace AscensionServer
                     operationResponse.ReturnCode = (short)ReturnCode.Fail;
                 });
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             return operationResponse;
         }
     }

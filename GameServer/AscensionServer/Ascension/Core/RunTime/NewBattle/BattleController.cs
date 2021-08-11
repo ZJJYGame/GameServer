@@ -141,7 +141,7 @@ namespace AscensionServer
             {
                 if (AllIndexList.Count == 0)
                     break;
-                int randomValue = Utility.Algorithm.CreateRandomInt(0, AllIndexList.Count);
+                int randomValue = Utility.Algorithm.RandomRange(0, AllIndexList.Count);
                 int value = AllIndexList[randomValue];
                 resultList.Add(targetCharacterList[value].UniqueID);
                 AllIndexList.RemoveAt(randomValue);
@@ -203,7 +203,7 @@ namespace AscensionServer
             return arr;
         }
 
-        public void Clear()
+        public void Release()
         {
         }
     }

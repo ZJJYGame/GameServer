@@ -23,7 +23,7 @@ namespace AscensionServer.Model
             SkillRapid =0;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             SkillStrong = 0;

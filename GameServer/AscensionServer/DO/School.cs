@@ -34,7 +34,7 @@ namespace AscensionServer.Model
             IsSignin = false;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             SchoolID = 0;

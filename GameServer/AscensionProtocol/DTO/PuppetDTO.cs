@@ -20,7 +20,7 @@ namespace AscensionProtocol.DTO
             Recipe_Array = new HashSet<int>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             JobLevel = 0;

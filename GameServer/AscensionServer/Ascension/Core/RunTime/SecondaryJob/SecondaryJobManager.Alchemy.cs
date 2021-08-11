@@ -39,7 +39,7 @@ namespace AscensionServer
                 return;
             }
             var roleexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (ringServer== null||!roleexist)
             {
@@ -117,7 +117,7 @@ namespace AscensionServer
             var alchemyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             Dictionary<byte, object> dict = new Dictionary<byte, object>();
             if (alchemyExist && assestExist && roleExist&& rolering!=null)
@@ -241,7 +241,7 @@ namespace AscensionServer
         async void CompoundAlchemyMySql(int roleID, int UseItemID)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var alchemy = NHibernateQuerier.CriteriaSelect<Alchemy>(nHCriteria);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var role = NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteria);
@@ -272,7 +272,7 @@ namespace AscensionServer
                             RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
                             return;
                         }
-                        var num = Utility.Algorithm.CreateRandomInt(0, 101);
+                        var num = Utility.Algorithm.RandomRange(0, 101);
                         if (num > formulaData.SuccessRate)
                         {
                             Utility.Debug.LogInfo("3YZQ开始合成丹药" + num + ">>>>" + formulaData.SuccessRate);

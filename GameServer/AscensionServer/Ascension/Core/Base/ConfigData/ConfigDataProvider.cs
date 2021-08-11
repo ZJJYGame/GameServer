@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AscensionServer
 {
-    [ImplementProvider]
+    [Implementer]
     public class ConfigDataProvider : IDataProvider
     {
         string folderPath = Environment.CurrentDirectory + "/ConfigData";

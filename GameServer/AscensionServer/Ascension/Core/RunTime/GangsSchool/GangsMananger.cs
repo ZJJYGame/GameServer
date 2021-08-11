@@ -13,7 +13,7 @@ namespace AscensionServer
     [Module]
     public partial class GangsMananger : Cosmos.Module, IGangsMananger
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             //RedisManager.Instance.AddKeyExpireListener(RedisKeyDefine._RefreshAllianceSigninPerfix, RefreshSignin);
 

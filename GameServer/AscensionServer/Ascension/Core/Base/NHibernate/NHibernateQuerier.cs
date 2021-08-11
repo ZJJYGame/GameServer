@@ -24,9 +24,9 @@ namespace AscensionServer
         /// <returns>数据对象</returns>
         public static T Query<T>(string propertyName, object value)
         {
-            var criteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue(propertyName, value);
+            var criteria =ReferencePool.Accquire<NHCriteria>().SetValue(propertyName, value);
             var result = CriteriaSelect<T>(criteria);
-            CosmosEntry.ReferencePoolManager.Despawn(criteria);
+            ReferencePool.Release(criteria);
             return result;
         }
 
@@ -39,9 +39,9 @@ namespace AscensionServer
         /// <returns>是否验证成功</returns>
         public static bool Verify<T>(string propertyName, object value)
         {
-            var criteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue(propertyName, value);
+            var criteria =ReferencePool.Accquire<NHCriteria>().SetValue(propertyName, value);
             var result = Verify<T>(criteria);
-            CosmosEntry.ReferencePoolManager.Despawn(criteria);
+            ReferencePool.Release(criteria);
             return result;
         }
 
@@ -609,9 +609,9 @@ namespace AscensionServer
         }
         public async static Task<T> QueryAsync<T>(string propertyName, object value) where T : new()
         {
-            var criteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue(propertyName, value);
+            var criteria =ReferencePool.Accquire<NHCriteria>().SetValue(propertyName, value);
             var result = CriteriaSelectAsync<T>(criteria).Result;
-            CosmosEntry.ReferencePoolManager.Despawn(criteria);
+            ReferencePool.Release(criteria);
             return result;
         }
         #endregion

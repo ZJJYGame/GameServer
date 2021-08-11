@@ -22,7 +22,7 @@ namespace AscensionProtocol.DTO
         }
 
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             JobLevel = 0;

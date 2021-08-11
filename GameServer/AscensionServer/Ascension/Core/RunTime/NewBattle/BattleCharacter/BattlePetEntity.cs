@@ -16,16 +16,16 @@ namespace AscensionServer
         public void InitPet(int roomID, int roleID,BattleFactionType battleFactionType)
         {
             Init();
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             RolePet rolePet = NHibernateQuerier.CriteriaSelect<RolePet>(nHCriteriaRoleID);
             if (rolePet.PetIsBattle == 0)
                 return;
-            NHCriteria nHCriteriaPetID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("PetID", rolePet.PetIsBattle);
-            NHCriteria nHCriteriaPet = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", rolePet.PetIsBattle);
+            NHCriteria nHCriteriaPetID =ReferencePool.Accquire<NHCriteria>().SetValue("PetID", rolePet.PetIsBattle);
+            NHCriteria nHCriteriaPet =ReferencePool.Accquire<NHCriteria>().SetValue("ID", rolePet.PetIsBattle);
             PetStatus petStatus = NHibernateQuerier.CriteriaSelect<PetStatus>(nHCriteriaPetID);
             Pet pet= NHibernateQuerier.CriteriaSelect<Pet>(nHCriteriaPet);
             //todo 拿取宠物数据
-            CharacterBattleData = CosmosEntry.ReferencePoolManager.Spawn<CharacterBattleData>();
+            CharacterBattleData =ReferencePool.Accquire<CharacterBattleData>();
             CharacterBattleData.Init(petStatus,this);
             UniqueID = petStatus.PetID;
             GlobalID = Utility.Json.ToObject<Dictionary<int,int>>(rolePet.PetIDDict) [UniqueID];
@@ -44,7 +44,7 @@ namespace AscensionServer
                 UniqueId = UniqueID,
                 GlobalId = 0,
                 MasterId = MasterID,
-                ModelPath = Utility.IO.CombineRelativeFilePath(monsterDict[22012].Moster_Model, "Prefabs/Model/Character/Monster"),
+                ModelPath = Utility.IO.WebPathCombine(monsterDict[22012].Moster_Model, "Prefabs/Model/Character/Monster"),
                 CharacterName = Name,
                 MaxHealth = CharacterBattleData.MaxHp,
                 Health = CharacterBattleData.Hp,
@@ -79,7 +79,7 @@ namespace AscensionServer
             }
         }
 
-        public override void Clear()
+        public override void Release()
         {
         }
     }

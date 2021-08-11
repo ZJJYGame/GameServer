@@ -11,7 +11,7 @@ namespace AscensionServer.Model
     {
         public virtual int RoleID { get; set; }
         public virtual string Items { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             Items = null;

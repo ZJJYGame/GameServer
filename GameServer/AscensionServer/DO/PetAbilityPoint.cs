@@ -18,7 +18,7 @@ namespace AscensionServer.Model
             IsUnlockSlnThree = false;
             AbilityPointSln = "{}";
         }
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             SlnNow = 0;

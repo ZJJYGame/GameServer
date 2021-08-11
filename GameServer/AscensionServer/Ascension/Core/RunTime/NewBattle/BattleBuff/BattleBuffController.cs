@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cosmos;
-using Cosmos.Reference;
 using AscensionProtocol.DTO;
 
 namespace AscensionServer
@@ -117,7 +116,7 @@ namespace AscensionServer
             if (CanCoverBuff(battleBuffData, battleSkillAddBuffData, battleSkillBase,out var newBattleBuffObj))
             {
                 Utility.Debug.LogError("添加新buff");
-                BattleBuffObj battleBuffObj = CosmosEntry.ReferencePoolManager.Spawn<BattleBuffObj>();
+                BattleBuffObj battleBuffObj =ReferencePool.Accquire<BattleBuffObj>();
                 battleBuffObj.SetData(battleBuffData,owner, battleSkillBase, battleSkillAddBuffData);
                 battleBuffObjDict8Type[battleBuffObj.BattleBuffData.buffCoverType].Add(battleBuffObj);
                 if (!battleBuffObjDict8Id.ContainsKey(battleBuffObj.BuffId))
@@ -137,7 +136,7 @@ namespace AscensionServer
             battleBuffObj.OnRemove();
             battleBuffObjDict8Type[battleBuffObj.BattleBuffData.buffCoverType].Remove(battleBuffObj);
             battleBuffObjDict8Id[battleBuffObj.BuffId].Remove(battleBuffObj);
-            CosmosEntry.ReferencePoolManager.Despawn(battleBuffObj);
+            ReferencePool.Release(battleBuffObj);
         }
         public void RemoveBuff(int buffId)
         {
@@ -152,7 +151,7 @@ namespace AscensionServer
         public BattleBuffObj CoverBuff(BattleBuffObj battleBuffObj,BattleSkillAddBuffData battleSkillAddBuffData, BattleBuffData battleBuffData,BattleSkillBase battleSkillBase)
         {
             Utility.Debug.LogError(owner.UniqueID+"覆盖buff");
-            BattleBuffObj newBbattleBuffObj = CosmosEntry.ReferencePoolManager.Spawn<BattleBuffObj>();
+            BattleBuffObj newBbattleBuffObj =ReferencePool.Accquire<BattleBuffObj>();
             newBbattleBuffObj.SetData(battleBuffData, owner, battleSkillBase, battleSkillAddBuffData);
             battleBuffObjDict8Type[newBbattleBuffObj.BattleBuffData.buffCoverType].Add(newBbattleBuffObj);
             battleBuffObjDict8Id[newBbattleBuffObj.BuffId].Add(newBbattleBuffObj);
@@ -161,7 +160,7 @@ namespace AscensionServer
             battleBuffObj.OnCover(battleBuffData, battleSkillAddBuffData);
             battleBuffObjDict8Type[battleBuffObj.BattleBuffData.buffCoverType].Remove(battleBuffObj);
             battleBuffObjDict8Id[newBbattleBuffObj.BuffId].Remove(battleBuffObj);
-            CosmosEntry.ReferencePoolManager.Despawn(battleBuffObj);
+            ReferencePool.Release(battleBuffObj);
 
             return newBbattleBuffObj;
         }

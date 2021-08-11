@@ -11,7 +11,7 @@ namespace AscensionProtocol.DTO
     {
         public virtual byte VareityshopID { get; set; }
         public virtual Dictionary<int, List<GoodsStatus>> AllGoods { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             AllGoods = null;
         }

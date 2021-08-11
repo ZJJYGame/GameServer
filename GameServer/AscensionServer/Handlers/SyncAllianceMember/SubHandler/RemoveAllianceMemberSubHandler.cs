@@ -16,6 +16,7 @@ namespace AscensionServer
     public class RemoveAllianceMemberSubHandler : SyncAllianceMemberSubHandler
     {
         public override byte SubOpCode { get; protected set; } = (byte)SubOperationCode.Remove;
+        List<NHCriteria> nHCriterias = new List<NHCriteria>();
 
         public override OperationResponse EncodeMessage(OperationRequest operationRequest)
         {
@@ -23,11 +24,11 @@ namespace AscensionServer
             string allianceMemberJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.AllianceMember));
             var allianceMemberObj = Utility.Json.ToObject<AllianceMemberDTO>(allianceMemberJson);
 
-            NHCriteria nHCriteriallianceMember = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", allianceMemberObj.AllianceID);
+            NHCriteria nHCriteriallianceMember =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", allianceMemberObj.AllianceID);
             var allianceMemberTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceMember>(nHCriteriallianceMember).Result;
 
             #region 待删
-            List<NHCriteria> nHCriterias = new List<NHCriteria>();
+            nHCriterias.Clear();
             nHCriterias.Add(nHCriteriallianceMember);
             List<int> memberlist = new List<int>();
             if (allianceMemberTemp != null)
@@ -36,7 +37,7 @@ namespace AscensionServer
                 {
                     for (int i = 0; i < allianceMemberObj.Member.Count; i++)
                     {
-                        NHCriteria nHCriteriMember = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", allianceMemberObj.Member[i]);
+                        NHCriteria nHCriteriMember =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", allianceMemberObj.Member[i]);
                         nHCriterias.Add(nHCriteriMember);
 
                         var alliancestatus = AlliancelogicManager.Instance.GetNHCriteria<AllianceStatus>("ID", allianceMemberObj.AllianceID);
@@ -65,7 +66,7 @@ namespace AscensionServer
                 }
             }
             #endregion
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriterias);
+            ReferencePool.Release(nHCriterias.ToArray());
             return operationResponse;
         }
     }

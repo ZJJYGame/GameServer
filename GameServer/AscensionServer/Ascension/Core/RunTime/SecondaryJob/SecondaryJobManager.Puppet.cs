@@ -24,7 +24,7 @@ namespace AscensionServer
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
             var puppetUnitExist= RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (puppetExist && roleExist && assestExist&& puppetUnitExist)
@@ -165,7 +165,7 @@ namespace AscensionServer
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
             var puppetUnitExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
             var rolepuppetExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePuppetPerfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (puppetExist&& roleExist&& assestExist&& puppetUnitExist&& rolepuppetExist)
             {
@@ -261,7 +261,7 @@ namespace AscensionServer
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, RepairPuppetData>>(out var repairDict);
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleid.ToString()).Result;
-            var puppetIndividualExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetIndividualPerfix, id.ToString()).Result; NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            var puppetIndividualExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetIndividualPerfix, id.ToString()).Result; NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (assestExist&& puppetIndividualExist)
             {
@@ -320,7 +320,7 @@ namespace AscensionServer
                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var roleexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
             if (ringServer == null|| !roleexist)
@@ -396,18 +396,18 @@ namespace AscensionServer
                 PuppetUnitInfo puppet = new PuppetUnitInfo();
                 for (int i = 0; i < parameter.PuppetAttributeMax.Count; i++)
                 {
-                    puppet.PuppetAttribute.Add(Utility.Algorithm.CreateRandomInt(parameter.PuppetAttributeMin[i], parameter.PuppetAttributeMax[i]));
+                    puppet.PuppetAttribute.Add(Utility.Algorithm.RandomRange(parameter.PuppetAttributeMin[i], parameter.PuppetAttributeMax[i]));
                 }
                 puppet.WeaponSkill.Add(parameter.FixedSkill);
-                if (Utility.Algorithm.CreateRandomInt(0,100)<= parameter.PuppetSkillProbability)
+                if (Utility.Algorithm.RandomRange(0,100)<= parameter.PuppetSkillProbability)
                 {
-                    puppet.WeaponSkill.Add(parameter.PuppetSkillpoor[Utility.Algorithm.CreateRandomInt(0, parameter.PuppetSkillpoor.Count)]);
+                    puppet.WeaponSkill.Add(parameter.PuppetSkillpoor[Utility.Algorithm.RandomRange(0, parameter.PuppetSkillpoor.Count)]);
                 }
 
-                if (Utility.Algorithm.CreateRandomInt(0, 100)<= parameter.AdditionalAttributeProbability)
+                if (Utility.Algorithm.RandomRange(0, 100)<= parameter.AdditionalAttributeProbability)
                 {
-                    puppet.AffixType = Utility.Algorithm.CreateRandomInt(0, parameter.AdditionalMaxPercentage.Count );
-                    puppet.AffixAddition = Utility.Algorithm.CreateRandomInt(0, parameter.AdditionalMaxPercentage[puppet.AffixType] );
+                    puppet.AffixType = Utility.Algorithm.RandomRange(0, parameter.AdditionalMaxPercentage.Count );
+                    puppet.AffixAddition = Utility.Algorithm.RandomRange(0, parameter.AdditionalMaxPercentage[puppet.AffixType] );
                 }
                 puppet.PuppetDurable = parameter.PuppetDurable;
                 return puppet;

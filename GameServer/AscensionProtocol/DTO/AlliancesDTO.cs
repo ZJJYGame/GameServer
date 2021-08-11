@@ -29,7 +29,7 @@ namespace AscensionProtocol.DTO
         /// 是否刷新
         /// </summary>
         public virtual bool ISRefresh { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             AllianceList = null;

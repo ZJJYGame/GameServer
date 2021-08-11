@@ -18,7 +18,7 @@ namespace AscensionServer
             string rolestatusJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.RoleStatus));
             Utility.Debug.LogInfo(">>>>>>>>>>>>VerifyRoleStatusHandler\n传输过来更新的战斗数据:" + rolestatusJson + "VerifyRoleStatusHandler\n<<<<<<<<<<<");
             var rolestatusObj = Utility.Json.ToObject<RoleStatus>(rolestatusJson);
-            NHCriteria nHCriteriaRoleStatue = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", rolestatusObj.RoleID);
+            NHCriteria nHCriteriaRoleStatue =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", rolestatusObj.RoleID);
             var result = NHibernateQuerier.Verify<RoleStatus>(nHCriteriaRoleStatue);
             if (result)
             {

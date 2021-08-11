@@ -296,7 +296,7 @@ namespace AscensionServer
             List<NHCriteria> nHCriterias = new List<NHCriteria>();
             if (id <= 0)
             {
-                NHCriteria nHCriteriaAllianceName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", name);
+                NHCriteria nHCriteriaAllianceName =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", name);
                 nHCriterias.Add(nHCriteriaAllianceName);
                 var allianceNameObj = NHibernateQuerier.CriteriaLikeAsync<AllianceStatus>(nHCriteriaAllianceName, MatchMode.Anywhere).Result;
                 if (allianceNameObj.Count == 0)
@@ -310,13 +310,13 @@ namespace AscensionServer
             }
             else
             {
-                NHCriteria nHCriteriaAllianceID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", id);
+                NHCriteria nHCriteriaAllianceID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", id);
                 nHCriterias.Add(nHCriteriaAllianceID);
                 var allianceIDObj = NHibernateQuerier.CriteriaSelectAsync<AllianceStatus>(nHCriteriaAllianceID).Result;
                 List<AllianceStatus> allianceStatuss = new List<AllianceStatus>();
                 if (allianceIDObj == null)
                 {
-                    NHCriteria nHCriteriaAllianceName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", name.ToString());
+                    NHCriteria nHCriteriaAllianceName =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", name.ToString());
                     nHCriterias.Add(nHCriteriaAllianceName);
                     var allianceNameObj = NHibernateQuerier.CriteriaLikeAsync<AllianceStatus>(nHCriteriaAllianceName, MatchMode.Anywhere).Result;
                     if (allianceNameObj.Count == 0)
@@ -331,7 +331,7 @@ namespace AscensionServer
                 else
                 {
                     allianceStatuss.Add(allianceIDObj);
-                    NHCriteria nHCriteriaAllianceName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", name);
+                    NHCriteria nHCriteriaAllianceName =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", name);
                     nHCriterias.Add(nHCriteriaAllianceName);
                     var allianceNameObj = NHibernateQuerier.CriteriaLikeAsync<AllianceStatus>(nHCriteriaAllianceName, MatchMode.Anywhere).Result;
                     if (allianceNameObj.Count == 0)
@@ -555,9 +555,9 @@ namespace AscensionServer
         async void ApplyJoinAllianceMySql(int roleID, int id)
         {
             Utility.Debug.LogInfo("角色宗门加入申请");
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var roleAlliance = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaRole);
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
             var alliance = NHibernateQuerier.CriteriaSelect<AllianceMember>(nHCriteriaAlliance);
             if (alliance != null && roleAlliance != null)
             {
@@ -596,8 +596,8 @@ namespace AscensionServer
         async void ConsentApplyMySql(int roleid, int id, List<int> roleIDs)
         {
             List<int> consents = new List<int>();
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", id);
-            NHCriteria nHCriteriamember = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("ID", id);
+            NHCriteria nHCriteriamember =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
             var allianceObj = NHibernateQuerier.CriteriaSelect<AllianceMember>(nHCriteriamember);
             var alliance = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteria);
             List<RoleAllianceDTO> memberlist = new List<RoleAllianceDTO>();
@@ -612,7 +612,7 @@ namespace AscensionServer
                 {
                     if (applyeList.Contains(roleIDs[i]) && (alliance.AllianceNumberPeople + consents.Count) <= alliance.AlliancePeopleMax)
                     {
-                        NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleIDs[i]);
+                        NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleIDs[i]);
                         var roleAlliancej = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaRole);
                         var onofflineObj = NHibernateQuerier.CriteriaSelect<OnOffLine>(nHCriteriaRole);
 
@@ -657,14 +657,14 @@ namespace AscensionServer
 
                 for (int i = 0; i < applyeMember.ToList().Count; i++)
                 {
-                    NHCriteria nHCriteriaalliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", applyeList[i]);
+                    NHCriteria nHCriteriaalliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", applyeList[i]);
                     var allianceTemp = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaalliance);
                     applylist.Add(ChangeDataType(allianceTemp));
 
                 }
                 for (int i = 0; i < memberList.Count; i++)
                 {
-                    NHCriteria nHCriteriaalliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", memberList[i]);
+                    NHCriteria nHCriteriaalliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", memberList[i]);
                     var allianceTemp = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaalliance);
                     memberlist.Add(ChangeDataType(allianceTemp));
 
@@ -694,7 +694,7 @@ namespace AscensionServer
         {
             List<RoleAllianceDTO> refuses = new List<RoleAllianceDTO>();
             List<int> refuseList = new List<int>();
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", id);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("ID", id);
             var allianceObj = NHibernateQuerier.CriteriaSelect<AllianceMember>(nHCriteria);
             var alliance = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteria);
             if (allianceObj != null && alliance != null)
@@ -704,7 +704,7 @@ namespace AscensionServer
                 {
                     if (applyeList.Contains(roleIDs[i]))
                     {
-                        NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleIDs[i]);
+                        NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleIDs[i]);
                         var roleAlliancej = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaRole);
                         if (roleAlliancej != null)
                         {
@@ -724,7 +724,7 @@ namespace AscensionServer
                 allianceObj.ApplyforMember = Utility.Json.ToJson(apply);
                 for (int i = 0; i < apply.ToList().Count; i++)
                 {
-                    NHCriteria nHCriteriaalliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", applyeList[i]);
+                    NHCriteria nHCriteriaalliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", applyeList[i]);
                     var allianceTemp = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaalliance);
                     refuses.Add(ChangeDataType(allianceTemp));
                 }
@@ -743,7 +743,7 @@ namespace AscensionServer
         async void GetAllianceMemberMySql(int roleID, int id)
         {
             Utility.Debug.LogInfo("YZQ请求宗门成员2");
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
             var allianceObj = NHibernateQuerier.CriteriaSelect<AllianceMember>(nHCriteria);
             List<RoleAllianceDTO> memberlist = new List<RoleAllianceDTO>();
             List<RoleAllianceDTO> applylist = new List<RoleAllianceDTO>();
@@ -753,14 +753,14 @@ namespace AscensionServer
                 var apply = Utility.Json.ToObject<List<int>>(allianceObj.ApplyforMember);
                 for (int i = 0; i < apply.Count; i++)
                 {
-                    NHCriteria nHCriteriaalliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", apply[i]);
+                    NHCriteria nHCriteriaalliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", apply[i]);
                     var alliance = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaalliance);
                     applylist.Add(ChangeDataType(alliance));
 
                 }
                 for (int i = 0; i < member.Count; i++)
                 {
-                    NHCriteria nHCriteriaalliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", member[i]);
+                    NHCriteria nHCriteriaalliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", member[i]);
                     var alliance = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriaalliance);
                     memberlist.Add(ChangeDataType(alliance));
                 }
@@ -801,7 +801,7 @@ namespace AscensionServer
         /// <param name="id"></param>
         async void KickOutAllianceMySql(int roleID,int playerid, int id)
         {
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var roleallianceObj = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriarole);
 
             if (roleallianceObj!=null)
@@ -908,9 +908,9 @@ namespace AscensionServer
 
         async Task<RoleAlliance> QuitAlliance(int roleID, int id)
         {
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", id);
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("ID", id);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var memberObj = NHibernateQuerier.CriteriaSelect<AllianceMember>(nHCriteria);
             var roleallianceObj = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriarole);
             var dongfuObj = NHibernateQuerier.CriteriaSelect<AllianceDongFu>(nHCriteria);

@@ -30,7 +30,7 @@ namespace AscensionProtocol.DTO
         /// </summary>
         public virtual int SkillRapid { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             SkillStrong = 0;

@@ -24,7 +24,7 @@ namespace AscensionProtocol.DTO
             tacticDict = new Dictionary<int, TacticalDTO>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             LevelID = -1;
             tacticDict = null;

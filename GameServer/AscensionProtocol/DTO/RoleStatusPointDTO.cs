@@ -22,7 +22,7 @@ namespace AscensionProtocol.DTO
             AbilityPointSln.Add(2, new AbilityDTO() { SlnName = "方案三" });
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             SlnNow = 0;

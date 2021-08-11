@@ -13,7 +13,7 @@ namespace AscensionServer
         public static bool AddMishuJuge(int mishuBookID, RoleDTO roleDTO, out MiShuDTO misuhTemp)
         {
             GameEntry. DataManager.TryGetValue<Dictionary<int, MishuBook>>(out var mishubookDict);
-            misuhTemp = CosmosEntry.ReferencePoolManager.Spawn<MiShuDTO>();
+            misuhTemp =ReferencePool.Accquire<MiShuDTO>();
             mishubookDict.TryGetValue(mishuBookID, out var mishuBook);
             if (!Utility.Json.ToObject<List<int>>(roleDTO.RoleRoot).Contains(mishuBook.BookProperty) && roleDTO.RoleLevel < mishuBook.NeedRoleLevel)
             {

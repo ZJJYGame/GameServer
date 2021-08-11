@@ -41,30 +41,7 @@ namespace AscensionServer
             remove { tacticalRefreshHandler -= value; }
         }
 
-        public override void OnInitialization()
-        {
-            AllTacticalDict = new ConcurrentDictionary<int, ConcurrentDictionary<int, TacticalDTO>>();
-            TacticalEntityDict = new ConcurrentDictionary<int, TacticalEntity>();
-            roletacticaltemp = new ConcurrentDictionary<int, TacticalEntity>();
-            RecordDelTactical = new ConcurrentDictionary<string, TacticalDTO>();
-            ExpendTacticalID = new List<int>();
-            RoleTactical = new ConcurrentDictionary<int, List<TacticalDTO>>();
-            roleDict = new ConcurrentDictionary<int, RoleEntity>();
-        }
 
-        public override void OnPreparatory()
-        {
-            //GameEntry. LevelManager.OnRoleEnterLevel += OnSendTactical;
-        }
-        public override void OnRefresh()
-        {
-            var now = Utility.Time.MillisecondNow();
-            if (latestTime <= now)
-            {
-                latestTime = now + updateInterval;
-                tacticalRefreshHandler?.Invoke();
-            }
-        }
         /// <summary>
         /// 创建新的阵法实体，并添加到临时集合
         /// </summary>
@@ -113,7 +90,7 @@ namespace AscensionServer
                     ExpendTacticalID.Remove(tacticalEntity.ID);
                 }
                 roletacticaltemp.TryRemove(roleid,out var tactical);
-                CosmosEntry.ReferencePoolManager.Despawn(tacticalEntity);
+                ReferencePool.Release(tacticalEntity);
             }
         }
         /// <summary>
@@ -214,7 +191,7 @@ namespace AscensionServer
             {
                 TacticalEntityDict.TryRemove(tacticalDTO.ID,out var tactical);
                 ExpendTacticalID.Add(tacticalDTO.ID);
-                CosmosEntry.ReferencePoolManager.Despawn(tacticalEntity);
+                ReferencePool.Release(tacticalEntity);
             }
             return result;
         }
@@ -274,6 +251,31 @@ namespace AscensionServer
                  tacticalDTOs.Add(tacticalDTO);
                 RoleTactical.TryAdd(tacticalDTO.RoleID, tacticalDTOs);
                // Utility.Debug.LogInfo("yzqData2储存角色阵法" + RoleTactical[roleid].Count);
+            }
+        }
+        protected override void OnInitialization()
+        {
+            AllTacticalDict = new ConcurrentDictionary<int, ConcurrentDictionary<int, TacticalDTO>>();
+            TacticalEntityDict = new ConcurrentDictionary<int, TacticalEntity>();
+            roletacticaltemp = new ConcurrentDictionary<int, TacticalEntity>();
+            RecordDelTactical = new ConcurrentDictionary<string, TacticalDTO>();
+            ExpendTacticalID = new List<int>();
+            RoleTactical = new ConcurrentDictionary<int, List<TacticalDTO>>();
+            roleDict = new ConcurrentDictionary<int, RoleEntity>();
+        }
+
+        protected override void OnPreparatory()
+        {
+            //GameEntry. LevelManager.OnRoleEnterLevel += OnSendTactical;
+        }
+        [TickRefresh]
+        void OnRefresh()
+        {
+            var now = Utility.Time.MillisecondNow();
+            if (latestTime <= now)
+            {
+                latestTime = now + updateInterval;
+                tacticalRefreshHandler?.Invoke();
             }
         }
         /// <summary>

@@ -41,7 +41,7 @@ namespace AscensionServer
         async void SetExchangeGoodsS2C(int roleID, AllianceExchangeGoodsDTO goodsDTO)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, AllianceScripturesPlatformData>>(out var exchangeDict);
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var ExchangeExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AllianceExchangeGoodsPerfix, goodsDTO.AllianceID.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString()).Result;
             if (ExchangeExist&& roleExist)
@@ -62,7 +62,7 @@ namespace AscensionServer
                                     var result = ExchangeObj.ExchangeGoods.ContainsKey(item.Key);
                                     if (!result && item.Value.Contribution <= data.ContributionUp && item.Value.Contribution <= data.ContributionDown)
                                     {
-                                        var ringObj = CosmosEntry.ReferencePoolManager.Spawn<RingDTO>();
+                                        var ringObj =ReferencePool.Accquire<RingDTO>();
                                         ringObj.RingItems = new Dictionary<int, RingItemsDTO>();
                                         ringObj.RingItems.Add(item.Key, new RingItemsDTO());
                                         ExchangeObj.ExchangeGoods.Add(item.Key, item.Value);
@@ -196,7 +196,7 @@ namespace AscensionServer
         /// <param name="goodsDTO"></param>
         void GetExchangeGoodsMySql(int roleID, int id)
         {
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
             var ExchangeObj = NHibernateQuerier.CriteriaSelect<AllianceExchangeGoods>(nHCriteriaAlliance);
             Utility.Debug.LogInfo("获得角色宗門设置数据1");
             if (ExchangeObj != null)
@@ -211,11 +211,11 @@ namespace AscensionServer
         async void SetExchangeGoodsMySql(int roleID, AllianceExchangeGoodsDTO goodsDTO)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, AllianceScripturesPlatformData>>(out var exchangeDict);
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", goodsDTO.AllianceID);
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", goodsDTO.AllianceID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
 
             var ExchangeObj = NHibernateQuerier.CriteriaSelectAsync<AllianceExchangeGoods>(nHCriteriaAlliance).Result;
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var roleObj = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriarole).Result;
             if (ExchangeObj != null&& roleObj!=null)
             {
@@ -234,7 +234,7 @@ namespace AscensionServer
                                 if (!result && item.Value.Contribution <= data.ContributionUp && item.Value.Contribution >= data.ContributionDown)
                                 {
                                     goodsDict.Add(item.Key, item.Value);
-                                    var ringObj = CosmosEntry.ReferencePoolManager.Spawn<RingDTO>();
+                                    var ringObj =ReferencePool.Accquire<RingDTO>();
                                     ringObj.RingItems = new Dictionary<int, RingItemsDTO>();
                                     ringObj.RingItems.Add(item.Key, new RingItemsDTO());
                                     InventoryManager.RemoveCmdS2C(roleID, ringObj, nHCriteria);
@@ -269,8 +269,8 @@ namespace AscensionServer
                 RoleStatusFailS2C(roleid, AllianceOpCode.ExchangeElixir);
                 return;
             }
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var rolealliance = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriarole).Result;
             var roleassets = NHibernateQuerier.CriteriaSelectAsync<RoleAssets>(nHCriteriarole).Result;
             var construction = NHibernateQuerier.CriteriaSelectAsync<AllianceConstruction>(nHCriteriaAlliance).Result;
@@ -302,8 +302,8 @@ namespace AscensionServer
 
         async void ExchangeScripturesPlatformMySql(int roleid, int id, ExchangeDTO goods)
         {
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", id);
-            NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", id);
+            NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var exchange = NHibernateQuerier.CriteriaSelectAsync<AllianceExchangeGoods>(nHCriteriaAlliance).Result;
             var rolealliance = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriarole).Result;
             if (exchange != null && rolealliance != null)

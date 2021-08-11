@@ -21,7 +21,7 @@ namespace AscensionServer
             var dict = operationRequest.Parameters;
             string tacticformationJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.JobTacticFormation));
             var tacticformationObj = Utility.Json.ToObject<TacticFormationDTO>(tacticformationJson);
-            NHCriteria  nHCriteriatacticformation = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", tacticformationObj.RoleID);
+            NHCriteria  nHCriteriatacticformation =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", tacticformationObj.RoleID);
             var tacticformationTemp =NHibernateQuerier.CriteriaSelect<TacticFormation>(nHCriteriatacticformation);
             int Level = 0;
             int Exp = 0;
@@ -50,7 +50,7 @@ namespace AscensionServer
             }
             else
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriatacticformation);
+            ReferencePool.Release(nHCriteriatacticformation);
             return operationResponse;
         }
     }

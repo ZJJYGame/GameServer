@@ -164,7 +164,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ascension\Core\Base\Actor\IActorManager.cs" />
     <Compile Include="Ascension\Core\Base\Attribute\ConfigDataAttribute.cs" />
     <Compile Include="Ascension\Core\Base\ConfigData\ConfigDataProvider.cs" />
     <Compile Include="Ascension\Core\Base\ConfigData\MySqlData.cs" />
@@ -239,8 +238,6 @@
     <Compile Include="Ascension\Core\Base\Stream\GenericDataStream.cs" />
     <Compile Include="Ascension\Core\RunTime\Alliancelogic\AllianceEventCore.cs" />
     <Compile Include="Ascension\Core\RunTime\Alliancelogic\AlliancelogicManager.cs" />
-    <Compile Include="Ascension\Core\Base\Actor\ActorManager.cs" />
-    <Compile Include="Ascension\Core\Base\Actor\ActorTypeEnum.cs" />
     <Compile Include="Ascension\Core\Base\Attribute\InheritedAttribute.cs" />
     <Compile Include="Ascension\Core\Base\Input\IInputData.cs" />
     <Compile Include="Ascension\Core\Base\HelperImplement\NetworkHelper\PhotonMessageHelper.cs" />
@@ -967,9 +964,9 @@
       <Project>{142ced7d-c56d-43b2-a11f-9dc0f302bd80}</Project>
       <Name>AscensionProtocol</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Framework\CFramework.csproj">
-      <Project>{81a14e63-385f-4b83-b403-a6b7d6fc94d8}</Project>
-      <Name>CFramework</Name>
+    <ProjectReference Include="..\CosmosFramework.Core\CosmosFramework.Core.csproj">
+      <Project>{c39c9053-803d-429d-b60f-0b292d87daae}</Project>
+      <Name>CosmosFramework.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\RedisService\RedisService.csproj">
       <Project>{c1e88d49-8582-4ca4-bc91-0f6147c8f876}</Project>

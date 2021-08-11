@@ -26,7 +26,7 @@ namespace AscensionServer
                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var roleexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleID.ToString()).Result;
             if (ringServer == null|| !roleexist)
@@ -98,7 +98,7 @@ namespace AscensionServer
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
             var roleweaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (forgeExist&& roleExist&& assestExist&&roleweaponExist)
             {
@@ -273,11 +273,11 @@ namespace AscensionServer
                 weapon.WeaponType = parameter.WeaponType;
                 for (int i = 0; i < parameter.WeaponAttributeMax.Count; i++)
                 {
-                    weapon.WeaponAttribute.Add(Utility.Algorithm.CreateRandomInt(parameter.WeaponAttributeMin[i], parameter.WeaponAttributeMax[i] + 1));
+                    weapon.WeaponAttribute.Add(Utility.Algorithm.RandomRange(parameter.WeaponAttributeMin[i], parameter.WeaponAttributeMax[i] + 1));
                 }
                 for (int i = 0; i < parameter.SkillProbability.Count; i++)
                 {
-                    var num = Utility.Algorithm.CreateRandomInt(0,101);
+                    var num = Utility.Algorithm.RandomRange(0,101);
                     if (num<= parameter.SkillProbability[i])
                     {
                         weapon.WeaponSkill.Add(parameter.WeaponSkill[i]);

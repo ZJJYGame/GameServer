@@ -25,7 +25,7 @@ namespace AscensionServer
             var roleweaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, equipmentDTO.RoleID.ToString()).Result;
             var roleStatusExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, equipmentDTO.RoleID.ToString()).Result;
 
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
 
             if (roleequipExist&&roleweaponExist&& roleStatusExist)
@@ -88,7 +88,7 @@ namespace AscensionServer
             var roleweaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, equipmentDTO.RoleID.ToString()).Result;
             var roleStatusExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, equipmentDTO.RoleID.ToString()).Result;
 
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
 
             if (roleequipExist && roleweaponExist&& roleStatusExist)
@@ -153,7 +153,7 @@ namespace AscensionServer
             var roleequipExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleEquipmentPerfix, equipmentDTO.RoleID.ToString()).Result;
             var roleweaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, equipmentDTO.RoleID.ToString()).Result;
             var roleStatusExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, equipmentDTO.RoleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
 
             if (roleequipExist && roleweaponExist&& roleStatusExist)
             {
@@ -201,7 +201,7 @@ namespace AscensionServer
             var roleweaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, equipmentDTO.RoleID.ToString()).Result;
             var roleStatusExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, equipmentDTO.RoleID.ToString()).Result;
 
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", equipmentDTO.RoleID);
 
             if (roleequipExist && roleweaponExist&& roleStatusExist)
             {

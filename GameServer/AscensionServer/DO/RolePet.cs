@@ -19,7 +19,7 @@ namespace AscensionServer.Model
             PetIsBattle = 0;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             PetIDDict = null;

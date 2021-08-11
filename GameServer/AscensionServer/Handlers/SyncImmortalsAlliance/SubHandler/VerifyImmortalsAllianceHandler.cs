@@ -26,7 +26,7 @@ namespace AscensionServer
             List<NHCriteria> nHCriterias = new List<NHCriteria>();
             if (alliancestatusObj.ID==0)
             {
-                NHCriteria nHCriteriaAllianceName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", alliancestatusObj.AllianceName);
+                NHCriteria nHCriteriaAllianceName =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", alliancestatusObj.AllianceName);
                 nHCriterias.Add(nHCriteriaAllianceName);
                 var allianceNameObj = NHibernateQuerier.CriteriaLikeAsync<AllianceStatus>(nHCriteriaAllianceName, MatchMode.Anywhere).Result;
                 Utility.Debug.LogError("1查询获得MySQL的数据" + allianceNameObj.Count);
@@ -41,7 +41,7 @@ namespace AscensionServer
                 {
                     for (int i = 0; i < allianceNameObj.Count; i++)
                     {
-                        AllianceStatusDTO allianceStatusDTO = CosmosEntry.ReferencePoolManager.Spawn<AllianceStatusDTO>();
+                        AllianceStatusDTO allianceStatusDTO =ReferencePool.Accquire<AllianceStatusDTO>();
                         allianceStatusDTO.ID = allianceNameObj[i].ID;
                         allianceStatusDTO.AllianceLevel = allianceNameObj[i].AllianceLevel;
                         allianceStatusDTO.AllianceMaster = allianceNameObj[i].AllianceMaster;
@@ -64,14 +64,14 @@ namespace AscensionServer
             else
             {
 
-                NHCriteria nHCriteriaAllianceID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", alliancestatusObj.ID);
+                NHCriteria nHCriteriaAllianceID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", alliancestatusObj.ID);
                 nHCriterias.Add(nHCriteriaAllianceID);
                 var allianceIDObj = NHibernateQuerier.CriteriaSelectAsync<AllianceStatus>(nHCriteriaAllianceID).Result;
                 Utility.Debug.LogError("1搜索的是仙盟名字不是id");
                 if (allianceIDObj == null)
                 {
                     Utility.Debug.LogError("2搜索的是仙盟名字不是id");
-                    NHCriteria nHCriteriaAllianceName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", alliancestatusObj.AllianceName.ToString());
+                    NHCriteria nHCriteriaAllianceName =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", alliancestatusObj.AllianceName.ToString());
                     nHCriterias.Add(nHCriteriaAllianceName);
                     var allianceNameObj = NHibernateQuerier.CriteriaLikeAsync<AllianceStatus>(nHCriteriaAllianceName, MatchMode.Anywhere).Result;
                     //Utility.Debug.LogError("1查询获得MySQL的数据" + allianceNameObj[0].AllianceName + "%%" + allianceNameObj[2].AllianceName + "**" + "查询获得MySQL的数据长度" + allianceNameObj.Count);
@@ -86,7 +86,7 @@ namespace AscensionServer
                     {
                         for (int i = 0; i < allianceNameObj.Count; i++)
                         {
-                            AllianceStatusDTO allianceStatusDTO = CosmosEntry.ReferencePoolManager.Spawn<AllianceStatusDTO>();
+                            AllianceStatusDTO allianceStatusDTO =ReferencePool.Accquire<AllianceStatusDTO>();
                             allianceStatusDTO.ID = allianceNameObj[i].ID;
                             allianceStatusDTO.AllianceLevel = allianceNameObj[i].AllianceLevel;
                             allianceStatusDTO.AllianceMaster = allianceNameObj[i].AllianceMaster;
@@ -109,7 +109,7 @@ namespace AscensionServer
                 else
                 {
 
-                    AllianceStatusDTO allianceStatusDTO = CosmosEntry.ReferencePoolManager.Spawn<AllianceStatusDTO>();
+                    AllianceStatusDTO allianceStatusDTO =ReferencePool.Accquire<AllianceStatusDTO>();
                     allianceStatusDTO.ID = allianceIDObj.ID;
                     allianceStatusDTO.AllianceLevel = allianceIDObj.AllianceLevel;
                     allianceStatusDTO.AllianceMaster = allianceIDObj.AllianceMaster;
@@ -120,7 +120,7 @@ namespace AscensionServer
                     allianceStatusDTO.Popularity = allianceIDObj.Popularity;
                     allianceStatusDTOs.Add(allianceStatusDTO);
 
-                    NHCriteria nHCriteriaAllianceName = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", alliancestatusObj.AllianceName);
+                    NHCriteria nHCriteriaAllianceName =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", alliancestatusObj.AllianceName);
                     nHCriterias.Add(nHCriteriaAllianceName);
                     var allianceNameObj = NHibernateQuerier.CriteriaLikeAsync<AllianceStatus>(nHCriteriaAllianceName, MatchMode.Anywhere).Result;
                     Utility.Debug.LogError("3搜索的是仙盟名字不是id");
@@ -139,7 +139,7 @@ namespace AscensionServer
                         {
                             if (allianceStatusDTO.ID!= allianceNameObj[i].ID)
                             {
-                                AllianceStatusDTO allianceStatusNameDTO = CosmosEntry.ReferencePoolManager.Spawn<AllianceStatusDTO>();
+                                AllianceStatusDTO allianceStatusNameDTO =ReferencePool.Accquire<AllianceStatusDTO>();
                                 allianceStatusNameDTO.ID = allianceNameObj[i].ID;
                                 allianceStatusNameDTO.AllianceLevel = allianceNameObj[i].AllianceLevel;
                                 allianceStatusNameDTO.AllianceMaster = allianceNameObj[i].AllianceMaster;
@@ -161,7 +161,7 @@ namespace AscensionServer
                     }
                 }
             }
-           CosmosEntry.ReferencePoolManager.Despawns(nHCriterias);
+           ReferencePool.Release(nHCriterias.ToArray());
             return operationResponse;
         }
     }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cosmos;
-using Cosmos.Reference;
 using AscensionProtocol.DTO;
 
 namespace AscensionServer
@@ -237,7 +236,7 @@ namespace AscensionServer
         }
 
 
-        public void Clear()
+        public void Release()
         {
             BattleController.RoundFinishEvent -= RoundEnd;
 

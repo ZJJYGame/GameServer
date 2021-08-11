@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
         public virtual int AddRemovePetID { get; set; }
         public virtual string AddPetName { get; set; }
         public virtual RolePetOperationalOrder RolePetOrderType { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             PetIDDict .Clear();

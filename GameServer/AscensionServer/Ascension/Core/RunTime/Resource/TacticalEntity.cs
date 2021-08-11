@@ -9,6 +9,7 @@ using NHibernate.Linq.Clauses;
 using System.ServiceModel.Configuration;
 using AscensionProtocol.DTO;
 using RedisDotNet;
+using Cosmos.ECS;
 
 namespace AscensionServer
 {
@@ -55,12 +56,12 @@ namespace AscensionServer
 
         public static TacticalEntity Create(int id,int roleid, int levelid)
         {
-            TacticalEntity  te= CosmosEntry.ReferencePoolManager.Spawn<TacticalEntity>();
+            TacticalEntity  te=ReferencePool.Accquire<TacticalEntity>();
             te.Onlnit(id, roleid, levelid);
             return te;
         }
 
-        public void Clear()
+        public void Release()
         {
          
         }

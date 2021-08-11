@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using AscensionProtocol;
+using Cosmos.ECS;
 
 namespace AscensionServer 
 {
@@ -43,7 +44,7 @@ namespace AscensionServer
         //    player= data as SessionRoleIdPair;
 
         //}
-        public virtual void Clear(){}
+        public virtual void Release(){}
         /// <summary>
         /// 空虚函数;
         /// </summary>

@@ -11,17 +11,18 @@ namespace AscensionServer
     public class NetworkManager: Module ,INetworkManager
     {
         INetworkMessageHelper messageHelper;
-        public override void OnInitialization()
-        {
-            InitHelper();
-        }
+
         public object EncodeMessage(object message)
         {
             return messageHelper.EncodeMessage(message);
         }
+        protected override void OnInitialization()
+        {
+            InitHelper();
+        }
         void InitHelper()
         {
-            var helper = Utility.Assembly.GetInstanceByAttribute<ImplementProviderAttribute, INetworkMessageHelper>(GetType().Assembly, true);
+            var helper = Utility.Assembly.GetInstanceByAttribute<ImplementerAttribute, INetworkMessageHelper>(GetType().Assembly, true);
             messageHelper = helper;
         }
     }

@@ -14,7 +14,7 @@ namespace AscensionServer
     {
         public void AddDemonical(int roleid, int soulid)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var demonicSoul = NHibernateQuerier.CriteriaSelectAsync<DemonicSoul>(nHCriteriaRole).Result;
 
 
@@ -55,7 +55,7 @@ namespace AscensionServer
 
         public async void CompoundDemonical(List<int> soulList, int roleid)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var demonicSoul = NHibernateQuerier.CriteriaSelectAsync<DemonicSoul>(nHCriteriaRole).Result;
 
 
@@ -63,10 +63,10 @@ namespace AscensionServer
 
             var demonicalDict = Utility.Json.ToObject<Dictionary<int, DemonicSoulEntity>>(demonicSoul.DemonicSouls);
 
-            var ringObj = CosmosEntry.ReferencePoolManager.Spawn<RingDTO>();
+            var ringObj =ReferencePool.Accquire<RingDTO>();
 
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteriaRole);
-            var nHCriteriaRingID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
+            var nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
             if (soulList.Count == 0)
             {
                 RoleStatusFailS2C(roleid,SecondaryJobOpCode.CompoundDemonicSoul);
@@ -114,7 +114,7 @@ namespace AscensionServer
 
         public void GetDemonicSoul(int roleid)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var demonicSoul = NHibernateQuerier.CriteriaSelectAsync<DemonicSoul>(nHCriteriaRole).Result;
 
             var demonicalDict = Utility.Json.ToObject<Dictionary<int, DemonicSoulEntity>>(demonicSoul.DemonicSouls);

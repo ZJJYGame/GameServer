@@ -19,7 +19,7 @@ namespace AscensionProtocol.DTO
         public virtual int Level  { get; set; }
         public virtual int RoleID { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             MemberName = null;
             Level = 0;

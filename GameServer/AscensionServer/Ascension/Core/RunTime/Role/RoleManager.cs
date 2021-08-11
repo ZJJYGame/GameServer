@@ -51,7 +51,7 @@ namespace AscensionServer
             add { onRoleLogOn += value; }
             remove{ onRoleLogOn -= value; }
         }
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             GameEntry.PeerManager.OnPeerDisconnected += PeerDisconnectedHandler;
         }

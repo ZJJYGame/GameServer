@@ -28,7 +28,7 @@ namespace AscensionServer.Model
         public virtual short MiShuLevel { get; set; }
         public virtual string MiShuSkillArry { get; set; }
         public virtual string MiShuAdventtureSkill { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             MiShuID = 0;

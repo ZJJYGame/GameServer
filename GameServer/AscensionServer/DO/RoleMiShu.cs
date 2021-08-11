@@ -17,7 +17,7 @@ namespace AscensionServer.Model
         public virtual int RoleID { get; set; }
         public virtual string MiShuIDDict { get; set; }
         public RoleMiShu() { MiShuIDDict = "{}"; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             MiShuIDDict = null;
