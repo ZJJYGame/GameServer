@@ -12,7 +12,7 @@ namespace AscensionServer.Model
         public virtual int GlobalID { get; set; }
         public virtual List<string> AuctionGoodsIndexList { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             GlobalID = 0;
             AuctionGoodsIndexList = null;

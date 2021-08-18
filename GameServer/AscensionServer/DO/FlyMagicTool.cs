@@ -18,7 +18,7 @@ namespace AscensionServer.Model
             FlyToolLayoutDict = "{}";
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             AllFlyMagicTool=null;

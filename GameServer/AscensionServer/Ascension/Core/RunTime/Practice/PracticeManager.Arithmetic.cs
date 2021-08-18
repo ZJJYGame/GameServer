@@ -34,49 +34,187 @@ namespace AscensionServer
     public partial class PracticeManager
     {
         /// <summary>
-        /// 计算人物属性待删
+        /// 计算所有功法属性
         /// </summary>
-        //public async void RoleStatusAlgorithm(int roleid)
-        //{
+        /// <param name="roleID"></param>
+        /// <returns></returns>
+        public RoleStatusAdditionDTO AlgorithmGongFa(int roleID)
+        {
+            RoleStatusAdditionDTO roleStatusAdditionDTO = new RoleStatusAdditionDTO();
+            roleStatusAdditionDTO.RoleID = roleID;
+            List<int> gongfaList = new List<int>();
+            GameEntry.DataManager.TryGetValue<Dictionary<int, GongFa>>(out var gongfaDict);
 
-        //    RoleStatusDTO roleStatus = new RoleStatusDTO();
+            #region 获取角色所有功法
+            if (RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleGongfaPerfix, roleID.ToString()).Result)
+            {
+                var roleGongfa = RedisHelper.Hash.HashGetAsync<RoleGongFaDTO>(RedisKeyDefine._RoleGongfaPerfix, roleID.ToString()).Result;
+                if (roleGongfa != null)
+                {
+                    gongfaList = roleGongfa.GongFaIDDict.Keys.ToList();
+                }
+                else
+                {
+                    NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
+                    var rolegongfa = NHibernateQuerier.CriteriaSelect<RoleGongFa>(nHCriteriaRole);
+                    if (rolegongfa != null)
+                    {
+                        var dict = Utility.Json.ToObject<Dictionary<int, int>>(rolegongfa.GongFaIDDict);
+                        gongfaList = dict.Values.ToList();
+                    }
+                }
 
-        //    var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
-        //    var rolestatusExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleid.ToString()).Result;
-        //    var roleAptitudeExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleid.ToString()).Result;
-        //    var roleMishuExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleMiShuPerfix, roleid.ToString()).Result;
-        //    var rolegongfaExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleGongfaPerfix, roleid.ToString()).Result;
-        //    var roleEquipExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleEquipmentPerfix, roleid.ToString()).Result;
-        //    var roleWeaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
-        //    var roleAbilityExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAbilityPointPostfix, roleid.ToString()).Result;
-        //    var roleAllianceSkillExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAllianceSkillPerfix, roleid.ToString()).Result;
-        //    var roleFlyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleFlyMagicToolPerfix, roleid.ToString()).Result;
-        //    if (roleFlyExist && rolestatusExist && roleMishuExist && rolegongfaExist && roleEquipExist && roleWeaponExist && roleAbilityExist && roleAllianceSkillExist && roleExist)
-        //    {
-        //        var rolestatus = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatsuPerfix, roleid.ToString()).Result;
-        //        var roleMishu = RedisHelper.Hash.HashGetAsync<RoleMiShuDTO>(RedisKeyDefine._RoleMiShuPerfix, roleid.ToString()).Result;
-        //        var rolegongfa = RedisHelper.Hash.HashGetAsync<RoleGongFaDTO>(RedisKeyDefine._RoleGongfaPerfix, roleid.ToString()).Result;
-        //        var roleEquip = RedisHelper.Hash.HashGetAsync<RoleEquipmentDTO>(RedisKeyDefine._RoleEquipmentPerfix, roleid.ToString()).Result;
-        //        var roleWeapon = RedisHelper.Hash.HashGetAsync<RoleWeaponDTO>(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
-        //        var roleAbility = RedisHelper.Hash.HashGetAsync<RoleStatusPointDTO>(RedisKeyDefine._RoleAbilityPointPostfix, roleid.ToString()).Result;
-        //        var roleAllianceSkill = RedisHelper.Hash.HashGetAsync<RoleAllianceSkillDTO>(RedisKeyDefine._RoleAllianceSkillPerfix, roleid.ToString()).Result;
-        //        var roleFly = RedisHelper.Hash.HashGetAsync<FlyMagicToolDTO>(RedisKeyDefine._RoleFlyMagicToolPerfix, roleid.ToString()).Result;
-        //        var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
-        //        #region
-        //        if (rolestatus != null && roleMishu != null && rolegongfa != null && roleEquip != null && roleWeapon != null && roleAbility != null && roleAllianceSkill != null && roleFly != null && role != null)
-        //        {
+            }
+            else
+            {
+                NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
+                var rolegongfa = NHibernateQuerier.CriteriaSelect<RoleGongFa>(nHCriteriaRole);
+                if (rolegongfa != null)
+                {
+                    var dict = Utility.Json.ToObject<Dictionary<int, int>>(rolegongfa.GongFaIDDict);
+                    gongfaList = dict.Values.ToList();
+                }
+            }
+            #endregion
 
-        //            foreach (var item in roleEquip.Weapon)
-        //            {
-        //                if (roleWeapon.WeaponStatusDict.TryGetValue(item.Value, out var weaponDTO))
-        //                {
-        //                    //weaponDTO.WeaponAttribute[0]
-        //                }
-        //            }
-        //        }
-        //        #endregion
-        //    }
-        //}
+            if (gongfaList.Count > 0)
+            {
+                for (int i = 0; i < gongfaList.Count; i++)
+                {
+                    roleStatusAdditionDTO.AttackPhysical += gongfaDict[gongfaList[i]].Attact_Physical;
+                    roleStatusAdditionDTO.AttackPower += gongfaDict[gongfaList[i]].Attact_Power;
+                    roleStatusAdditionDTO.AttackSpeed += gongfaDict[gongfaList[i]].Attact_Speed;
+                    roleStatusAdditionDTO.BestBlood += (short)gongfaDict[gongfaList[i]].Best_Blood;
+                    roleStatusAdditionDTO.DefendPhysical += gongfaDict[gongfaList[i]].Defend_Physical;
+                    roleStatusAdditionDTO.DefendPower += gongfaDict[gongfaList[i]].Defend_Power;
+                    roleStatusAdditionDTO.GongfaLearnSpeed += gongfaDict[gongfaList[i]].Gongfa_LearnSpeed;
+                    roleStatusAdditionDTO.MagicCritDamage += gongfaDict[gongfaList[i]].MagicCritDamage;
+                    roleStatusAdditionDTO.MagicCritProb += gongfaDict[gongfaList[i]].MagicCritProb;
+                    roleStatusAdditionDTO.MishuLearnSpeed += gongfaDict[gongfaList[i]].Mishu_LearnSpeed;
+                    roleStatusAdditionDTO.MoveSpeed += gongfaDict[gongfaList[i]].Move_Speed;
+                    roleStatusAdditionDTO.PhysicalCritDamage += gongfaDict[gongfaList[i]].PhysicalCritDamage;
+                    roleStatusAdditionDTO.PhysicalCritProb += gongfaDict[gongfaList[i]].PhysicalCritProb;
+                    roleStatusAdditionDTO.ReduceCritDamage += gongfaDict[gongfaList[i]].ReduceCritDamage;
+                    roleStatusAdditionDTO.ReduceCritProb += gongfaDict[gongfaList[i]].ReduceCritProb;
+                    roleStatusAdditionDTO.RoleHP += gongfaDict[gongfaList[i]].Role_HP;
+                    roleStatusAdditionDTO.RoleMP += gongfaDict[gongfaList[i]].Role_MP;
+                    roleStatusAdditionDTO.RolePopularity += gongfaDict[gongfaList[i]].Role_Popularity;
+                    roleStatusAdditionDTO.RoleSoul += gongfaDict[gongfaList[i]].Role_Soul;
+                    roleStatusAdditionDTO.ValueHide += gongfaDict[gongfaList[i]].Value_Hide;
+
+                    roleStatusAdditionDTO.RoleMaxHP = roleStatusAdditionDTO.RoleHP;
+                    roleStatusAdditionDTO.RoleMaxMP = roleStatusAdditionDTO.RoleMP;
+                    roleStatusAdditionDTO.RoleMaxPopularity = roleStatusAdditionDTO.RolePopularity;
+                    roleStatusAdditionDTO.RoleMaxSoul = roleStatusAdditionDTO.RoleSoul;
+                    roleStatusAdditionDTO.BestBloodMax = roleStatusAdditionDTO.BestBlood;
+                }
+            }
+            return roleStatusAdditionDTO;
+        }
+        /// <summary>
+        /// 计算所有秘术属性
+        /// </summary>
+        /// <param name="roleID"></param>
+        /// <param name="miShuDTO"></param>
+        /// <returns></returns>
+        public RoleStatusAdditionDTO AlgorithmMiShu(int roleID, MiShuDTO miShuDTO=null)
+        {
+            Dictionary<int,MishuSkillData> mishuStudyDict = new Dictionary<int, MishuSkillData>();
+
+            GameEntry.DataManager.TryGetValue<Dictionary<int, MiShuData>>(out var mishuDict);
+
+            RoleStatusAdditionDTO roleStatusAdditionDTO = new RoleStatusAdditionDTO();
+            roleStatusAdditionDTO.RoleID = roleID;
+
+            #region 获取角色所有秘术
+            if (RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleMiShuPerfix, roleID.ToString()).Result)
+            {
+                var roleMiShu = RedisHelper.Hash.HashGetAsync<RoleMiShuDTO>(RedisKeyDefine._RoleMiShuPerfix, roleID.ToString()).Result;
+                if (roleMiShu != null)
+                {
+                    foreach (var item in roleMiShu.MiShuIDDict)
+                    {
+                        NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
+                        var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
+                        var temp = mishuDict[item.Key].mishuSkillDatas.Find(t=>t.MishuFloor== mishuObj.MiShuLevel);
+                        if (temp != null)
+                            mishuStudyDict.Add(item.Key,temp);
+                    }
+                }
+                else
+                {
+                    NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
+                    var rolemishu = NHibernateQuerier.CriteriaSelect<RoleMiShu>(nHCriteriaRole);
+                    if (rolemishu != null)
+                    {
+                        var dict = Utility.Json.ToObject<Dictionary<int, MiShuDTO>>(rolemishu.MiShuIDDict);
+                        foreach (var item in dict)
+                        {
+                            NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
+                            var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
+                            var temp = mishuDict[item.Key].mishuSkillDatas.Find(t => t.MishuFloor == mishuObj.MiShuLevel);
+                            if (temp != null)
+                                mishuStudyDict.Add(item.Key,temp);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
+                var rolemishu = NHibernateQuerier.CriteriaSelect<RoleMiShu>(nHCriteriaRole);
+                if (rolemishu != null)
+                {
+                    var dict = Utility.Json.ToObject<Dictionary<int, int>>(rolemishu.MiShuIDDict);
+                    //TODO后续增加参数传入秘术替换，升级的秘术替换取值的秘术
+                    foreach (var item in dict)
+                    {
+                        NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
+                        var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
+                        var temp = mishuDict[item.Value].mishuSkillDatas.Find(t => t.MishuFloor == mishuObj.MiShuLevel);
+                        if (temp != null)
+                            mishuStudyDict.Add(item.Key,temp);
+                    }
+                }
+            }
+
+            #endregion
+
+            if (mishuStudyDict.Count > 0)
+            {
+                foreach (var item in mishuStudyDict)
+                {
+                    roleStatusAdditionDTO.AttackPhysical += mishuStudyDict[item.Key].AttactPhysical;
+                    roleStatusAdditionDTO.AttackPower += mishuStudyDict[item.Key].AttactPower;
+                    roleStatusAdditionDTO.AttackSpeed += mishuStudyDict[item.Key].AttactSpeed;
+                    roleStatusAdditionDTO.BestBlood += (short)mishuStudyDict[item.Key].BestBlood;
+                    roleStatusAdditionDTO.DefendPhysical += mishuStudyDict[item.Key].DefendPhysical;
+                    roleStatusAdditionDTO.DefendPower += mishuStudyDict[item.Key].DefendPower;
+                    roleStatusAdditionDTO.GongfaLearnSpeed += mishuStudyDict[item.Key].GongfaLearnSpeed;
+                    roleStatusAdditionDTO.MagicCritDamage += mishuStudyDict[item.Key].MagicCritDamage;
+                    roleStatusAdditionDTO.MagicCritProb += mishuStudyDict[item.Key].MagicCritProb;
+                    roleStatusAdditionDTO.MishuLearnSpeed += mishuStudyDict[item.Key].MishuLearnSpeed;
+                    roleStatusAdditionDTO.MoveSpeed += mishuStudyDict[item.Key].MoveSpeed;
+                    roleStatusAdditionDTO.PhysicalCritDamage += mishuStudyDict[item.Key].PhysicalCritDamage;
+                    roleStatusAdditionDTO.PhysicalCritProb += mishuStudyDict[item.Key].PhysicalCritProb;
+                    roleStatusAdditionDTO.ReduceCritDamage += mishuStudyDict[item.Key].ReduceCritDamage;
+                    roleStatusAdditionDTO.ReduceCritProb += mishuStudyDict[item.Key].ReduceCritProb;
+                    roleStatusAdditionDTO.RoleHP += mishuStudyDict[item.Key].RoleHP;
+                    roleStatusAdditionDTO.RoleMP += mishuStudyDict[item.Key].RoleMP;
+                    roleStatusAdditionDTO.RolePopularity += mishuStudyDict[item.Key].RolePopularity;
+                    roleStatusAdditionDTO.RoleSoul += mishuStudyDict[item.Key].RoleSoul;
+                    roleStatusAdditionDTO.ValueHide += mishuStudyDict[item.Key].ValueHide;
+
+                    roleStatusAdditionDTO.RoleMaxHP = roleStatusAdditionDTO.RoleHP;
+                    roleStatusAdditionDTO.RoleMaxMP = roleStatusAdditionDTO.RoleMP;
+                    roleStatusAdditionDTO.RoleMaxPopularity = roleStatusAdditionDTO.RolePopularity;
+                    roleStatusAdditionDTO.RoleMaxSoul = roleStatusAdditionDTO.RoleSoul;
+                    roleStatusAdditionDTO.BestBloodMax = roleStatusAdditionDTO.BestBlood;
+                }
+            }
+
+            return roleStatusAdditionDTO;
+        }
 
         #region 加点方案属性修改
         /// <summary>
@@ -407,91 +545,20 @@ namespace AscensionServer
         /// <summary>
         /// 计算技能加成
         /// </summary>
-        public RoleStatusAdditionDTO SkillAlgorithm(int roleid, RoleStatus status, RoleGongFaDTO rolegongfa, RoleMiShuDTO roleMiShu)
+        public RoleStatusAdditionDTO SkillAlgorithm(int roleid, RoleGongFaDTO rolegongfa, RoleMiShuDTO roleMiShu)
         {
-            List<int> gongfaList = new List<int>();
-            List<int> mishuList = new List<int>();
             List<int> ids = new List<int>();
 
-            RoleStatusDTO roleStatusGF = new RoleStatusDTO();
-            RoleStatusDTO roleStatusMS = new RoleStatusDTO();
-            GameEntry.DataManager.TryGetValue<Dictionary<int, GongFa>>(out var gongfa);
-            GameEntry.DataManager.TryGetValue<Dictionary<int, MiShuData>>(out var mishu);
-
-
-            gongfaList = rolegongfa.GongFaIDDict.Keys.ToList();
-            if (gongfaList.Count > 0)
+            foreach (var item in rolegongfa.GongFaIDDict)
             {
-                for (int i = 0; i < gongfaList.Count; i++)
-                {
-                    roleStatusGF.AttackPhysical += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.AttackPower += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.AttackSpeed += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.BestBlood += (short)gongfa[gongfaList[i]].Best_Blood;
-                    roleStatusGF.DefendPhysical += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.DefendPower += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.GongfaLearnSpeed += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.MagicCritDamage += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.MagicCritProb += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.MaxVitality += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.MishuLearnSpeed += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.MoveSpeed += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.PhysicalCritDamage += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.PhysicalCritProb += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.ReduceCritDamage += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.ReduceCritProb += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.RoleHP += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.RoleMP += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.RolePopularity += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.RoleSoul += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.ValueHide += gongfa[gongfaList[i]].Attact_Physical;
-                    roleStatusGF.Vitality += gongfa[gongfaList[i]].Attact_Physical;
-
-                    roleStatusGF.RoleMaxHP = roleStatusGF.RoleHP;
-                    roleStatusGF.RoleMaxMP = roleStatusGF.RoleMP;
-                    roleStatusGF.RoleMaxPopularity = roleStatusGF.RolePopularity;
-                    roleStatusGF.RoleMaxSoul = roleStatusGF.RoleSoul;
-                    roleStatusGF.BestBloodMax = roleStatusGF.BestBlood;
-                }
+                ids.AddRange(item.Value.CultivationMethodLevelSkillArray);
             }
 
-            if (mishuList.Count > 0)
+            foreach (var item in roleMiShu.MiShuIDDict)
             {
-                for (int j = 0; j < mishuList.Count; j++)
-                {
-                    roleStatusGF.AttackPhysical += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.AttackPower += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.AttackSpeed += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.BestBlood += (short)gongfa[gongfaList[j]].Best_Blood;
-                    roleStatusGF.DefendPhysical += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.DefendPower += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.MagicCritDamage += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.MagicCritProb += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.MaxVitality += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.MoveSpeed += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.PhysicalCritDamage += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.PhysicalCritProb += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.ReduceCritDamage += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.ReduceCritProb += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.RoleHP += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.RoleMP += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.RolePopularity += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.RoleSoul += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.ValueHide += gongfa[gongfaList[j]].Attact_Physical;
-                    roleStatusGF.Vitality += gongfa[gongfaList[j]].Attact_Physical;
-
-                    roleStatusGF.RoleMaxHP = roleStatusMS.RoleHP;
-                    roleStatusGF.RoleMaxMP = roleStatusMS.RoleMP;
-                    roleStatusGF.RoleMaxPopularity = roleStatusMS.RolePopularity;
-                    roleStatusGF.RoleMaxSoul = roleStatusMS.RoleSoul;
-                    roleStatusGF.BestBloodMax = roleStatusMS.BestBlood;
-                }
+                ids.AddRange(item.Value.MiShuSkillArry);
             }
-
-
-
-
-
+            Utility.Debug.LogError("获取的角色的所有技能"+Utility.Json.ToJson(ids));
             var roleWeaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
 
             var roleEquipmentExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleEquipmentPerfix, roleid.ToString()).Result;
@@ -512,7 +579,7 @@ namespace AscensionServer
                             WeaponDict.TryAdd(roleWeaponDTO.WeaponStatusDict[item].WeaponType, roleWeaponDTO.WeaponStatusDict[item]);
 
                         if (WeaponDict.ContainsKey(roleskillDict[ids[i]].WeaponType))
-                         roleStatus = Addition(roleskillDict[ids[i]], roleStatus); 
+                            roleStatus = Addition(roleskillDict[ids[i]], roleStatus);
                     }
                     return roleStatus;
                 }
@@ -530,7 +597,7 @@ namespace AscensionServer
         /// <param name="statusMS">秘术加成</param>
         /// <param name="statusPoint">加点加成</param>
         /// <param name="statusEquip">装备加成</param>
-        public  RoleStatusDTO RoleStatusAlgorithm(int roleid, RoleStatusDTO statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatusDTO statusPoint = null, RoleStatusAdditionDTO statusEquip = null,RoleAllianceSkill roleAllianceSkill=null)
+        public  RoleStatusDTO RoleStatusAlgorithm (int roleid, RoleStatusDTO statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatusDTO statusPoint = null, RoleStatusAdditionDTO statusEquip = null,RoleAllianceSkill roleAllianceSkill=null,int rolelevel = 0)
         {
             SkillsData hp=new SkillsData();
             SkillsData soul = new SkillsData();
@@ -649,34 +716,56 @@ namespace AscensionServer
 
                     RoleStatusType statusType = new RoleStatusType();
                     RoleStatusDTO roleStatus = new RoleStatusDTO();
-                    if (roleData.TryGetValue(role.RoleLevel, out var roleObj))
+                    if (rolelevel==0)
+                    {
+                        rolelevel = role.RoleLevel;
+                    }
+                    if (roleData.TryGetValue(rolelevel, out var roleObj))
                     {
                         #region 
-                        roleStatus.AttackPhysical += statusFly.AttackPhysical + statusGF.AttackPhysical + statusEquip.AttackPhysical + statusMS.AttackPhysical + statusPoint.AttackPhysical+ roleObj.AttackPhysical;
-                        roleStatus.AttackPower += statusFly.AttackPower + roleObj.AttackPower + statusGF.AttackPower + statusEquip.AttackPower + statusMS.AttackPower + statusPoint.AttackPower;
-                        roleStatus.AttackSpeed += statusFly.AttackSpeed + roleObj.AttackSpeed + statusGF.AttackSpeed + statusEquip.AttackSpeed + statusMS.AttackSpeed + statusPoint.AttackSpeed+ attackspeed.AddCoefficient* roleAllianceSkill.SkillRapid;
-                        roleStatus.BestBloodMax += (short)(statusFly.BestBlood + roleObj.BestBlood + statusGF.BestBlood + statusEquip.BestBlood + statusMS.BestBlood + statusPoint.BestBlood);
-                        roleStatus.DefendPhysical += statusFly.DefendPhysical + roleObj.DefendPhysical + statusGF.DefendPhysical + statusEquip.DefendPhysical + statusMS.DefendPhysical + statusPoint.DefendPhysical;
-                        roleStatus.DefendPower += statusFly.DefendPower + roleObj.DefendPower + statusGF.DefendPower + statusEquip.DefendPower + statusMS.DefendPower + statusPoint.DefendPower;
-                        roleStatus.GongfaLearnSpeed += statusFly.GongfaLearnSpeed + roleObj.GongfaLearnSpeed + statusGF.GongfaLearnSpeed + statusEquip.GongfaLearnSpeed + statusMS.GongfaLearnSpeed + statusPoint.GongfaLearnSpeed;
-                        roleStatus.MagicCritDamage += statusFly.MagicCritDamage + statusGF.MagicCritDamage + roleObj.MagicCritDamage + statusEquip.MagicCritDamage + statusMS.MagicCritDamage + statusPoint.MagicCritDamage;
-                        roleStatus.MagicCritProb += statusFly.MagicCritProb + statusGF.MagicCritProb + statusEquip.MagicCritProb + roleObj.MagicCritProb + statusMS.MagicCritProb + statusPoint.MagicCritProb;
-                        roleStatus.MishuLearnSpeed += statusFly.MishuLearnSpeed + roleObj.MishuLearnSpeed + statusGF.MishuLearnSpeed + statusEquip.MishuLearnSpeed + statusMS.MishuLearnSpeed + statusPoint.MishuLearnSpeed;
-                        roleStatus.MoveSpeed += statusFly.MoveSpeed + roleObj.MoveSpeed + statusGF.MoveSpeed + statusEquip.MoveSpeed + statusMS.MoveSpeed + statusPoint.MoveSpeed;
-                        roleStatus.PhysicalCritDamage += statusFly.PhysicalCritDamage + roleObj.PhysicalCritDamage + statusGF.PhysicalCritDamage + statusEquip.PhysicalCritDamage + statusMS.PhysicalCritDamage + statusPoint.PhysicalCritDamage;
-                        roleStatus.PhysicalCritProb += statusFly.PhysicalCritProb + roleObj.PhysicalCritProb + statusGF.PhysicalCritProb + statusEquip.PhysicalCritProb + statusMS.PhysicalCritProb + statusPoint.PhysicalCritProb;
-                        roleStatus.ReduceCritDamage += statusFly.ReduceCritDamage + roleObj.ReduceCritDamage + statusGF.ReduceCritDamage + statusEquip.ReduceCritDamage + statusMS.ReduceCritDamage + statusPoint.ReduceCritDamage;
-                        roleStatus.ReduceCritProb += statusFly.ReduceCritProb + statusGF.ReduceCritProb + roleObj.ReduceCritProb + statusEquip.ReduceCritProb + statusMS.ReduceCritProb + statusPoint.ReduceCritProb;
-                        roleStatus.RoleMaxHP += statusFly.RoleMaxHP+ roleObj.RoleHP + statusGF.RoleMaxHP + statusEquip.RoleMaxHP + statusMS.RoleMaxHP + statusPoint.RoleMaxHP+ hp.AddCoefficient* roleAllianceSkill.SkillStrong;
-                        roleStatus.RolePopularity += statusFly.RoleMaxPopularity+ roleObj.RolePopularity + statusGF.RoleMaxPopularity + statusEquip.RoleMaxPopularity + statusMS.RoleMaxPopularity + statusPoint.RoleMaxPopularity;
-                        roleStatus.RoleMaxSoul += statusFly.RoleMaxSoul + statusGF.RoleMaxSoul + roleObj .RoleSoul+ statusEquip.RoleMaxSoul + statusMS.RoleMaxSoul + statusPoint.RoleMaxSoul+ soul.AddCoefficient * roleAllianceSkill.SkillInsight;
-                        roleStatus.ValueHide += statusFly.ValueHide + roleObj .ValueHide+ statusGF.ValueHide + statusEquip.ValueHide + statusMS.ValueHide + statusPoint.ValueHide;
-                        roleStatus.MaxVitality += statusFly.MaxVitality + statusGF.MaxVitality + statusEquip.MaxVitality + statusMS.MaxVitality + statusPoint.MaxVitality + roleObj.Vitality;
+                        roleStatus.AttackPhysical += statusFly.AttackPhysical + (statusGF.AttackPhysical/10000)* roleObj.AttackPhysical + statusEquip.AttackPhysical + statusMS.AttackPhysical + statusPoint.AttackPhysical+ roleObj.AttackPhysical;
 
-                        roleStatus.RoleMaxMP += statusFly.RoleMaxMP + statusGF.RoleMaxMP + statusEquip.RoleMaxMP + statusMS.RoleMaxMP + statusPoint.RoleMaxMP + roleObj.RoleMP+ mp.AddCoefficient* roleAllianceSkill.SkillMeditation;
+                        roleStatus.AttackPower += statusFly.AttackPower + roleObj.AttackPower + statusGF.AttackPower/10000* roleObj.AttackPower + statusEquip.AttackPower + statusMS.AttackPower + statusPoint.AttackPower;
+
+                        roleStatus.AttackSpeed += statusFly.AttackSpeed + roleObj.AttackSpeed + statusGF.AttackSpeed/10000* roleObj.AttackSpeed + statusEquip.AttackSpeed + statusMS.AttackSpeed + statusPoint.AttackSpeed+ attackspeed.AddCoefficient* roleAllianceSkill.SkillRapid;
+
+                        roleStatus.BestBloodMax += statusFly.BestBlood + roleObj.BestBlood + statusGF.BestBlood/10000* roleObj.BestBlood + statusEquip.BestBlood + statusMS.BestBlood + statusPoint.BestBlood;
+
+                        roleStatus.DefendPhysical += statusFly.DefendPhysical + roleObj.DefendPhysical + statusGF.DefendPhysical/10000* roleObj.DefendPhysical + statusEquip.DefendPhysical + statusMS.DefendPhysical + statusPoint.DefendPhysical;
+
+                        roleStatus.DefendPower += statusFly.DefendPower + roleObj.DefendPower + statusGF.DefendPower/10000* roleObj.DefendPower + statusEquip.DefendPower + statusMS.DefendPower + statusPoint.DefendPower;
+
+                        roleStatus.GongfaLearnSpeed += statusFly.GongfaLearnSpeed + roleObj.GongfaLearnSpeed + statusGF.GongfaLearnSpeed/10000 * roleObj.GongfaLearnSpeed + statusEquip.GongfaLearnSpeed + statusMS.GongfaLearnSpeed + statusPoint.GongfaLearnSpeed;
+
+                        roleStatus.MagicCritDamage += statusFly.MagicCritDamage + statusGF.MagicCritDamage/10000* roleObj.MagicCritDamage + roleObj.MagicCritDamage + statusEquip.MagicCritDamage + statusMS.MagicCritDamage + statusPoint.MagicCritDamage;
+
+                        roleStatus.MagicCritProb += statusFly.MagicCritProb + statusGF.MagicCritProb/10000* roleObj.MagicCritProb + statusEquip.MagicCritProb + roleObj.MagicCritProb + statusMS.MagicCritProb + statusPoint.MagicCritProb;
+
+                        roleStatus.MishuLearnSpeed += statusFly.MishuLearnSpeed + roleObj.MishuLearnSpeed + statusGF.MishuLearnSpeed/10000* roleObj.MishuLearnSpeed + statusEquip.MishuLearnSpeed + statusMS.MishuLearnSpeed + statusPoint.MishuLearnSpeed;
+
+                        roleStatus.MoveSpeed += statusFly.MoveSpeed + roleObj.MoveSpeed + statusGF.MoveSpeed/10000* roleObj.MoveSpeed + statusEquip.MoveSpeed + statusMS.MoveSpeed + statusPoint.MoveSpeed;
+
+                        roleStatus.PhysicalCritDamage += statusFly.PhysicalCritDamage + roleObj.PhysicalCritDamage + statusGF.PhysicalCritDamage/10000* roleObj.PhysicalCritDamage + statusEquip.PhysicalCritDamage + statusMS.PhysicalCritDamage + statusPoint.PhysicalCritDamage;
+
+                        roleStatus.PhysicalCritProb += statusFly.PhysicalCritProb + roleObj.PhysicalCritProb + statusGF.PhysicalCritProb/10000* roleObj.PhysicalCritProb + statusEquip.PhysicalCritProb + statusMS.PhysicalCritProb + statusPoint.PhysicalCritProb;
+
+                        roleStatus.ReduceCritDamage += statusFly.ReduceCritDamage + roleObj.ReduceCritDamage + statusGF.ReduceCritDamage/10000* roleObj.ReduceCritDamage + statusEquip.ReduceCritDamage + statusMS.ReduceCritDamage + statusPoint.ReduceCritDamage;
+
+                        roleStatus.ReduceCritProb += statusFly.ReduceCritProb + statusGF.ReduceCritProb/10000* roleObj.ReduceCritProb + roleObj.ReduceCritProb + statusEquip.ReduceCritProb + statusMS.ReduceCritProb + statusPoint.ReduceCritProb;
+
+                        roleStatus.RoleMaxHP += statusFly.RoleMaxHP+ roleObj.RoleHP + statusGF.RoleMaxHP/10000* roleObj.RoleHP + statusEquip.RoleMaxHP + statusMS.RoleMaxHP + statusPoint.RoleMaxHP+ hp.AddCoefficient* roleAllianceSkill.SkillStrong;
+
+                        roleStatus.RolePopularity += statusFly.RoleMaxPopularity+ roleObj.RolePopularity + statusGF.RoleMaxPopularity/10000* roleObj.RolePopularity + statusEquip.RoleMaxPopularity + statusMS.RoleMaxPopularity + statusPoint.RoleMaxPopularity;
+
+                        roleStatus.RoleMaxSoul += statusFly.RoleMaxSoul + statusGF.RoleMaxSoul/10000* roleObj.RoleSoul + roleObj .RoleSoul+ statusEquip.RoleMaxSoul + statusMS.RoleMaxSoul + statusPoint.RoleMaxSoul+ soul.AddCoefficient * roleAllianceSkill.SkillInsight;
+
+                        roleStatus.ValueHide += statusFly.ValueHide + roleObj .ValueHide+ statusGF.ValueHide/10000* roleObj.ValueHide + statusEquip.ValueHide + statusMS.ValueHide + statusPoint.ValueHide;
+
+                        roleStatus.MaxVitality += statusFly.MaxVitality + statusGF.MaxVitality/10000 * roleObj.Vitality + statusEquip.MaxVitality + statusMS.MaxVitality + statusPoint.MaxVitality + roleObj.Vitality;
+
+                        roleStatus.RoleMaxMP += statusFly.RoleMaxMP + statusGF.RoleMaxMP/10000* roleObj.RoleMP + statusEquip.RoleMaxMP + statusMS.RoleMaxMP + statusPoint.RoleMaxMP + roleObj.RoleMP+ mp.AddCoefficient* roleAllianceSkill.SkillMeditation;
                         #endregion
                         var Percentage = 0;
-
                         switch (statusType)
                         {
                             case RoleStatusType.RoleHP:
@@ -982,7 +1071,6 @@ namespace AscensionServer
         /// <returns></returns>
         public RoleStatus StatusVerify(RoleStatus roleStatus, RoleStatusDTO obj)
         {
- 
             roleStatus.RoleHP += (obj.RoleMaxHP - roleStatus.RoleMaxHP);
             roleStatus.RoleMaxHP = obj.RoleMaxHP;
 
@@ -1023,6 +1111,14 @@ namespace AscensionServer
             roleStatus.ValueHide = obj.ValueHide;
 
             return roleStatus;
+        }
+
+        /// <summary>
+        /// 获取角色所有技能
+        /// </summary>
+        public void GetAllSkill()
+        {
+
         }
     }
 }

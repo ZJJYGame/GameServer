@@ -20,7 +20,7 @@ namespace AscensionServer
             string roletask = Convert.ToString(Utility.GetValue(operationRequest.Parameters, (byte)ParameterCode.Task));
             Utility.Debug.LogInfo(">>>>>>>>>>>>>添加任务相关信息：" + roletask + ">>>>>>>>>>>>>>>>>>>>>>");
             var roletaskobj = Utility.Json.ToObject<RoleTaskProgressDTO>(roletask);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roletaskobj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roletaskobj.RoleID);
             bool exist = NHibernateQuerier.Verify<RoleTaskProgress>(nHCriteriaRoleID);
             Dictionary<string, RoleTaskItemDTO> Dic;
             if (exist)
@@ -52,7 +52,7 @@ namespace AscensionServer
                     });
                 }
             }
-            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             return operationResponse;
         }
     }

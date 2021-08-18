@@ -15,12 +15,12 @@ namespace AscensionServer.Model
         public HerbsField()
         {
             RoleID = 0;
-            jobLevel = 4;
+            jobLevel = 1;
             AllHerbs = null;
         }
 
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             jobLevel = 0;

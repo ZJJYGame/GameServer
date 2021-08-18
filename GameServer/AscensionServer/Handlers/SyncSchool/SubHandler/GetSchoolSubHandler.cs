@@ -19,27 +19,27 @@ namespace AscensionServer
             var dict = operationRequest.Parameters;
             string schoolJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.School));
             var schoolObj = Utility.Json.ToObject<School>(schoolJson);
-            NHCriteria nHCriteriaSchool = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", schoolObj.ID);
+            NHCriteria nHCriteriaSchool =ReferencePool.Accquire<NHCriteria>().SetValue("ID", schoolObj.ID);
             var schoolTemp = NHibernateQuerier.CriteriaSelect<School>(nHCriteriaSchool);
             List<string > DTOList = new List<string>(); ;
             if (schoolTemp!=null)
             {
                 DTOList.Clear();
                 DTOList.Add(Utility.Json.ToJson( schoolTemp));
-                NHCriteria nHCriteriaTreasureattic = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", schoolTemp.TreasureAtticID);
+                NHCriteria nHCriteriaTreasureattic =ReferencePool.Accquire<NHCriteria>().SetValue("ID", schoolTemp.TreasureAtticID);
                 var TreasureatticTemp = NHibernateQuerier.CriteriaSelect<Treasureattic>(nHCriteriaTreasureattic);
                 if (TreasureatticTemp!=null)
                 {
                     DTOList.Add(Utility.Json.ToJson(new TreasureatticDTO() { ID = TreasureatticTemp.ID, ItemAmountDict = Utility.Json.ToObject<Dictionary<int, int>>(TreasureatticTemp.ItemAmountDict), ItemRedeemedDict = Utility.Json.ToObject<Dictionary<int, int>>(TreasureatticTemp.ItemRedeemedDict) }));
                 }
-                NHCriteria nHCriteriaSutrasAttic = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", schoolTemp.SutrasAtticID);
+                NHCriteria nHCriteriaSutrasAttic =ReferencePool.Accquire<NHCriteria>().SetValue("ID", schoolTemp.SutrasAtticID);
                 var SutrasAtticTemp = NHibernateQuerier.CriteriaSelect<SutrasAttic>(nHCriteriaSutrasAttic);
 
                 if (SutrasAtticTemp != null)
                 {
                     DTOList.Add(Utility.Json.ToJson(new SutrasAtticDTO() { ID = SutrasAtticTemp.ID, SutrasAmountDict = Utility.Json.ToObject<Dictionary<int, int>>(SutrasAtticTemp.SutrasAmountDict), SutrasRedeemedDictl = Utility.Json.ToObject<Dictionary<int, int>>(SutrasAtticTemp.SutrasRedeemedDictl) }));
                 }
-                CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaTreasureattic, nHCriteriaSutrasAttic);
+                ReferencePool.Release(nHCriteriaTreasureattic, nHCriteriaSutrasAttic);
             }
             else     
                 SetResponseParamters(() => {operationResponse.ReturnCode = (byte)ReturnCode.Fail; });
@@ -55,7 +55,7 @@ namespace AscensionServer
             {
                 SetResponseParamters(() => { operationResponse.ReturnCode = (byte)ReturnCode.Fail; });
             }
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaSchool);
+            ReferencePool.Release(nHCriteriaSchool);
             return operationResponse;
         }
     }

@@ -103,7 +103,7 @@ namespace AscensionServer
             //{
             //    //广播解散队伍的消息
             //}
-            Clear();
+            Release();
         }
         /// <summary>
         /// 提升为队长；
@@ -116,7 +116,7 @@ namespace AscensionServer
             CaptainId = roleId;
             // 广播成为队长事件
         }
-        public void Clear()
+        public void Release()
         {
             peerDict.Clear();
             CaptainId = 0;

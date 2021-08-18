@@ -9,7 +9,7 @@ namespace AscensionProtocol.DTO
     {
         public int TargetID { get; set; }
         public int InstructionID { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             TargetID = 0;
             InstructionID = 0;

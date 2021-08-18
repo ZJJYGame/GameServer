@@ -25,7 +25,7 @@ namespace AscensionServer
             var vareitycontent = RedisData.ReidsDataProcessing.GetData(vareityname);
 
             #endregion
-            NHCriteria nHCriteriarolepurchase = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", rolepurchaseObj.RoleID);
+            NHCriteria nHCriteriarolepurchase =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", rolepurchaseObj.RoleID);
             Utility.Debug.LogInfo("传过来的杂货铺购买数据" + rolepurchaseJson);
             var rolepurchasetemp = NHibernateQuerier.CriteriaSelect<VareityPurchaseRecord>(nHCriteriarolepurchase);
             if (rolepurchasetemp != null)
@@ -68,7 +68,7 @@ namespace AscensionServer
             }
             else
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriarolepurchase);
+            ReferencePool.Release(nHCriteriarolepurchase);
             return operationResponse;
         }
     }

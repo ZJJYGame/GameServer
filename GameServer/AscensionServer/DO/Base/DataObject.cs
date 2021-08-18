@@ -7,7 +7,7 @@ namespace AscensionServer.Model
 {
     public abstract class DataObject : IReference
     {
-        public abstract void Clear();
+        public abstract void Release();
     }
 }
 

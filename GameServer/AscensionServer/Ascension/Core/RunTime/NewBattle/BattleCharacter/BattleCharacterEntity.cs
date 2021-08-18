@@ -185,7 +185,7 @@ namespace AscensionServer
         }
 
 
-        public virtual void Clear()
+        public virtual void Release()
         {
 
         }

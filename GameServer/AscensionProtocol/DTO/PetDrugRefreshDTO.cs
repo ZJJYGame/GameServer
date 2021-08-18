@@ -12,7 +12,7 @@ namespace AscensionProtocol.DTO
         public virtual int PetID { get; set; }
         public virtual Dictionary<int, int> PetUsedDrug { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             PetID = 0;
             PetUsedDrug.Clear();

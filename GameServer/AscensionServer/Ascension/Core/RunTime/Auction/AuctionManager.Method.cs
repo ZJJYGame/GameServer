@@ -179,7 +179,7 @@ namespace AscensionServer
         /// <returns></returns>
         public async Task ChangeRoleAssets(int spiritStonePrice,int xianYuPrice,int targetRoleId)
         {
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", targetRoleId);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", targetRoleId);
             bool roleExist = NHibernateQuerier.Verify<Role>(nHCriteriaRoleID);
             bool roleAssetsExist = NHibernateQuerier.Verify<RoleAssets>(nHCriteriaRoleID);
             if (roleExist && roleAssetsExist)

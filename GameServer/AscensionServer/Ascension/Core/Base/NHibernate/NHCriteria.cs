@@ -20,9 +20,9 @@ namespace AscensionServer
             this.Value = value;
             return this;
         }
-        public void Clear()
+        public void Release()
         {
-            PropertyName = "";
+            PropertyName = string.Empty;
             Value = null;
         }
         public override string ToString()

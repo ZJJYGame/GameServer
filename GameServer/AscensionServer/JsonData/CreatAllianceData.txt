@@ -2,7 +2,7 @@
     {
         "ID":1,
         "RoleLevel":11,
-        "SpiritStones":1000000,
+        "SpiritStones":100000,
         "AllianceLevel":1,
         "Chamber":1,
         "ArmsDrillSite":1,

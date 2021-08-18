@@ -9,7 +9,7 @@ using AscensionServer.Model;
 using RedisDotNet;
 namespace AscensionServer
 {
-    [ImplementProvider]
+    [Implementer]
     public class RecordHelper : IRecordHelper
     {
         /// <summary>
@@ -26,12 +26,12 @@ namespace AscensionServer
                 Utility.Debug.LogInfo("============AscensionPeer.RecordOnOffLine() : Can't RecordOnOffLine ============");
                 return;
             }
-            NHCriteria nHCriteriaOnOff = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleId);
+            NHCriteria nHCriteriaOnOff =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleId);
             var obj = NHibernateQuerier.CriteriaSelectAsync<OnOffLine>(nHCriteriaOnOff).Result;
             var roleAllianceobj = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriaOnOff).Result;
             if (roleAllianceobj != null)
             {
-                NHCriteria nHCriteriaAllianceStatus = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", roleAllianceobj.AllianceID);
+                NHCriteria nHCriteriaAllianceStatus =ReferencePool.Accquire<NHCriteria>().SetValue("ID", roleAllianceobj.AllianceID);
                 var allianceStatusobj = NHibernateQuerier.CriteriaSelectAsync<AllianceStatus>(nHCriteriaAllianceStatus).Result;
                 if (allianceStatusobj != null)
                 {
@@ -41,7 +41,7 @@ namespace AscensionServer
                     }
                     await NHibernateQuerier.UpdateAsync(allianceStatusobj);
                 }
-                CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaAllianceStatus);
+                ReferencePool.Release(nHCriteriaAllianceStatus);
                 roleAllianceobj.Offline = DateTime.Now.ToString();
                 await NHibernateQuerier.UpdateAsync(roleAllianceobj);
                 RoleAllianceDTO allianceDTO = new RoleAllianceDTO();
@@ -62,23 +62,26 @@ namespace AscensionServer
                 obj.OffTime = DateTime.Now.ToString();
                 obj.RoleID = roleId;
                 NHibernateQuerier.Update(obj);
+                await RedisHelper.Hash.HashSetAsync<OnOffLine>(RedisKeyDefine._RoleOnOffLinePostfix, obj.RoleID.ToString(), obj);
             }
             else
             {
                 #region 待删
-                //var offLineTimeTmp = CosmosEntry.ReferencePoolManager.Spawn<OffLineTime>();
+                //var offLineTimeTmp =ReferencePool.Accquire<OffLineTime>();
                 //offLineTimeTmp.RoleID = roleEntity.RoleId;
                 //offLineTimeTmp.OffTime = DateTime.Now.ToString();
                 //NHibernateQuerier.Insert(offLineTimeTmp);
-                //CosmosEntry.ReferencePoolManager.Despawn(offLineTimeTmp);
+                //ReferencePool.Release(offLineTimeTmp);
                 #endregion
-                var offLineTimeTmp = CosmosEntry.ReferencePoolManager.Spawn<OnOffLine>();
+                var offLineTimeTmp =ReferencePool.Accquire<OnOffLine>();
                 offLineTimeTmp.RoleID = roleId; ; ;
                 offLineTimeTmp.OffTime = DateTime.Now.ToString();
                 NHibernateQuerier.Insert(offLineTimeTmp);
-                CosmosEntry.ReferencePoolManager.Despawn(offLineTimeTmp);
+                await RedisHelper.Hash.HashSetAsync<OnOffLine>(RedisKeyDefine._RoleOnOffLinePostfix, offLineTimeTmp.RoleID.ToString(), offLineTimeTmp);
+                ReferencePool.Release(offLineTimeTmp);
+
             }
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaOnOff);
+            ReferencePool.Release(nHCriteriaOnOff);
             //Utility.Debug.LogInfo("yzqData同步离线时间成功"+"原来的角色id为"+ roleId + "新的角色id"+ newrole.RoleID);
             #endregion
         }

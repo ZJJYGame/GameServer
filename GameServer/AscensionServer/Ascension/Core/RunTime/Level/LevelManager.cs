@@ -84,7 +84,7 @@ namespace AscensionServer
         }
         Pool<LevelConn> connPool;
 
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             adventureLevel = LevelEntity.Create(LevelTypeEnum.Adventure, 701, Int32.MaxValue);
             SceneRefreshHandler += adventureLevel.OnRefresh;
@@ -100,7 +100,8 @@ namespace AscensionServer
         //同步注意：
         //1、乐观模式。定时派发，Level内部有自己的空帧处理规则；
         //========================================
-        public override void OnRefresh()
+        [TickRefresh]
+         void OnRefresh()
         {
             if (IsPause)
                 return;
@@ -207,7 +208,7 @@ namespace AscensionServer
             if (!connDict.ContainsKey(sessionId))
             {
                 var json = Convert.ToString(packet.DataMessage);
-                var obj = Utility.MessagePack.ToObject<Dictionary<object, object>>(json);
+                var obj = Utility.MessagePack.DeserializeJson<Dictionary<object, object>>(json);
                 var levelType = Convert.ToByte(Utility.GetValue(obj, ((byte)LevelParameterCode.LevelType).ToString()));
                 var roleId = Convert.ToInt32(Utility.GetValue(obj, ((byte)LevelParameterCode.EnteredRole).ToString()));
                 var conn = connPool.Spawn();

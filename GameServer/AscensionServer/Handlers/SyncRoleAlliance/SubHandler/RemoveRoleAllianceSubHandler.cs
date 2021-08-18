@@ -24,7 +24,7 @@
 //            var roleallianceObj = Utility.Json.ToObject<RoleAllianceDTO>(roleallianceJson);
 //            var dailyMagObj = Utility.Json.ToObject<DailyMessageDTO>(dailyMagJson);
 //            Utility.Debug.LogError("yzqData储存的成员" + roleallianceJson);
-//            NHCriteria nHCriteriaroleAlliances = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleallianceObj.RoleID);
+//            NHCriteria nHCriteriaroleAlliances =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleallianceObj.RoleID);
 //            var roleallianceTemp = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriaroleAlliances).Result;
 //            List<int> memberlist = new List<int>();
 
@@ -36,7 +36,7 @@
 //                    var alliancestatus = AlliancelogicManager.Instance.GetNHCriteria<AllianceStatus>("ID", roleallianceTemp.AllianceID);
 //                    alliancestatus.AllianceNumberPeople -= 1;
 //                  NHibernateQuerier.Update(alliancestatus);
-//                    NHCriteria nHCriteriaAlliances = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", roleallianceTemp.AllianceID);
+//                    NHCriteria nHCriteriaAlliances =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", roleallianceTemp.AllianceID);
 //                    var allianceTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceMember>(nHCriteriaAlliances).Result;
 //                    memberlist = Utility.Json.ToObject<List<int>>(allianceTemp.Member);
 //                    memberlist.Remove(roleallianceObj.RoleID);
@@ -58,7 +58,7 @@
 //                        subResponseParameters.Add((byte)ParameterCode.RoleAlliance, Utility.Json.ToJson(roleAllianceDTO));
 //                        operationResponse.ReturnCode = (short)ReturnCode.Success;
 //                    });
-//                    CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaAlliances, nHCriteriaroleAlliances);
+//                    ReferencePool.Release(nHCriteriaAlliances, nHCriteriaroleAlliances);
 //                }
 //                else
 //                {

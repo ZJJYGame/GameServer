@@ -24,7 +24,7 @@ namespace AscensionServer
 
             List<ApplyForAllianceDTO> applyForAllianceList = new List<ApplyForAllianceDTO>();
             List<int> applyForList = new List<int>();
-            NHCriteria nHCriteriaalliancemember = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", alliancememberObj.AllianceID);
+            NHCriteria nHCriteriaalliancemember =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", alliancememberObj.AllianceID);
             var alliancememberTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceMember>(nHCriteriaalliancemember).Result;
             applyForList = Utility.Json.ToObject<List<int>>(alliancememberTemp.ApplyforMember);
             for (int i = 0; i < applyForList.Count; i++)
@@ -42,7 +42,7 @@ namespace AscensionServer
                 subResponseParameters.Add((byte)ParameterCode.Alliances, Utility.Json.ToJson(applyForAllianceList));
                 operationResponse.ReturnCode = (short)ReturnCode.Success;
             });
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaalliancemember);
+            ReferencePool.Release(nHCriteriaalliancemember);
             return operationResponse;
         }
     }

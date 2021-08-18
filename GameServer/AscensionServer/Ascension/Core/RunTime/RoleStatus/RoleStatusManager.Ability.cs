@@ -74,7 +74,7 @@ namespace AscensionServer
         /// </summary>
        async  void SetRoleSlnNameS2C(RoleStatusPointDTO pointDTO)
         {
-            NHCriteria nHCriteriaRoleStatue = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
+            NHCriteria nHCriteriaRoleStatue =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
             var rolePoint = NHibernateQuerier.CriteriaSelect<RoleStatusPoint>(nHCriteriaRoleStatue);
             if (rolePoint!=null)
             {
@@ -104,7 +104,7 @@ namespace AscensionServer
         {
             var exist =GameEntry. DataManager.TryGetValue<Dictionary<int, RoleStatusDatas>>(out var roleStatudict);
             Utility.Debug.LogInfo("YZQ加点数据进来了");
-            NHCriteria nHCriteriaRoleStatue = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
+            NHCriteria nHCriteriaRoleStatue =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
             int point = 0;
             var rolePoint = NHibernateQuerier.CriteriaSelect<RoleStatusPoint>(nHCriteriaRoleStatue);
             var roleStatus= NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteriaRoleStatue);
@@ -197,7 +197,7 @@ namespace AscensionServer
         void GetRoleStatusMySql(RoleStatusPointDTO pointDTO)
         {
             Utility.Debug.LogInfo("YZQ获得角色属性1" + Utility.Json.ToJson(pointDTO));
-            NHCriteria nHCriteriaRoleStatue = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
+            NHCriteria nHCriteriaRoleStatue =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
             var rolePoint = NHibernateQuerier.CriteriaSelect<RoleStatusPoint>(nHCriteriaRoleStatue);
             var roleStatus = NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteriaRoleStatue);
             if (rolePoint != null&& roleStatus!=null)
@@ -214,7 +214,7 @@ namespace AscensionServer
 
        async  void SetRolePointMySql(RoleStatusPointDTO pointDTO)
         {
-            NHCriteria nHCriteriaRoleStatue = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
+            NHCriteria nHCriteriaRoleStatue =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", pointDTO.RoleID);
             var rolePoint = NHibernateQuerier.CriteriaSelect<RoleStatusPoint>(nHCriteriaRoleStatue);
             var roleStatus= NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteriaRoleStatue);
             if (rolePoint != null&& roleStatus!=null)

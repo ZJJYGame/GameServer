@@ -18,7 +18,7 @@ namespace AscensionProtocol.DTO
             ExchangeGoods = new Dictionary<int, ExchangeSetting>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = -1;
             ExchangeGoods = new Dictionary<int, ExchangeSetting>();
@@ -28,7 +28,7 @@ namespace AscensionProtocol.DTO
     {
         public int Contribution { get; set; }
         public int Job { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             Contribution = 0;
             Job = 1;

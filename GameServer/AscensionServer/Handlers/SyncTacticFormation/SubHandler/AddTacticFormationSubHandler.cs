@@ -21,7 +21,7 @@ namespace AscensionServer
             string tacticFormationJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.JobTacticFormation));
             Utility.Debug.LogInfo("得到的阵法为"+tacticFormationJson);
             var tacticFormationObj = Utility.Json.ToObject<TacticFormationDTO>(tacticFormationJson);
-            NHCriteria nHCriteriatacticFormation = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", tacticFormationObj.RoleID);
+            NHCriteria nHCriteriatacticFormation =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", tacticFormationObj.RoleID);
             var tacticFormatioTemp =NHibernateQuerier.CriteriaSelect<TacticFormation>(nHCriteriatacticFormation);
             HashSet<int> tacticFormationHash = new HashSet<int>();
             if (tacticFormatioTemp!=null)
@@ -47,7 +47,7 @@ namespace AscensionServer
             }
             else
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriatacticFormation);
+            ReferencePool.Release(nHCriteriatacticFormation);
             return operationResponse;
         }
     }

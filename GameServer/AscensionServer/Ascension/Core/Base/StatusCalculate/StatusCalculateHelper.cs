@@ -15,9 +15,9 @@ namespace AscensionServer
     {
         public static void GetRoleStatus(List<GongFa> gongfaList, List<MishuSkillData> mishuList ,RoleStatusDatas roleStatusDatas, out RoleStatus roleStatus)
         {
-          var roleStatustemp=  CosmosEntry.ReferencePoolManager.Spawn<RoleStatus>();
-            roleStatustemp.Clear();
-            roleStatus = CosmosEntry.ReferencePoolManager.Spawn<RoleStatus>();
+          var roleStatustemp= ReferencePool.Accquire<RoleStatus>();
+            roleStatustemp.Release();
+            roleStatus =ReferencePool.Accquire<RoleStatus>();
             if (gongfaList.Count > 0)
             {
                 for (int i = 0; i < gongfaList.Count; i++)
@@ -72,7 +72,7 @@ namespace AscensionServer
             }
             OutRolestatus(roleStatus, roleStatusDatas, roleStatustemp, out var tempstatus);
             roleStatus = tempstatus;
-           // CosmosEntry.ReferencePoolManager.Despawns(roleStatustemp, roleStatus);
+           // ReferencePool.Release(roleStatustemp, roleStatus);
         }
 
         public static void OutRolestatus(RoleStatus roleStatus, RoleStatusDatas roleStatusDatas, RoleStatus roleStatusTemp, out RoleStatus tempstatus)

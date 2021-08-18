@@ -27,7 +27,7 @@ namespace AscensionServer
 
         bool CanTrigger(BattleCharacterEntity target, BattleDamageData battleDamageData)
         {
-            int randomValue = Utility.Algorithm.CreateRandomInt(0, 99);
+            int randomValue = Utility.Algorithm.RandomRange(0, 99);
             if (randomValue >= prob)
                 return false;
             if (!battleBuffObj.CanTrigger(target, battleDamageData))

@@ -44,22 +44,12 @@ namespace AscensionServer
         Dictionary<int, BattleRoomEntity> battleRoomDict = new Dictionary<int, BattleRoomEntity>();
 
 
-        public override void OnPreparatory()
-        {
-            CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncBattle, EnterBattleC2S);
-        }
-        public override void OnRefresh()
-        {
-            timeAction?.Invoke();
-        }
-
-
         /// <summary>
         /// 创建房间
         /// </summary>
         public BattleRoomEntityInfo CreateRoom(BattleInitDTO battleInitDTO)
         {
-            BattleRoomEntity battleRoomEntity = CosmosEntry.ReferencePoolManager.Spawn<BattleRoomEntity>();
+            BattleRoomEntity battleRoomEntity =ReferencePool.Accquire<BattleRoomEntity>();
             int roomID = GetRoomId();
             battleRoomEntity.InitRoom(roomID, battleInitDTO);
             battleRoomDict.Add(roomID, battleRoomEntity);
@@ -98,6 +88,15 @@ namespace AscensionServer
                 return battleRoomDict[roomID];
             else
                 return null;
+        }
+        protected override void OnPreparatory()
+        {
+            CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncBattle, EnterBattleC2S);
+        }
+        [TickRefresh]
+        void OnRefresh()
+        {
+            timeAction?.Invoke();
         }
         //告知对应房间角色准备完成
         void RoomRolePrepareOver(int roleID)

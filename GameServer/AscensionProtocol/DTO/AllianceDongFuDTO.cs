@@ -37,7 +37,7 @@ namespace AscensionProtocol.DTO
             PreemptFive = new List<PreemptInfo>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = -1;
             SpiritRangeID = -1;

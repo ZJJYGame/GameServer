@@ -22,7 +22,7 @@ namespace AscensionServer
             var dict = operationRequest.Parameters;
             string bottleneckJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.RoleBottleneck));
             var bottleneckObj = Utility.Json.ToObject<Bottleneck>(bottleneckJson);
-            NHCriteria nHCriteriabottleneck = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", bottleneckObj.RoleID);
+            NHCriteria nHCriteriabottleneck =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", bottleneckObj.RoleID);
             GameEntry. DataManager.TryGetValue<Dictionary<int, BottleneckData>>(out var bottleneckData);
             GameEntry. DataManager.TryGetValue<Dictionary<int, DemonData>>(out var demonData);
             if (RedisHelper.Hash.HashExist("Bottleneck", bottleneckObj.RoleID.ToString()))
@@ -64,7 +64,7 @@ namespace AscensionServer
                         subResponseParameters.Add((byte)ParameterCode.RoleBottleneck, Utility.Json.ToJson(bottleneckRedis));
                         operationResponse.ReturnCode = (short)ReturnCode.Fail;
                     });
-                    CosmosEntry.ReferencePoolManager.Despawns(nHCriteriabottleneck);
+                    ReferencePool.Release(nHCriteriabottleneck);
                 }
                 #endregion
             }
@@ -107,7 +107,7 @@ namespace AscensionServer
                         subResponseParameters.Add((byte)ParameterCode.RoleBottleneck, Utility.Json.ToJson(bottleneckTemp));
                         operationResponse.ReturnCode = (short)ReturnCode.Fail;
                     });
-                    CosmosEntry.ReferencePoolManager.Despawns(nHCriteriabottleneck);
+                    ReferencePool.Release(nHCriteriabottleneck);
                 }
                 #endregion
             }

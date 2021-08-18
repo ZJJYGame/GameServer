@@ -25,18 +25,18 @@ namespace AscensionServer
             {          
                 foreach (var roleId in roleobj)
                 {
-                    NHCriteria nHCriteriarole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleId);
+                    NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleId);
                     var roleschoolObj =NHibernateQuerier.CriteriaSelect<RoleSchool>(nHCriteriarole);
                     var verify= NHibernateQuerier.Verify<RoleSchool>(nHCriteriarole);
                     if (verify)
                     {
                         if (roleschoolObj.RoleJoiningSchool!=null)
                         {
-                            NHCriteria nHCriteriaSchool = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", roleschoolObj.RoleJoiningSchool);
+                            NHCriteria nHCriteriaSchool =ReferencePool.Accquire<NHCriteria>().SetValue("ID", roleschoolObj.RoleJoiningSchool);
                             var schoolObj = NHibernateQuerier.CriteriaSelect<School>(nHCriteriaSchool);
                             schoolDict.Add(roleId, schoolObj);
 
-                            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaSchool);
+                            ReferencePool.Release(nHCriteriaSchool);
                         }else
                             schoolDict.Clear();
 
@@ -48,7 +48,7 @@ namespace AscensionServer
                          operationResponse.ReturnCode = (byte)ReturnCode.Fail;
                         });
                     }
-                    CosmosEntry.ReferencePoolManager.Despawns(nHCriteriarole);
+                    ReferencePool.Release(nHCriteriarole);
                 }
              
                 if (schoolDict.Count == roleobj.Count)

@@ -20,7 +20,7 @@ namespace AscensionServer
             var dict = operationRequest.Parameters;
             string forgeJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.JobForge));
             var forgeObj = Utility.Json.ToObject<ForgeDTO>(forgeJson);
-            NHCriteria nHCriteriaFroge = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", forgeObj.RoleID);
+            NHCriteria nHCriteriaFroge =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", forgeObj.RoleID);
             //AscensionServer._Log.Info("得到的锻造配方" );
             var Frogetemp= NHibernateQuerier.CriteriaSelect<Forge>(nHCriteriaFroge);
             if (Frogetemp != null)
@@ -44,7 +44,7 @@ namespace AscensionServer
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
                 subResponseParameters.Add((byte)ParameterCode.JobForge, Utility.Json.ToJson(new List<string>()));
             }
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaFroge);
+            ReferencePool.Release(nHCriteriaFroge);
             return operationResponse;
         }
     }

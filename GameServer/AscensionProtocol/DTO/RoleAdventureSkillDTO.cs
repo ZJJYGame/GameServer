@@ -15,7 +15,7 @@ namespace AscensionProtocol.DTO
         public int BuffeInterval { get; set; }
         public short featureSkillTypeEnum { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             IsInUse = false;

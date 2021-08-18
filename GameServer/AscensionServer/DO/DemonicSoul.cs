@@ -13,7 +13,7 @@ namespace AscensionServer.Model
         public virtual string  DemonicSouls { get; set; }
         public virtual string DemonicSoulIndex { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             DemonicSouls = null;
             DemonicSoulIndex = null;

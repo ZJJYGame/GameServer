@@ -15,7 +15,7 @@ namespace AscensionProtocol.DTO
         public virtual  Dictionary<int, int> SutrasRedeemedDictl { get; set; }
 
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             SutrasAmountDict.Clear();

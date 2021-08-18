@@ -16,13 +16,13 @@ namespace AscensionProtocol.DTO
         public AlchemyDTO()
         {
             RoleID = -1;
-            JobLevel = 0;
+            JobLevel = 1;
             Recipe_Array = null;
             JobLevelExp = 0;
         }
 
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             JobLevel = 0;

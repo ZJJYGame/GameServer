@@ -30,7 +30,7 @@ namespace AscensionServer
         {
             if (teamDict.ContainsKey(createrId))
                 return null;
-            var tc = CosmosEntry.ReferencePoolManager.Spawn<TeamEntity>();
+            var tc =ReferencePool.Accquire<TeamEntity>();
             tc.Oninit(createrId, CreateTeamID());
             return tc;
         }
@@ -45,11 +45,7 @@ namespace AscensionServer
         {
             return matchingQueue.Add(roleId);
         }
-        public override void OnRefresh()
-        {
-            if (IsPause)
-                return;
-        }
+
         /// <summary>
         /// 服务端会一直运行；
         /// 异步随机匹配组队
@@ -110,11 +106,17 @@ namespace AscensionServer
         /// <returns>生成后的ID</returns>
         int CreateTeamID()
         {
-            int id =  Utility.Algorithm.CreateRandomInt(_MinValue, _MaxValue);
+            int id =  Utility.Algorithm.RandomRange(_MinValue, _MaxValue);
             if (!teamDict.ContainsKey(id))
                 return id;
             else
                 return CreateTeamID();
+        }
+        [TickRefresh]
+        void OnRefresh()
+        {
+            if (IsPause)
+                return;
         }
     }
 }

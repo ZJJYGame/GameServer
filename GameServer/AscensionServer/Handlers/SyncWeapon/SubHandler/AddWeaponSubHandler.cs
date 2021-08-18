@@ -22,7 +22,7 @@
 //            var dict = operationRequest.Parameters;
 //            string weaponJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.GetWeapon));
 //            var weaponObj = Utility.Json.ToObject<RoleWeaponDTO>(weaponJson);
-//            NHCriteria nHCriteriaweapon = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", weaponObj.RoleID);
+//            NHCriteria nHCriteriaweapon =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", weaponObj.RoleID);
 //            var weaponTemp = NHibernateQuerier.CriteriaSelect<Weapon>(nHCriteriaweapon);
 
 //            int index=1;
@@ -77,7 +77,7 @@
 //            }
 //            else
 //                operationResponse.ReturnCode = (short)ReturnCode.Fail;
-//            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaweapon);
+//            ReferencePool.Release(nHCriteriaweapon);
 //            return operationResponse;
 //        }
 //    }

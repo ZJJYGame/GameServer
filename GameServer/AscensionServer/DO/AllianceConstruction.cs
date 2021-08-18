@@ -24,7 +24,7 @@ namespace AscensionServer.Model
             AllianceChamber = 1;
             AllianceAssets = 0;
         }
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = -1;
             AllianceAlchemyStorage = 0;

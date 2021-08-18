@@ -14,7 +14,7 @@ namespace AscensionServer
     [Module]
     public partial class PuppetManager : Cosmos.Module, IPuppetManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncPuppet, ProcessHandlerC2S);
         }

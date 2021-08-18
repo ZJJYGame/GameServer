@@ -106,9 +106,9 @@ namespace AscensionServer
         /// <returns></returns>
         public static NHCriteria NHCriteria(int roleId)
         {
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleId);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleId);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteriaRoleID);
-            return CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
+            return ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
         }
 
         /// <summary>

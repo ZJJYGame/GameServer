@@ -18,7 +18,7 @@ namespace AscensionServer
             var dict = operationRequest.Parameters;
             string alchemyJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.JobAlchemy));
             var alchemyObj = Utility.Json.ToObject<AlchemyDTO>(alchemyJson);
-            NHCriteria nHCriteriaalchemy = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", alchemyObj.RoleID);
+            NHCriteria nHCriteriaalchemy =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", alchemyObj.RoleID);
             var alchemytemp = NHibernateQuerier.CriteriaSelect<Alchemy>(nHCriteriaalchemy);
             if (alchemytemp != null)
             {
@@ -41,7 +41,7 @@ namespace AscensionServer
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
                subResponseParameters.Add((byte)ParameterCode.JobAlchemy, Utility.Json.ToJson(new List<string>()));
             }
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaalchemy);
+            ReferencePool.Release(nHCriteriaalchemy);
             return operationResponse;
         }
 

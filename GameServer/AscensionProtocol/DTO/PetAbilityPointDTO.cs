@@ -25,7 +25,7 @@ namespace AscensionProtocol.DTO
             AddPointType = AbilityPointType.None;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             SlnNow = 0;

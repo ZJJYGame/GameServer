@@ -24,7 +24,7 @@ namespace AscensionProtocol.DTO
             Magicindex = new Dictionary<int, int>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             WeaponStatusDict = null;
@@ -55,7 +55,7 @@ namespace AscensionProtocol.DTO
             WeaponType = 0;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             Score = 1;
             IsTreasure =false;

@@ -15,15 +15,15 @@ namespace AscensionServer.Model
         public virtual string Recipe_Array { get; set; }
         public Alchemy()
         {
-            JobLevel = 4;
-            Recipe_Array = "[15001]";
+            JobLevel = 1;
+            Recipe_Array = "";
             JobLevelExp = 0;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
-            JobLevel = 0;
+            JobLevel = 1;
             JobLevelExp = 0;
             Recipe_Array = null;
         }

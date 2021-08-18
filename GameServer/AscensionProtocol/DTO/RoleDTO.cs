@@ -25,7 +25,7 @@ namespace AscensionProtocol.DTO
         /// 战斗指令
         /// </summary>
         public virtual BattleCmd SendBattleCmd { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             RoleFaction = 0;

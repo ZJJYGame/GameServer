@@ -10,7 +10,7 @@ namespace AscensionProtocol.DTO
     {
             public virtual int RoleID { get; set; }
             public virtual string OffTime { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             OffTime = null;

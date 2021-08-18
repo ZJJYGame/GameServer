@@ -29,7 +29,7 @@ namespace AscensionProtocol.DTO
         /// 阵法的持续时间
         /// </summary>
         public int Duration { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             RoleID = 0;

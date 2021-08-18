@@ -15,7 +15,7 @@ namespace AscensionServer
     [Module]
     public class SkillManager:Cosmos. Module,ISkillManager
     {
-        public override void OnInitialization()
+        protected override void OnInitialization()
         {
             //CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncRoleAdventureSkill, OnPlayerSkillC2S);
         }

@@ -21,7 +21,7 @@
 //            var mishuJson = Convert.ToString(Utility.GetValue(operationRequest.Parameters, (byte)ParameterCode.MiShu));
 //            var rolemishuObj = Utility.Json.ToObject<RoleMiShuDTO>(rolemishuJson);
 //            var mishuObj = Utility.Json.ToObject<MiShuDTO>(mishuJson);
-//            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", rolemishuObj.RoleID);
+//            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", rolemishuObj.RoleID);
 //            Utility.Debug.LogInfo("yzqData收到的角色秘术数据" + mishuJson);
 //            GameEntry. DataManager.TryGetValue<Dictionary<int, List<MishuSkillData>>>(out var MiShuDataDict);
 //            if (RedisHelper.KeyExistsAsync(RedisKeyDefine._MiShuPerfix).Result)
@@ -56,7 +56,7 @@
 //                        }
 //                    }
 //                    RedisHelper.Hash.HashSet<MiShuDTO>(RedisKeyDefine._MiShuPerfix + rolemishuObj.RoleID, rolemishuObj.RoleID.ToString(), mishuObj);
-//                    NHCriteria nHCriteriaMiShuID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", mishuObj.MiShuID);
+//                    NHCriteria nHCriteriaMiShuID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", mishuObj.MiShuID);
 //                    var mishuMySQL = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriaMiShuID);
 //                    mishuMySQL.MiShuSkillArry = Utility.Json.ToJson(mishuRedisObj.MiShuSkillArry);
 //                    NHibernateQuerier.Update<MiShu>(mishuMySQL);
@@ -69,7 +69,7 @@
 //                            operationResponse.ReturnCode = (short)ReturnCode.Success;
 //                        });
 //                    }
-//                    CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaMiShuID);
+//                    ReferencePool.Release(nHCriteriaMiShuID);
 //                }else
 //                    SetResponseParamters(() => operationResponse.ReturnCode = (short)ReturnCode.Fail);
 //            }
@@ -80,7 +80,7 @@
 //                var mishuDict = Utility.Json.ToObject<Dictionary<int, int>>(roleMishu.MiShuIDArray);
 //                if (mishuDict.ContainsKey(mishuObj.MiShuID))
 //                {
-//                    NHCriteria nHCriteriaMiShuID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", mishuObj.MiShuID);
+//                    NHCriteria nHCriteriaMiShuID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", mishuObj.MiShuID);
 //                    var mishuMySQLObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriaMiShuID);
 //                    var mishuSkillList = Utility.Json.ToObject<List<int>>(mishuMySQLObj.MiShuSkillArry);
 //                    if (mishuObj.MiShuLevel>0)
@@ -108,7 +108,7 @@
 //                        }
 //                    }
 //                    #region Redis更新部分
-//                    var redismishuObj = CosmosEntry.ReferencePoolManager.Spawn<MiShuDTO>();
+//                    var redismishuObj =ReferencePool.Accquire<MiShuDTO>();
 //                    redismishuObj.MiShuLevel = mishuMySQLObj.MiShuLevel;
 //                    redismishuObj.MiShuExp = mishuMySQLObj.MiShuExp;
 //                    redismishuObj.MiShuID = mishuMySQLObj.MiShuID;
@@ -127,12 +127,12 @@
 //                            operationResponse.ReturnCode = (short)ReturnCode.Success;
 //                        });
 //                    }
-//                    CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaMiShuID, redismishuObj);
+//                    ReferencePool.Release(nHCriteriaMiShuID, redismishuObj);
 //                }
 //                else
 //                    SetResponseParamters(() => operationResponse.ReturnCode = (short)ReturnCode.Fail);
 //            }
-//            CosmosEntry.ReferencePoolManager.Despawn(nHCriteriaRoleID);
+//            ReferencePool.Release(nHCriteriaRoleID);
 //            return operationResponse;
 //        }
 //    }

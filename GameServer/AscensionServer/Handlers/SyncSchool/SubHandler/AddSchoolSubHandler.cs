@@ -27,9 +27,9 @@ namespace AscensionServer
             string sutrasAtticJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.SutrasAtticm));
             var sutrasAtticObj = Utility.Json.ToObject<SutrasAtticDTO>(sutrasAtticJson);
 
-            NHCriteria nHCriteriaSchool = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", schoolObj.ID);
-            NHCriteria nHCriteriaTreasureattic = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", treasureatticObj.ID);
-            NHCriteria nHCriteriasutrasAttic = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", sutrasAtticObj.ID);
+            NHCriteria nHCriteriaSchool =ReferencePool.Accquire<NHCriteria>().SetValue("ID", schoolObj.ID);
+            NHCriteria nHCriteriaTreasureattic =ReferencePool.Accquire<NHCriteria>().SetValue("ID", treasureatticObj.ID);
+            NHCriteria nHCriteriasutrasAttic =ReferencePool.Accquire<NHCriteria>().SetValue("ID", sutrasAtticObj.ID);
 
             GameEntry. DataManager.TryGetValue<Dictionary<int, List<FactionItem>>>(out var factionItemDict);
             GameEntry. DataManager.TryGetValue<Dictionary<int, List<FactionSkill>>>(out var factionSkillDict);
@@ -86,7 +86,7 @@ namespace AscensionServer
             else
                 SetResponseParamters(() =>{operationResponse.ReturnCode = (byte)ReturnCode.Fail; });
             Utility.Debug.LogInfo(">>>>>>>加入宗门的请求收到了2" + schoolTemp.SchoolID);
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaSchool, nHCriteriaTreasureattic, nHCriteriasutrasAttic);
+            ReferencePool.Release(nHCriteriaSchool, nHCriteriaTreasureattic, nHCriteriasutrasAttic);
             return operationResponse;
         }
     }

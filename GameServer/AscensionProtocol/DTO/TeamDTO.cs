@@ -43,7 +43,7 @@ namespace AscensionProtocol.DTO
         /// </summary>
         public virtual List<int> AgreeMebers { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             LeaderId = 0;
             TeamId = 0;

@@ -68,7 +68,7 @@ namespace AscensionServer
         public void InitRoom(int roomId, BattleInitDTO battleInitDTO)
         {
             RoomId = roomId;
-            BattleController = CosmosEntry.ReferencePoolManager.Spawn<BattleController>();
+            BattleController =ReferencePool.Accquire<BattleController>();
             BattleController.InitController(this);
             //添加玩家
             BattlePlayerEntity battlePlayerEntity = GameEntry.BattleCharacterManager.AddPlayerCharacter(roomId,battleInitDTO.playerUnits[0].UniqueId, BattleFactionType.FactionOne);
@@ -226,8 +226,7 @@ namespace AscensionServer
             }
         }
 
-
-        public void Clear()
+        public void Release()
         {
             RoomId = -1;
         }

@@ -17,7 +17,7 @@ namespace AscensionServer
         LevelResEntity adventureLevelResEntity;
         Pool<OperationData> opDataPool;
         Pool<Dictionary<byte, object>> messageDataPool;
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             adventureLevelResEntity = LevelResEntity.Create(LevelTypeEnum.Adventure, 701);
             opDataPool = new Pool<OperationData>
@@ -75,11 +75,11 @@ namespace AscensionServer
             resObject.Id = index;
             resObject.Occupied = false;
             var vec = spawnInfo.ResSpawnPositon.GetVector();
-            var xSign = Utility.Algorithm.Sign();
+            var xSign = Sign();
             var xOffset = random.Next(0, spawnInfo.ResSpawnRange);
             vec.x += xSign == true ? xOffset : -xOffset;
 
-            var zSign = Utility.Algorithm.Sign();
+            var zSign = Sign();
             var zOffset = random.Next(0, spawnInfo.ResSpawnRange);
             vec.z += zSign == true ? zOffset : -zOffset;
 
@@ -175,6 +175,15 @@ namespace AscensionServer
                 Utility.Debug.LogWarning($"进入战斗 失败");
             }
             opDataPool.Despawn(opdata);
+        }
+        bool IsOdd(int n)
+        {
+            return Convert.ToBoolean(n % 2);
+        }
+        bool Sign()
+        {
+            var result = Utility.Algorithm.RandomRange(0, 200);
+            return IsOdd(result);
         }
     }
 }

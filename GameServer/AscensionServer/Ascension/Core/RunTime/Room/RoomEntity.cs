@@ -52,7 +52,7 @@ namespace AscensionServer
             Available = true;
             this.RoomId = roomId;
         }
-        public virtual void Clear()
+        public virtual void Release()
         {
             roleDict.Clear();
             canCacheCmd = true;
@@ -114,7 +114,7 @@ namespace AscensionServer
         public static RoomEntity Create(params RoleEntity [] roles)
         {
             var length = roles.Length;
-            var re = CosmosEntry.ReferencePoolManager.Spawn<RoomEntity>();
+            var re =ReferencePool.Accquire<RoomEntity>();
             for (int i = 0; i < length; i++)
             {
                 re.TryAdd(roles[i].RoleId, roles[i]);

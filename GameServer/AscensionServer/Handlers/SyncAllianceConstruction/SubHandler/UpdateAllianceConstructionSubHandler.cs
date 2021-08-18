@@ -24,9 +24,9 @@
 
 //           // Utility.Debug.LogError("yzq仙盟升级数据接收成功为" + allianceConstructionJson);
 //            var allianceConstructionObj = Utility.Json.ToObject<AllianceConstructionDTO>(allianceConstructionJson);
-//            NHCriteria nHCriteriallianceConstruction = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", allianceConstructionObj.AllianceID);
+//            NHCriteria nHCriteriallianceConstruction =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", allianceConstructionObj.AllianceID);
 
-//            NHCriteria nHCriterialliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", allianceConstructionObj.AllianceID);
+//            NHCriteria nHCriterialliance =ReferencePool.Accquire<NHCriteria>().SetValue("ID", allianceConstructionObj.AllianceID);
 
 //            var allianceConstructionTemp= NHibernateQuerier.CriteriaSelectAsync<AllianceConstruction>(nHCriteriallianceConstruction).Result;
 //            var allianceStatusTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceStatus>(nHCriterialliance).Result;
@@ -128,7 +128,7 @@
 //                }
 //            }
 
-//            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriallianceConstruction, nHCriterialliance);
+//            ReferencePool.Release(nHCriteriallianceConstruction, nHCriterialliance);
 //            return operationResponse;
 //        }
 //    }

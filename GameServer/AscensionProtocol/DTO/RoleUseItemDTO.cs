@@ -12,7 +12,7 @@ namespace AscensionProtocol.DTO
         public virtual int RoleID { get; set; }
         public virtual int PetID { get; set; }
         public virtual int UseItemID { get; set; }
-        public override void Clear()
+        public override void Release()
         {
         }
     }

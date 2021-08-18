@@ -19,7 +19,7 @@ namespace AscensionServer
             string roleAssetsJson = Convert.ToString(Utility.GetValue(operationRequest.Parameters, (byte)ParameterCode.RoleAssets));
 
             var roleAssetsObj = Utility.Json.ToObject<RoleAssets>(roleAssetsJson);
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleAssetsObj.RoleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleAssetsObj.RoleID);
             bool roleExist = NHibernateQuerier.Verify<Role>(nHCriteriaRoleID);
             bool roleAssetsExist = NHibernateQuerier.Verify<RoleAssets>(nHCriteriaRoleID);
             long SpiritStonesLow = 0;
@@ -43,7 +43,7 @@ namespace AscensionServer
             else
                 operationResponse.ReturnCode = (byte)ReturnCode.Fail;
             Utility.Debug.LogInfo(">>>>>>>>>>>>>發送囘u去：" + roleAssetsJson + ">>>>>>>>>>>>>>>>>>>>>>");
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaRoleID);
+            ReferencePool.Release(nHCriteriaRoleID);
             return operationResponse;
         }
     }

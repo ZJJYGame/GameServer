@@ -21,7 +21,7 @@ namespace AscensionServer.Model
             MagicWeapon="{}";
         }
 
-        public override void Clear()
+        public override void Release()
         {
            
         }

@@ -23,7 +23,7 @@ namespace AscensionServer
             string roleAllianceJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.ApplyForAlliance));
             var roleAllianceObj = Utility.Json.ToObject<RoleAllianceDTO>(roleAllianceJson);
             Utility.Debug.LogInfo("收到的加入仙盟的请求"+ roleAllianceJson);
-            NHCriteria nHCriteriaroleAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleAllianceObj.RoleID);
+            NHCriteria nHCriteriaroleAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleAllianceObj.RoleID);
             var roleAllianceTemp = NHibernateQuerier.CriteriaSelectAsync<RoleAlliance>(nHCriteriaroleAlliance).Result;
             List<int> applyList = new List<int>();
             List<NHCriteria> NHCriterias = new List<NHCriteria>();
@@ -38,7 +38,7 @@ namespace AscensionServer
                         applyList.Add(roleAllianceObj.ApplyForAlliance[i]);
                         roleAllianceTemp.ApplyForAlliance = Utility.Json.ToJson(applyList);
                      NHibernateQuerier.Update(roleAllianceTemp);
-                        NHCriteria nHCriteriaroleAllianceMember = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceID", roleAllianceObj.ApplyForAlliance[i]);
+                        NHCriteria nHCriteriaroleAllianceMember =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceID", roleAllianceObj.ApplyForAlliance[i]);
                         NHCriterias.Add(nHCriteriaroleAllianceMember);
                         var allianceMemberTemp = NHibernateQuerier.CriteriaSelectAsync<AllianceMember>(nHCriteriaroleAllianceMember).Result;
                         var applyer = Utility.Json.ToObject<List<int>>(allianceMemberTemp.ApplyforMember);
@@ -57,7 +57,7 @@ namespace AscensionServer
                     });
                 }
             }
-            CosmosEntry.ReferencePoolManager.Despawns(NHCriterias);
+            ReferencePool.Release(NHCriterias.ToArray());
             return operationResponse;
         }
     }

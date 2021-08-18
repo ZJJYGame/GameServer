@@ -23,7 +23,7 @@ namespace AscensionProtocol.DTO
             MagicWeapon = new Dictionary<int, int>();
         }
 
-        public override void Clear()
+        public override void Release()
         {
             
         }

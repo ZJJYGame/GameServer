@@ -25,7 +25,7 @@ namespace AscensionServer.Model
         public virtual string PetName { get; set; }
         public virtual string PetSkillArray { get; set; }
         public virtual string DemonicSoul { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             PetLevel =1;
             PetID = 0;

@@ -18,13 +18,14 @@ namespace AscensionServer
        /// </summary>
        /// <param name="roleid"></param>
        /// <param name="useItemID"></param>
-      async  void CompoundPuppetS2C(int roleID, int useItemID)
+        async  void CompoundPuppetS2C(int roleID, int useItemID)
         {
             var puppetExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetPerfix, roleID.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
             var puppetUnitExist= RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
+            GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (puppetExist && roleExist && assestExist&& puppetUnitExist)
             {
@@ -41,32 +42,55 @@ namespace AscensionServer
                         formulaDataDict.TryGetValue(useItemID, out var formulaData);
                         for (int i = 0; i < formulaData.NeedItemArray.Count; i++)
                         {
-                            if (!InventoryManager.VerifyIsExist(formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i], rolering.RingIdArray))
+                            Utility.Debug.LogInfo("YZQ合成傀儡部件id"+ formulaData.NeedItemArray[i]+"数量"+ formulaData.NeedItemNumber[i]);
+                            if (formulaData.NeedItemArray[i]!=0)
                             {
-                                Utility.Debug.LogInfo("YZQ收到的副职业请求1");
-                                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
-                                return;
+                                if (!InventoryManager.VerifyIsExist(formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i], rolering.RingIdArray))
+                                {
+                                    Utility.Debug.LogInfo("YZQ收到的副职业请求1");
+                                    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
+                                    return;
+                                }
                             }
-                            //if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
-                            //{
-                            //    Utility.Debug.LogInfo("YZQ收到的副职人物属性"+Utility.Json.ToJson(role));
-                            //    Utility.Debug.LogInfo("YZQ收到的副职业请求2灵石"+ assest.SpiritStonesLow+"活力"+ role.Vitality);
-                            //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
-                            //    return;
-                            //}
-                            var maxNum = 50 + (formulaData.SuccessRate / 2);
-                            var minNum = 50 - (formulaData.SuccessRate / 2);
-                            var randNum = NormalRandom2(maxNum, minNum);
-                            if (randNum >= maxNum || randNum <= minNum)
-                            {
+                        }
+                        //if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
+                        //{
+                        //    Utility.Debug.LogInfo("YZQ收到的副职人物属性"+Utility.Json.ToJson(role));
+                        //    Utility.Debug.LogInfo("YZQ收到的副职业请求2灵石"+ assest.SpiritStonesLow+"活力"+ role.Vitality);
+                        //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
+                        //    return;
+                        //}
+                        var randNum = drollRandom.Next(1, 101);
+                        Utility.Debug.LogError("随机出的数据为" + randNum + "成功率为" + formulaData.SuccessRate);
+                        if (randNum > formulaData.SuccessRate)
+                        {
                                 Utility.Debug.LogInfo("YZQ收到的副职业请求3");
-                                RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet, default);
+                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet,default);
                                 //鍛造失敗
                                 return;
                             }
                         
-                        }
                         puppet.JobLevelExp += formulaData.MasteryValue;
+                        secondary.TryGetValue((byte)FormulaDrugType.Puppet,out var secondaryJob);
+                        if (secondaryJob.SecondaryJobLevel.Contains(puppet.JobLevel))
+                        {
+                           var index =secondaryJob.SecondaryJobLevel.FindIndex(f=>f== puppet.JobLevel);
+                            if (puppet.JobLevel<5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= puppet.JobLevelExp)
+                                {
+                                    puppet.JobLevelExp -= secondaryJob.SecondaryJobExp[index];
+                                    puppet.JobLevel += 1;
+                                }
+                            }
+                            else if (puppet.JobLevel == 5)
+                            {
+                                if (secondaryJob.SecondaryJobExp[index] <= puppet.JobLevelExp)
+                                {
+                                    puppet.JobLevelExp = secondaryJob.SecondaryJobExp[index];
+                                }
+                            }
+                        }
                         // role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
 
@@ -113,6 +137,7 @@ namespace AscensionServer
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PuppetPerfix, roleID.ToString(), puppet);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(puppet));
                             #endregion
+
                         }
                         else
                         {
@@ -141,7 +166,7 @@ namespace AscensionServer
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
             var puppetUnitExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
             var rolepuppetExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePuppetPerfix, roleID.ToString()).Result;
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (puppetExist&& roleExist&& assestExist&& puppetUnitExist&& rolepuppetExist)
             {
@@ -237,7 +262,7 @@ namespace AscensionServer
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, RepairPuppetData>>(out var repairDict);
             var assestExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleid.ToString()).Result;
-            var puppetIndividualExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetIndividualPerfix, id.ToString()).Result; NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            var puppetIndividualExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetIndividualPerfix, id.ToString()).Result; NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (assestExist&& puppetIndividualExist)
             {
@@ -292,17 +317,21 @@ namespace AscensionServer
             var formulaExist = GameEntry.DataManager.TryGetValue<Dictionary<int, FormulaPuppetData>>(out var formulaDataDict);
             if (!formulaExist)
             {
+                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>1");
                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
-            if (ringServer == null)
+            var roleexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
+            if (ringServer == null|| !roleexist)
             {
+                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>2");
                 RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
                 return;
             }
-            if (InventoryManager.VerifyIsExist(id, 1, ringServer.RingIdArray))
+            var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleid.ToString()).Result;
+            if (InventoryManager.VerifyIsExist(id, 1, ringServer.RingIdArray)&& role!=null)
             {
                 var tempid = Utility.Converter.RetainInt32(id, 5);
                 var puppetExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetPerfix, roleid.ToString()).Result;
@@ -315,9 +344,18 @@ namespace AscensionServer
                         {
                             if (formula.NeedJobLevel > puppet.JobLevel)
                             {
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>3");
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                                 return;
                             }
+                            #region 等级判断
+                            //if (formula.FormulaLevel > role.RoleLevel)
+                            //{
+                            //    Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>4");
+                            //    RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus,"学习配方失败");
+                            //    return;
+                            //}
+                            #endregion
 
                             if (!puppet.Recipe_Array.Contains(tempid))
                             {
@@ -335,14 +373,15 @@ namespace AscensionServer
 
                             }
                             else
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                            {
+                                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>1");
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                            }
+                               
                         }
                     }
                 }
             }
-
-
-
             }
         /// <summary>
         /// 傀儡部件属性值
@@ -358,18 +397,18 @@ namespace AscensionServer
                 PuppetUnitInfo puppet = new PuppetUnitInfo();
                 for (int i = 0; i < parameter.PuppetAttributeMax.Count; i++)
                 {
-                    puppet.PuppetAttribute.Add(Utility.Algorithm.CreateRandomInt(parameter.PuppetAttributeMin[i], parameter.PuppetAttributeMax[i]));
+                    puppet.PuppetAttribute.Add(Utility.Algorithm.RandomRange(parameter.PuppetAttributeMin[i], parameter.PuppetAttributeMax[i]));
                 }
                 puppet.WeaponSkill.Add(parameter.FixedSkill);
-                if (Utility.Algorithm.CreateRandomInt(0,100)<= parameter.PuppetSkillProbability)
+                if (Utility.Algorithm.RandomRange(0,100)<= parameter.PuppetSkillProbability)
                 {
-                    puppet.WeaponSkill.Add(parameter.PuppetSkillpoor[Utility.Algorithm.CreateRandomInt(0, parameter.PuppetSkillpoor.Count)]);
+                    puppet.WeaponSkill.Add(parameter.PuppetSkillpoor[Utility.Algorithm.RandomRange(0, parameter.PuppetSkillpoor.Count)]);
                 }
 
-                if (Utility.Algorithm.CreateRandomInt(0, 100)<= parameter.AdditionalAttributeProbability)
+                if (Utility.Algorithm.RandomRange(0, 100)<= parameter.AdditionalAttributeProbability)
                 {
-                    puppet.AffixType = Utility.Algorithm.CreateRandomInt(0, parameter.AdditionalMaxPercentage.Count );
-                    puppet.AffixAddition = Utility.Algorithm.CreateRandomInt(0, parameter.AdditionalMaxPercentage[puppet.AffixType] );
+                    puppet.AffixType = Utility.Algorithm.RandomRange(0, parameter.AdditionalMaxPercentage.Count );
+                    puppet.AffixAddition = Utility.Algorithm.RandomRange(0, parameter.AdditionalMaxPercentage[puppet.AffixType] );
                 }
                 puppet.PuppetDurable = parameter.PuppetDurable;
                 return puppet;
@@ -421,7 +460,7 @@ namespace AscensionServer
                     dict.Add(unitInfo.AffixType, unitInfo.AffixAddition);
                 }
 
-                #region
+                #region 属性值
                 foreach (var item in dict)
                 {
                     switch ((AffixType)item.Key)
@@ -470,6 +509,7 @@ namespace AscensionServer
         Puppet ChangeDataType(PuppetDTO puppetDTO)
         {
             Puppet puppet = new Puppet();
+
             puppet.RoleID = puppetDTO.RoleID;
             puppet.Recipe_Array = Utility.Json.ToJson(puppetDTO.Recipe_Array);
             puppet.JobLevel = puppetDTO.JobLevel;
@@ -479,7 +519,7 @@ namespace AscensionServer
 
         PuppetUnit ChangeDataType(PuppetUnitDTO unitDTO)
         {
-            PuppetUnit puppet = new PuppetUnit();
+            PuppetUnit puppet = new PuppetUnit();         
             puppet.RoleID = unitDTO.RoleID;
             puppet.PuppetUnitInfoDict = Utility.Json.ToJson(unitDTO.PuppetUnitInfoDict);
             puppet.UnitIndesDict = Utility.Json.ToJson(unitDTO.UnitIndesDict);

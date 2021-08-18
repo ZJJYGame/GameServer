@@ -14,7 +14,7 @@ namespace AscensionServer
     [Module]
    public partial class RoleEquipmentManager : Cosmos.Module, IRoleEquipmentManager
     {
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncEquipment, ProcessHandlerC2S);
         }
@@ -82,7 +82,7 @@ namespace AscensionServer
         #region MySql模块
         void GetEquipStatusMySql(int roleid)
         {
-            NHCriteria nHCriteria = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleid);
+            NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var roleweapon = NHibernateQuerier.CriteriaSelect<RoleWeapon>(nHCriteria);
             var roleequip = NHibernateQuerier.CriteriaSelect<RoleEquipment>(nHCriteria);
             if (roleweapon!=null&& roleequip!=null)

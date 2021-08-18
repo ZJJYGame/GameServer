@@ -23,26 +23,26 @@
 
 //            var roleObj = Utility.Json.ToObject<RoleDTO>(roleJson);
 //            var mishuObj = Utility.Json.ToObject<MiShu>(msJson);
-//            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleObj.RoleID);
+//            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleObj.RoleID);
 //            var roleMiShuObj = NHibernateQuerier.CriteriaSelect<RoleMiShu>(nHCriteriaRoleID);
 //            //if (roleMiShuObj==null)
 //            //{
-//            //    roleMiShuObj = CosmosEntry.ReferencePoolManager.Spawn<RoleMiShu>();
+//            //    roleMiShuObj =ReferencePool.Accquire<RoleMiShu>();
 //            //    roleMiShuObj = NHibernateQuerier.Insert<RoleMiShu>(roleMiShuObj);
 //            //}
 //            GameEntry. DataManager.TryGetValue<Dictionary<int, MiShuData>>(out var mishuDataDict);
 
 //            #region 背包验证逻辑
-//            var ringObj = CosmosEntry.ReferencePoolManager.Spawn<RingDTO>();
+//            var ringObj =ReferencePool.Accquire<RingDTO>();
 //            ringObj.RingItems = new Dictionary<int, RingItemsDTO>();
 //            ringObj.RingItems.Add(mishuObj.MiShuID, new RingItemsDTO());
 //            var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteriaRoleID);
-//            var nHCriteriaRingID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
+//            var nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
 //            #endregion
 
 //            //if (InventoryManager.VerifyIsExist(mishuObj.MiShuID, nHCriteriaRingID))
 //            //{
-//            //    var mishuTemp = CosmosEntry.ReferencePoolManager.Spawn<MiShuDTO>();
+//            //    var mishuTemp =ReferencePool.Accquire<MiShuDTO>();
 
 //            //    var result = MishuStudyHelper.AddMishuJuge(mishuObj.MiShuID, roleObj, out mishuTemp);
 //            //    if (!result)
@@ -79,8 +79,8 @@
 //            if (!roleMishuMySQL.Contains(mishuObj.MiShuID))
 //            {
 //                #region 生成新的秘术
-//                var mishuRedisObj = CosmosEntry.ReferencePoolManager.Spawn<MiShuDTO>();
-//                var mishuMysqlObj = CosmosEntry.ReferencePoolManager.Spawn<MiShu>();
+//                var mishuRedisObj =ReferencePool.Accquire<MiShuDTO>();
+//                var mishuMysqlObj =ReferencePool.Accquire<MiShu>();
 //                mishuMysqlObj.MiShuID = mishuObj.MiShuID;
 //                mishuMysqlObj = NHibernateQuerier.InsertAsync<MiShu>(mishuMysqlObj).Result;
 
@@ -119,7 +119,7 @@
 //                    NHibernateQuerier.UpdateAsync(mishuMysqlObj);
 //                    RedisHelper.Hash.HashSetAsync<MiShuDTO>(RedisKeyDefine._MiShuPerfix + roleObj.RoleID, roleObj.RoleID.ToString(), mishuRedisObj);
 
-//                    rolemishuredisObj = CosmosEntry.ReferencePoolManager.Spawn<RoleMiShuDTO>();
+//                    rolemishuredisObj =ReferencePool.Accquire<RoleMiShuDTO>();
 //                    rolemishuredisObj.MiShuIDArray = new Dictionary<int, int>() { };
 //                    rolemishuredisObj.MiShuIDArray.Add(mishuRedisObj.MiShuID, mishuRedisObj.MiShuID);
 //                    RedisHelper.Hash.HashSetAsync<RoleMiShuDTO>(RedisKeyDefine._RoleMiShuPerfix + roleObj.RoleID, roleObj.RoleID.ToString(), rolemishuredisObj);
@@ -133,7 +133,7 @@
 //                    subResponseParameters.Add((byte)ParameterCode.RoleMiShu, Utility.Json.ToJson(rolemishuredisObj));
 //                    operationResponse.ReturnCode = (byte)ReturnCode.Success;
 //                });
-//                CosmosEntry.ReferencePoolManager.Despawns(mishuRedisObj, mishuMysqlObj, nHCriteriaRoleID);
+//                ReferencePool.Release(mishuRedisObj, mishuMysqlObj, nHCriteriaRoleID);
 //            }
 //            else
 //            {

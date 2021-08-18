@@ -17,7 +17,7 @@ namespace AscensionServer.Model
             ExchangeGoods = "{}";
         }
 
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = -1;
             ExchangeGoods = "{}";

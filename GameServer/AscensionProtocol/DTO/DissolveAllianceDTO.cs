@@ -16,7 +16,7 @@ namespace AscensionProtocol.DTO
             RoleID = 0;
             IsDissolve = false;
         }
-        public override void Clear()
+        public override void Release()
         {
            
         }

@@ -27,7 +27,7 @@ namespace AscensionServer.Model
         public virtual short CultivationMethodLevel { get; set; }
         public virtual string CultivationMethodLevelSkillArray { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             CultivationMethodID = 0;

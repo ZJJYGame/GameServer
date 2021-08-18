@@ -77,6 +77,7 @@
     <Compile Include="Protocol\Model\Base\IDataContract.cs" />
     <Compile Include="Protocol\Model\Base\OperationData.cs" />
     <Compile Include="Protocol\Model\C2S\C2SChatMessage.cs" />
+    <Compile Include="Protocol\Model\C2S\C2SMapRes.cs" />
     <Compile Include="Protocol\Model\C2S\CmdInput.cs" />
     <Compile Include="Protocol\Model\C2S\C2SFlyMagicToolInput.cs" />
     <Compile Include="Protocol\Model\C2S\C2SSkillInput.cs" />
@@ -112,5 +113,6 @@
       <Name>CFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

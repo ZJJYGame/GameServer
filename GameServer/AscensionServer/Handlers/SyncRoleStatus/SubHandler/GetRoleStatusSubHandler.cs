@@ -23,7 +23,7 @@
 //            string rolestatusJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.RoleStatus));
 //            var rolestatusObj = Utility.Json.ToObject<RoleStatusDTO>(rolestatusJson);
 //           // Utility.Debug.LogInfo("yzqData收到的角色数据"+ rolestatusJson);
-//            NHCriteria nHCriteriaRoleStatue = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", rolestatusObj.RoleID);
+//            NHCriteria nHCriteriaRoleStatue =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", rolestatusObj.RoleID);
 //            var roleStatus = NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteriaRoleStatue);
 //            OperationData operationData = new OperationData();
 //         //   Utility.Debug.LogInfo("yzqData数据库找到的角色数据" + Utility.Json.ToJson(roleStatus));
@@ -60,7 +60,7 @@
 //                    var allianceObj = NHibernateQuerier.CriteriaSelect<RoleAllianceSkill>(nHCriteriaRoleStatue);
 
 //                    //var roleringObj = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteriaRoleStatue);
-//                    //NHCriteria nHCriteriaring = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", roleringObj.RingIdArray);
+//                    //NHCriteria nHCriteriaring =ReferencePool.Accquire<NHCriteria>().SetValue("ID", roleringObj.RingIdArray);
 //                    //var ringObj = NHibernateQuerier.CriteriaSelect<Ring>(nHCriteriaring);
 //                    //var equipDict = Utility.Json.ToObject<Dictionary<int, RingItemsDTO>>(ringObj.RingAdorn);
 //                    //var weaponObj = NHibernateQuerier.CriteriaSelect<Weapon>(nHCriteriaRoleStatue);
@@ -100,7 +100,7 @@
 //                            {
 //                                foreach (var item in mishuidDict)
 //                                {
-//                                    NHCriteria nHCriteriamishu = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", item.Key);
+//                                    NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
 //                                    var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
 
 //                                    var temp = mishuDict[item.Value].Find(t => t.Mishu_Floor == mishuObj.MiShuLevel);
@@ -160,7 +160,7 @@
 //                default:
 //                    break;
 //            }
-//            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaList);
+//            ReferencePool.Release(nHCriteriaList);
 //            return operationResponse;
 //        }
 //    }

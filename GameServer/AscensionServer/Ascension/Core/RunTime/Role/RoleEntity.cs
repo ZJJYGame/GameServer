@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cosmos;
 using System;
+using Cosmos.ECS;
 
 namespace AscensionServer
 {
@@ -71,7 +72,7 @@ namespace AscensionServer
         {
             GameEntry.PeerManager.SendMessage(SessionId, opCode, subCode, userData);
         }
-        public void Clear()
+        public void Release()
         {
             RoleId = 0;
             dataDict.Clear();
@@ -85,7 +86,7 @@ namespace AscensionServer
         }
         public static RoleEntity Create(int roleId, int sessionId, params object[] datas)
         {
-            var entity = CosmosEntry.ReferencePoolManager.Spawn<RoleEntity>();
+            var entity =ReferencePool.Accquire<RoleEntity>();
             entity.RoleId = roleId;
             entity.SessionId = sessionId;
             for (int i = 0; i < datas.Length; i++)
@@ -96,7 +97,7 @@ namespace AscensionServer
         }
         public static void Release(RoleEntity roleEntity)
         {
-            CosmosEntry.ReferencePoolManager.Despawn(roleEntity);
+            ReferencePool.Release(roleEntity);
         }
     }
 }

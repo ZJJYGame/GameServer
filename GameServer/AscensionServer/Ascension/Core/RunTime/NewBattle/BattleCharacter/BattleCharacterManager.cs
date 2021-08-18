@@ -24,7 +24,7 @@ namespace AscensionServer
         /// </summary>
         public BattlePlayerEntity AddPlayerCharacter(int roomID,int roleID,BattleFactionType battleFactionType)
         {
-            BattlePlayerEntity battleCharacterEntity = CosmosEntry.ReferencePoolManager.Spawn<BattlePlayerEntity>();
+            BattlePlayerEntity battleCharacterEntity =ReferencePool.Accquire<BattlePlayerEntity>();
             battleCharacterEntity.InitPlayer(roomID,roleID,battleFactionType);
             CharacterEntityDict[battleCharacterEntity.UniqueID] = battleCharacterEntity;
             return battleCharacterEntity;
@@ -34,11 +34,11 @@ namespace AscensionServer
         /// </summary>
         public BattlePetEntity AddPetCharacter(int roomID,int roleID,BattleFactionType battleFactionType)
         {
-            NHCriteria nHCriteriaRoleID = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRoleID =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             RolePet rolePet = NHibernateQuerier.CriteriaSelect<RolePet>(nHCriteriaRoleID);
             if (rolePet.PetIsBattle == 0)
                 return null;
-            BattlePetEntity battleCharacterEntity = CosmosEntry.ReferencePoolManager.Spawn<BattlePetEntity>();
+            BattlePetEntity battleCharacterEntity =ReferencePool.Accquire<BattlePetEntity>();
             battleCharacterEntity.InitPet(roomID, roleID, battleFactionType);
             CharacterEntityDict[battleCharacterEntity.UniqueID] = battleCharacterEntity;
             return battleCharacterEntity;
@@ -48,7 +48,7 @@ namespace AscensionServer
         /// </summary>
         public BattleAIEntity AddAICharacter(int roomID,int aIID,BattleFactionType battleFactionType)
         {
-            BattleAIEntity battleCharacterEntity = CosmosEntry.ReferencePoolManager.Spawn<BattleAIEntity>();
+            BattleAIEntity battleCharacterEntity =ReferencePool.Accquire<BattleAIEntity>();
             battleCharacterEntity.InitAI(roomID,aIID, aIStartID++, battleFactionType);
             CharacterEntityDict[battleCharacterEntity.UniqueID] = battleCharacterEntity;
             return battleCharacterEntity;
@@ -63,7 +63,7 @@ namespace AscensionServer
         /// </summary>
         public void DestoryCharacter(int roleID)
         {
-            CosmosEntry.ReferencePoolManager.Despawn(CharacterEntityDict[roleID]);
+            ReferencePool.Release(CharacterEntityDict[roleID]);
             CharacterEntityDict.Remove(roleID);
         }
 

@@ -26,7 +26,7 @@
 //            string countJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.AllianceMember));
 //            var count = Utility.Json.ToObject<int>(countJson);
 
-//            NHCriteria nHCriteriadailyMessage = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleName", dailyMessageObj.Name);
+//            NHCriteria nHCriteriadailyMessage =ReferencePool.Accquire<NHCriteria>().SetValue("RoleName", dailyMessageObj.Name);
 //            var dailyMessageTemp = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriadailyMessage);
 //            List<DailyMessageDTO> dailyMessages = new List<DailyMessageDTO>();
         

@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
         public string Password { get; set; }
         public string Date{ get; set; }
         public string DeviceUID { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             Account = null;
             Password = null;

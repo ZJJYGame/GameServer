@@ -14,6 +14,6 @@ namespace Protocol
         /// <summary>
         /// 一组C2SWildResource的list集合；
         /// </summary>
-        public List<C2SMapResource> MapResourceList { get; set; }
+        public List<C2SMapRes> MapResourceList { get; set; }
     }
 }

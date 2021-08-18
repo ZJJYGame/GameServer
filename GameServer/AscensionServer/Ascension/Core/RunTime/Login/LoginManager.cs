@@ -15,10 +15,10 @@ namespace AscensionServer
     public class LoginManager : Cosmos.Module, ILoginManager
     {
         Type createRoleHelperType;
-        public override void OnPreparatory()
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.LoginArea, ProcessHandlerC2S);
-            createRoleHelperType = Utility.Assembly.GetDerivedTypesByAttribute<ImplementProviderAttribute, ICreateRoleHelper>(GetType().Assembly)[0];
+            createRoleHelperType = Utility.Assembly.GetDerivedTypesByAttribute<ImplementerAttribute, ICreateRoleHelper>(GetType().Assembly)[0];
         }
         /// <summary>
         /// 获取账号下的角色ID；
@@ -107,12 +107,12 @@ namespace AscensionServer
         }
         void CreateRoleS2C(int sessionId, Dictionary<byte, object> dataMessage)
         {
-            var createRoleHelper = CosmosEntry.ReferencePoolManager.Spawn(createRoleHelperType) as ICreateRoleHelper;
+            var createRoleHelper =ReferencePool.Accquire(createRoleHelperType) as ICreateRoleHelper;
             var opData = createRoleHelper.CreateRole(dataMessage);
             opData.OperationCode = (byte)OperationCode.LoginArea;
             opData.SubOperationCode = (short)LoginAreaOpCode.CreateRole;
             GameEntry.PeerManager.SendMessage(sessionId, opData);
-            CosmosEntry.ReferencePoolManager.Despawn(createRoleHelper);
+            ReferencePool.Release(createRoleHelper);
         }
         void LoginRoleS2C(int sessionId, Dictionary<byte, object> dataMessage)
         {
@@ -207,7 +207,7 @@ namespace AscensionServer
                         GameEntry.RoleManager.TryAdd(roleObj.RoleID, role);
                         opData.ReturnCode = (byte)ReturnCode.Success;//登录成功
                         //GameEntry.RecordManager.RecordRole(remoteRoleObj as RoleEntity);
-                        CosmosEntry.ReferencePoolManager.Despawn(remoteRoleObj);//回收这个RemoteRole对象
+                        ReferencePool.Release(remoteRoleObj);//回收这个RemoteRole对象
                     }
                     else
                     {
@@ -240,7 +240,7 @@ namespace AscensionServer
                 if (removeResult)
                 {
                     var remoteRole = remoteRoleObj as RoleEntity;
-                    CosmosEntry.ReferencePoolManager.Despawn(remoteRole);//回收这个RemoteRole对象
+                    ReferencePool.Release(remoteRole);//回收这个RemoteRole对象
                     GameEntry.RoleManager.TryRemove(roleObj.RoleID);
                 }
                 opData.ReturnCode = (byte)ReturnCode.Success;

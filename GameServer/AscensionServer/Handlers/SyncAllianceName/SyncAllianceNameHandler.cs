@@ -22,7 +22,7 @@ namespace AscensionServer
             var allianceStatusObj = Utility.Json.ToObject<AllianceStatusDTO>(allianceJson);
             var roleAssetsObj = Utility.Json.ToObject<RoleAssetsDTO>(roleAssetsJson);
 
-            NHCriteria nHCriteriaAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("AllianceName", allianceStatusObj.AllianceName);
+            NHCriteria nHCriteriaAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("AllianceName", allianceStatusObj.AllianceName);
             var allianceNameTemp = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteriaAlliance);
             var allianceStatusTemp = AlliancelogicManager.Instance.GetNHCriteria<AllianceStatus>("ID", allianceStatusObj.ID);
             var roleAssetsTemp = AlliancelogicManager.Instance.GetNHCriteria<RoleAssets>("RoleID", roleAssetsObj.RoleID);
@@ -53,7 +53,7 @@ namespace AscensionServer
             else
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
 
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriaAlliance);
+            ReferencePool.Release(nHCriteriaAlliance);
             return operationResponse;
         }
     }

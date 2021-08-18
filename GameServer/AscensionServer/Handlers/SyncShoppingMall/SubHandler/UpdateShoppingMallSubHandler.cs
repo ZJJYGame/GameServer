@@ -19,7 +19,7 @@ namespace AscensionServer
             var dict = operationRequest.Parameters;
             string rolepurchaseJson = Convert.ToString(Utility.GetValue(dict, (byte)ParameterCode.RolePurchase));
             var rolepurchaseObj = Utility.Json.ToObject<RolePurchaseRecordDTO>(rolepurchaseJson);
-            NHCriteria nHCriteriarolepurchase = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", rolepurchaseObj.RoleID);
+            NHCriteria nHCriteriarolepurchase =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", rolepurchaseObj.RoleID);
             Utility.Debug.LogInfo("传过来的购买数据" + rolepurchaseJson);
             var rolepurchasetemp = NHibernateQuerier.CriteriaSelect<RolePurchaseRecord>(nHCriteriarolepurchase);
             if (rolepurchasetemp != null)
@@ -53,7 +53,7 @@ namespace AscensionServer
             }
             else
                 operationResponse.ReturnCode = (short)ReturnCode.Fail;
-            CosmosEntry.ReferencePoolManager.Despawns(nHCriteriarolepurchase);
+            ReferencePool.Release(nHCriteriarolepurchase);
             return operationResponse;
         }
 

@@ -21,7 +21,7 @@ namespace AscensionServer
     /// <summary>
     /// 服务器数据转换
     /// </summary>
-    [ImplementProvider]
+    [Implementer]
     public class ServerDataConvertor : IDataConvertor
     {
         public void ConvertData()
@@ -149,6 +149,9 @@ namespace AscensionServer
                 GameEntry.DataManager.TryGetValue(typeof(DailyMsg).Name, out var DailyMsgData);
                 var DailyMsgDataDict = TransObject<List<DailyMsg>>(DailyMsgData).ToDictionary(key => key.MsgIndex, value => value);
 
+                GameEntry.DataManager.TryGetValue(typeof(SecondaryJobData).Name, out var SecondaryJob);
+                var SecondaryJobDataDict = TransObject<List<SecondaryJobData>>(SecondaryJob).ToDictionary(key => key.SecondaryType, value => value);
+
                 //GameEntry.DataManager.TryGetValue(typeof(PassiveSkillsPet).Name, out var passiveSkillsPet);
                 //Utility.Debug.LogError(typeof(PassiveSkillsPet).Name);
                 //var passiveSkillsPetDict = TransObject<List<PassiveSkillsPet>>(passiveSkillsPet).ToDictionary(key => key.SkillID, value => value);
@@ -201,6 +204,7 @@ namespace AscensionServer
                 #endregion
                 //GameEntry.DataManager.TryAdd(passiveSkillsPetDict);
 
+                GameEntry.DataManager.TryAdd(SecondaryJobDataDict);
                 GameEntry.DataManager.TryAdd(DailyMsgDataDict);
                 GameEntry.DataManager.TryAdd(passiveSkillsRoleDict);
                 GameEntry.DataManager.TryAdd(passiveSkillsWeaponDict);

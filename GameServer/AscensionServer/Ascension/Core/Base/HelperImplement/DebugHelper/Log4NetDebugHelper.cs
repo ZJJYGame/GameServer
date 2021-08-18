@@ -9,7 +9,7 @@ using ExitGames.Logging;
 
 namespace AscensionServer
 {
-    public class Log4NetDebugHelper : IDebugHelper
+    public class Log4NetDebugHelper : Utility.Debug.IDebugHelper
     {
         ILogger _Logger ;
         public Log4NetDebugHelper()

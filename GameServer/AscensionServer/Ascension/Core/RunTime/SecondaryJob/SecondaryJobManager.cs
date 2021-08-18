@@ -82,16 +82,17 @@ namespace AscensionServer
             MagicWeapon=9,
 
         }
-        public override void OnPreparatory()
+        DrollRandom drollRandom = new DrollRandom();
+        protected override void OnPreparatory()
         {
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncSecondaryJob, ProcessHandlerC2S);
         }
 
         void ProcessHandlerC2S(int seeionid, OperationData packet)
         {
-            var secondaryJob = new SecondaryJobDTO();
-            Utility.Debug.LogInfo("YZQ收到的副职业请求" + packet.DataMessage.ToString());
-            Utility.Debug.LogInfo("YZQ收到的副职业请求"+ (SecondaryJobOpCode)packet.SubOperationCode);
+            SecondaryJobDTO secondaryJob;
+            //Utility.Debug.LogInfo("YZQ收到的副职业请求" + packet.DataMessage.ToString());
+            //Utility.Debug.LogInfo("YZQ收到的副职业请求"+ (SecondaryJobOpCode)packet.SubOperationCode);
             switch ((SecondaryJobOpCode)packet.SubOperationCode)
             {
                 case SecondaryJobOpCode.GetSecondaryJobStatus:
@@ -183,7 +184,7 @@ namespace AscensionServer
                     UpdateAlchemyS2C(secondaryJob.RoleID, secondaryJob.UseItemID);
                     break;
                 case FormulaDrugType.Forge:
-                    Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求>>>");
+                    Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求>>>"+Utility.Json.ToJson(secondaryJob));
                     UpdateForgeS2C(secondaryJob.RoleID, secondaryJob.UseItemID);
                     break;
                 case FormulaDrugType.Puppet:
@@ -196,7 +197,7 @@ namespace AscensionServer
 
         void GetSecondaryJobStatusS2C(int roleID)
         {
-            NHCriteria nHCriteriaRole = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("RoleID", roleID);
+            NHCriteria nHCriteriaRole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             Dictionary<byte, object> dict = new Dictionary<byte, object>();
             #region
             var alchemyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;
@@ -325,13 +326,13 @@ namespace AscensionServer
             Utility.Debug.LogInfo("角色副职业数据发送了" + Utility.Json.ToJson(data));
         }
 
-        void RoleStatusFailS2C(int roleID, SecondaryJobOpCode oPcode)
+        void RoleStatusFailS2C(int roleID, SecondaryJobOpCode oPcode,string tips=null)
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncSecondaryJob;
             opData.SubOperationCode = (byte)oPcode;
             opData.ReturnCode = (byte)ReturnCode.ItemNotFound;
-            opData.DataMessage = Utility.Json.ToJson(null);
+            opData.DataMessage = Utility.Json.ToJson(tips);
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }
         /// <summary>

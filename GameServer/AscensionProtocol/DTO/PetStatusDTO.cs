@@ -27,7 +27,7 @@ namespace AscensionProtocol.DTO
         public virtual int MagicCritDamage { get; set; }
         public virtual int ReduceCritDamage { get; set; }
         public virtual int ExpLevelUp { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             PetID = 0;
             PetMaxHP = 0;

@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
         public virtual int RoleJoinedSchool { get; set; }
         public virtual Dictionary<int, string> RoleSchoolHatred { get;set;}
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = 0;
             RoleJoiningSchool=0;

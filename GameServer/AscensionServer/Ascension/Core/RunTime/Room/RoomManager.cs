@@ -21,7 +21,8 @@ namespace AscensionServer
         /// <summary>
         /// 周期轮询释放无用的房间对象；
         /// </summary>
-        public override void OnRefresh()
+        [TickRefresh]
+        void OnRefresh()
         {
             if (IsPause)
                 return;
@@ -39,10 +40,7 @@ namespace AscensionServer
             //    }
             //}
         }
-        public override void OnTermination()
-        {
-            CloseAll();
-        }
+
         public void Allocate(ref RoomEntity room)
         {
             TryAdd(room.RoomId, room);
@@ -76,11 +74,14 @@ namespace AscensionServer
         {
             foreach (var room in roomDict.Values)
             {
-                CosmosEntry.ReferencePoolManager.Despawn(room);
+                ReferencePool.Release(room);
             }
             roomDict.Clear();
         }
-
+        protected override void OnTermination()
+        {
+            CloseAll();
+        }
     }
 }
 

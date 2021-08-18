@@ -11,7 +11,7 @@ namespace AscensionProtocol.DTO
     {
         public int RoleID { get; set; }
         public List<RoleAuctionItem> AuctionItemsGuidList { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = 0;
             AuctionItemsGuidList = null;

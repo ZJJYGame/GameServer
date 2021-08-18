@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 namespace AscensionServer
 {
-    [ImplementProvider]
+    [Implementer]
     public class PhotonMessageHelper : INetworkMessageHelper
     {
         ConcurrentDictionary<byte, IHandler> handlerDict;

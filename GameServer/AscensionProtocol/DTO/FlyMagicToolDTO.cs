@@ -13,7 +13,7 @@ namespace AscensionProtocol.DTO
         public virtual List<int>  AllFlyMagicTool{ get; set; }
         public virtual int FlyMagicToolID { get; set; }
         public Dictionary<string, int> FlyToolLayoutDict { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             AllFlyMagicTool.Clear();

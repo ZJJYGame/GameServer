@@ -14,7 +14,7 @@ namespace AscensionProtocol.DTO
         public virtual string DataTimeNow { get; set; }
         public virtual bool IsFirstGet { get; set; }
         public virtual Dictionary<string, List<DailyMessageData>> DailyMessageDict { get; set; }
-        public override void Clear()
+        public override void Release()
         {
             CurrentIndex = 0;
             DataTimeNow = null;

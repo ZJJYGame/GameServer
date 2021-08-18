@@ -14,7 +14,7 @@ namespace AscensionServer.Model
         public virtual string ItemRedeemedDict { get; set; }
         public virtual string ItemNotRefreshDict { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             ItemAmountDict = null;

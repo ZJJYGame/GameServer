@@ -9,7 +9,7 @@ using NHibernate.Linq.Clauses;
 using System.ServiceModel.Configuration;
 using AscensionProtocol;
 using AscensionProtocol.DTO;
-
+using Cosmos.ECS;
 namespace AscensionServer
 {
     /// <summary>
@@ -156,7 +156,7 @@ namespace AscensionServer
             }
             currentTick++;
         }
-        public void Clear()
+        public void Release()
         {
             //Utility.Debug.LogWarning($"Level:{LevelId}无玩家，Clear");
             this.LevelId = 0;
@@ -169,7 +169,7 @@ namespace AscensionServer
         }
         public static LevelEntity Create(LevelTypeEnum levelType, int levelId, int capacity)
         {
-            LevelEntity se = CosmosEntry.ReferencePoolManager.Spawn<LevelEntity>();
+            LevelEntity se =ReferencePool.Accquire<LevelEntity>();
             se.LevelType = levelType;
             se.Available = true;
             se.Capacity = capacity;
@@ -178,7 +178,7 @@ namespace AscensionServer
         }
         public static void Release(LevelEntity levelEntity)
         {
-            CosmosEntry.ReferencePoolManager.Despawn(levelEntity);
+            ReferencePool.Release(levelEntity);
         }
         /// <summary>
         /// 将进入的玩家发送到已经在场景中的玩家
@@ -218,7 +218,7 @@ namespace AscensionServer
                 opData.ReturnCode = (byte)ReturnCode.Empty;
             }
             dataMessage.Add((byte)LevelParameterCode.ServerSyncInterval, ApplicationBuilder.MSInterval);
-            opData.DataMessage = Utility.MessagePack.ToJson(dataMessage);
+            opData.DataMessage = Utility.MessagePack.SerializeToJson(dataMessage);
             conn.RoleEntity.SendMessage(opData);
             opDataPool.Despawn(opData);
             messageDataPool.Despawn(dataMessage);

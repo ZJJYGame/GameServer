@@ -32,7 +32,7 @@ namespace AscensionServer
             if (true)
             {
                 #region  MySql模块
-                NHCriteria nHCriteriaimmortalsAllianceslist = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", 1);
+                NHCriteria nHCriteriaimmortalsAllianceslist =ReferencePool.Accquire<NHCriteria>().SetValue("ID", 1);
                 nhcriteriaList.Add(nHCriteriaimmortalsAllianceslist);
                 var immortalsAllianceslistTemp = NHibernateQuerier.CriteriaSelect<Alliances>(nHCriteriaimmortalsAllianceslist);
 
@@ -45,7 +45,7 @@ namespace AscensionServer
 
                         for (int i = immortalsAllianceObj.Index; i < immortalsAllianceObj.AllIndex; i++)
                         {
-                            NHCriteria nHCriteriaimmortalsAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", alliances[i]);
+                            NHCriteria nHCriteriaimmortalsAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("ID", alliances[i]);
                             var alliancestatusTemp = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteriaimmortalsAlliance);
                             AllianceStatusDTO allianceStatusDTO = new AllianceStatusDTO() { ID = alliancestatusTemp.ID, AllianceLevel = alliancestatusTemp.AllianceLevel, AllianceMaster = alliancestatusTemp.AllianceMaster, AllianceName = alliancestatusTemp.AllianceName, AllianceNumberPeople = alliancestatusTemp.AllianceNumberPeople, AlliancePeopleMax = alliancestatusTemp.AlliancePeopleMax, Manifesto = alliancestatusTemp.Manifesto, Popularity = alliancestatusTemp.Popularity };
                             ImmortalsAllianceList.Add(allianceStatusDTO);
@@ -63,7 +63,7 @@ namespace AscensionServer
                         Utility.Debug.LogInfo("2开始的下标" + immortalsAllianceObj.Index + "获得的仙盟列表数据" + immortalsAllianceObj.AllIndex + "数据库的总数" + alliances.Count);
                         for (int i = immortalsAllianceObj.Index; i <alliances.Count ; i++)
                         {
-                            NHCriteria nHCriteriaimmortalsAlliance = CosmosEntry.ReferencePoolManager.Spawn<NHCriteria>().SetValue("ID", alliances[i]);
+                            NHCriteria nHCriteriaimmortalsAlliance =ReferencePool.Accquire<NHCriteria>().SetValue("ID", alliances[i]);
                             var alliancestatusTemp = NHibernateQuerier.CriteriaSelect<AllianceStatus>(nHCriteriaimmortalsAlliance);
                             AllianceStatusDTO allianceStatusDTO = new AllianceStatusDTO() { ID = alliancestatusTemp.ID, AllianceLevel = alliancestatusTemp.AllianceLevel, AllianceMaster = alliancestatusTemp.AllianceMaster, AllianceName = alliancestatusTemp.AllianceName, AllianceNumberPeople = alliancestatusTemp.AllianceNumberPeople, AlliancePeopleMax = alliancestatusTemp.AlliancePeopleMax, Manifesto = alliancestatusTemp.Manifesto, Popularity = alliancestatusTemp.Popularity };
                             ImmortalsAllianceList.Add(allianceStatusDTO);
@@ -79,7 +79,7 @@ namespace AscensionServer
                     }
                 }
 
-                CosmosEntry.ReferencePoolManager.Despawns(nhcriteriaList);
+                ReferencePool.Release(nhcriteriaList.ToArray());
                 #endregion
             }
             else

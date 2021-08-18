@@ -20,7 +20,7 @@ namespace AscensionServer.Model
             Recipe_Array = "15401";
         }
 
-        public override void Clear()
+        public override void Release()
         {
             RoleID = -1;
             JobLevel = 0;

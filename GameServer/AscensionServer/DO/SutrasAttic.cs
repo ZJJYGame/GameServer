@@ -14,7 +14,7 @@ namespace AscensionServer.Model
         public virtual String SutrasAmountDict { get; set; }
         public virtual String SutrasRedeemedDictl { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             SutrasAmountDict=null;

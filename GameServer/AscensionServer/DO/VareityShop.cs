@@ -15,7 +15,7 @@ namespace AscensionServer.Model
             AllGoods = null;
         }
 
-        public override void Clear()
+        public override void Release()
         {
             AllGoods = null;
         }

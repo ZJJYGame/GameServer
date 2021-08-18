@@ -33,7 +33,7 @@ namespace AscensionProtocol.DTO
             JobNumDict.Add(935, 0);
             JobNumDict.Add(936, 0);
         }
-        public override void Clear()
+        public override void Release()
         {
             AllianceID = -1;
             ApplyforMember =new List<int>();

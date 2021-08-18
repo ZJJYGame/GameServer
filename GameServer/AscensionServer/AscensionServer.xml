@@ -4,24 +4,6 @@
         <name>AscensionServer</name>
     </assembly>
     <members>
-        <member name="M:AscensionServer.IActorManager.TryAdd(System.Byte,System.Int32,AscensionServer.AscensionPeer)">
-            <summary>
-            添加Actor
-            </summary>
-            <param name="id"></param>
-            <param name="peer"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AscensionServer.IActorManager.AddOrUpdate(System.Byte,System.Int32,AscensionServer.AscensionPeer)">
-            <summary>
-            添加或更新Actor;
-            若存在，则更新；
-            若不存在，则添加；
-            </summary>
-            <param name="id"></param>
-            <param name="peer"></param>
-            <returns></returns>
-        </member>
         <member name="P:AscensionServer.RedisConfig.Configuration">
              <summary>
             192.168.0.117:6379,password=123456,DefaultDatabase=3
@@ -651,6 +633,69 @@
             十进制：21
             </summary>
         </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.Serialize``1(``0)">
+            <summary>
+            序列化对象到二进制；
+            </summary>
+            <typeparam name="T">mp标记的对象类型</typeparam>
+            <param name="obj">mp对象</param>
+            <returns>序列化后的对象</returns>
+        </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.Deserialize``1(System.Byte[])">
+            <summary>
+            反序列化二进制到对象；
+            </summary>
+            <typeparam name="T">mp标记的对象类型</typeparam>
+            <param name="bytes">需要反序列化的数组</param>
+            <returns>反序列化后的对象</returns>
+        </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.Deserialize(System.Byte[],System.Type)">
+            <summary>
+            反序列化二进制到对象；
+            </summary>
+            <param name="bytes">需要反序列化的数组</param>
+            <param name="type">mp标记的对象类型</param>
+            <returns>反序列化后的对象</returns>
+        </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.BytesToJson(System.Byte[])">
+            <summary>
+            byte[]转json字符串；
+            </summary>
+            <param name="jsonBytes">需要被转换成json的byte数组</param>
+            <returns>转换后的json</returns>
+        </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.JsonToBytes(System.String)">
+            <summary>
+            json字符串转byte[]；
+            </summary>
+            <param name="json">需要被转换成bytes的json</param>
+            <returns>转换后的bytes</returns>
+        </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.DeserializeJson``1(System.String)">
+            <summary>
+            json字符串反序列化成对象；
+            </summary>
+            <typeparam name="T">mp标记的对象类型</typeparam>
+            <param name="json">需要被转换的json</param>
+            <returns>反序列化后的对象</returns>
+        </member>
+        <member name="M:AscensionServer.ImplMessagePackHelper.DeserializeJson(System.String,System.Type)">
+            <summary>
+            json字符串反序列化成对象；
+            </summary>
+            <param name="json">需要被转换的json</param>
+            <param name="type">mp标记的对象类型</param>
+            <returns>反序列化后的对象</returns>
+        </member>
+        <!-- 对于成员“M:AscensionServer.ImplMessagePackHelper.SerializeToJson``1(``0)”忽略有格式错误的 XML 注释 -->
+        <member name="M:AscensionServer.ImplMessagePackHelper.SerializeToJsonBytes``1(``0)">
+            <summary>
+            对象序列化成json的bytes；
+            </summary>
+            <typeparam name="T">mp标记的对象类型</typeparam>
+            <param name="obj">mp对象</param>
+            <returns>转换后的bytes</returns>
+        </member>
         <member name="M:AscensionServer.RecordHelper.RecordRole(System.Int32)">
             <summary>
             记录离线时间
@@ -1063,34 +1108,6 @@
             <param name="schoolDTO"></param>
             <returns></returns>
         </member>
-        <member name="T:AscensionServer.ActorManager">
-            <summary>
-            Actor类型为Peer类型
-            </summary>
-        </member>
-        <member name="F:AscensionServer.ActorManager.actorPoolDict">
-            <summary>
-            Peer类型的Actor
-            </summary>
-        </member>
-        <member name="M:AscensionServer.ActorManager.TryAdd(System.Byte,System.Int32,AscensionServer.AscensionPeer)">
-            <summary>
-            添加Actor
-            </summary>
-            <param name="id"></param>
-            <param name="peer"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AscensionServer.ActorManager.AddOrUpdate(System.Byte,System.Int32,AscensionServer.AscensionPeer)">
-            <summary>
-            添加或更新Actor;
-            若存在，则更新；
-            若不存在，则添加；
-            </summary>
-            <param name="id"></param>
-            <param name="peer"></param>
-            <returns></returns>
-        </member>
         <member name="M:AscensionServer.AuctionManager.ServerAuctionGoodsGet(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             获取拍卖品
@@ -1431,7 +1448,7 @@
             处理角色宗门成功发送
             </summary>
         </member>
-        <member name="M:AscensionServer.GangsMananger.RoleStatusFailS2C(System.Int32,AscensionProtocol.AllianceOpCode)">
+        <member name="M:AscensionServer.GangsMananger.RoleStatusFailS2C(System.Int32,AscensionProtocol.AllianceOpCode,System.String)">
             <summary>
             处理角色宗门失败发送
             </summary>
@@ -2089,11 +2106,20 @@
             近战or远程攻击限定
             </summary>
         </member>
-        <member name="M:AscensionServer.BattleBuffEventBase.Trigger(AscensionProtocol.DTO.BattleTransferDTO,AscensionServer.BattleCharacterEntity,AscensionServer.BattleDamageData,AscensionServer.ISkillAdditionData)">
+        <member name="M:AscensionServer.BattleBuffEventBase.Trigger(AscensionServer.BattleCharacterEntity,AscensionServer.BattleDamageData,AscensionServer.ISkillAdditionData)">
             <summary>
             具体buff触发事件实现
             </summary>
             <param name="skillAdditionData">用于记录临时的加成数据，比如技能加成</param>
+        </member>
+        <member name="M:AscensionServer.BattleBuffEventBase.TriggerEventMethod(AscensionServer.BattleCharacterEntity,AscensionServer.BattleDamageData,AscensionServer.ISkillAdditionData)">
+            <summary>
+            buff触发事件的具体实现
+            </summary>
+            <param name="battleTransferDTO"></param>
+            <param name="target">当前角色的行为目标</param>
+            <param name="battleDamageData"></param>
+            <param name="skillAdditionData"></param>
         </member>
         <member name="M:AscensionServer.BattleBuffEventBase.SetValue(AscensionServer.BattleBuffEventData,AscensionServer.BattleSkillAddBuffValue)">
             <summary>
@@ -2859,7 +2885,7 @@
             <param name="opcode"></param>
             <param name="data"></param>
         </member>
-        <member name="M:AscensionServer.PetStatusManager.ResultFailS2C(System.Int32,AscensionProtocol.RolePetOpCode)">
+        <member name="M:AscensionServer.PetStatusManager.ResultFailS2C(System.Int32,AscensionProtocol.RolePetOpCode,System.String)">
             <summary>
             失败返回
             </summary>
@@ -2921,6 +2947,11 @@
             <param name="petID"></param>
             <param name="petName"></param>
             <param name="rolePet"></param>
+        </member>
+        <member name="M:AscensionServer.PetStatusManager.PetUpdateLevel(System.Collections.Generic.Dictionary{System.Int32,AscensionServer.PetLevelData},AscensionServer.Model.Pet,AscensionProtocol.DTO.RoleDTO,System.Int32)">
+            <summary>
+            宠物升级判断处理
+            </summary>
         </member>
         <member name="M:AscensionServer.PetStatusManager.VerifyPetAbilitypoint(AscensionServer.Model.Pet,System.Int32@)">
             <summary>
@@ -3021,6 +3052,21 @@
             <param name="roleStatus"></param>
             <returns></returns>
         </member>
+        <member name="M:AscensionServer.PracticeManager.AlgorithmGongFa(System.Int32)">
+            <summary>
+            计算所有功法属性
+            </summary>
+            <param name="roleID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.AlgorithmMiShu(System.Int32,AscensionProtocol.DTO.MiShuDTO)">
+            <summary>
+            计算所有秘术属性
+            </summary>
+            <param name="roleID"></param>
+            <param name="miShuDTO"></param>
+            <returns></returns>
+        </member>
         <member name="M:AscensionServer.PracticeManager.RoleAblility(AscensionProtocol.DTO.RoleStatusPointDTO,AscensionServer.Model.RoleStatus)">
             <summary>
             人物加点的加成
@@ -3054,7 +3100,7 @@
             <param name="roleStatus"></param>
             <returns></returns>
         </member>
-        <member name="M:AscensionServer.PracticeManager.SkillAlgorithm(System.Int32,AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleGongFaDTO,AscensionProtocol.DTO.RoleMiShuDTO)">
+        <member name="M:AscensionServer.PracticeManager.SkillAlgorithm(System.Int32,AscensionProtocol.DTO.RoleGongFaDTO,AscensionProtocol.DTO.RoleMiShuDTO)">
             <summary>
             计算技能加成
             </summary>
@@ -3062,7 +3108,7 @@
             计算技能加成
             </summary>
         </member>
-        <member name="M:AscensionServer.PracticeManager.RoleStatusAlgorithm(System.Int32,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleAllianceSkill)">
+        <member name="M:AscensionServer.PracticeManager.RoleStatusAlgorithm(System.Int32,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleAllianceSkill,System.Int32)">
             <summary>
             获取Redis各部分加成
             </summary>
@@ -3089,6 +3135,11 @@
             <param name="roleStatus"></param>
             <param name="obj"></param>
             <returns></returns>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.GetAllSkill">
+            <summary>
+            获取角色所有技能
+            </summary>
         </member>
         <member name="M:AscensionServer.PracticeManager.TriggerBottleneckS2C(System.Int32,System.Int32,System.Boolean@)">
             <summary>
@@ -3424,7 +3475,7 @@
             <param name="pointDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:AscensionServer.RoleStatusManager.GetRoleStatus(System.Int32,AscensionServer.RoleStatusDatas)">
+        <member name="M:AscensionServer.RoleStatusManager.GetRoleStatus(System.Int32)">
              <summary>
             获取数据库功法秘术数值
              </summary>
@@ -3818,6 +3869,21 @@
             装备锻造属性计算
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.SecondaryJobManager.DrollRandom.Next(System.Int32)">
+            <summary>
+            从0到maxValue,不包括maxValue
+            </summary>
+            <param name="maxValue">最大值</param>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.SecondaryJobManager.DrollRandom.Next(System.Int32,System.Int32)">
+            <summary>
+            从minValue到maxValue,不包括maxValue
+            </summary>
+            <param name="minValue">最小值</param>
+            <param name="maxValue">最大值</param>
             <returns></returns>
         </member>
         <member name="T:AscensionServer.SkillEntity">

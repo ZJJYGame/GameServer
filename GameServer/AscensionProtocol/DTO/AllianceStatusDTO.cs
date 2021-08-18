@@ -46,7 +46,7 @@ namespace AscensionProtocol.DTO
         /// </summary>
         public virtual int OnLineNum { get; set; }
 
-        public override void Clear()
+        public override void Release()
         {
             ID = -1;
             AllianceLevel = 0;
