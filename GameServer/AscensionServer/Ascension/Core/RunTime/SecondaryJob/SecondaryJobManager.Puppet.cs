@@ -65,7 +65,7 @@ namespace AscensionServer
                         if (randNum > formulaData.SuccessRate)
                         {
                                 Utility.Debug.LogInfo("YZQ收到的副职业请求3");
-                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet, default);
+                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet,default);
                                 //鍛造失敗
                                 return;
                             }
@@ -137,6 +137,7 @@ namespace AscensionServer
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PuppetPerfix, roleID.ToString(), puppet);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(puppet));
                             #endregion
+
                         }
                         else
                         {
@@ -344,14 +345,14 @@ namespace AscensionServer
                             if (formula.NeedJobLevel > puppet.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>3");
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                                 return;
                             }
                             #region 等级判断
                             //if (formula.FormulaLevel > role.RoleLevel)
                             //{
                             //    Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>4");
-                            //    RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                            //    RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus,"学习配方失败");
                             //    return;
                             //}
                             #endregion
@@ -374,7 +375,7 @@ namespace AscensionServer
                             else
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>1");
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                             }
                                
                         }
@@ -508,6 +509,7 @@ namespace AscensionServer
         Puppet ChangeDataType(PuppetDTO puppetDTO)
         {
             Puppet puppet = new Puppet();
+
             puppet.RoleID = puppetDTO.RoleID;
             puppet.Recipe_Array = Utility.Json.ToJson(puppetDTO.Recipe_Array);
             puppet.JobLevel = puppetDTO.JobLevel;
@@ -517,7 +519,7 @@ namespace AscensionServer
 
         PuppetUnit ChangeDataType(PuppetUnitDTO unitDTO)
         {
-            PuppetUnit puppet = new PuppetUnit();
+            PuppetUnit puppet = new PuppetUnit();         
             puppet.RoleID = unitDTO.RoleID;
             puppet.PuppetUnitInfoDict = Utility.Json.ToJson(unitDTO.PuppetUnitInfoDict);
             puppet.UnitIndesDict = Utility.Json.ToJson(unitDTO.UnitIndesDict);

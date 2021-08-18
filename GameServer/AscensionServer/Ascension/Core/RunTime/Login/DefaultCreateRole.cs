@@ -216,12 +216,17 @@ namespace AscensionServer
                 #endregion
                 #region 副职业
                 NHibernateQuerier.Insert<Alchemy>(new Alchemy() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
+                RedisHelper.Hash.HashSet(RedisKeyDefine._AlchemyPostfix, rolestatus.RoleID.ToString(), new AlchemyDTO() { RoleID = rolestatus.RoleID });
                 NHibernateQuerier.Insert<HerbsField>(new HerbsField() { RoleID = rolestatus.RoleID, jobLevel = 0, AllHerbs = Utility.Json.ToJson(new List<HerbFieldStatus>()) });
+
                 NHibernateQuerier.Insert<Forge>(new Forge() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
+                RedisHelper.Hash.HashSet(RedisKeyDefine._ForgePerfix, rolestatus.RoleID.ToString(), new ForgeDTO() { RoleID = rolestatus.RoleID });
                 NHibernateQuerier.Insert<SpiritualRunes>(new SpiritualRunes() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
                 NHibernateQuerier.Insert<Puppet>(new Puppet() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
                 RedisHelper.Hash.HashSet(RedisKeyDefine._PuppetPerfix, rolestatus.RoleID.ToString(), new PuppetDTO() { RoleID = rolestatus.RoleID });
                 NHibernateQuerier.Insert<TacticFormation>(new TacticFormation() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
+
+
                 NHibernateQuerier.SaveOrUpdate(new RoleWeapon() { RoleID = rolestatus.RoleID});
                 RedisHelper.Hash.HashSet(RedisKeyDefine._RoleWeaponPostfix, rolestatus.RoleID.ToString(),new RoleWeaponDTO());
                 NHibernateQuerier.SaveOrUpdate(new PuppetUnit() { RoleID = rolestatus.RoleID });

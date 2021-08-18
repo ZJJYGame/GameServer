@@ -563,31 +563,31 @@ namespace AscensionServer
 
             var roleEquipmentExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleEquipmentPerfix, roleid.ToString()).Result;
 
-            //if (roleWeaponExist && roleEquipmentExist)
-            //{
-            //    var roleWeaponDTO = RedisHelper.Hash.HashGetAsync<RoleWeaponDTO>(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
-            //    var roleEquipmentDTO = RedisHelper.Hash.HashGetAsync<RoleEquipmentDTO>(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
+            if (roleWeaponExist && roleEquipmentExist)
+            {
+                var roleWeaponDTO = RedisHelper.Hash.HashGetAsync<RoleWeaponDTO>(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
+                var roleEquipmentDTO = RedisHelper.Hash.HashGetAsync<RoleEquipmentDTO>(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
 
-            //    if (roleWeaponDTO != null && roleEquipmentDTO != null)
-            //    {
-            //        GameEntry.DataManager.TryGetValue<Dictionary<int, PassiveSkillsRole>>(out var roleskillDict);
-            //        RoleStatusAdditionDTO roleStatus = new RoleStatusAdditionDTO();
-            //        var WeaponDict = new Dictionary<int, WeaponDTO>();
-            //        for (int i = 0; i < ids.Count; i++)
-            //        {
-            //            foreach (var item in roleEquipmentDTO.Weapon.Values)
-            //                WeaponDict.TryAdd(roleWeaponDTO.WeaponStatusDict[item].WeaponType, roleWeaponDTO.WeaponStatusDict[item]);
+                if (roleWeaponDTO != null && roleEquipmentDTO != null)
+                {
+                    GameEntry.DataManager.TryGetValue<Dictionary<int, PassiveSkillsRole>>(out var roleskillDict);
+                    RoleStatusAdditionDTO roleStatus = new RoleStatusAdditionDTO();
+                    var WeaponDict = new Dictionary<int, WeaponDTO>();
+                    for (int i = 0; i < ids.Count; i++)
+                    {
+                        foreach (var item in roleEquipmentDTO.Weapon.Values)
+                            WeaponDict.TryAdd(roleWeaponDTO.WeaponStatusDict[item].WeaponType, roleWeaponDTO.WeaponStatusDict[item]);
 
-            //            if (WeaponDict.ContainsKey(roleskillDict[ids[i]].WeaponType))
-            //             roleStatus = Addition(roleskillDict[ids[i]], roleStatus); 
-            //        }
-            //        return roleStatus;
-            //    }
-            //    else
-            //        return null;
-            //}
-            //else
-            return null;
+                        if (WeaponDict.ContainsKey(roleskillDict[ids[i]].WeaponType))
+                            roleStatus = Addition(roleskillDict[ids[i]], roleStatus);
+                    }
+                    return roleStatus;
+                }
+                else
+                    return null;
+            }
+            else
+                return null;
         }
         /// <summary>
         /// 获取Redis各部分加成
@@ -597,7 +597,7 @@ namespace AscensionServer
         /// <param name="statusMS">秘术加成</param>
         /// <param name="statusPoint">加点加成</param>
         /// <param name="statusEquip">装备加成</param>
-        public  RoleStatusDTO RoleStatusAlgorithm(int roleid, RoleStatusDTO statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatusDTO statusPoint = null, RoleStatusAdditionDTO statusEquip = null,RoleAllianceSkill roleAllianceSkill=null,int rolelevel = 0)
+        public  RoleStatusDTO RoleStatusAlgorithm (int roleid, RoleStatusDTO statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatusDTO statusPoint = null, RoleStatusAdditionDTO statusEquip = null,RoleAllianceSkill roleAllianceSkill=null,int rolelevel = 0)
         {
             SkillsData hp=new SkillsData();
             SkillsData soul = new SkillsData();

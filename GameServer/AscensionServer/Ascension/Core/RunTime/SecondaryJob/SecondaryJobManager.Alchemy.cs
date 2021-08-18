@@ -63,7 +63,7 @@ namespace AscensionServer
                             if (formula.NeedJobLevel > alchemy.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求2");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                                 return;
                             }
 
@@ -88,10 +88,10 @@ namespace AscensionServer
                                 await RedisHelper.Hash.HashSetAsync<AlchemyDTO>(RedisKeyDefine._AlchemyPostfix, roleID.ToString(), alchemy);
                             }
                             else
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus,"学习配方失败");
                         }
                         else
-                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                     }
                     else
                         UpdateAlchemyMySql(roleID, UseItemID, nHCriteria);
@@ -101,7 +101,7 @@ namespace AscensionServer
             }
             else {
                 Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求q");
-                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                 
             }
 
@@ -111,7 +111,7 @@ namespace AscensionServer
         /// </summary>
         /// <param name="secondaryJobDTO"></param>
         /// <param name="nHCriteriarole"></param>
-        void CompoundAlchemyS2C(int roleID, int UseItemID)
+       async void CompoundAlchemyS2C(int roleID, int UseItemID)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
             var alchemyExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;
@@ -187,6 +187,15 @@ namespace AscensionServer
                         dict.Add((byte)ParameterCode.RoleAssets, assest);
                         dict.Add((byte)ParameterCode.RoleStatus, role);
                         RoleStatusSuccessS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, dict);
+                        #region 更新到数据库
+
+                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString(), alchemy);
+                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assest);
+                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString(), role);
+                        await NHibernateQuerier.UpdateAsync(role);
+                        await NHibernateQuerier.UpdateAsync(assest);
+                        await NHibernateQuerier.UpdateAsync(ChangeDataType(alchemy));
+                        #endregion
                     }
                     else
                     {
@@ -313,6 +322,16 @@ namespace AscensionServer
                         dict.Add((byte)ParameterCode.RoleAssets, assest);
                         dict.Add((byte)ParameterCode.RoleStatus, role);
                         RoleStatusSuccessS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, dict);
+
+                        #region 更新到数据库
+
+                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._AlchemyPerfix, roleID.ToString(), alchemy);
+                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assest);
+                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString(), role);
+                        await NHibernateQuerier.UpdateAsync(role);
+                        await NHibernateQuerier.UpdateAsync(assest);
+                        await NHibernateQuerier.UpdateAsync(ChangeDataType(alchemy));
+                        #endregion
                     }
                     else { Utility.Debug.LogInfo("YZQ开始合成丹药失败"); RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy); }
                        

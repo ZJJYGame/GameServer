@@ -40,9 +40,11 @@ namespace AscensionServer
             {
                 var tempid = Utility.Converter.RetainInt32(useItemID, 5);
                 var forgeExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._ForgePerfix, roleID.ToString()).Result;
+                Utility.Debug.LogInfo("YZQ添加锻造配方请求判断1"+ forgeExist+ roleID);
                 if (forgeExist)
                 {
                     var forge = RedisHelper.Hash.HashGetAsync<ForgeDTO>(RedisKeyDefine._ForgePerfix, roleID.ToString()).Result;
+                    Utility.Debug.LogInfo("YZQ添加锻造配方请求判断2"+ (forge != null));
                     if (forge != null)
                     {
                         if (formulaDataDict.TryGetValue(tempid, out var formula))
@@ -50,7 +52,7 @@ namespace AscensionServer
                             if (formula.NeedJobLevel > forge.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ添加锻造配方请求3");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                                 return;
                             }
                             #region 等级判断
@@ -74,18 +76,18 @@ namespace AscensionServer
                             else
                             {
                                 Utility.Debug.LogInfo("YZQ添加锻造配方请求4,需要提示已习得该配方");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
-                            }                    
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                            }
                         }
                     }
-                    else
-                        UpdateForgeMySql(roleID, useItemID, nHCriteria);
+                    else { }
+                    // UpdateForgeMySql(roleID, useItemID, nHCriteria);
                 }
-                else
-                    UpdateForgeMySql(roleID, useItemID, nHCriteria);
+                else { }
+                    //UpdateForgeMySql(roleID, useItemID, nHCriteria);
             }
             else
-                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
 
         }
         /// <summary>
@@ -100,13 +102,13 @@ namespace AscensionServer
             var roleweaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, roleID.ToString()).Result;
             NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
-            if (forgeExist&& roleExist&& assestExist&&roleweaponExist)
+            if (forgeExist && roleExist && assestExist && roleweaponExist)
             {
                 var forge = RedisHelper.Hash.HashGetAsync<ForgeDTO>(RedisKeyDefine._ForgePerfix, roleID.ToString()).Result;
                 var role = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
                 var assest = RedisHelper.Hash.HashGetAsync<RoleAssetsDTO>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
                 var roleweapon = RedisHelper.Hash.HashGetAsync<RoleWeaponDTO>(RedisKeyDefine._RoleWeaponPostfix, roleID.ToString()).Result;
-                if (forge != null && role != null && assest != null&& roleweapon!=null)
+                if (forge != null && role != null && assest != null && roleweapon != null)
                 {
                     var forgeid = 0;//锻造出来的装备法宝唯一ID
                     GameEntry.DataManager.TryGetValue<Dictionary<int, FormulaForgeData>>(out var formulaDataDict);
@@ -128,7 +130,7 @@ namespace AscensionServer
                         }
                         var randNum = drollRandom.Next(1, 101);
                         Utility.Debug.LogError("随机出的数据为" + randNum + "成功率为" + formulaData.SuccessRate);
-                        if (randNum> formulaData.SuccessRate)
+                        if (randNum > formulaData.SuccessRate)
                         {
                             RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundForge, default);
                             Utility.Debug.LogInfo("YZQ鍛造失敗随机数：" + randNum + "成功率：" + formulaData.SuccessRate);
@@ -202,26 +204,35 @@ namespace AscensionServer
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(roleweapon));
                             InventoryManager.AddNewItem(roleID, forgeid, 1);
 
-                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._ForgePerfix, roleID.ToString(), forge);
-                            await NHibernateQuerier.UpdateAsync(ChangeDataType(forge));
-
                             Dictionary<byte, object> dict = new Dictionary<byte, object>();
                             dict.Add((byte)ParameterCode.JobForge, forge);
                             dict.Add((byte)ParameterCode.RoleAssets, assest);
                             dict.Add((byte)ParameterCode.RoleStatus, role);
                             RoleStatusSuccessS2C(roleID, SecondaryJobOpCode.CompoundForge, dict);
+
+                            #region 更新到数据库
+
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._ForgePerfix, roleID.ToString(), forge);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assest);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString(), role);
+                            await NHibernateQuerier.UpdateAsync(role);
+                            await NHibernateQuerier.UpdateAsync(assest);
+                            await NHibernateQuerier.UpdateAsync(ChangeDataType(forge));
+                            #endregion
                         }
-                        else {
+                        else
+                        {
                             Utility.Debug.LogInfo("YZQ计算属性鍛造失");
                             RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundForge);
                         }
-                            
+
                     }
                 }
             }
         }
 
         #endregion
+
 
         #region MySql
         /// <summary>
@@ -250,12 +261,12 @@ namespace AscensionServer
                     await RedisHelper.Hash.HashSetAsync<ForgeDTO>(RedisKeyDefine._ForgePerfix, roleID.ToString(), ChangeDataType(forge));
                 }
                 else {
-                    RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                    RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
                 }
                    
             }
             else
-                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
         }      
         #endregion
         /// <summary>

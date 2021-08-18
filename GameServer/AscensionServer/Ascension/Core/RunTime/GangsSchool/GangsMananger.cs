@@ -15,22 +15,23 @@ namespace AscensionServer
     {
         protected override void OnPreparatory()
         {
+            //刷新宗门签到
             //RedisManager.Instance.AddKeyExpireListener(RedisKeyDefine._RefreshAllianceSigninPerfix, RefreshSignin);
 
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.SyncRoleAlliance, ProcessHandlerC2S);
         }
         void ProcessHandlerC2S(int seeionid, OperationData packet)
         {
-            var roleObj=new RoleDTO();
-            var dict = new Dictionary<byte,object>();
-            var allianceObj = new AlliancesDTO();
-            var roleAllianceObj = new RoleAllianceDTO();
-            var allianceStatusObj = new AllianceStatus();
-            var allianceConstructionObj = new AllianceConstructionDTO();
-            var allianceExchangeGoodsDTO = new AllianceExchangeGoodsDTO();
-            var roleAllianceSkillDTO = new RoleAllianceSkillDTO();
-            var memberObj = new AllianceMemberDTO();
-            var exchangeObj =new ExchangeDTO();
+            RoleDTO roleObj;
+            Dictionary<byte, object> dict ;
+            AlliancesDTO allianceObj ;
+            RoleAllianceDTO roleAllianceObj;
+            AllianceStatus allianceStatusObj ;
+            AllianceConstructionDTO allianceConstructionObj ;
+            AllianceExchangeGoodsDTO allianceExchangeGoodsDTO ;
+            RoleAllianceSkillDTO roleAllianceSkillDTO ;
+            AllianceMemberDTO memberObj;
+            ExchangeDTO exchangeObj ;
             Utility.Debug.LogInfo("角色宗門" + packet.DataMessage.ToString());
             Utility.Debug.LogInfo("角色宗門" + (byte)packet.SubOperationCode);
             switch ((AllianceOpCode)packet.SubOperationCode)
@@ -47,7 +48,6 @@ namespace AscensionServer
                 case AllianceOpCode.JoinAlliance:
                     #region
                     roleAllianceObj = Utility.Json.ToObject<RoleAllianceDTO>(packet.DataMessage.ToString());
-                    Utility.Debug.LogInfo("申请加入宗門进来" + roleObj.RoleID + "" + Utility.Json.ToJson(roleAllianceObj));
                     ApplyJoinAllianceS2C(roleAllianceObj.RoleID, roleAllianceObj.AllianceID);
                     #endregion
                     break;
@@ -246,7 +246,6 @@ namespace AscensionServer
             opData.SubOperationCode = (byte)oPcode;
             opData.DataMessage = Utility.Json.ToJson(data);
             GameEntry.RoleManager.SendMessage(roleID, opData);
-            Utility.Debug.LogInfo("角色宗門数据发送了" + Utility.Json.ToJson(data));
         }
         /// <summary>
         /// 处理角色宗门失败发送

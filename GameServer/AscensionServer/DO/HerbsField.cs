@@ -15,7 +15,7 @@ namespace AscensionServer.Model
         public HerbsField()
         {
             RoleID = 0;
-            jobLevel = 4;
+            jobLevel = 1;
             AllHerbs = null;
         }
 

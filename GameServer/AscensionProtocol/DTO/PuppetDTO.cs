@@ -15,7 +15,7 @@ namespace AscensionProtocol.DTO
         public virtual HashSet<int> Recipe_Array { get; set; }
         public PuppetDTO()
         {
-            JobLevel = 0;
+            JobLevel = 1;
             JobLevelExp = 0;
             Recipe_Array = new HashSet<int>();
         }

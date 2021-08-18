@@ -16,7 +16,7 @@ namespace AscensionProtocol.DTO
         public AlchemyDTO()
         {
             RoleID = -1;
-            JobLevel = 0;
+            JobLevel = 1;
             Recipe_Array = null;
             JobLevelExp = 0;
         }

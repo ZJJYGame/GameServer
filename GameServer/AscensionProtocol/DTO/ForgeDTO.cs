@@ -13,11 +13,18 @@ namespace AscensionProtocol.DTO
         public virtual int JobLevel { get; set; }
         public virtual int JobLevelExp { get; set; }
         public virtual HashSet<int> Recipe_Array { get; set; }
-      
+        public ForgeDTO()
+        {
+            JobLevel = 1;
+            Recipe_Array = new HashSet<int>();
+            JobLevelExp = 0;
+        }
+
         public override void Release()
+
         {
             RoleID = -1;
-            JobLevel = 0;
+            JobLevel = 1;
             JobLevelExp = 0;
             Recipe_Array = null;
 

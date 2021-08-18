@@ -90,9 +90,9 @@ namespace AscensionServer
 
         void ProcessHandlerC2S(int seeionid, OperationData packet)
         {
-            var secondaryJob = new SecondaryJobDTO();
-            Utility.Debug.LogInfo("YZQ收到的副职业请求" + packet.DataMessage.ToString());
-            Utility.Debug.LogInfo("YZQ收到的副职业请求"+ (SecondaryJobOpCode)packet.SubOperationCode);
+            SecondaryJobDTO secondaryJob;
+            //Utility.Debug.LogInfo("YZQ收到的副职业请求" + packet.DataMessage.ToString());
+            //Utility.Debug.LogInfo("YZQ收到的副职业请求"+ (SecondaryJobOpCode)packet.SubOperationCode);
             switch ((SecondaryJobOpCode)packet.SubOperationCode)
             {
                 case SecondaryJobOpCode.GetSecondaryJobStatus:
@@ -184,7 +184,7 @@ namespace AscensionServer
                     UpdateAlchemyS2C(secondaryJob.RoleID, secondaryJob.UseItemID);
                     break;
                 case FormulaDrugType.Forge:
-                    Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求>>>");
+                    Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求>>>"+Utility.Json.ToJson(secondaryJob));
                     UpdateForgeS2C(secondaryJob.RoleID, secondaryJob.UseItemID);
                     break;
                 case FormulaDrugType.Puppet:

@@ -23,7 +23,7 @@ namespace AscensionServer.Model
         public override void Release()
         {
             RoleID = -1;
-            JobLevel = 0;
+            JobLevel = 1;
             JobLevelExp = 0;
             Recipe_Array = null;
         }
