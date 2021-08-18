@@ -35,13 +35,15 @@ namespace AscensionServer
                     break;
             }
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             BattleDamageData tempDamageData = owner.ReceiveBattleDamageData;
             if (tempDamageData.damageNum >= 0)
                 return;
             tempDamageData.damageNum = tempDamageData.damageNum * percentValue / 100 + fixedValue;
             tempDamageData.damageNum = tempDamageData.damageNum >= 0 ? -1 : tempDamageData.damageNum;
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
         }
 
         public BattleBuffEvent_DamageReduce(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

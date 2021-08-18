@@ -23,27 +23,33 @@ namespace AscensionServer
         {
             owner.BattleBuffController.BeforePropertyChangeEvent -= Trigger;
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
-            Utility.Debug.LogError("护盾事件开始触发"+ battleDamageData.battleSkillActionType+ battleDamageData.damageType);
             if (battleDamageData.battleSkillActionType != BattleSkillActionType.Damage)
                 return;
             if (battleDamageData.damageType != BattleSkillDamageType.Physic && battleDamageData.damageType != BattleSkillDamageType.Magic)
                 return;
+            //护盾抵消值
+            int counteractValue;
             if (Math.Abs(battleDamageData.damageNum) < shieldValue)//伤害值小于护盾值
             {
+                counteractValue= battleDamageData.damageNum;
                 battleDamageData.shieldDamage = battleDamageData.damageNum;
                 battleDamageData.damageNum = 0;
                 shieldValue += battleDamageData.shieldDamage;
             }
             else//伤害值大于护盾值
             {
+                counteractValue = shieldValue;
                 battleDamageData.shieldDamage = -shieldValue;
                 battleDamageData.damageNum += shieldValue;
                 shieldValue = 0;
                 owner.BattleBuffController.RemoveBuff(battleBuffObj);
             }
-            Utility.Debug.LogError("护盾事件触发结束");
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = counteractValue;
+
         }
         public BattleBuffEvent_Shield(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
         {

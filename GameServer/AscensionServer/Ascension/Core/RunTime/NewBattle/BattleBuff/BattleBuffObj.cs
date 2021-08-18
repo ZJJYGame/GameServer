@@ -40,8 +40,8 @@ namespace AscensionServer
         List<BattleBuffEventBase> battleBuffEventList;
         List<BattleBuffEventConditionBase> battleBuffEventConditionList;
 
-        Action<BattleTransferDTO, BattleCharacterEntity,BattleDamageData,ISkillAdditionData> buffAddEvent;
-        public event Action<BattleTransferDTO, BattleCharacterEntity, BattleDamageData, ISkillAdditionData> BuffAddEvent
+        Action< BattleCharacterEntity,BattleDamageData,ISkillAdditionData> buffAddEvent;
+        public event Action< BattleCharacterEntity, BattleDamageData, ISkillAdditionData> BuffAddEvent
         {
             add { buffAddEvent += value; }
             remove { buffAddEvent -= value; }
@@ -196,7 +196,7 @@ namespace AscensionServer
         /// </summary>
         public void OnAdd()
         {
-            buffAddEvent?.Invoke(null,null,null,null);
+            buffAddEvent?.Invoke(null,null,null);
         }
         /// <summary>
         /// buff移除事件

@@ -63,13 +63,17 @@ namespace AscensionServer
                     break;
             }
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             List<int> tempTargetList;
             if (target != null)
                 tempTargetList = owner.GetTargetIdList(skillID, false, new List<int>() { target.UniqueID });
             else
                 tempTargetList = owner.GetTargetIdList(skillID, false);
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(tempTargetList[0]);
+            battleBuffEventTriggerDTO.Num_1 = owner.BattleSkillController.nowUseSkillId;
+
             //用于恢复记录当前使用的技能
             int oldUseSkillId = owner.BattleSkillController.nowUseSkillId;
             owner.BattleSkillController.UseSkill(skillID, tempTargetList);

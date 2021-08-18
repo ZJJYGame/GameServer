@@ -44,7 +44,7 @@ namespace AscensionServer
                 UniqueId = UniqueID,
                 GlobalId = 0,
                 MasterId = MasterID,
-                ModelPath = Utility.IO.CombineRelativeFilePath(monsterDict[22012].Moster_Model, "Prefabs/Model/Character/Monster"),
+                ModelPath = monsterDict[22012].Moster_Model,
                 CharacterName = Name,
                 MaxHealth = CharacterBattleData.MaxHp,
                 Health = CharacterBattleData.Hp,

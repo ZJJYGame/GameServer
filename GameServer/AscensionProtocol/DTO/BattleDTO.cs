@@ -112,8 +112,7 @@ namespace AscensionProtocol.DTO
         /// 控制每回合的时间
         /// </summary>
         //public virtual TimerManager timer { get; set; }
-        public virtual BattleTransferDTO petBattleTransferDTO { get; set; }
-
+        public BattleTransferDTO petBattleTransferDTO { get; set; }
         /// <summary>
         /// 是否结束
         /// </summary>
@@ -141,65 +140,19 @@ namespace AscensionProtocol.DTO
         /// </summary>
         public virtual List<AddBuffDTO> AddBuffDTOList { get; set; }
         /// <summary>
-        /// 触发技能数值
+        /// buff触发事件的信息
         /// </summary>
-        public virtual int SkillReactionValue { get; set; }
+        public virtual List<BattleBuffEventTriggerDTO> BattleBuffEventTriggerDTOList { get; set; }
         /// <summary>
         /// 每回合战斗指令
         /// </summary>
         public virtual BattleCmd BattleCmd { get; set; }
-        /// <summary>
-        /// 目标值和  自身值 传递的都是一样的
-        /// </summary>
-       
-        /// <summary>
-        /// 所有玩家行动结束后结算护盾值
-        /// </summary>
-        public virtual Dictionary<int, int> RoleIdShieldValueDict { get; set; }
-        #region 设计
-
-        //所有玩家行动之前结算buff造成伤害
-        /*
-         buufid_1:{{roleid,damage},.....}
-         buufid:_2{{roleid,damage},.....}
-         */
-
-
-        //列表，按玩家出手顺序排序
-        //1. 指令类型
-        //2. 指令id列表
-        //行者ID
-        //3.行为目标i信息  列表：
-        /*目标信息集合：
-         * 目标id
-         * 目标血量伤害
-         * 目标蓝量伤害
-         * 目标神魂伤害 
-         * 目标护盾值
-         * 自身id
-         * 自身血量伤害
-         * 自身蓝量伤害
-         * 自身神魂伤害 
-         * 自身护盾值
-         * 给目标施加buff
-         * 
-         *触发技能反应枚举（如反击，守护，闪避，反震，格挡等）
-         *触发数值
-         *
-         */
-        //给自身的buff
-
-        //所有玩家行动结束buff造成伤害
-        /*
-         buufid_1:{{roleid,damage},.....}
-         buufid:_2{{roleid,damage},.....}
-         */
-        //所有玩家行动结束后结算护盾值
-        //Dict<(int)roleID,(int)护盾值>
-        #endregion
     }
     #endregion
 
+    /// <summary>
+    /// 一段技能对一个角色的行为信息
+    /// </summary>
     public class TargetInfoDTO
     {
         /// <summary>
@@ -237,10 +190,7 @@ namespace AscensionProtocol.DTO
         public virtual List<int> RemoveTargetBuff { get; set; }
 
         public virtual List<BattleBuffEventTriggerDTO> battleBuffDTOs { get; set; }
-        /// <summary>
-        /// 传输类型对象
-        /// </summary>
-        public virtual string TypeDTO { get; set; }
+
     }
     
     /// <summary>
@@ -252,10 +202,24 @@ namespace AscensionProtocol.DTO
         public virtual int TargetId { get; set; }
         public virtual int BuffId { get; set; }
         public virtual int Round { get; set; }
+        public AddBuffDTO() { }
+        public AddBuffDTO(int targetId,int buffId,int round) { }
     }
 
     /*事件对应的参数：
-        1.添加buff=>Num_1:添加的buff的Id；Num_2:持续回合数
+        1.添加buff=>BuffDTOList:添加的buff；
+        2.喊别人承担伤害=>Num_1:承担的伤害数字
+        3.buff属性变动=>Num_1:buff属性改变类型枚举（BuffEvent_PropertyChangeType）；Num_2:改变数值（百分比）
+        4.改变行为指令=>Num_1:指令类型枚举（BattleCmd）；Num_2:指令id
+        5.改变角色属性=>Num_1:改变属性类型枚举（BattleBuffEventType_RolePropertyChange）；Num_2:变动的数值
+        6.改变行为目标
+        7.伤害或治疗=>Num_1:伤害或治疗的目标属性（BuffEvent_DamageOrHeal_EffectTargetType）；Num_2:伤害或治疗的数值
+        8.伤害减免=>Num_1:减少伤害数值（待定）
+        9.驱散buff=>BuffDTOList:移除的buff；
+        10.免疫buff=>BuffDTOList：免疫的buff
+        11.为他人承受伤害=>Num_1:承担的伤害数字
+        12.护盾=>Num_1:护盾抵挡的数值
+        13.使用指定技能=>Num_1:使用的技能ID
      */
     /// <summary>
     /// buff触发的事件
@@ -267,13 +231,20 @@ namespace AscensionProtocol.DTO
         public int TriggerId { get; set; }
         public int TargetId { get; set; }
         public int BuffId { get; set; }
-        //事件触发十级的枚举
+        //事件触发时机的枚举
         public byte TriggerTime { get; set; }
         //触发事件类型的枚举
         public byte TriggerEventType { get; set; }
-        //具体客户端需要知道的参数，根据事件类型不同，参数代表的值不一样
+        //具体客户端需要知道的参数，根据事件类型不同，参数代表的值不一样(详细见注释)
         public int Num_1 { get; set; }
         public int Num_2 { get; set; }
+        //buff信息列表，目前用于buff事件所导致的buff添加和buff移除
+        public List<AddBuffDTO> BuffDTOList { get; set; }
+
+        public BattleBuffEventTriggerDTO()
+        {
+            BuffDTOList = new List<AddBuffDTO>();
+        }
     }
 }
 

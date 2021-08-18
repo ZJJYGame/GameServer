@@ -22,10 +22,14 @@ namespace AscensionServer
         }
 
 
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             owner.BattleCmd = BattleCmd.SkillInstruction;
             owner.ActionID = skillId;
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = (byte)BattleCmd.SkillInstruction;
+            battleBuffEventTriggerDTO.Num_2 = skillId;
         }
 
 

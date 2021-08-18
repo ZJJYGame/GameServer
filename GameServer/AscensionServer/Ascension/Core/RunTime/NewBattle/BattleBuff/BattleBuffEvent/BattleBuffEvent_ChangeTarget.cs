@@ -19,7 +19,7 @@ namespace AscensionServer
         {
             owner.BattleBuffController.BeforeAllocationActionEvent -= Trigger;
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             Utility.Debug.LogError("改变目标事件触发");
             switch (buffEvent_ChangeTarget_TargetType)
@@ -28,9 +28,13 @@ namespace AscensionServer
                     owner.TargetIDList.Clear();
                     BattleCharacterEntity targetEntity = GameEntry.BattleCharacterManager.GetCharacterEntity(battleBuffObj.OrginRole.UniqueID);
                     if (!targetEntity.HasDie)
+                    {
                         owner.TargetIDList.Add(battleBuffObj.OrginRole.UniqueID);
+                        BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+                    }
                     break;
             }
+            
         }
 
         public BattleBuffEvent_ChangeTarget(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

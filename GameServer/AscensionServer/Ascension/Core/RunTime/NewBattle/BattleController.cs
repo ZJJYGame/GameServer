@@ -19,15 +19,15 @@ namespace AscensionServer
         //阵营二角色列表
         public List<BattleCharacterEntity> FactionTwoCharacterEntites { get; private set; }
 
-        Action<BattleTransferDTO, BattleCharacterEntity,BattleDamageData, ISkillAdditionData> roundStartEvent;
-        public event Action<BattleTransferDTO, BattleCharacterEntity, BattleDamageData, ISkillAdditionData> RoundStartEvent
+        Action< BattleCharacterEntity,BattleDamageData, ISkillAdditionData> roundStartEvent;
+        public event Action< BattleCharacterEntity, BattleDamageData, ISkillAdditionData> RoundStartEvent
         {
             add { roundStartEvent += value; }
             remove { roundStartEvent -= value; }
         }
         //回合结束事件,在roundFinishEvent之前，处理buff事件
-        Action<BattleTransferDTO, BattleCharacterEntity, BattleDamageData, ISkillAdditionData> roundEndEvent;
-        public event Action<BattleTransferDTO, BattleCharacterEntity, BattleDamageData, ISkillAdditionData> RoundEndEvent
+        Action< BattleCharacterEntity, BattleDamageData, ISkillAdditionData> roundEndEvent;
+        public event Action< BattleCharacterEntity, BattleDamageData, ISkillAdditionData> RoundEndEvent
         {
             add { roundEndEvent += value; }
             remove { roundEndEvent -= value; }
@@ -73,10 +73,16 @@ namespace AscensionServer
             int allCount = AllCharacterEntities.Count;
             BattleCharacterEntity actCharacter;
 
-            roundStartEvent?.Invoke(null,null,null,null);
+            //回合开始事件统一触发
+            BattleTransferDTO roundStartTransfer= battleRoomEntity.SpawnBattleTransfer();
+            roundStartTransfer.RoleId = -1;
+            roundStartEvent?.Invoke(null,null,null);
+            battleRoomEntity.ReleaseBattleTransfer();
 
             for (int i = 0; i < allCount; i++)
             {
+                //检测是否有一个阵营全部死亡
+
                 actCharacter = AllCharacterEntities[i];
 
                 //分配角色行为
@@ -85,8 +91,13 @@ namespace AscensionServer
                 actCharacter.Action();
             }
 
-            roundEndEvent?.Invoke(null,null,null,null);
+            //回合结束事件统一开始触发
+            BattleTransferDTO roundEndTransfer=battleRoomEntity.SpawnBattleTransfer();
+            roundEndTransfer.RoleId = -1;
+            roundEndEvent?.Invoke(null,null,null);
+            battleRoomEntity.ReleaseBattleTransfer();
 
+            //处理回合计数
             roundFinishEvent?.Invoke();
 
             battleRoomEntity.SendBattlePerformDataS2C(battleTransferDTOs);

@@ -17,7 +17,7 @@ namespace AscensionServer
         public BattleSkillBase ownerSkill;
         protected BattleSkillEventConditionBase battleSkillEventConditionBase;
         protected BattleSkillEventData battleSkillEventData;
-        protected List<BattleTransferDTO> BattleTransferDTOList { get { return GameEntry.BattleRoomManager.GetBattleRoomEntity(OwnerEntity.RoomID).BattleTransferDTOList; } }
+        protected BattleRoomEntity BattleRoomEntity { get { return GameEntry.BattleRoomManager.GetBattleRoomEntity(OwnerEntity.RoomID); } }
         //战斗事件触发
         protected virtual void Trigger(BattleDamageData battleDamageData,ISkillAdditionData skillAdditionData)
         {
@@ -91,10 +91,9 @@ namespace AscensionServer
             Utility.Debug.LogError("回血触发");
             int value = OwnerEntity.CharacterBattleData.MaxHp * healValue / 100;
             OwnerEntity.CharacterBattleData.ChangeProperty(BattleSkillDamageTargetProperty.Health, value);
-            List<BattleTransferDTO> battleTransferDTOList = BattleTransferDTOList;
-            if (battleTransferDTOList[battleTransferDTOList.Count - 1].TargetInfos == null)
-                battleTransferDTOList[battleTransferDTOList.Count - 1].TargetInfos = new List<TargetInfoDTO>();
-            battleTransferDTOList[battleTransferDTOList.Count - 1].TargetInfos.Add(new TargetInfoDTO()
+            if (BattleRoomEntity.GetBattleTransfer().TargetInfos == null)
+                BattleRoomEntity.GetBattleTransfer().TargetInfos = new List<TargetInfoDTO>();
+            BattleRoomEntity.GetBattleTransfer().TargetInfos.Add(new TargetInfoDTO()
             {
                 TargetID= OwnerEntity.UniqueID,
                 TargetHPDamage= value,
@@ -117,7 +116,7 @@ namespace AscensionServer
                 return;
             int value = Math.Abs(battleDamageData.damageNum) * healValue / 100;
             OwnerEntity.CharacterBattleData.ChangeProperty(BattleSkillDamageTargetProperty.Health, value);
-            BattleTransferDTOList[BattleTransferDTOList.Count - 1].TargetInfos.Add(new TargetInfoDTO()
+            BattleRoomEntity.GetBattleTransfer().TargetInfos.Add(new TargetInfoDTO()
             {
                 TargetID = OwnerEntity.UniqueID,
                 TargetHPDamage = value,

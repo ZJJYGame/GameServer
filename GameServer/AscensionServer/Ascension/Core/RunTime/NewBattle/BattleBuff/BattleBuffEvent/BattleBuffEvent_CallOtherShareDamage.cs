@@ -40,7 +40,7 @@ namespace AscensionServer
                     break;
             }
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             BattleCharacterEntity targetEntity = GetTargetEntity();
             if (targetEntity.HasDie)
@@ -57,13 +57,8 @@ namespace AscensionServer
             targetEntity.OnActionEffect(newBattleDamageData);
             targetEntity.BattleBuffController.ForbiddenBuff.Remove(battleBuffObj.BuffId);
 
-            if (battleTransferDTO.TargetInfos == null)
-                battleTransferDTO.TargetInfos = new List<TargetInfoDTO>();
-            battleTransferDTO.TargetInfos.Add(new TargetInfoDTO()
-            {
-                TargetID = targetEntity.UniqueID,
-                TargetHPDamage = newBattleDamageData.damageNum,
-            });
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(targetEntity.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = newBattleDamageData.damageNum;
         }
 
         BattleCharacterEntity GetTargetEntity()

@@ -21,9 +21,10 @@ namespace AscensionServer
             battleBuffObj.BuffAddEvent -= Trigger;
             battleBuffObj.BuffRemoveEvent -= RecoverEventMethod;
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             HashSet<int> immuneBuffIdHash = owner.BattleBuffController.ImmuneBuffId;
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
             for (int i = 0; i < immuneBuffIdList.Count; i++)
             {
                 if (!immuneBuffIdHash.Contains(immuneBuffIdList[i]))
@@ -32,6 +33,7 @@ namespace AscensionServer
                     //移除所有该id的buff
                     owner.BattleBuffController.RemoveBuff(immuneBuffIdList[i]);
                 }
+                battleBuffEventTriggerDTO.BuffDTOList.Add(new AddBuffDTO() { BuffId = immuneBuffIdList[i] });
             }
         }
         protected override void RecoverEventMethod()

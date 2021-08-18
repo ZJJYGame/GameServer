@@ -88,7 +88,7 @@ namespace AscensionServer
                     break;
             }
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             int value = 0;
             if (dataSource)
@@ -100,13 +100,10 @@ namespace AscensionServer
             value = isDamge ? -value : value;
             BattleCharacterEntity targetEntity = targetIsSelf ? owner : target;
             targetEntity.CharacterBattleData.ChangeProperty(buffEvent_DamageOrHeal_EffectTargetType, value);
-            if (battleTransferDTO.TargetInfos == null)
-                battleTransferDTO.TargetInfos = new List<TargetInfoDTO>();
-            battleTransferDTO.TargetInfos.Add(new TargetInfoDTO()
-            {
-                TargetID = targetEntity.UniqueID,
-                TargetHPDamage = value,
-            });
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(targetEntity.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = (byte)buffEvent_DamageOrHeal_EffectTargetType;
+            battleBuffEventTriggerDTO.Num_2 = value;
         }
 
         public BattleBuffEvent_DamageOrHeal(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

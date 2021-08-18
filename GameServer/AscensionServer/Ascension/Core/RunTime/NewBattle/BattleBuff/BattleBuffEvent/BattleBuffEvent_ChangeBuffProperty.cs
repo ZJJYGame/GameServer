@@ -53,7 +53,7 @@ namespace AscensionServer
             }
         }
 
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             switch (buffEvent_PropertyChangeType)
             {
@@ -70,6 +70,9 @@ namespace AscensionServer
                     skillAdditionData.DodgeProp += percentValue;
                     break;
             }
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = (byte)buffEvent_PropertyChangeType;
+            battleBuffEventTriggerDTO.Num_2 = percentValue;
         }
 
         public BattleBuffEvent_ChangeBuffProperty(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

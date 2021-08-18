@@ -39,7 +39,7 @@ namespace AscensionServer
                 UniqueId = UniqueID,
                 GlobalId=0,
                 MasterId=0,
-                ModelPath= Utility.IO.CombineRelativeFilePath("MC_fashion_Female_01_Prefab", "Prefabs/Model/Character/Monster"),
+                ModelPath= "MC_fashion_Female_01_Prefab",
                 CharacterName =Name,
                 MaxHealth = CharacterBattleData.MaxHp,
                 Health = CharacterBattleData.Hp,

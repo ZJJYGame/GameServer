@@ -114,8 +114,10 @@ namespace AscensionServer
         //获取人物的战斗指令
         void GetRoleBattleCmd(int roleID, BattleCmd battleCmd, BattleTransferDTO battleTransferDTO)
         {
+            Utility.Debug.LogError($"收到{roleID}的行为{Utility.Json.ToJson(battleTransferDTO)}");
             int roomID = GameEntry.BattleCharacterManager.GetCharacterEntity(roleID).RoomID;
             battleRoomDict[roomID].GetCharacterCmd(roleID, battleCmd, battleTransferDTO);
+
         }
         /// <summary>
         /// 获取可使用的roomId

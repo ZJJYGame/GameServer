@@ -38,7 +38,30 @@ namespace AscensionServer
         }
         public Action<BattleResultInfo[]> onBattleEnd;
 
+        //一次性传输战斗信息的集合
         public List<BattleTransferDTO> BattleTransferDTOList { get; set; } = new List<BattleTransferDTO>();
+        //记录当前未结束行为传输信息的栈
+        //行为开始时压入栈，行为结束时弹出栈,顶部的即为当前占用的记录对象
+        public Stack<BattleTransferDTO> NowTransferStack { get; set; } = new Stack<BattleTransferDTO>();
+        public BattleTransferDTO SpawnBattleTransfer()
+        {
+            BattleTransferDTO battleTransferDTO = new BattleTransferDTO();
+            NowTransferStack.Push(battleTransferDTO);
+            BattleTransferDTOList.Add(battleTransferDTO);
+            return battleTransferDTO;
+        }
+        public BattleTransferDTO ReleaseBattleTransfer()
+        {
+            BattleTransferDTO result= NowTransferStack.Pop();
+            return result;
+        }
+        public BattleTransferDTO GetBattleTransfer()
+        {
+            if (NowTransferStack.Count > 0)
+                return NowTransferStack.Peek();
+            else
+                return null;
+        }
         /// <summary>
         /// 初始化房间
         /// </summary>
@@ -202,6 +225,7 @@ namespace AscensionServer
                     SendNewRoundStartMsgS2C();
             }
         }
+
 
         public void Clear()
         {

@@ -96,14 +96,17 @@ namespace AscensionServer
                     break;
             }
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             BattleCharacterEntity tempEntity;
             if (isTarget)
                 tempEntity = target;
             else
                 tempEntity = owner;
-            tempEntity.BattleBuffController.AddBuff(battleSkillAddBuffData, battleBuffObj.OwnerSkill);
+            BattleBuffObj tempbattleBuffObj= tempEntity.BattleBuffController.AddBuff(battleSkillAddBuffData, battleBuffObj.OwnerSkill);
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(tempEntity.UniqueID);
+            battleBuffEventTriggerDTO.BuffDTOList.Add(new AddBuffDTO(tempEntity.UniqueID, tempbattleBuffObj.BuffId, tempbattleBuffObj.MaxRound));
         }
         public BattleBuffEvent_AddBuff(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
         {

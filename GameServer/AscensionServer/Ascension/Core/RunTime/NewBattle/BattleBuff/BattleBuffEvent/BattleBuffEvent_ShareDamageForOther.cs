@@ -49,7 +49,7 @@ namespace AscensionServer
                 battleCharacterEntities[i].BattleBuffController.BeforeOnHitEvent -= Trigger;
             }
         }
-        protected override void TriggerEventMethod(BattleTransferDTO battleTransferDTO, BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             //自己为别人承担伤害
 
@@ -59,13 +59,17 @@ namespace AscensionServer
             newBattleDamageData.battleSkillActionType = BattleSkillActionType.Damage;
             battleDamageData.damageNum = battleDamageData.damageNum - newBattleDamageData.damageNum;
             owner.OnActionEffect(newBattleDamageData);
-            if (battleTransferDTO.TargetInfos == null)
-                battleTransferDTO.TargetInfos = new List<TargetInfoDTO>();
-            battleTransferDTO.TargetInfos.Add(new TargetInfoDTO()
+
+            if (LastBattleTransfer.TargetInfos == null)
+                LastBattleTransfer.TargetInfos = new List<TargetInfoDTO>();
+            LastBattleTransfer.TargetInfos.Add(new TargetInfoDTO()
             {
                 TargetID = owner.UniqueID,
                 TargetHPDamage = newBattleDamageData.damageNum,
             });
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(target.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = newBattleDamageData.damageNum;
         }
 
 

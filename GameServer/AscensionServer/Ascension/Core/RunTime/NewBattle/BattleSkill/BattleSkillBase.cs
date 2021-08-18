@@ -141,9 +141,12 @@ namespace AscensionServer
             return battleDamageData;
         }
         
-
-        public void AddAllBuff(BattleTransferDTO battleTransferDTO,List<BattleCharacterEntity> battleCharacterEntitiyList)
+        //为所有目标添加buff
+        public void AddAllBuff(List<BattleCharacterEntity> battleCharacterEntitiyList)
         {
+            BattleTransferDTO battleTransferDTO = GameEntry.BattleRoomManager.GetBattleRoomEntity(OwnerEntity.RoomID).GetBattleTransfer();
+            //if (battleTransferDTO == null)
+            //    return;
             float baseProp;
             float selfProp;
             float targetProp;
