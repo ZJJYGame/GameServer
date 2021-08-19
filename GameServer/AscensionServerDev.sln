@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosFramework.Core", "Cos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Protocol", "Protocol\Protocol.csproj", "{160C188D-0392-4BD2-A93A-A5C5F87424B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathLibs", "MathLibs\MathLibs.csproj", "{7A4EE98D-3253-4899-9E37-138ADAD50AA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{160C188D-0392-4BD2-A93A-A5C5F87424B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A4EE98D-3253-4899-9E37-138ADAD50AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4EE98D-3253-4899-9E37-138ADAD50AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4EE98D-3253-4899-9E37-138ADAD50AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4EE98D-3253-4899-9E37-138ADAD50AA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

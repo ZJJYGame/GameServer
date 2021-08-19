@@ -21,7 +21,7 @@
     <OutputPath>..\..\..\Server\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\Cache\</OutputPath>
     <OutputPath>..\..\..\Server\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
     <OutputPath>..\..\..\..\..\Localphotonserver\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
-    <OutputPath>..\..\..\..\Localphotonserver\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
+    <OutputPath>F:\PhotonServer_1App\deploy\Ascension\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SERVER;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -967,6 +967,10 @@
     <ProjectReference Include="..\CosmosFramework.Core\CosmosFramework.Core.csproj">
       <Project>{c39c9053-803d-429d-b60f-0b292d87daae}</Project>
       <Name>CosmosFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MathLibs\MathLibs.csproj">
+      <Project>{7a4ee98d-3253-4899-9e37-138adad50aa9}</Project>
+      <Name>MathLibs</Name>
     </ProjectReference>
     <ProjectReference Include="..\RedisService\RedisService.csproj">
       <Project>{c1e88d49-8582-4ca4-bc91-0f6147c8f876}</Project>

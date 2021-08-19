@@ -107,12 +107,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Framework\CFramework.csproj">
-      <Project>{81a14e63-385f-4b83-b403-a6b7d6fc94d8}</Project>
-      <Name>CFramework</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
