@@ -15,9 +15,9 @@ namespace AscensionServer.Model
         public virtual string Recipe_Array { get; set; }
         public SpiritualRunes()
         {
-            JobLevel = 4;
+            JobLevel = 1;
             JobLevelExp = 0;
-            Recipe_Array = "15401";
+            Recipe_Array = null;
         }
 
         public override void Release()

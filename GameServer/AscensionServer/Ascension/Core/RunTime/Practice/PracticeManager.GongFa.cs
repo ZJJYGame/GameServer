@@ -89,6 +89,13 @@ namespace AscensionServer
                         return;
                     }
 
+                    if (!role.RoleRoot.Contains(book.BookProperty.ToString()))
+                    {
+                        Utility.Debug.LogError("学习功法失败5"+ role.RoleRoot);
+                        ResultFailS2C(roleid, PracticeOpcode.AddGongFa);
+                        return;
+                    }
+
                     if (rolegongfa.GongFaIDDict.Count != 0)
                     {
                         if (rolegongfa.GongFaIDDict.ContainsKey(book.GongfaID) && !rolegongfa.GongFaIDDict.ContainsKey(book.NeedGongfaID))
@@ -207,10 +214,9 @@ namespace AscensionServer
                         return;
                     }
 
-                    var rootlist = Utility.Json.ToObject<List<int>>(role.RoleRoot);
                     if (book.BookProperty!=0)
                     {
-                        if (!rootlist.Contains(book.BookProperty))
+                        if (!role.RoleRoot.Contains(book.BookProperty.ToString()))
                         {
                             Utility.Debug.LogError("学习秘术失败5");
                             ResultFailS2C(roleid, PracticeOpcode.AddMiShu);

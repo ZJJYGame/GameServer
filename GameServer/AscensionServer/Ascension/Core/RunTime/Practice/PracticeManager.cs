@@ -74,12 +74,12 @@ namespace AscensionServer
         /// <summary>
         /// 失败返回
         /// </summary>
-        void ResultFailS2C(int roleID, PracticeOpcode opcode)
+        void ResultFailS2C(int roleID, PracticeOpcode opcode,string tips=null)
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
             var dataDict = new Dictionary<byte, object>();
-            dataDict.Add((byte)opcode, null);
+            dataDict.Add((byte)opcode, tips);
             opData.DataMessage = Utility.Json.ToJson(dataDict);
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }

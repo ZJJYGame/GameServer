@@ -68,11 +68,11 @@ namespace AscensionServer
                             }
 
                             #region 等级判断
-                            //if (formula.FormulaLevel > role.RoleLevel)
-                            //{
-                            //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
-                            //    return;
-                            //}
+                            if (formula.FormulaLevel > role.RoleLevel)
+                            {
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                return;
+                            }
                             #endregion
                             Utility.Debug.LogInfo("YZQ收到的副职业学习配方配方"+tempid+"请求");
                             Utility.Debug.LogInfo("YZQ当前副职业已学配方为" + tempid + "请求");
@@ -123,8 +123,8 @@ namespace AscensionServer
             if (alchemyExist && assestExist && roleExist&& rolering!=null)
             {
                 var alchemy = RedisHelper.Hash.HashGetAsync<AlchemyDTO>(RedisKeyDefine._AlchemyPerfix, roleID.ToString()).Result;
-                var role = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
-                var assest = RedisHelper.Hash.HashGetAsync<RoleAssetsDTO>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
+                var role = RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
+                var assest = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
                 if (alchemy != null && role != null && assest != null)
                 {
                     GameEntry.DataManager.TryGetValue<Dictionary<int, FormulaDrugData>>(out var formulaDataDict);
@@ -135,13 +135,13 @@ namespace AscensionServer
                         {
                             if (!InventoryManager.VerifyIsExist(formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i], rolering.RingIdArray))
                             {
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, "数据出错请重新登陆");
                                 return;
                             }
                         }
                         if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
                         {
-                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
+                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy,"数据出错请重新登陆");
                             return;
                         }
                         var randNum = drollRandom.Next(1, 101);
@@ -179,7 +179,6 @@ namespace AscensionServer
                                 }
                             }
                         }
-
                         role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
                         InventoryManager.AddNewItem(roleID, formulaData.ItemID, 1);
@@ -199,7 +198,7 @@ namespace AscensionServer
                     }
                     else
                     {
-                        RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
+                        RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, "数据出错请重新登陆");
                     }
                 }
                 else
@@ -271,14 +270,14 @@ namespace AscensionServer
                             if (result)
                             {
                                 Utility.Debug.LogInfo("YZQ开始合成丹药1");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, "数据出错请重新登陆");
                                 return;
                             }
                         }
                         if (formulaData.NeedMoney > assest.SpiritStonesLow && formulaData.NeedVitality > role.Vitality)
                         {
                             Utility.Debug.LogInfo("YZQ开始合成丹药2");
-                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy);
+                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundAlchemy, "数据出错请重新登陆");
                             return;
                         }
                         var num = Utility.Algorithm.RandomRange(0, 101);

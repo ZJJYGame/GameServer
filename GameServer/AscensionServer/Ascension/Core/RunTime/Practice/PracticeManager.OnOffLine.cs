@@ -353,7 +353,7 @@ namespace AscensionServer
                                 exp = (int)interval.TotalSeconds / 5 * redisRoleStatus.GongfaLearnSpeed;
 
                                 var bottleneckObj = AddGongFaExp(roleID, rolegongfaObj.GongFaIDDict[onOffLineObj.MsGfID], exp, out CultivationMethodDTO method);
-
+                                bottleneckObj.RoleID = roleID;
                                 rolegongfaObj.GongFaIDDict[method.CultivationMethodID] = method;
                                 role.RoleLevel = method.CultivationMethodLevel;
                                 dict = new Dictionary<byte, object>();
@@ -451,6 +451,7 @@ namespace AscensionServer
                             var bottleneckData = AddGongFaExp(onOffLine.RoleID, rolegongfa.GongFaIDDict[onOffLine.MsGfID], roleStatusObj.GongfaLearnSpeed, out var methodDTO);
                             rolegongfa.GongFaIDDict[onOffLine.MsGfID] = methodDTO;
                             roleObj.RoleLevel = methodDTO.CultivationMethodLevel;
+                            bottleneckData.RoleID = onOffLine.RoleID;
                             dict = new Dictionary<byte, object>();
                             dict.Add((byte)ParameterCode.RoleBottleneck, bottleneckData);
                             dict.Add((byte)ParameterCode.GongFa, methodDTO);
@@ -532,7 +533,7 @@ namespace AscensionServer
                 if (roleData.ExpLevelUp <= cultivation.CultivationMethodExp + exp)
                 {
                     Utility.Debug.LogInfo("YZQonoffLineEXP:" + (cultivation.CultivationMethodExp + exp) + "升级需要的" + roleData.ExpLevelUp);
-                    Utility.Debug.LogInfo("YZQonoffLineEXP2:" + (cultivation.CultivationMethodExp));
+                    Utility.Debug.LogInfo("YZQonoffLineEXP2当前计算出的经验:" + (cultivation.CultivationMethodExp));
 
                     Utility.Debug.LogInfo("YZQonoffLine計算的功法经验升级进来了等级为" + cultivation.CultivationMethodLevel);
                     bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);

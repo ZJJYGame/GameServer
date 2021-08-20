@@ -15,9 +15,8 @@ namespace AscensionProtocol.DTO
         public virtual HashSet<int> Recipe_Array { get; set; }
         public AlchemyDTO()
         {
-            RoleID = -1;
             JobLevel = 1;
-            Recipe_Array = null;
+            Recipe_Array = new HashSet<int>();
             JobLevelExp = 0;
         }
 
@@ -26,7 +25,7 @@ namespace AscensionProtocol.DTO
         {
             RoleID = -1;
             JobLevel = 0;
-            Recipe_Array = null;
+            Recipe_Array = new HashSet<int>();
             JobLevelExp = 0;
         }
     }  

@@ -801,7 +801,7 @@
             锻造的Key前缀
              </summary>
         </member>
-        <member name="F:AscensionServer.RedisKeyDefine._ArrayPerfix">
+        <member name="F:AscensionServer.RedisKeyDefine._TacticFormationPerfix">
              <summary>
             阵法的Key前缀
              </summary>
@@ -2861,6 +2861,13 @@
             <param name="nHCriteria"></param>
             <param name="petCompleteDTO"></param>
         </member>
+        <member name="M:AscensionServer.PetStatusManager.ResetAbilityPoint(System.Int32,AscensionProtocol.DTO.PetAbilityPointDTO)">
+            <summary>
+            重置加点
+            </summary>
+            <param name="roleid"></param>
+            <param name="petAbilityPoint"></param>
+        </member>
         <member name="M:AscensionServer.PetStatusManager.ResetPetStatus(AscensionServer.Model.Pet,AscensionServer.Model.PetAptitude,AscensionServer.Model.PetStatus@)">
             <summary>
             宠物洗练属性重置
@@ -3171,7 +3178,7 @@
             <param name="CraryVaule"></param>
             <returns></returns>
         </member>
-        <member name="M:AscensionServer.PracticeManager.ResultFailS2C(System.Int32,AscensionProtocol.PracticeOpcode)">
+        <member name="M:AscensionServer.PracticeManager.ResultFailS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.String)">
             <summary>
             失败返回
             </summary>

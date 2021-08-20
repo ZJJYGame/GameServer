@@ -551,12 +551,18 @@ namespace AscensionServer
 
             foreach (var item in rolegongfa.GongFaIDDict)
             {
-                ids.AddRange(item.Value.CultivationMethodLevelSkillArray);
+                if (item.Value.CultivationMethodLevelSkillArray.Count>0)
+                {
+                    ids.AddRange(item.Value.CultivationMethodLevelSkillArray);
+                }
             }
 
             foreach (var item in roleMiShu.MiShuIDDict)
             {
-                ids.AddRange(item.Value.MiShuSkillArry);
+                if (item.Value.MiShuSkillArry.Count>0)
+                {
+                    ids.AddRange(item.Value.MiShuSkillArry);
+                }
             }
             Utility.Debug.LogError("获取的角色的所有技能"+Utility.Json.ToJson(ids));
             var roleWeaponExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleWeaponPostfix, roleid.ToString()).Result;
@@ -578,8 +584,11 @@ namespace AscensionServer
                         foreach (var item in roleEquipmentDTO.Weapon.Values)
                             WeaponDict.TryAdd(roleWeaponDTO.WeaponStatusDict[item].WeaponType, roleWeaponDTO.WeaponStatusDict[item]);
 
-                        if (WeaponDict.ContainsKey(roleskillDict[ids[i]].WeaponType))
-                            roleStatus = Addition(roleskillDict[ids[i]], roleStatus);
+                        if (roleskillDict.ContainsKey(ids[i]))
+                        {
+                            if (WeaponDict.ContainsKey(roleskillDict[ids[i]].WeaponType))
+                                roleStatus = Addition(roleskillDict[ids[i]], roleStatus);
+                        }
                     }
                     return roleStatus;
                 }

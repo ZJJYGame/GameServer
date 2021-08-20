@@ -16,7 +16,7 @@ namespace AscensionServer.Model
 
         public TacticFormation()
         {
-            JobLevel = 4;
+            JobLevel = 1;
             Recipe_Array = null;
             JobLevelExp = 0;
         }
@@ -24,7 +24,7 @@ namespace AscensionServer.Model
         public override void Release()
         {
             RoleID = -1;
-            JobLevel = 0;
+            JobLevel = 1;
             JobLevelExp = 0;
             Recipe_Array = null;
         }

@@ -369,7 +369,7 @@ namespace AscensionServer
         public List<int> RandomSkillRemoveAdd(List<int> skillList, int skillid)
         {
             int num = (int)AverageRandom(0, skillList.Count);
-            skillList.Remove(num);
+            skillList.RemoveAt(num);
             skillList.Add(skillid);
             return skillList;
         }

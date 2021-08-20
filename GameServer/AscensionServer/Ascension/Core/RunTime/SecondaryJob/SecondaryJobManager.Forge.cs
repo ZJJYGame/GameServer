@@ -56,11 +56,11 @@ namespace AscensionServer
                                 return;
                             }
                             #region 等级判断
-                            //if (formula.FormulaLevel > role.RoleLevel)
-                            //{
-                            //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
-                            //    return;
-                            //}
+                            if (formula.FormulaLevel > role.RoleLevel)
+                            {
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                return;
+                            }
                             #endregion
                             if (!forge.Recipe_Array.Contains(tempid))
                             {
@@ -80,12 +80,16 @@ namespace AscensionServer
                             }
                         }
                     }
-                    else { }
-                    // UpdateForgeMySql(roleID, useItemID, nHCriteria);
+                    else { RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                        // UpdateForgeMySql(roleID, useItemID, nHCriteria);
+                    }
+
+                    }
+                else { RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                    //UpdateForgeMySql(roleID, useItemID, nHCriteria); 
+                    }
+
                 }
-                else { }
-                    //UpdateForgeMySql(roleID, useItemID, nHCriteria);
-            }
             else
                 RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
 
@@ -105,7 +109,7 @@ namespace AscensionServer
             if (forgeExist && roleExist && assestExist && roleweaponExist)
             {
                 var forge = RedisHelper.Hash.HashGetAsync<ForgeDTO>(RedisKeyDefine._ForgePerfix, roleID.ToString()).Result;
-                var role = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
+                var role = RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
                 var assest = RedisHelper.Hash.HashGetAsync<RoleAssetsDTO>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
                 var roleweapon = RedisHelper.Hash.HashGetAsync<RoleWeaponDTO>(RedisKeyDefine._RoleWeaponPostfix, roleID.ToString()).Result;
                 if (forge != null && role != null && assest != null && roleweapon != null)

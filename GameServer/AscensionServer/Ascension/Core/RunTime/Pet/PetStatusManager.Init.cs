@@ -333,8 +333,10 @@ namespace AscensionServer
             ringObj.RingItems.Add(drugID, new RingItemsDTO());
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
+            Utility.Debug.LogError("收到宠物使用丹药1");
             if (InventoryManager.VerifyIsExist(drugID, nHCriteriaRingID))
             {
+                Utility.Debug.LogError("收到宠物使用丹药2");
                 if (VerifyDrugEffect(drugID, pet,roleid)) { }
                 else
                     ResultFailS2C(roleid, RolePetOpCode.PetCultivate);
@@ -350,8 +352,10 @@ namespace AscensionServer
             GameEntry. DataManager.TryGetValue<Dictionary<int, DrugData>>(out var DrugDataDict);
             if (DrugDataDict.TryGetValue(InventoryManager.ConvertInt32(drugid), out var drugDatatemp))
             {
+                Utility.Debug.LogError("收到宠物使用丹药3");
                 if (drugDatatemp.Drug_Type == DrugType.PetExp)
                 {
+                    Utility.Debug.LogError("收到宠物使用丹药4");
                     PetExpDrug(drugDatatemp, drugid, pet,roleid);
                     return true;
                 }
@@ -382,12 +386,14 @@ namespace AscensionServer
             GameEntry. DataManager.TryGetValue<Dictionary<int, PetLevelData>>(out var petLevelDataDict);
             PetDrugRefreshDTO petDrugRefreshDTO = new PetDrugRefreshDTO();
             petDrugRefreshDTO.PetUsedDrug = new Dictionary<int, int>();
-            var roleExist = RedisHelper.KeyExistsAsync(RedisKeyDefine._RolePostfix + roleid.ToString()).Result;
-            if (RedisHelper.KeyExistsAsync(RedisKeyDefine._PetDrugRefreshPostfix + pet.ID.ToString()).Result)
+            var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RolePostfix , roleid.ToString()).Result;
+            if (RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PetDrugRefreshPostfix , pet.ID.ToString()).Result)
             {
+                Utility.Debug.LogError("收到宠物使用丹药5");
                 var petDrugRefreshJson = RedisHelper.String.StringGetAsync(RedisKeyDefine._PetDrugRefreshPostfix + pet.ID.ToString()).Result;
                 if (petDrugRefreshJson != null)
                 {
+                    Utility.Debug.LogError("收到宠物使用丹药6");
                     petDrugRefreshDTO = Utility.Json.ToObject<PetDrugRefreshDTO>(petDrugRefreshJson);
                     if (petDrugRefreshDTO.PetUsedDrug.TryGetValue(itemid, out int count))
                     {
@@ -399,8 +405,11 @@ namespace AscensionServer
                     }
                 }
             }
+            Utility.Debug.LogError("收到宠物使用丹药7");
+            Utility.Debug.LogError(roleid+"收到宠物使用丹药" + roleExist+ drugData.Need_Level_ID+"///"+ pet.PetLevel);
             if (roleExist&&drugData.Need_Level_ID <= pet.PetLevel && drugData.Max_Level_ID >= pet.PetLevel)
             {
+                Utility.Debug.LogError("收到宠物使用丹药8");
                 var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix , roleid.ToString()).Result;
                 pet.PetExp += drugData.Drug_Value;
                 Utility.Debug.LogInfo("yzqData宠物即将使用加经验丹药" + pet.PetExp);
@@ -422,6 +431,10 @@ namespace AscensionServer
                         {
                             pet.PetLevel += 1;
                             pet= PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
+                        }
+                        else if (level == role.RoleLevel&& petLevelDataDict[pet.PetLevel].ExpLevelUp>= pet.PetExp)
+                        {
+                            pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
                         }
                         else
                         {
@@ -486,7 +499,7 @@ namespace AscensionServer
                 InventoryManager.UpdateNewItem(roleid, itemid, 1);
 
             }
-
+            else ResultFailS2C(roleid, RolePetOpCode.PetCultivate);
 
         }
         /// <summary>
@@ -600,13 +613,14 @@ namespace AscensionServer
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var skillList = Utility.Json.ToObject<List<int>>(petObj.PetSkillArray);
             var nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
-            Utility.Debug.LogInfo("yzqData学习技能");
+            Utility.Debug.LogInfo("yzqData学习技能技能书为"+ bookid +"角色id為"+ roleid+ InventoryManager.VerifyIsExist(bookid, nHCriteriaRingID));
             if (InventoryManager.VerifyIsExist(bookid, nHCriteriaRingID))
             {
-                if (!skillList.Contains(petSkillBookDataDict[bookid].PetSkillID))
+                var bookID = InventoryManager.ConvertInt32(bookid);
+                if (!skillList.Contains(petSkillBookDataDict[bookID].PetSkillID))
                 {
                     Utility.Debug.LogInfo("yzqData学习技能存在");
-                    skillList = RandomSkillRemoveAdd(skillList, petSkillBookDataDict[bookid].PetSkillID);
+                    skillList = RandomSkillRemoveAdd(skillList, petSkillBookDataDict[bookID].PetSkillID);
                     petObj.PetSkillArray = Utility.Json.ToJson(skillList);
                     await NHibernateQuerier.UpdateAsync<Pet>(petObj);
                     var petTemp = ChangeDataType(petObj);
@@ -620,7 +634,7 @@ namespace AscensionServer
                     await NHibernateQuerier.UpdateAsync(status);
                     await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, petTemp.ID.ToString(), status);
 
-                    InventoryManager.RemoveCmdS2C(bookid, ringObj, nHCriteriaRingID);
+                    InventoryManager.RemoveCmdS2C(bookID, ringObj, nHCriteriaRingID);
                 }
                 else
                 {
@@ -646,10 +660,9 @@ namespace AscensionServer
             var soulDict = Utility.Json.ToObject<Dictionary<int, List<int>>>(pet.DemonicSoul);
             Utility.Debug.LogInfo("yzqData卸载的妖灵精魄ID" + soulid);
 
-            InventoryManager.AddNewItem(roleid, soulid, 1);
-
             if (soulDict.ContainsKey(soulid))
             {
+                InventoryManager.AddNewItem(roleid, soulid, 1);
                 soulDict.Remove(soulid);
                 pet.DemonicSoul = Utility.Json.ToJson(soulDict);
                 var status = VerifyPetAllStatus(pet.ID, null, null, null, pet);
@@ -707,7 +720,6 @@ namespace AscensionServer
                     getSkillList.Add(DemonicSoulSkillPoolDict[2].PetSoulSkillPool[num]);
                 }
             }
-            //petCompleteDTO.PetDTO.DemonicSoul.Add();
         }
 
         public async void EquipDemonicSoul(int roleid,int useitemid,int petid)
@@ -958,15 +970,20 @@ namespace AscensionServer
             {
                 pet.PetExp = exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
                 var level = pet.PetLevel;
-                if (level < role.RoleLevel)
+                if (pet.PetExp >= 0)
                 {
-                    pet.PetLevel += 1;
-                    PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
+                    if (level < role.RoleLevel)
+                    {
+                        pet.PetLevel += 1;
+                        PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
+                    }
+                    else
+                    {
+                        pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                    }
                 }
                 else
-                {
-                    pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                }
+                    pet.PetExp = exp;
             }
             return pet;
         }

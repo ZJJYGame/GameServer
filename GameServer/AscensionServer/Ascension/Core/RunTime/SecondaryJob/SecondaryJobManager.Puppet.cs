@@ -349,12 +349,12 @@ namespace AscensionServer
                                 return;
                             }
                             #region 等级判断
-                            //if (formula.FormulaLevel > role.RoleLevel)
-                            //{
-                            //    Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>4");
-                            //    RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus,"学习配方失败");
-                            //    return;
-                            //}
+                            if (formula.FormulaLevel > role.RoleLevel)
+                            {
+                                Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>4");
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                return;
+                            }
                             #endregion
 
                             if (!puppet.Recipe_Array.Contains(tempid))

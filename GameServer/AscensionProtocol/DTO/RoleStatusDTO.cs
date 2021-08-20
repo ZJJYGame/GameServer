@@ -36,7 +36,6 @@ namespace AscensionProtocol.DTO
         public virtual int ValueHide { get; set; }
         public virtual int GongfaLearnSpeed { get; set; }
         public virtual int MishuLearnSpeed { get; set; }
-        public virtual StatusChangeType  StatusChange { get; set; }
         public override bool Equals(object obj)
         {
             RoleStatusDTO other = obj as RoleStatusDTO;
@@ -87,13 +86,6 @@ namespace AscensionProtocol.DTO
             MaxVitality = 0;
         }
 
-        public enum StatusChangeType
-        {
-            StatusGet=1,
-            /// <summary>
-            /// 属性全回复
-            /// </summary>
-            StatusReplyAll=2
-        }
+
     }
 }

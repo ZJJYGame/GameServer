@@ -71,7 +71,7 @@ namespace AscensionServer
         /// <summary>
         ///阵法的Key前缀
         /// </summary>
-        public static readonly string _ArrayPerfix = "Array";
+        public static readonly string _TacticFormationPerfix = "TacticFormation";
         /// <summary>
         ///制符的Key前缀
         /// </summary>

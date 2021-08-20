@@ -222,10 +222,11 @@ namespace AscensionServer
                 NHibernateQuerier.Insert<Forge>(new Forge() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
                 RedisHelper.Hash.HashSet(RedisKeyDefine._ForgePerfix, rolestatus.RoleID.ToString(), new ForgeDTO() { RoleID = rolestatus.RoleID });
                 NHibernateQuerier.Insert<SpiritualRunes>(new SpiritualRunes() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
+                RedisHelper.Hash.HashSet(RedisKeyDefine._RunesPerfix, rolestatus.RoleID.ToString(), new SpiritualRunesDTO() { RoleID = rolestatus.RoleID });
                 NHibernateQuerier.Insert<Puppet>(new Puppet() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
                 RedisHelper.Hash.HashSet(RedisKeyDefine._PuppetPerfix, rolestatus.RoleID.ToString(), new PuppetDTO() { RoleID = rolestatus.RoleID });
                 NHibernateQuerier.Insert<TacticFormation>(new TacticFormation() { RoleID = rolestatus.RoleID, Recipe_Array = Utility.Json.ToJson(new List<int>()) });
-
+                RedisHelper.Hash.HashSet(RedisKeyDefine._TacticFormationPerfix, rolestatus.RoleID.ToString(), new TacticFormationDTO() { RoleID = rolestatus.RoleID });
 
                 NHibernateQuerier.SaveOrUpdate(new RoleWeapon() { RoleID = rolestatus.RoleID});
                 RedisHelper.Hash.HashSet(RedisKeyDefine._RoleWeaponPostfix, rolestatus.RoleID.ToString(),new RoleWeaponDTO());

@@ -31,7 +31,8 @@ namespace AscensionServer
                 await NHibernateQuerier.UpdateAsync<PetAbilityPoint>(petAbilityPoint);
                 await RedisHelper.Hash.HashSetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, pointDTO.ID.ToString(), pointDTO);
                 ResultSuccseS2C(roleid, RolePetOpCode.RenamePetAbilitySln, pointDTO);
-            }
+            }else
+                ResultFailS2C(roleid, RolePetOpCode.RenamePetAbilitySln, "名称修改失败");
         }
         /// <summary>
         /// 更新宠物加点
@@ -123,9 +124,15 @@ namespace AscensionServer
                 dict.Add((byte)ParameterCode.RoleAssets, roleassets);
                 dict.Add((byte)ParameterCode.PetAbility, pointDTO);
                 ResultSuccseS2C(roleid, RolePetOpCode.UnlockPetAbilitySln, dict);
-            }
+            }else
+                ResultFailS2C(roleid, RolePetOpCode.UnlockPetAbilitySln, "解锁加点方案失败");
         }
 
+        /// <summary>
+        /// 重置加点
+        /// </summary>
+        /// <param name="roleid"></param>
+        /// <param name="petAbilityPoint"></param>
         public async void ResetAbilityPoint(int roleid, PetAbilityPointDTO petAbilityPoint)
         {
             NHCriteria nHCriteriapetStatus =ReferencePool.Accquire<NHCriteria>().SetValue("ID", petAbilityPoint.ID);
@@ -177,7 +184,7 @@ namespace AscensionServer
                     await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, petAbilityPoint.ID.ToString(), status);
                 }
                 else
-                    ResultFailS2C(roleid, RolePetOpCode.ResetPetAbilitySln);
+                    ResultFailS2C(roleid, RolePetOpCode.ResetPetAbilitySln, "重置加点失败");
             }
         }
 
@@ -186,26 +193,36 @@ namespace AscensionServer
         #region 切换加点方案
         async void SwitchPetAbilitySlnS2C(int roleid, PetAbilityPointDTO pointDTO)
         {
+            Utility.Debug.LogError("redis切换加点方案"+Utility.Json.ToJson(pointDTO));
             var pointExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PetAbilityPointPerfix, pointDTO.ID.ToString()).Result;
-            if (pointExist)
+            var roleassets = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix,roleid.ToString()).Result;
+            if (pointExist&& roleassets)
             {
                 var point = RedisHelper.Hash.HashGetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, pointDTO.ID.ToString()).Result;
-                if (point != null)
+                var assets = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, pointDTO.ID.ToString()).Result;
+                if (point != null&& assets!=null)
                 {
                     if (point.AbilityPointSln.ContainsKey(pointDTO.SlnNow))
                     {
-                        point.SlnNow = pointDTO.SlnNow;
-                        var status = VerifyPetAllStatus(pointDTO.ID, pointDTO, null, null);
-                        status.PetID = point.ID;
-                        Dictionary<byte, object> dict = new Dictionary<byte, object>();
-                        dict.Add((byte)ParameterCode.PetAbility, point);
-                        dict.Add((byte)ParameterCode.PetStatus, status);
-                        ResultSuccseS2C(roleid, RolePetOpCode.SwitchPetAbilitySln, dict);
+                        if (assets.SpiritStonesLow>=1000)
+                        {
+                            assets.SpiritStonesLow -= 1000;
+                            point.SlnNow = pointDTO.SlnNow;
+                            var status = VerifyPetAllStatus(point.ID, point, null, null);
+                            status.PetID = point.ID;
+                            Dictionary<byte, object> dict = new Dictionary<byte, object>();
+                            dict.Add((byte)ParameterCode.PetAbility, point);
+                            dict.Add((byte)ParameterCode.PetStatus, status);
+                            ResultSuccseS2C(roleid, RolePetOpCode.SwitchPetAbilitySln, dict);
 
-                        await NHibernateQuerier.UpdateAsync(ChangeDataType(point));
-                        await NHibernateQuerier.UpdateAsync(status);
-                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetAbilityPointPerfix, point.ID.ToString(), point);
-                        await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, point.ID.ToString(), status);
+                            await NHibernateQuerier.UpdateAsync(assets);
+                            await NHibernateQuerier.UpdateAsync(ChangeDataType(point));
+                            await NHibernateQuerier.UpdateAsync(status);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetAbilityPointPerfix, point.ID.ToString(), point);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, point.ID.ToString(), assets);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, point.ID.ToString(), status);
+                        }else
+                            ResultFailS2C(roleid, RolePetOpCode.SwitchPetAbilitySln,"灵石不足无法切换");
                     }
                     else
                         ResultFailS2C(roleid, RolePetOpCode.SwitchPetAbilitySln);
@@ -218,6 +235,7 @@ namespace AscensionServer
         }
         async void SwitchPetAbilitySlnMySql(int roleid, PetAbilityPointDTO pointDTO)
         {
+            Utility.Debug.LogError("Mysql切换加点方案");
             NHCriteria nHCriteriapet =ReferencePool.Accquire<NHCriteria>().SetValue("ID", pointDTO.ID);
             var point = NHibernateQuerier.CriteriaSelectAsync<PetAbilityPoint>(nHCriteriapet).Result;
             if (point != null)
@@ -226,14 +244,14 @@ namespace AscensionServer
                 if (slnDict.ContainsKey(pointDTO.SlnNow))
                 {
                     point.SlnNow = pointDTO.SlnNow;
-                    var status = VerifyPetAllStatus(pointDTO.ID, pointDTO, null, null);
+                    var status = VerifyPetAllStatus(point.ID, ChangeDataType(point), null, null);
                     status.PetID = point.ID;
                     Dictionary<byte, object> dict = new Dictionary<byte, object>();
                     dict.Add((byte)ParameterCode.PetAbility, ChangeDataType(point));
                     dict.Add((byte)ParameterCode.PetStatus, status);
                     ResultSuccseS2C(roleid, RolePetOpCode.SwitchPetAbilitySln, dict);
 
-                   await NHibernateQuerier.UpdateAsync(point);
+                    await NHibernateQuerier.UpdateAsync(point);
                     await NHibernateQuerier.UpdateAsync(status);
                     await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetAbilityPointPerfix, point.ID.ToString(), ChangeDataType(point));
                     await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, point.ID.ToString(), status);
@@ -252,59 +270,76 @@ namespace AscensionServer
             NHCriteria nHCriteriapetStatus =ReferencePool.Accquire<NHCriteria>().SetValue("ID", petid);
             var pet = NHibernateQuerier.CriteriaSelect<Pet>(nHCriteriapetStatus);
             NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
+            var role = NHibernateQuerier.CriteriaSelect<Role>(nHCriteria);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             var nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
             if (!InventoryManager.VerifyIsExist(itemid, nHCriteriaRingID))
             {
                 //发送失败
+                ResultFailS2C(roleid, RolePetOpCode.ResetPetStatus,"背包物品不存在");
                 return;
             }
-            //TODO判断物品是否为金柳露
-            var petObj =ReferencePool.Accquire<PetDTO>();
-            petObj.PetLevel = 1;
-            petObj.PetExp = 0;
-            petObj.ID = pet.ID;
-            petObj.PetID = pet.PetID;
-            petObj.PetName = pet.PetName;
-            petObj.DemonicSoul = Utility.Json.ToObject<Dictionary<int, List<int>>>(pet.DemonicSoul);
-            petObj.PetSkillArray = RestPetSkill(petLevelDataDict[pet.PetID].SkillArray);
-            await RedisHelper.Hash.HashSetAsync<PetDTO>(RedisKeyDefine._PetPerfix, petObj.ID.ToString(), petObj);
+            if (role!=null)
+            {
+                if (role.RoleLevel>=11)
+                {
+                    //TODO判断物品是否为金柳露
+                    var petObj = ReferencePool.Accquire<PetDTO>();
+                    petObj.PetLevel = 1;
+                    petObj.PetExp = 0;
+                    petObj.ID = pet.ID;
+                    petObj.PetID = pet.PetID;
+                    petObj.PetName = pet.PetName;
+                    petObj.DemonicSoul = Utility.Json.ToObject<Dictionary<int, List<int>>>(pet.DemonicSoul);
+                    petObj.PetSkillArray = RestPetSkill(petLevelDataDict[pet.PetID].SkillArray);
+                    await RedisHelper.Hash.HashSetAsync<PetDTO>(RedisKeyDefine._PetPerfix, petObj.ID.ToString(), petObj);
 
-            pet.PetLevel = 1;
-            pet.PetExp = 0;
-            pet.PetSkillArray = Utility.Json.ToJson(petObj.PetSkillArray);
-            await NHibernateQuerier.UpdateAsync(pet);
+                    pet.PetLevel = 1;
+                    pet.PetExp = 0;
+                    pet.PetSkillArray = Utility.Json.ToJson(petObj.PetSkillArray);
+                    await NHibernateQuerier.UpdateAsync(pet);
 
-            var petAbitilyObj =ReferencePool.Accquire<PetAbilityPointDTO>();
-            petAbitilyObj.ID = pet.ID;
-            await RedisHelper.Hash.HashSetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, petObj.ID.ToString(), petAbitilyObj);
-            var petAbitily =ReferencePool.Accquire<PetAbilityPoint>();
-            petAbitily.ID = pet.ID;
-            await NHibernateQuerier.UpdateAsync(petAbitily);
+                    var petAbitilyObj = ReferencePool.Accquire<PetAbilityPointDTO>();
+                    petAbitilyObj.ID = pet.ID;
+                    await RedisHelper.Hash.HashSetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, petObj.ID.ToString(), petAbitilyObj);
+                    var petAbitily = ReferencePool.Accquire<PetAbilityPoint>();
+                    petAbitily.ID = pet.ID;
+                    await NHibernateQuerier.UpdateAsync(petAbitily);
 
-            var petAptitudeObj =ReferencePool.Accquire<PetAptitudeDTO>();
-            var petAptitude =ReferencePool.Accquire<PetAptitude>();
-            ResetPetAptitude(pet.PetID, out petAptitude);
-            petAptitude.PetID = pet.ID;
-            petAptitudeObj = AssignSameFieldValue(petAptitudeObj, petAptitude);
-            petAptitudeObj.PetID = pet.ID;
-            await RedisHelper.Hash.HashSetAsync<PetAptitudeDTO>(RedisKeyDefine._PetAptitudePerfix, petObj.ID.ToString(), petAptitudeObj);
-            await NHibernateQuerier.UpdateAsync(petAptitude);
+                    var petAptitudeObj = ReferencePool.Accquire<PetAptitudeDTO>();
+                    var petAptitude = ReferencePool.Accquire<PetAptitude>();
+                    ResetPetAptitude(pet.PetID, out petAptitude);
+                    petAptitude.PetID = pet.ID;
+                    petAptitudeObj = AssignSameFieldValue(petAptitudeObj, petAptitude);
+                    petAptitudeObj.PetID = pet.ID;
+                    await RedisHelper.Hash.HashSetAsync<PetAptitudeDTO>(RedisKeyDefine._PetAptitudePerfix, petObj.ID.ToString(), petAptitudeObj);
+                    await NHibernateQuerier.UpdateAsync(petAptitude);
 
-            var petstatusObj =ReferencePool.Accquire<PetStatusDTO>();
-            var petstatus =ReferencePool.Accquire<PetStatus>();
-            ResetPetStatus(pet, petAptitude, out petstatus);
-            petstatus.PetID = pet.ID;
-            petstatusObj = Utility.Assembly.AssignSameFieldValue<PetStatus, PetStatusDTO>(petstatus, petstatusObj);
-            await RedisHelper.Hash.HashSetAsync<PetStatusDTO>(RedisKeyDefine._PetStatusPerfix, petObj.ID.ToString(), petstatusObj);
-            await NHibernateQuerier.UpdateAsync(petstatus);
+                    var petstatusObj = ReferencePool.Accquire<PetStatusDTO>();
+                    var petstatus = ReferencePool.Accquire<PetStatus>();
+                    ResetPetStatus(pet, petAptitude, out petstatus);
+                    petstatus.PetID = pet.ID;
+                    petstatusObj = Utility.Assembly.AssignSameFieldValue<PetStatus, PetStatusDTO>(petstatus, petstatusObj);
+                    await RedisHelper.Hash.HashSetAsync<PetStatusDTO>(RedisKeyDefine._PetStatusPerfix, petObj.ID.ToString(), petstatusObj);
+                    await NHibernateQuerier.UpdateAsync(petstatus);
 
-            Dictionary<byte, object> dict = new Dictionary<byte, object>();
-            dict.Add((byte)ParameterCode.Pet, petObj);
-            dict.Add((byte)ParameterCode.PetAptitude, petAptitudeObj);
-            dict.Add((byte)ParameterCode.PetAbility, petAbitilyObj);
-            dict.Add((byte)ParameterCode.PetStatus, petstatusObj);
-            ResultSuccseS2C(roleid, RolePetOpCode.ResetPetStatus, dict);
+                    Dictionary<byte, object> dict = new Dictionary<byte, object>();
+                    dict.Add((byte)ParameterCode.Pet, petObj);
+                    dict.Add((byte)ParameterCode.PetAptitude, petAptitudeObj);
+                    dict.Add((byte)ParameterCode.PetAbility, petAbitilyObj);
+                    dict.Add((byte)ParameterCode.PetStatus, petstatusObj);
+                    ResultSuccseS2C(roleid, RolePetOpCode.ResetPetStatus, dict);
+                    #region 背包移除
+                    InventoryManager.Remove(roleid, itemid);
+                    #endregion
+                }else
+                    ResultFailS2C(roleid, RolePetOpCode.ResetPetStatus, "角色等级不足筑基，无法使用");
+                return;
+            }
+            else
+                ResultFailS2C(roleid, RolePetOpCode.ResetPetStatus, "背包物品不存在");
+
+
         }
         #endregion
 
@@ -368,7 +403,7 @@ namespace AscensionServer
             }
         }
 
-        #region 洗练宠物
+        #region 洗练宠物(方法可能重复写了)
         public async void ResetPetAllStatus(int petID, string petName, RolePet rolePet)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, PetAptitudeData>>(out var petLevelDataDict);
