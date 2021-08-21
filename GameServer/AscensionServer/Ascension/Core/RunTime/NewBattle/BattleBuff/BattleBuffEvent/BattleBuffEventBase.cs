@@ -41,15 +41,19 @@ namespace AscensionServer
         /// <param name="skillAdditionData">用于记录临时的加成数据，比如技能加成</param>
         public void Trigger(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
-
             if (owner.BattleBuffController.ForbiddenBuff.Contains(battleBuffObj.BuffId))//该buff被禁用，返回
                 return;
             if (!CanTrigger(target, battleDamageData))
                 return;
             //最大触发次数超过限制
             triggerCount++;
-            if (maxTriggerCount != -1 && triggerCount >= maxTriggerCount)
+            if (maxTriggerCount != -1 && triggerCount > maxTriggerCount)
+            {
                 triggerCount = maxTriggerCount;
+                Utility.Debug.LogError("触发次数超过最大限制不再触发");
+                return;
+            }
+
             TriggerEventMethod(target, battleDamageData, skillAdditionData);
 
         }
@@ -94,14 +98,16 @@ namespace AscensionServer
 
         }
         //获取buff触发事件记录对象并设置基本数值
-        protected virtual BattleBuffEventTriggerDTO GetBuffEventTriggerDTO(int targetId)
+        protected virtual BattleBuffEventTriggerDTO GetBuffEventTriggerDTO(int targetId,int eventListenerId)
         {
             if (LastBattleTransfer.BattleBuffEventTriggerDTOList == null)
                 LastBattleTransfer.BattleBuffEventTriggerDTOList = new List<BattleBuffEventTriggerDTO>();
+            Utility.Debug.LogError(battleBuffObj.BuffId);
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = new BattleBuffEventTriggerDTO()
             {
                 TriggerId = owner.UniqueID,
                 TargetId = targetId,
+                EventListenerId = eventListenerId,
                 BuffId = battleBuffObj.BuffId,
                 TriggerTime = (byte)battleBuffTriggerTime,
                 TriggerEventType = (byte)battleBuffEventData.battleBuffEventType,

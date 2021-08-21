@@ -76,6 +76,7 @@ namespace AscensionServer
             //回合开始事件统一触发
             BattleTransferDTO roundStartTransfer= battleRoomEntity.SpawnBattleTransfer();
             roundStartTransfer.RoleId = -1;
+            Utility.Debug.LogError("回合开始事件触发");
             roundStartEvent?.Invoke(null,null,null);
             battleRoomEntity.ReleaseBattleTransfer();
 

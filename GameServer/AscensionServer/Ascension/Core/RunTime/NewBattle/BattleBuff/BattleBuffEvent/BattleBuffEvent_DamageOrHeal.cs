@@ -27,6 +27,7 @@ namespace AscensionServer
             switch (battleBuffTriggerTime)
             {
                 case BattleBuffTriggerTime.RoundStart:
+                    Utility.Debug.LogError("添加伤害buff事件");
                     battleBuffObj.BattleController.RoundStartEvent += Trigger;
                     break;
                 case BattleBuffTriggerTime.BeforeAttack:
@@ -101,7 +102,8 @@ namespace AscensionServer
             BattleCharacterEntity targetEntity = targetIsSelf ? owner : target;
             targetEntity.CharacterBattleData.ChangeProperty(buffEvent_DamageOrHeal_EffectTargetType, value);
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(targetEntity.UniqueID);
+            Utility.Debug.LogError("伤害buff事件触发");
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(targetEntity.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = (byte)buffEvent_DamageOrHeal_EffectTargetType;
             battleBuffEventTriggerDTO.Num_2 = value;
         }

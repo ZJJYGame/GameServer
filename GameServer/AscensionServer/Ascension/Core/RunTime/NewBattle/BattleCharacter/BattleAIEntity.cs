@@ -15,6 +15,8 @@ namespace AscensionServer
             Init();
             CharacterBattleData =ReferencePool.Accquire<CharacterBattleData>();
             GameEntry.DataManager.TryGetValue<Dictionary<int, MonsterDatas>>(out var monsterDict);
+            Utility.Debug.LogError("怪物ID" + aIID);
+            Utility.Debug.LogError(monsterDict);
             if (monsterDict.ContainsKey(aIID))
                 CharacterBattleData.Init(monsterDict[aIID],this);
             UniqueID = uniqueID;

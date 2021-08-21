@@ -24,7 +24,7 @@ namespace AscensionServer
         protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             HashSet<int> immuneBuffIdHash = owner.BattleBuffController.ImmuneBuffId;
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             for (int i = 0; i < immuneBuffIdList.Count; i++)
             {
                 if (!immuneBuffIdHash.Contains(immuneBuffIdList[i]))

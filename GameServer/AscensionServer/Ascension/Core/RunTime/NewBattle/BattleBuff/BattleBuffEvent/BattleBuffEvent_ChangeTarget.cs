@@ -21,6 +21,7 @@ namespace AscensionServer
         }
         protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
+
             Utility.Debug.LogError("改变目标事件触发");
             switch (buffEvent_ChangeTarget_TargetType)
             {
@@ -30,16 +31,17 @@ namespace AscensionServer
                     if (!targetEntity.HasDie)
                     {
                         owner.TargetIDList.Add(battleBuffObj.OrginRole.UniqueID);
-                        BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+                        BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
+                        battleBuffEventTriggerDTO.Num_2 = targetEntity.UniqueID;
                     }
                     break;
             }
-            
         }
 
         public BattleBuffEvent_ChangeTarget(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
         {
             buffEvent_ChangeTarget_TargetType = battleBuffEventData.buffEvent_ChangeTarget_TargetType;
+            battleBuffTriggerTime = BattleBuffTriggerTime.BeforeAllocation;
         }
     }
 }

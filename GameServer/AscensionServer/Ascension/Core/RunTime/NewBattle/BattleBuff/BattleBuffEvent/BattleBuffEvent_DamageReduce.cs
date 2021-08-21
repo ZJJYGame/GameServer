@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AscensionProtocol.DTO;
+using Cosmos;
 
 namespace AscensionServer
 {
@@ -37,13 +38,19 @@ namespace AscensionServer
         }
         protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
+            Utility.Debug.LogError("触发伤害减免");
             BattleDamageData tempDamageData = owner.ReceiveBattleDamageData;
             if (tempDamageData.damageNum >= 0)
                 return;
-            tempDamageData.damageNum = tempDamageData.damageNum * percentValue / 100 + fixedValue;
-            tempDamageData.damageNum = tempDamageData.damageNum >= 0 ? -1 : tempDamageData.damageNum;
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            int oldDamage = tempDamageData.damageNum;
+            int newDamage= oldDamage * percentValue / 100 + fixedValue;
+            newDamage = newDamage > 0 ? 0 : newDamage;
+            tempDamageData.damageNum = newDamage;
+
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
+            battleBuffEventTriggerDTO.Num_1 = newDamage - oldDamage;
+
         }
 
         public BattleBuffEvent_DamageReduce(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

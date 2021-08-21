@@ -203,7 +203,11 @@ namespace AscensionProtocol.DTO
         public virtual int BuffId { get; set; }
         public virtual int Round { get; set; }
         public AddBuffDTO() { }
-        public AddBuffDTO(int targetId,int buffId,int round) { }
+        public AddBuffDTO(int targetId,int buffId,int round) {
+            TargetId = targetId;
+            BuffId = buffId;
+            Round = round;
+        }
     }
 
     /*事件对应的参数：
@@ -230,6 +234,8 @@ namespace AscensionProtocol.DTO
         //事件触发者的Id
         public int TriggerId { get; set; }
         public int TargetId { get; set; }
+        //事件监听者ID
+        public int EventListenerId { get; set; }
         public int BuffId { get; set; }
         //事件触发时机的枚举
         public byte TriggerTime { get; set; }

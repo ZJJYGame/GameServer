@@ -105,7 +105,7 @@ namespace AscensionServer
                 tempEntity = owner;
             BattleBuffObj tempbattleBuffObj= tempEntity.BattleBuffController.AddBuff(battleSkillAddBuffData, battleBuffObj.OwnerSkill);
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(tempEntity.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(tempEntity.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.BuffDTOList.Add(new AddBuffDTO(tempEntity.UniqueID, tempbattleBuffObj.BuffId, tempbattleBuffObj.MaxRound));
         }
         public BattleBuffEvent_AddBuff(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

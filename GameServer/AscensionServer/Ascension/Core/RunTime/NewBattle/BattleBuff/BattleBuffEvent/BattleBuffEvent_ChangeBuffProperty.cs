@@ -70,7 +70,7 @@ namespace AscensionServer
                     skillAdditionData.DodgeProp += percentValue;
                     break;
             }
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = (byte)buffEvent_PropertyChangeType;
             battleBuffEventTriggerDTO.Num_2 = percentValue;
         }

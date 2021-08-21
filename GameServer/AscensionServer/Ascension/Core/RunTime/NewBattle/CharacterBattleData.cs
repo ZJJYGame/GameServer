@@ -321,7 +321,7 @@ namespace AscensionServer
             }
 
             //触发伤害前buff事件（目前仅针对护盾）
-            owner.BattleBuffController.TriggerBuffEventBeforePropertyChange(null,battleDamageData:battleDamageData);
+            owner.BattleBuffController.TriggerBuffEventBeforePropertyChange(owner,battleDamageData:battleDamageData);
 
             ChangeProperty(battleDamageData.baseDamageTargetProperty, battleDamageData.damageNum);
             ChangeProperty(battleDamageData.extraDamageTargetProperty, battleDamageData.extraDamageNum);

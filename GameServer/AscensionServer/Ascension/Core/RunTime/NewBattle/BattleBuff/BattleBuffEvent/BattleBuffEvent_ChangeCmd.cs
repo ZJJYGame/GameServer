@@ -27,7 +27,7 @@ namespace AscensionServer
             owner.BattleCmd = BattleCmd.SkillInstruction;
             owner.ActionID = skillId;
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = (byte)BattleCmd.SkillInstruction;
             battleBuffEventTriggerDTO.Num_2 = skillId;
         }

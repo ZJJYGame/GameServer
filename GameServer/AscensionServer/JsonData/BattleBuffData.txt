@@ -1618,13 +1618,7 @@
             "isShow": false
         },
 
-
-
-
-
-
-
-                {
+       {
             "name": "20301",
             "id": 20301,
             "describe": "物理攻击力增加10%+100点",
@@ -1633,34 +1627,7 @@
             "coldTime": 0,
 			"buffCoverType":0,
 			"maxSuperpositionCount":1,
-            "battleBuffTriggerConditionList": [
-			{
-                        "battleBuffConditionType": 5,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [21002,21001],
-                        "targetCount": 2,
-                        "battleBuffCondition_DamageType": 0,
-						"battleSkillDamageType":0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 150,
-                        "isUp": true,
-                        "flag": true,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-								{
-                        "battleBuffConditionType": 12,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [20312],
-                        "targetCount": 2,
-                        "battleBuffCondition_DamageType": 0,
-						"battleSkillDamageType":0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 150,
-                        "isUp": true,
-                        "flag": true,
-                        "battleBuffCondition_CharacterType": 0
-                    }
-			],
+            "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
                     "eventTriggerCondition": {
@@ -1675,10 +1642,10 @@
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 4,
+                    "battleBuffEventType": 0,
 					"probability":100,
 					"maxTriggerCount":1,
-					"battleBuffTriggerTime":8,
+					"battleBuffTriggerTime":0,
                     "battleBuffEventType_RolePropertyChange": 4,
                     "buffRolePropertyChange_SourceDataType": 3,
                     "buffPropertyChangeType": 0,
@@ -1690,12 +1657,12 @@
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
 					"buffEvent_ChangeTarget_TargetType":0,
-                    "fixedValue": 0,
-                    "percentValue": 50,
+                    "fixedValue": 10,
+                    "percentValue": 0,
                     "idList": [],
                     "flag": true,
-                    "flag_2": false,
-                    "flag_3": false,
+                    "flag_2": true,
+                    "flag_3": true,
                     "id": 21001
                 }
             ],
@@ -1710,48 +1677,12 @@
             "coldTime": 0,
 			"buffCoverType":0,
 			"maxSuperpositionCount":1,
-            "battleBuffTriggerConditionList": [{
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [21001],
-                        "targetCount": 2,
-                        "battleBuffCondition_DamageType": 0,
-						"battleSkillDamageType":0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 150,
-                        "isUp": true,
-                        "flag": true,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-					{
-                        "battleBuffConditionType": 12,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [20312],
-                        "targetCount": 2,
-                        "battleBuffCondition_DamageType": 0,
-						"battleSkillDamageType":0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 150,
-                        "isUp": true,
-                        "flag": true,
-                        "battleBuffCondition_CharacterType": 0
-                    }],
+            "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 1,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [21001],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 5,
-					"maxTriggerCount":1,					
+                    "eventTriggerCondition": {},
+                    "battleBuffEventType": 9,
+					"maxTriggerCount":-1,					
 					"probability":100,
 					"battleBuffTriggerTime":8,
                     "battleBuffEventType_RolePropertyChange": 4,
@@ -1763,15 +1694,40 @@
                     "buffEvent_DamageOrHeal_EffectTargetType": 0,
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 1,
+					"buffEvent_CallOterShareDamage_TargetType":0,
 					"buffEvent_ChangeTarget_TargetType":0,
-                    "fixedValue": 50,
+                    "fixedValue": 10,
                     "percentValue": 0,
                     "idList": [],
-                    "flag": true,
+                    "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 21002
+                    "id": 21002,
+					"battleSkillAddBuffData":{
+							"buffId": 20301,
+							"round": 99,
+							"TargetType": false,
+							"battleSkillAddBuffValueList":[{
+							"percentValue":0,
+							"fixedValue":0
+							}],
+							"basePropList": [
+							    100
+							],
+							"selfAddBuffProbability": {
+							    "battleSkillBuffProbSource": 0,
+							    "multiplyPropValue": 0,
+							    "fixedPropValue": 0,
+							    "addOrReduce": false
+							},
+							"targetAddBuffProbability": {
+							    "battleSkillBuffProbSource": 0,
+							    "multiplyPropValue": 0,
+							    "fixedPropValue": 0,
+							    "addOrReduce": false
+							}
+                }
                 }
             ],
             "isShow": false

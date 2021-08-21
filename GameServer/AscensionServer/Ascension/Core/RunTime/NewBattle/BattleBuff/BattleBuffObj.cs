@@ -68,6 +68,7 @@ namespace AscensionServer
             battleBuffEventConditionList = new List<BattleBuffEventConditionBase>();
 
             BuffId = battleBuffData.id;
+            Utility.Debug.LogError(BuffId);
             MaxRound = battleSkillAddBuffData.round;
             NowRound = MaxRound;
             OverlayLayer = 1;

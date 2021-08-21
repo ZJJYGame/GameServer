@@ -47,9 +47,8 @@ namespace AscensionServer
                 owner.BattleBuffController.RemoveBuff(battleBuffObj);
             }
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = counteractValue;
-
         }
         public BattleBuffEvent_Shield(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
         {
@@ -61,6 +60,7 @@ namespace AscensionServer
                 shieldValue = battleBuffObj.OrginRole.CharacterBattleData.GetProperty(battleBuffEventData.buffEvent_Shield_SourceDataType);
             }
             shieldValue = shieldValue * battleBuffEventData.percentValue / 100 + battleBuffEventData.fixedValue;
+            battleBuffTriggerTime = BattleBuffTriggerTime.BeforeOnHit;
         }
     }
 }

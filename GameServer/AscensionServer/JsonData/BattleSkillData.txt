@@ -77,54 +77,7 @@
                     "extraNumSourceData": []
                 }
             ],
-            "battleSkillAddBuffList": [{
-                    "buffId": 20301,
-                    "round": 99,
-                    "TargetType": false,
-                    "battleSkillAddBuffValueList":[{
-					"percentValue":0,
-					"fixedValue":0
-					}],
-                    "basePropList": [
-                        100
-                    ],
-                    "selfAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    },
-                    "targetAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    }
-                },
-				{
-                    "buffId": 20311,
-                    "round": 99,
-                    "TargetType": false,
-                    "battleSkillAddBuffValueList":[{
-					"percentValue":0,
-					"fixedValue":0
-					}],
-                    "basePropList": [
-                        100
-                    ],
-                    "selfAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    },
-                    "targetAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    }
-                }],
+            "battleSkillAddBuffList": [],
             "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
                 "battleSkillCostType": 0,
@@ -137,7 +90,7 @@
             "name": "剑雨",
             "id": 21006,
             "describe": "攻击一人三次",
-            "TargetNumber": 1,
+            "TargetNumber": 5,
             "damageAddition": 0,
             "critProp": 0,
             "critDamage": 0,
@@ -162,6 +115,26 @@
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 7,
                             "mulitity": 100
+                        },
+						{
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 100
+                        },
+						{
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 100
+                        },
+						{
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 100
+                        },
+						{
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 100
                         }
                     ],
                     "extraDamageAdditionSourceTarget": false,
@@ -169,15 +142,19 @@
                 }
             ],
             "battleSkillAddBuffList": [{
-                    "buffId": 20312,
-                    "round": 2,
+                    "buffId": 20311,
+                    "round": 99,
                     "TargetType": false,
                     "battleSkillAddBuffValueList":[{
 					"percentValue":0,
 					"fixedValue":0
 					}],
                     "basePropList": [
-                        100
+                        100,
+						100,
+						100,
+						100,
+						100
                     ],
                     "selfAddBuffProbability": {
                         "battleSkillBuffProbSource": 0,

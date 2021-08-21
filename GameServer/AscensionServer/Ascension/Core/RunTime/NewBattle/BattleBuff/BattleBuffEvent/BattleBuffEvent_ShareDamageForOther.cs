@@ -13,9 +13,11 @@ namespace AscensionServer
     /// </summary>
     public class BattleBuffEvent_ShareDamageForOther : BattleBuffEventBase
     {
+
         int sharePercent;
         protected override void AddTriggerEvent()
         {
+            Utility.Debug.LogError("添加为别人承伤事件");
             List<BattleCharacterEntity> battleCharacterEntities = GetFriendEntity();
             switch (battleBuffEventData.buffEvent_TakeDamageForOther_TargetType)
             {
@@ -28,6 +30,7 @@ namespace AscensionServer
             }
             for (int i = 0; i < battleCharacterEntities.Count; i++)
             {
+                Utility.Debug.LogError("添加受击保护");
                 battleCharacterEntities[i].BattleBuffController.BeforeOnHitEvent += Trigger;
             }
 
@@ -60,15 +63,7 @@ namespace AscensionServer
             battleDamageData.damageNum = battleDamageData.damageNum - newBattleDamageData.damageNum;
             owner.OnActionEffect(newBattleDamageData);
 
-            if (LastBattleTransfer.TargetInfos == null)
-                LastBattleTransfer.TargetInfos = new List<TargetInfoDTO>();
-            LastBattleTransfer.TargetInfos.Add(new TargetInfoDTO()
-            {
-                TargetID = owner.UniqueID,
-                TargetHPDamage = newBattleDamageData.damageNum,
-            });
-
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(target.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(battleDamageData.TargetID, battleDamageData.TargetID);
             battleBuffEventTriggerDTO.Num_1 = newBattleDamageData.damageNum;
         }
 

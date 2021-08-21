@@ -100,7 +100,7 @@ namespace AscensionServer
         protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
             Utility.Debug.LogError("buff驱散事件触发");
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             for (int i = 0; i < dispelBuffList.Count; i++)
             {
                 owner.BattleBuffController.RemoveBuff(dispelBuffList[i]);

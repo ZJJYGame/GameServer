@@ -121,7 +121,7 @@ namespace AscensionServer
             owner.BattleBuffController.BuffCharacterData.ChangeProperty(nowChangeValue-changeValue, battleBuffEventType_RolePropertyChange);
             changeValue = nowChangeValue;
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = (byte)battleBuffEventType_RolePropertyChange;
             battleBuffEventTriggerDTO.Num_2 = (int)changeValue;
         }

@@ -33,10 +33,10 @@ namespace AscensionServer
             switch (battleBuffTriggerTime)
             {
                 case BattleBuffTriggerTime.BeforeOnHit:
-                    owner.BattleBuffController.BeforeOnHitEvent += Trigger;
+                    owner.BattleBuffController.BeforeOnHitEvent -= Trigger;
                     break;
                 case BattleBuffTriggerTime.RoleBeforeDie:
-                    owner.BattleBuffController.RoleBeforeDieEvent += Trigger;
+                    owner.BattleBuffController.RoleBeforeDieEvent -= Trigger;
                     break;
             }
         }
@@ -52,12 +52,12 @@ namespace AscensionServer
             newBattleDamageData.battleSkillActionType = BattleSkillActionType.Damage;
             battleDamageData.damageNum = battleDamageData.damageNum - newBattleDamageData.damageNum;
 
-            //将目标的同种buff禁用
+            //将目标的同种buff禁用,防止套娃
             targetEntity.BattleBuffController.ForbiddenBuff.Add(battleBuffObj.BuffId);
             targetEntity.OnActionEffect(newBattleDamageData);
             targetEntity.BattleBuffController.ForbiddenBuff.Remove(battleBuffObj.BuffId);
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(targetEntity.UniqueID);
+            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(targetEntity.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = newBattleDamageData.damageNum;
         }
 
@@ -88,6 +88,7 @@ namespace AscensionServer
             //喊血量最高的人承担伤害
             //buff的施加者承担
             sharePercent = battleBuffEventData.percentValue;
+            buffEvent_CallOterShareDamage_TargetType = battleBuffEventData.buffEvent_CallOterShareDamage_TargetType;
         }
     }
 }
