@@ -557,8 +557,6 @@ namespace AscensionServer
                         }
 
                     }
-                   
-
                 }
                 else
                 {

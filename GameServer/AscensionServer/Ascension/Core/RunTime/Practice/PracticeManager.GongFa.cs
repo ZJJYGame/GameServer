@@ -25,6 +25,7 @@ namespace AscensionServer
                 var roleGongFa = await RedisHelper.Hash.HashGetAsync<RoleGongFaDTO>(RedisKeyDefine._RoleGongfaPerfix, RoleID.ToString());
                 if (roleGongFa!=null)
                 {
+                    Utility.Debug.LogError("获取人物所有功法Redis");
                     ResultSuccseS2C(RoleID,PracticeOpcode.GetRoleGongfa, roleGongFa);
                 }
                 else
@@ -259,6 +260,7 @@ namespace AscensionServer
             var role = NHibernateQuerier.CriteriaSelectAsync<RoleGongFa>(nHCriteriaRole).Result;
             if (role != null)
             {
+                Utility.Debug.LogError("获取人物所有功法Mysql");
                 ResultSuccseS2C(RoleID, PracticeOpcode.GetRoleGongfa, ChangeDataType(role));
             }
             else

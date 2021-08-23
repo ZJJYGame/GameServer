@@ -52,13 +52,13 @@ namespace AscensionServer
                             if (formula.NeedJobLevel > forge.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ添加锻造配方请求3");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "副职业等级不够！！");
                                 return;
                             }
                             #region 等级判断
                             if (formula.FormulaLevel > role.RoleLevel)
                             {
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus);
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "人物等级不够！！");
                                 return;
                             }
                             #endregion
@@ -76,7 +76,7 @@ namespace AscensionServer
                             else
                             {
                                 Utility.Debug.LogInfo("YZQ添加锻造配方请求4,需要提示已习得该配方");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "此配方已经学会，无法再次学习");
                             }
                         }
                     }

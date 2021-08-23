@@ -8,6 +8,8 @@ using AscensionProtocol;
 using AscensionServer.Model;
 using RedisDotNet;
 using Cosmos;
+using static AscensionServer.SecondaryJobManager;
+
 namespace AscensionServer
 {
    public partial class PetStatusManager
@@ -100,7 +102,7 @@ namespace AscensionServer
 
             NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var roleassets = NHibernateQuerier.CriteriaSelectAsync<RoleAssets>(nHCriteriarole).Result;
-            if (roleassets.SpiritStonesLow >= 0)
+            if (roleassets.SpiritStonesLow >= 10000)
             {
                 //if (pointSlnDict.TryGetValue(petCompleteDTO.PetAbilityPointDTO.SlnNow, out var AbilityDTO))
                 //{                  
@@ -108,7 +110,7 @@ namespace AscensionServer
                 pointSlnDict.Add(pointDTO.SlnNow, new AbilityDTO() { SlnName = "方案三" });
                 petAbilityPoint.IsUnlockSlnThree = true;
                 petAbilityPoint.AbilityPointSln = Utility.Json.ToJson(pointSlnDict);
-                roleassets.SpiritStonesLow -= 0;
+                roleassets.SpiritStonesLow -= 10000;
 
                 pointDTO.IsUnlockSlnThree = true;
                 await NHibernateQuerier.UpdateAsync<RoleAssets>(roleassets);
@@ -199,7 +201,7 @@ namespace AscensionServer
             if (pointExist&& roleassets)
             {
                 var point = RedisHelper.Hash.HashGetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, pointDTO.ID.ToString()).Result;
-                var assets = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, pointDTO.ID.ToString()).Result;
+                var assets = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleid.ToString()).Result;
                 if (point != null&& assets!=null)
                 {
                     if (point.AbilityPointSln.ContainsKey(pointDTO.SlnNow))
@@ -213,13 +215,14 @@ namespace AscensionServer
                             Dictionary<byte, object> dict = new Dictionary<byte, object>();
                             dict.Add((byte)ParameterCode.PetAbility, point);
                             dict.Add((byte)ParameterCode.PetStatus, status);
+                            dict.Add((byte)ParameterCode.RoleAssets, assets);
                             ResultSuccseS2C(roleid, RolePetOpCode.SwitchPetAbilitySln, dict);
 
                             await NHibernateQuerier.UpdateAsync(assets);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(point));
                             await NHibernateQuerier.UpdateAsync(status);
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetAbilityPointPerfix, point.ID.ToString(), point);
-                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, point.ID.ToString(), assets);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, roleid.ToString(), assets);
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, point.ID.ToString(), status);
                         }else
                             ResultFailS2C(roleid, RolePetOpCode.SwitchPetAbilitySln,"灵石不足无法切换");
@@ -379,7 +382,7 @@ namespace AscensionServer
                 petStatusTemp.PhysicalCritProb = petLevelDataDict[pet.PetLevel].PhysicalCritProb;
             }
         }
-
+        DrollRandom drollRandom = new DrollRandom();
         /// <summary>
         /// 重置宠物资质
         /// </summary>
@@ -392,14 +395,14 @@ namespace AscensionServer
             petAptitudeObj =ReferencePool.Accquire<PetAptitude>();
             if (result)
             {
-                petAptitudeObj.AttackphysicalAptitude = petAptitudeData.NaturalAttackPhysical[0];
-                petAptitudeObj.AttackpowerAptitude = petAptitudeData.NaturalAttackPower[0];
-                petAptitudeObj.AttackspeedAptitude = petAptitudeData.NaturalAttackSpeed[0];
-                petAptitudeObj.DefendphysicalAptitude = petAptitudeData.NaturalDefendPhysical[0];
-                petAptitudeObj.DefendpowerAptitude = petAptitudeData.NaturalAttackPower[0];
-                petAptitudeObj.HPAptitude = petAptitudeData.NaturalHP[0];
-                petAptitudeObj.Petaptitudecol = petAptitudeData.NaturalGrowUp[0];
-                petAptitudeObj.SoulAptitude = petAptitudeData.NaturalSoul[0];
+                petAptitudeObj.AttackphysicalAptitude = drollRandom.Next(petAptitudeData.NaturalAttackPhysical[0], petAptitudeData.NaturalAttackPhysical[1]) ;
+                petAptitudeObj.AttackpowerAptitude = drollRandom.Next(petAptitudeData.NaturalAttackPower[0], petAptitudeData.NaturalAttackPower[1]) ;
+                petAptitudeObj.AttackspeedAptitude = drollRandom.Next(petAptitudeData.NaturalAttackSpeed[0], petAptitudeData.NaturalAttackSpeed[1]) ;
+                petAptitudeObj.DefendphysicalAptitude = drollRandom.Next(petAptitudeData.NaturalDefendPhysical[0], petAptitudeData.NaturalDefendPhysical[1]) ;
+                petAptitudeObj.DefendpowerAptitude = drollRandom.Next(petAptitudeData.NaturalAttackPower[0], petAptitudeData.NaturalAttackPower[1]);
+                petAptitudeObj.HPAptitude = drollRandom.Next(petAptitudeData.NaturalHP[0], petAptitudeData.NaturalHP[1]) ;
+                petAptitudeObj.Petaptitudecol = drollRandom.Next(petAptitudeData.NaturalGrowUp[0], petAptitudeData.NaturalGrowUp[1]) ;
+                petAptitudeObj.SoulAptitude = drollRandom.Next(petAptitudeData.NaturalSoul[0], petAptitudeData.NaturalSoul[1]);
             }
         }
 

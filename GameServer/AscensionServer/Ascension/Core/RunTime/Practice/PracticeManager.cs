@@ -61,9 +61,9 @@ namespace AscensionServer
                         break;
                     case PracticeOpcode.UpdateBottleneck://突破使用
                         break;
-                    case PracticeOpcode.DemonicFail:
+                    case PracticeOpcode.DemonicBattle:
                         break;
-                    case PracticeOpcode.ThunderRoundFail:
+                    case PracticeOpcode.ThunderRoundBattle:
                         break;
                     default:
                         break;

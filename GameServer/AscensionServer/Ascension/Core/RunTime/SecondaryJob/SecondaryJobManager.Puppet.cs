@@ -53,13 +53,13 @@ namespace AscensionServer
                                 }
                             }
                         }
-                        //if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
-                        //{
-                        //    Utility.Debug.LogInfo("YZQ收到的副职人物属性"+Utility.Json.ToJson(role));
-                        //    Utility.Debug.LogInfo("YZQ收到的副职业请求2灵石"+ assest.SpiritStonesLow+"活力"+ role.Vitality);
-                        //    RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
-                        //    return;
-                        //}
+                        if (formulaData.NeedMoney > assest.SpiritStonesLow || formulaData.NeedVitality > role.Vitality)
+                        {
+                            Utility.Debug.LogInfo("YZQ收到的副职人物属性" + Utility.Json.ToJson(role));
+                            Utility.Debug.LogInfo("YZQ收到的副职业请求2灵石" + assest.SpiritStonesLow + "活力" + role.Vitality);
+                            RoleStatusFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet);
+                            return;
+                        }
                         var randNum = drollRandom.Next(1, 101);
                         Utility.Debug.LogError("随机出的数据为" + randNum + "成功率为" + formulaData.SuccessRate);
                         if (randNum > formulaData.SuccessRate)
@@ -200,14 +200,14 @@ namespace AscensionServer
                         role.Vitality -= data.NeedVitality;
                         assest.SpiritStonesLow -= data.NeedMoney;
 
-                        //for (int i = 0; i < unit.Count; i++)
-                        //{
-                        //    InventoryManager.Remove(roleID, unit[i]);
-                        //}
+                        for (int i = 0; i < unit.Count; i++)
+                        {
+                            InventoryManager.Remove(roleID, unit[i]);
+                        }
 
 
                         #region 更新到数据库
-                       var puppetTemp=  NHibernateQuerier.Insert(ChangeDataType(puppetObj));
+                        var puppetTemp=  NHibernateQuerier.Insert(ChangeDataType(puppetObj));
                         rolepuppet.PuppetDict.Add(puppetTemp.ID, data.PuppetID);
                         puppetObj.ID = puppetTemp.ID;
                         await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PuppetIndividualPerfix, puppetTemp.ID.ToString(), puppetObj);
@@ -345,14 +345,14 @@ namespace AscensionServer
                             if (formula.NeedJobLevel > puppet.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>3");
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "副职业等级不够！！");
                                 return;
                             }
                             #region 等级判断
                             if (formula.FormulaLevel > role.RoleLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>4");
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "人物等级不够！！");
                                 return;
                             }
                             #endregion
@@ -375,7 +375,7 @@ namespace AscensionServer
                             else
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业学习傀儡配方请求>>>1");
-                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                RoleStatusFailS2C(roleid, SecondaryJobOpCode.StudySecondaryJobStatus, "此配方已经学会，无法再次学习");
                             }
                                
                         }
@@ -397,18 +397,18 @@ namespace AscensionServer
                 PuppetUnitInfo puppet = new PuppetUnitInfo();
                 for (int i = 0; i < parameter.PuppetAttributeMax.Count; i++)
                 {
-                    puppet.PuppetAttribute.Add(Utility.Algorithm.RandomRange(parameter.PuppetAttributeMin[i], parameter.PuppetAttributeMax[i]));
+                    puppet.PuppetAttribute.Add(drollRandom.Next(parameter.PuppetAttributeMin[i], parameter.PuppetAttributeMax[i]+1));
                 }
                 puppet.WeaponSkill.Add(parameter.FixedSkill);
-                if (Utility.Algorithm.RandomRange(0,100)<= parameter.PuppetSkillProbability)
+                if (drollRandom.Next(0,100)<= parameter.PuppetSkillProbability)
                 {
-                    puppet.WeaponSkill.Add(parameter.PuppetSkillpoor[Utility.Algorithm.RandomRange(0, parameter.PuppetSkillpoor.Count)]);
+                    puppet.WeaponSkill.Add(parameter.PuppetSkillpoor[drollRandom.Next(0, parameter.PuppetSkillpoor.Count)]);
                 }
 
-                if (Utility.Algorithm.RandomRange(0, 100)<= parameter.AdditionalAttributeProbability)
+                if (drollRandom.Next(0, 100)<= parameter.AdditionalAttributeProbability)
                 {
-                    puppet.AffixType = Utility.Algorithm.RandomRange(0, parameter.AdditionalMaxPercentage.Count );
-                    puppet.AffixAddition = Utility.Algorithm.RandomRange(0, parameter.AdditionalMaxPercentage[puppet.AffixType] );
+                    puppet.AffixType = drollRandom.Next(0, parameter.AdditionalMaxPercentage.Count );
+                    puppet.AffixAddition = drollRandom.Next(0, parameter.AdditionalMaxPercentage[puppet.AffixType] );
                 }
                 puppet.PuppetDurable = parameter.PuppetDurable;
                 return puppet;

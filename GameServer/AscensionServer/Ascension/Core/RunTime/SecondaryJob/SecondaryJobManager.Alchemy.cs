@@ -63,7 +63,7 @@ namespace AscensionServer
                             if (formula.NeedJobLevel > alchemy.JobLevel)
                             {
                                 Utility.Debug.LogInfo("YZQ收到的副职业添加配方请求2");
-                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "学习配方失败");
+                                RoleStatusFailS2C(roleID, SecondaryJobOpCode.StudySecondaryJobStatus, "此配方已经学会，无法再次学习");
                                 return;
                             }
 

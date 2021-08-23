@@ -19,7 +19,7 @@ namespace AscensionProtocol
         TriggerBottleneck = 9,//触发瓶颈
         UseBottleneckElixir = 10,//使用丹药突破瓶颈
         UpdateBottleneck = 11,//更新瓶颈状态
-        DemonicFail = 12,//心魔突破失败
-        ThunderRoundFail = 13//天劫突破失败
+        DemonicBattle= 12,//触发心魔战斗
+        ThunderRoundBattle = 13//触发天劫战斗
     }
 }
