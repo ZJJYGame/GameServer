@@ -28,6 +28,7 @@ namespace AscensionServer
         public int MishuFloor { get; set; }
         public int NeedLevelID { get; set; }
         public int MishuType { get; set; }
+        public int NextFloor { get; set; }
         public int MishuQuality { get; set; }
         public int MishuProperty { get; set; }
         public List<int> SkillArrayOne { get; set; }

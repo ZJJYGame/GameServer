@@ -409,7 +409,7 @@ namespace AscensionServer
                         dict.Add((byte)ParameterCode.RoleBottleneck, bottleneck);
                         dict.Add((byte)ParameterCode.OnOffLine, onOffLineObj);
                         dict.Add((byte)ParameterCode.Role, role);
-                        ResultSuccseS2C(roleID, PracticeOpcode.UploadingExp, dict);
+                        ResultSuccseS2C(roleID, PracticeOpcode.GetOffLineExp, dict);
                         mishuTemp.MiShuIDDict[onOffLineObj.MsGfID] = mishuObj;
 
                         await NHibernateQuerier.UpdateAsync(ChangeDataType(mishuTemp));
@@ -495,7 +495,7 @@ namespace AscensionServer
                     case 2:
                         if (mishu == null)
                         {
-                            ResultFailS2C(onOffLine.MsGfID, PracticeOpcode.GetOffLineExp);
+                            ResultFailS2C(onOffLine.MsGfID, PracticeOpcode.UploadingExp);
                             return;
                         }
 
@@ -655,32 +655,45 @@ namespace AscensionServer
         /// <param name="miShu"></param>
         /// <param name="exp"></param>
         /// <returns></returns>
-        MiShuDTO AddMiShu(MiShuDTO miShu,int exp,int rolelevel )
+        MiShuDTO AddMiShu(MiShuDTO miShu, int exp, int rolelevel)
         {
-            MiShuDTO miShuDTO = new MiShuDTO();
             GameEntry.DataManager.TryGetValue<Dictionary<int, RoleLevelData>>(out var roleDict);
             GameEntry.DataManager.TryGetValue<Dictionary<int, MiShuData>>(out var mishuData);
-            var mishu = mishuData[miShu.MiShuLevel].mishuSkillDatas.Find((x)=>x.MishuFloor== miShu.MiShuLevel);
-            var result = roleDict.TryGetValue(miShu.MiShuLevel, out var roleData);
-            if (result)
+            var mishu = mishuData[miShu.MiShuID].mishuSkillDatas.Find((x) => x.MishuFloor == miShu.MiShuLevel);
+            if (roleDict.TryGetValue(miShu.MiShuLevel, out var roleData))
             {
-                if (roleData.ExpLevelUp <= miShu.MiShuLevel + exp)
+                if (mishu.NeedLevelID <= rolelevel)
                 {
-                    if (mishu.NeedLevelID<= rolelevel)
+                    if (mishu.NextFloor != 0)
                     {
-                        miShu.MiShuExp = miShu.MiShuLevel + exp - roleData.ExpLevelUp;
-                        miShu.MiShuLevel++;
-                        AddMiShu(miShu, miShu.MiShuExp, miShu.MiShuLevel);
-                    }   
+                        if (mishu.ExpLevelUp > miShu.MiShuExp + exp)
+                        {
+                            miShu.MiShuExp += exp;
+                        }
+                        else
+                        {
+                            miShu.MiShuLevel = (short)mishu.NextFloor;
+                            miShu.MiShuSkillArry = mishu.SkillArrayOne;
+                            miShu.MiShuAdventureSkill = mishu.SkillArrayTwo;
+                            miShu.MiShuExp = mishu.ExpLevelUp - miShu.MiShuExp - exp;
+                            AddMiShu(miShu, 0, rolelevel);
+                        }
+                    }
+                    else
+                    {
+                        if (mishu.ExpLevelUp > miShu.MiShuExp + exp)
+                        {
+                            miShu.MiShuExp += exp;
+                        }
+                        else
+                        {
+                            miShu.MiShuExp = mishu.ExpLevelUp;
+                        }
+                    }
                 }
             }
-            miShuDTO.MiShuID = miShu.MiShuID;
-            miShuDTO.MiShuLevel = miShu.MiShuLevel;
-            miShuDTO.MiShuExp = miShu.MiShuExp+ exp;
-            miShuDTO.MiShuSkillArry = miShu.MiShuSkillArry;  
-            return miShuDTO;
+            return miShu;
         }
-
         /// <summary>
         /// 更新数据至数据库
         /// </summary>

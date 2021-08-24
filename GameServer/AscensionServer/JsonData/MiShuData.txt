@@ -1,10 +1,7 @@
 ﻿[
 	{
-		"MishuID":190011,
-		"DataList":[{
-				"MishuName":"散修一",
-				"MishuDescribe":"散修一的描述",
-				"MishuIcon":19001,
+		"MishuID":19001,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -32,14 +29,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190012,
-		"DataList":[{
-				"MishuName":"散修一",
-				"MishuDescribe":"散修一的描述",
-				"MishuIcon":19001,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -67,14 +59,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190013,
-		"DataList":[{
-				"MishuName":"散修一",
-				"MishuDescribe":"散修一的描述",
-				"MishuIcon":19001,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -102,14 +89,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190014,
-		"DataList":[{
-				"MishuName":"散修一",
-				"MishuDescribe":"散修一的描述",
-				"MishuIcon":19001,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -137,14 +119,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190015,
-		"DataList":[{
-				"MishuName":"散修一",
-				"MishuDescribe":"散修一的描述",
-				"MishuIcon":19001,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -172,14 +149,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190021,
-		"DataList":[{
-				"MishuName":"散修二",
-				"MishuDescribe":"散修二的描述",
-				"MishuIcon":19002,
+		"MishuID":19002,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -207,14 +182,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190022,
-		"DataList":[{
-				"MishuName":"散修二",
-				"MishuDescribe":"散修二的描述",
-				"MishuIcon":19002,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -242,14 +212,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190023,
-		"DataList":[{
-				"MishuName":"散修二",
-				"MishuDescribe":"散修二的描述",
-				"MishuIcon":19002,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -277,14 +242,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190024,
-		"DataList":[{
-				"MishuName":"散修二",
-				"MishuDescribe":"散修二的描述",
-				"MishuIcon":19002,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -312,14 +272,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190025,
-		"DataList":[{
-				"MishuName":"散修二",
-				"MishuDescribe":"散修二的描述",
-				"MishuIcon":19002,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -347,14 +302,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190031,
-		"DataList":[{
-				"MishuName":"散修三",
-				"MishuDescribe":"散修三的描述",
-				"MishuIcon":19003,
+		"MishuID":19003,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -382,14 +335,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190032,
-		"DataList":[{
-				"MishuName":"散修三",
-				"MishuDescribe":"散修三的描述",
-				"MishuIcon":19003,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -417,14 +365,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190033,
-		"DataList":[{
-				"MishuName":"散修三",
-				"MishuDescribe":"散修三的描述",
-				"MishuIcon":19003,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -452,14 +395,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190034,
-		"DataList":[{
-				"MishuName":"散修三",
-				"MishuDescribe":"散修三的描述",
-				"MishuIcon":19003,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -487,14 +425,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190035,
-		"DataList":[{
-				"MishuName":"散修三",
-				"MishuDescribe":"散修三的描述",
-				"MishuIcon":19003,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -522,14 +455,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190041,
-		"DataList":[{
-				"MishuName":"散修四",
-				"MishuDescribe":"散修四的描述",
-				"MishuIcon":19004,
+		"MishuID":19004,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -557,14 +488,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190042,
-		"DataList":[{
-				"MishuName":"散修四",
-				"MishuDescribe":"散修四的描述",
-				"MishuIcon":19004,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -592,14 +518,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190043,
-		"DataList":[{
-				"MishuName":"散修四",
-				"MishuDescribe":"散修四的描述",
-				"MishuIcon":19004,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -627,14 +548,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190044,
-		"DataList":[{
-				"MishuName":"散修四",
-				"MishuDescribe":"散修四的描述",
-				"MishuIcon":19004,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -662,14 +578,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190045,
-		"DataList":[{
-				"MishuName":"散修四",
-				"MishuDescribe":"散修四的描述",
-				"MishuIcon":19004,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -697,14 +608,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190051,
-		"DataList":[{
-				"MishuName":"散修五",
-				"MishuDescribe":"散修五的描述",
-				"MishuIcon":19005,
+		"MishuID":19005,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -732,14 +641,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190052,
-		"DataList":[{
-				"MishuName":"散修五",
-				"MishuDescribe":"散修五的描述",
-				"MishuIcon":19005,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -767,14 +671,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190053,
-		"DataList":[{
-				"MishuName":"散修五",
-				"MishuDescribe":"散修五的描述",
-				"MishuIcon":19005,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -802,14 +701,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190054,
-		"DataList":[{
-				"MishuName":"散修五",
-				"MishuDescribe":"散修五的描述",
-				"MishuIcon":19005,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -837,14 +731,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190055,
-		"DataList":[{
-				"MishuName":"散修五",
-				"MishuDescribe":"散修五的描述",
-				"MishuIcon":19005,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -872,14 +761,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190061,
-		"DataList":[{
-				"MishuName":"散修六",
-				"MishuDescribe":"散修六的描述",
-				"MishuIcon":19006,
+		"MishuID":19006,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -907,14 +794,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190062,
-		"DataList":[{
-				"MishuName":"散修六",
-				"MishuDescribe":"散修六的描述",
-				"MishuIcon":19006,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -942,14 +824,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190063,
-		"DataList":[{
-				"MishuName":"散修六",
-				"MishuDescribe":"散修六的描述",
-				"MishuIcon":19006,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -977,14 +854,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190064,
-		"DataList":[{
-				"MishuName":"散修六",
-				"MishuDescribe":"散修六的描述",
-				"MishuIcon":19006,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -1012,14 +884,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190065,
-		"DataList":[{
-				"MishuName":"散修六",
-				"MishuDescribe":"散修六的描述",
-				"MishuIcon":19006,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -1047,14 +914,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190071,
-		"DataList":[{
-				"MishuName":"散修七",
-				"MishuDescribe":"散修七的描述",
-				"MishuIcon":19007,
+		"MishuID":19007,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -1082,14 +947,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190072,
-		"DataList":[{
-				"MishuName":"散修七",
-				"MishuDescribe":"散修七的描述",
-				"MishuIcon":19007,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -1117,14 +977,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190073,
-		"DataList":[{
-				"MishuName":"散修七",
-				"MishuDescribe":"散修七的描述",
-				"MishuIcon":19007,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -1152,14 +1007,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190074,
-		"DataList":[{
-				"MishuName":"散修七",
-				"MishuDescribe":"散修七的描述",
-				"MishuIcon":19007,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -1187,14 +1037,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190075,
-		"DataList":[{
-				"MishuName":"散修七",
-				"MishuDescribe":"散修七的描述",
-				"MishuIcon":19007,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -1222,14 +1067,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190081,
-		"DataList":[{
-				"MishuName":"散修八",
-				"MishuDescribe":"散修八的描述",
-				"MishuIcon":19008,
+		"MishuID":19008,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -1257,14 +1100,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190082,
-		"DataList":[{
-				"MishuName":"散修八",
-				"MishuDescribe":"散修八的描述",
-				"MishuIcon":19008,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -1292,14 +1130,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190083,
-		"DataList":[{
-				"MishuName":"散修八",
-				"MishuDescribe":"散修八的描述",
-				"MishuIcon":19008,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -1327,14 +1160,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190084,
-		"DataList":[{
-				"MishuName":"散修八",
-				"MishuDescribe":"散修八的描述",
-				"MishuIcon":19008,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -1362,14 +1190,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190085,
-		"DataList":[{
-				"MishuName":"散修八",
-				"MishuDescribe":"散修八的描述",
-				"MishuIcon":19008,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -1397,14 +1220,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190091,
-		"DataList":[{
-				"MishuName":"散修九",
-				"MishuDescribe":"散修九的描述",
-				"MishuIcon":19009,
+		"MishuID":19009,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -1432,14 +1253,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190092,
-		"DataList":[{
-				"MishuName":"散修九",
-				"MishuDescribe":"散修九的描述",
-				"MishuIcon":19009,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -1467,14 +1283,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190093,
-		"DataList":[{
-				"MishuName":"散修九",
-				"MishuDescribe":"散修九的描述",
-				"MishuIcon":19009,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -1502,14 +1313,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190094,
-		"DataList":[{
-				"MishuName":"散修九",
-				"MishuDescribe":"散修九的描述",
-				"MishuIcon":19009,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -1537,14 +1343,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190095,
-		"DataList":[{
-				"MishuName":"散修九",
-				"MishuDescribe":"散修九的描述",
-				"MishuIcon":19009,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -1572,14 +1373,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":190101,
-		"DataList":[{
-				"MishuName":"散修十",
-				"MishuDescribe":"散修十的描述",
-				"MishuIcon":19010,
+		"MishuID":19010,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -1607,14 +1406,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190102,
-		"DataList":[{
-				"MishuName":"散修十",
-				"MishuDescribe":"散修十的描述",
-				"MishuIcon":19010,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -1642,14 +1436,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190103,
-		"DataList":[{
-				"MishuName":"散修十",
-				"MishuDescribe":"散修十的描述",
-				"MishuIcon":19010,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -1677,14 +1466,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190104,
-		"DataList":[{
-				"MishuName":"散修十",
-				"MishuDescribe":"散修十的描述",
-				"MishuIcon":19010,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -1712,14 +1496,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":190105,
-		"DataList":[{
-				"MishuName":"散修十",
-				"MishuDescribe":"散修十的描述",
-				"MishuIcon":19010,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -1747,14 +1526,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195011,
-		"DataList":[{
-				"MishuName":"火焰拳",
-				"MishuDescribe":"火焰拳的描述",
-				"MishuIcon":19501,
+		"MishuID":19501,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -1782,14 +1559,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195012,
-		"DataList":[{
-				"MishuName":"火焰拳",
-				"MishuDescribe":"火焰拳的描述",
-				"MishuIcon":19501,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -1817,14 +1589,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195013,
-		"DataList":[{
-				"MishuName":"火焰拳",
-				"MishuDescribe":"火焰拳的描述",
-				"MishuIcon":19501,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -1852,14 +1619,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195014,
-		"DataList":[{
-				"MishuName":"火焰拳",
-				"MishuDescribe":"火焰拳的描述",
-				"MishuIcon":19501,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -1887,14 +1649,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195015,
-		"DataList":[{
-				"MishuName":"火焰拳",
-				"MishuDescribe":"火焰拳的描述",
-				"MishuIcon":19501,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -1922,14 +1679,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195021,
-		"DataList":[{
-				"MishuName":"土行",
-				"MishuDescribe":"土行的描述",
-				"MishuIcon":19502,
+		"MishuID":19502,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -1957,14 +1712,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195022,
-		"DataList":[{
-				"MishuName":"土行",
-				"MishuDescribe":"土行的描述",
-				"MishuIcon":19502,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -1992,14 +1742,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195023,
-		"DataList":[{
-				"MishuName":"土行",
-				"MishuDescribe":"土行的描述",
-				"MishuIcon":19502,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -2027,14 +1772,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195024,
-		"DataList":[{
-				"MishuName":"土行",
-				"MishuDescribe":"土行的描述",
-				"MishuIcon":19502,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -2062,14 +1802,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195025,
-		"DataList":[{
-				"MishuName":"土行",
-				"MishuDescribe":"土行的描述",
-				"MishuIcon":19502,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -2097,14 +1832,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195031,
-		"DataList":[{
-				"MishuName":"嘲讽",
-				"MishuDescribe":"嘲讽的描述",
-				"MishuIcon":19503,
+		"MishuID":19503,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -2132,14 +1865,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195032,
-		"DataList":[{
-				"MishuName":"嘲讽",
-				"MishuDescribe":"嘲讽的描述",
-				"MishuIcon":19503,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -2167,14 +1895,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195033,
-		"DataList":[{
-				"MishuName":"嘲讽",
-				"MishuDescribe":"嘲讽的描述",
-				"MishuIcon":19503,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -2202,14 +1925,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195034,
-		"DataList":[{
-				"MishuName":"嘲讽",
-				"MishuDescribe":"嘲讽的描述",
-				"MishuIcon":19503,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -2237,14 +1955,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195035,
-		"DataList":[{
-				"MishuName":"嘲讽",
-				"MishuDescribe":"嘲讽的描述",
-				"MishuIcon":19503,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -2272,14 +1985,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195041,
-		"DataList":[{
-				"MishuName":"冲锋",
-				"MishuDescribe":"冲锋的描述",
-				"MishuIcon":19504,
+		"MishuID":19504,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -2307,14 +2018,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195042,
-		"DataList":[{
-				"MishuName":"冲锋",
-				"MishuDescribe":"冲锋的描述",
-				"MishuIcon":19504,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -2342,14 +2048,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195043,
-		"DataList":[{
-				"MishuName":"冲锋",
-				"MishuDescribe":"冲锋的描述",
-				"MishuIcon":19504,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -2377,14 +2078,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195044,
-		"DataList":[{
-				"MishuName":"冲锋",
-				"MishuDescribe":"冲锋的描述",
-				"MishuIcon":19504,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -2412,14 +2108,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195045,
-		"DataList":[{
-				"MishuName":"冲锋",
-				"MishuDescribe":"冲锋的描述",
-				"MishuIcon":19504,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -2447,14 +2138,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195051,
-		"DataList":[{
-				"MishuName":"群讽",
-				"MishuDescribe":"群讽的描述",
-				"MishuIcon":19505,
+		"MishuID":19505,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -2482,14 +2171,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195052,
-		"DataList":[{
-				"MishuName":"群讽",
-				"MishuDescribe":"群讽的描述",
-				"MishuIcon":19505,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -2517,14 +2201,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195053,
-		"DataList":[{
-				"MishuName":"群讽",
-				"MishuDescribe":"群讽的描述",
-				"MishuIcon":19505,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -2552,14 +2231,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195054,
-		"DataList":[{
-				"MishuName":"群讽",
-				"MishuDescribe":"群讽的描述",
-				"MishuIcon":19505,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -2587,14 +2261,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195055,
-		"DataList":[{
-				"MishuName":"群讽",
-				"MishuDescribe":"群讽的描述",
-				"MishuIcon":19505,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -2622,14 +2291,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195061,
-		"DataList":[{
-				"MishuName":"风沙漫天",
-				"MishuDescribe":"风沙漫天的描述",
-				"MishuIcon":19506,
+		"MishuID":19506,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -2657,14 +2324,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195062,
-		"DataList":[{
-				"MishuName":"风沙漫天",
-				"MishuDescribe":"风沙漫天的描述",
-				"MishuIcon":19506,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -2692,14 +2354,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195063,
-		"DataList":[{
-				"MishuName":"风沙漫天",
-				"MishuDescribe":"风沙漫天的描述",
-				"MishuIcon":19506,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -2727,14 +2384,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195064,
-		"DataList":[{
-				"MishuName":"风沙漫天",
-				"MishuDescribe":"风沙漫天的描述",
-				"MishuIcon":19506,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -2762,14 +2414,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195065,
-		"DataList":[{
-				"MishuName":"风沙漫天",
-				"MishuDescribe":"风沙漫天的描述",
-				"MishuIcon":19506,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -2797,14 +2444,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195071,
-		"DataList":[{
-				"MishuName":"炎甲",
-				"MishuDescribe":"炎甲的描述",
-				"MishuIcon":19507,
+		"MishuID":19507,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -2832,14 +2477,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195072,
-		"DataList":[{
-				"MishuName":"炎甲",
-				"MishuDescribe":"炎甲的描述",
-				"MishuIcon":19507,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -2867,14 +2507,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195073,
-		"DataList":[{
-				"MishuName":"炎甲",
-				"MishuDescribe":"炎甲的描述",
-				"MishuIcon":19507,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -2902,14 +2537,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195074,
-		"DataList":[{
-				"MishuName":"炎甲",
-				"MishuDescribe":"炎甲的描述",
-				"MishuIcon":19507,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -2937,14 +2567,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195075,
-		"DataList":[{
-				"MishuName":"炎甲",
-				"MishuDescribe":"炎甲的描述",
-				"MishuIcon":19507,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -2972,14 +2597,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195081,
-		"DataList":[{
-				"MishuName":"青凤祝福",
-				"MishuDescribe":"青凤祝福的描述",
-				"MishuIcon":19508,
+		"MishuID":19508,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -3007,14 +2630,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195082,
-		"DataList":[{
-				"MishuName":"青凤祝福",
-				"MishuDescribe":"青凤祝福的描述",
-				"MishuIcon":19508,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -3042,14 +2660,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195083,
-		"DataList":[{
-				"MishuName":"青凤祝福",
-				"MishuDescribe":"青凤祝福的描述",
-				"MishuIcon":19508,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -3077,14 +2690,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195084,
-		"DataList":[{
-				"MishuName":"青凤祝福",
-				"MishuDescribe":"青凤祝福的描述",
-				"MishuIcon":19508,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -3112,14 +2720,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195085,
-		"DataList":[{
-				"MishuName":"青凤祝福",
-				"MishuDescribe":"青凤祝福的描述",
-				"MishuIcon":19508,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -3147,14 +2750,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195091,
-		"DataList":[{
-				"MishuName":"凤形盾",
-				"MishuDescribe":"凤形盾的描述",
-				"MishuIcon":19509,
+		"MishuID":19509,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -3182,14 +2783,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195092,
-		"DataList":[{
-				"MishuName":"凤形盾",
-				"MishuDescribe":"凤形盾的描述",
-				"MishuIcon":19509,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -3217,14 +2813,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195093,
-		"DataList":[{
-				"MishuName":"凤形盾",
-				"MishuDescribe":"凤形盾的描述",
-				"MishuIcon":19509,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -3252,14 +2843,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195094,
-		"DataList":[{
-				"MishuName":"凤形盾",
-				"MishuDescribe":"凤形盾的描述",
-				"MishuIcon":19509,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -3287,14 +2873,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195095,
-		"DataList":[{
-				"MishuName":"凤形盾",
-				"MishuDescribe":"凤形盾的描述",
-				"MishuIcon":19509,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -3322,14 +2903,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195101,
-		"DataList":[{
-				"MishuName":"凤游山河",
-				"MishuDescribe":"凤游山河的描述",
-				"MishuIcon":19510,
+		"MishuID":19510,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -3357,14 +2936,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195102,
-		"DataList":[{
-				"MishuName":"凤游山河",
-				"MishuDescribe":"凤游山河的描述",
-				"MishuIcon":19510,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -3392,14 +2966,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195103,
-		"DataList":[{
-				"MishuName":"凤游山河",
-				"MishuDescribe":"凤游山河的描述",
-				"MishuIcon":19510,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -3427,14 +2996,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195104,
-		"DataList":[{
-				"MishuName":"凤游山河",
-				"MishuDescribe":"凤游山河的描述",
-				"MishuIcon":19510,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -3462,14 +3026,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195105,
-		"DataList":[{
-				"MishuName":"凤游山河",
-				"MishuDescribe":"凤游山河的描述",
-				"MishuIcon":19510,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -3497,14 +3056,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193011,
-		"DataList":[{
-				"MishuName":"弱水三千",
-				"MishuDescribe":"弱水三千的描述",
-				"MishuIcon":19301,
+		"MishuID":19301,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -3532,14 +3089,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193012,
-		"DataList":[{
-				"MishuName":"弱水三千",
-				"MishuDescribe":"弱水三千的描述",
-				"MishuIcon":19301,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -3567,14 +3119,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193013,
-		"DataList":[{
-				"MishuName":"弱水三千",
-				"MishuDescribe":"弱水三千的描述",
-				"MishuIcon":19301,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -3602,14 +3149,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193014,
-		"DataList":[{
-				"MishuName":"弱水三千",
-				"MishuDescribe":"弱水三千的描述",
-				"MishuIcon":19301,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -3637,14 +3179,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193015,
-		"DataList":[{
-				"MishuName":"弱水三千",
-				"MishuDescribe":"弱水三千的描述",
-				"MishuIcon":19301,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -3672,14 +3209,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193021,
-		"DataList":[{
-				"MishuName":"随波逐流",
-				"MishuDescribe":"随波逐流的描述",
-				"MishuIcon":19302,
+		"MishuID":19302,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -3707,14 +3242,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193022,
-		"DataList":[{
-				"MishuName":"随波逐流",
-				"MishuDescribe":"随波逐流的描述",
-				"MishuIcon":19302,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -3742,14 +3272,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193023,
-		"DataList":[{
-				"MishuName":"随波逐流",
-				"MishuDescribe":"随波逐流的描述",
-				"MishuIcon":19302,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -3777,14 +3302,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193024,
-		"DataList":[{
-				"MishuName":"随波逐流",
-				"MishuDescribe":"随波逐流的描述",
-				"MishuIcon":19302,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -3812,14 +3332,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193025,
-		"DataList":[{
-				"MishuName":"随波逐流",
-				"MishuDescribe":"随波逐流的描述",
-				"MishuIcon":19302,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -3847,14 +3362,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193031,
-		"DataList":[{
-				"MishuName":"冰甲",
-				"MishuDescribe":"水月宗三的描述",
-				"MishuIcon":19303,
+		"MishuID":19303,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -3882,14 +3395,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193032,
-		"DataList":[{
-				"MishuName":"冰甲",
-				"MishuDescribe":"水月宗三的描述",
-				"MishuIcon":19303,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -3917,14 +3425,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193033,
-		"DataList":[{
-				"MishuName":"冰甲",
-				"MishuDescribe":"水月宗三的描述",
-				"MishuIcon":19303,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -3952,14 +3455,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193034,
-		"DataList":[{
-				"MishuName":"冰甲",
-				"MishuDescribe":"水月宗三的描述",
-				"MishuIcon":19303,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -3987,14 +3485,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193035,
-		"DataList":[{
-				"MishuName":"冰甲",
-				"MishuDescribe":"水月宗三的描述",
-				"MishuIcon":19303,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -4022,14 +3515,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193041,
-		"DataList":[{
-				"MishuName":"月光",
-				"MishuDescribe":"月光的描述",
-				"MishuIcon":19304,
+		"MishuID":19304,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -4057,14 +3548,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193042,
-		"DataList":[{
-				"MishuName":"月光",
-				"MishuDescribe":"月光的描述",
-				"MishuIcon":19304,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -4092,14 +3578,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193043,
-		"DataList":[{
-				"MishuName":"月光",
-				"MishuDescribe":"月光的描述",
-				"MishuIcon":19304,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -4127,14 +3608,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193044,
-		"DataList":[{
-				"MishuName":"月光",
-				"MishuDescribe":"月光的描述",
-				"MishuIcon":19304,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -4162,14 +3638,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193045,
-		"DataList":[{
-				"MishuName":"月光",
-				"MishuDescribe":"月光的描述",
-				"MishuIcon":19304,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -4197,14 +3668,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193051,
-		"DataList":[{
-				"MishuName":"漩涡",
-				"MishuDescribe":"漩涡的描述",
-				"MishuIcon":19305,
+		"MishuID":19305,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -4232,14 +3701,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193052,
-		"DataList":[{
-				"MishuName":"漩涡",
-				"MishuDescribe":"漩涡的描述",
-				"MishuIcon":19305,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -4267,14 +3731,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193053,
-		"DataList":[{
-				"MishuName":"漩涡",
-				"MishuDescribe":"漩涡的描述",
-				"MishuIcon":19305,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -4302,14 +3761,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193054,
-		"DataList":[{
-				"MishuName":"漩涡",
-				"MishuDescribe":"漩涡的描述",
-				"MishuIcon":19305,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -4337,14 +3791,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193055,
-		"DataList":[{
-				"MishuName":"漩涡",
-				"MishuDescribe":"漩涡的描述",
-				"MishuIcon":19305,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -4372,14 +3821,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193061,
-		"DataList":[{
-				"MishuName":"月明星稀",
-				"MishuDescribe":"月明星稀的描述",
-				"MishuIcon":19306,
+		"MishuID":19306,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -4407,14 +3854,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193062,
-		"DataList":[{
-				"MishuName":"月明星稀",
-				"MishuDescribe":"月明星稀的描述",
-				"MishuIcon":19306,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -4442,14 +3884,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193063,
-		"DataList":[{
-				"MishuName":"月明星稀",
-				"MishuDescribe":"月明星稀的描述",
-				"MishuIcon":19306,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -4477,14 +3914,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193064,
-		"DataList":[{
-				"MishuName":"月明星稀",
-				"MishuDescribe":"月明星稀的描述",
-				"MishuIcon":19306,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -4512,14 +3944,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193065,
-		"DataList":[{
-				"MishuName":"月明星稀",
-				"MishuDescribe":"月明星稀的描述",
-				"MishuIcon":19306,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -4547,14 +3974,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193071,
-		"DataList":[{
-				"MishuName":"秋水无痕",
-				"MishuDescribe":"秋水无痕的描述",
-				"MishuIcon":19307,
+		"MishuID":19307,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -4582,14 +4007,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193072,
-		"DataList":[{
-				"MishuName":"秋水无痕",
-				"MishuDescribe":"秋水无痕的描述",
-				"MishuIcon":19307,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -4617,14 +4037,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193073,
-		"DataList":[{
-				"MishuName":"秋水无痕",
-				"MishuDescribe":"秋水无痕的描述",
-				"MishuIcon":19307,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -4652,14 +4067,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193074,
-		"DataList":[{
-				"MishuName":"秋水无痕",
-				"MishuDescribe":"秋水无痕的描述",
-				"MishuIcon":19307,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -4687,14 +4097,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193075,
-		"DataList":[{
-				"MishuName":"秋水无痕",
-				"MishuDescribe":"秋水无痕的描述",
-				"MishuIcon":19307,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -4722,14 +4127,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193081,
-		"DataList":[{
-				"MishuName":"雨润万物",
-				"MishuDescribe":"雨润万物的描述",
-				"MishuIcon":19308,
+		"MishuID":19308,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -4757,14 +4160,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193082,
-		"DataList":[{
-				"MishuName":"雨润万物",
-				"MishuDescribe":"雨润万物的描述",
-				"MishuIcon":19308,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -4792,14 +4190,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193083,
-		"DataList":[{
-				"MishuName":"雨润万物",
-				"MishuDescribe":"雨润万物的描述",
-				"MishuIcon":19308,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -4827,14 +4220,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193084,
-		"DataList":[{
-				"MishuName":"雨润万物",
-				"MishuDescribe":"雨润万物的描述",
-				"MishuIcon":19308,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -4862,14 +4250,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193085,
-		"DataList":[{
-				"MishuName":"雨润万物",
-				"MishuDescribe":"雨润万物的描述",
-				"MishuIcon":19308,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -4897,14 +4280,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193091,
-		"DataList":[{
-				"MishuName":"月落乌啼",
-				"MishuDescribe":"月落乌啼的描述",
-				"MishuIcon":19309,
+		"MishuID":19309,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -4932,14 +4313,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193092,
-		"DataList":[{
-				"MishuName":"月落乌啼",
-				"MishuDescribe":"月落乌啼的描述",
-				"MishuIcon":19309,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -4967,14 +4343,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193093,
-		"DataList":[{
-				"MishuName":"月落乌啼",
-				"MishuDescribe":"月落乌啼的描述",
-				"MishuIcon":19309,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -5002,14 +4373,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193094,
-		"DataList":[{
-				"MishuName":"月落乌啼",
-				"MishuDescribe":"月落乌啼的描述",
-				"MishuIcon":19309,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -5037,14 +4403,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193095,
-		"DataList":[{
-				"MishuName":"月落乌啼",
-				"MishuDescribe":"月落乌啼的描述",
-				"MishuIcon":19309,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -5072,14 +4433,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":193101,
-		"DataList":[{
-				"MishuName":"水月宗十",
-				"MishuDescribe":"水月宗十的描述",
-				"MishuIcon":19310,
+		"MishuID":19310,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -5107,14 +4466,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193102,
-		"DataList":[{
-				"MishuName":"水月宗十",
-				"MishuDescribe":"水月宗十的描述",
-				"MishuIcon":19310,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -5142,14 +4496,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193103,
-		"DataList":[{
-				"MishuName":"水月宗十",
-				"MishuDescribe":"水月宗十的描述",
-				"MishuIcon":19310,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -5177,14 +4526,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193104,
-		"DataList":[{
-				"MishuName":"水月宗十",
-				"MishuDescribe":"水月宗十的描述",
-				"MishuIcon":19310,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -5212,14 +4556,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":193105,
-		"DataList":[{
-				"MishuName":"水月宗十",
-				"MishuDescribe":"水月宗十的描述",
-				"MishuIcon":19310,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -5247,14 +4586,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192011,
-		"DataList":[{
-				"MishuName":"蜂毒刺",
-				"MishuDescribe":"蜂毒刺的描述",
-				"MishuIcon":19201,
+		"MishuID":19201,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -5282,14 +4619,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192012,
-		"DataList":[{
-				"MishuName":"蜂毒刺",
-				"MishuDescribe":"蜂毒刺的描述",
-				"MishuIcon":19201,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -5317,14 +4649,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192013,
-		"DataList":[{
-				"MishuName":"蜂毒刺",
-				"MishuDescribe":"蜂毒刺的描述",
-				"MishuIcon":19201,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -5352,14 +4679,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192014,
-		"DataList":[{
-				"MishuName":"蜂毒刺",
-				"MishuDescribe":"蜂毒刺的描述",
-				"MishuIcon":19201,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -5387,14 +4709,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192015,
-		"DataList":[{
-				"MishuName":"蜂毒刺",
-				"MishuDescribe":"蜂毒刺的描述",
-				"MishuIcon":19201,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -5422,14 +4739,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192021,
-		"DataList":[{
-				"MishuName":"生机勃勃",
-				"MishuDescribe":"生机勃勃的描述",
-				"MishuIcon":19202,
+		"MishuID":19202,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -5457,14 +4772,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192022,
-		"DataList":[{
-				"MishuName":"生机勃勃",
-				"MishuDescribe":"生机勃勃的描述",
-				"MishuIcon":19202,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -5492,14 +4802,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192023,
-		"DataList":[{
-				"MishuName":"生机勃勃",
-				"MishuDescribe":"生机勃勃的描述",
-				"MishuIcon":19202,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -5527,14 +4832,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192024,
-		"DataList":[{
-				"MishuName":"生机勃勃",
-				"MishuDescribe":"生机勃勃的描述",
-				"MishuIcon":19202,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -5562,14 +4862,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192025,
-		"DataList":[{
-				"MishuName":"生机勃勃",
-				"MishuDescribe":"生机勃勃的描述",
-				"MishuIcon":19202,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -5597,14 +4892,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192031,
-		"DataList":[{
-				"MishuName":"医者仁心",
-				"MishuDescribe":"医者仁心的描述",
-				"MishuIcon":19203,
+		"MishuID":19203,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -5632,14 +4925,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192032,
-		"DataList":[{
-				"MishuName":"医者仁心",
-				"MishuDescribe":"医者仁心的描述",
-				"MishuIcon":19203,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -5667,14 +4955,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192033,
-		"DataList":[{
-				"MishuName":"医者仁心",
-				"MishuDescribe":"医者仁心的描述",
-				"MishuIcon":19203,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -5702,14 +4985,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192034,
-		"DataList":[{
-				"MishuName":"医者仁心",
-				"MishuDescribe":"医者仁心的描述",
-				"MishuIcon":19203,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -5737,14 +5015,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192035,
-		"DataList":[{
-				"MishuName":"医者仁心",
-				"MishuDescribe":"医者仁心的描述",
-				"MishuIcon":19203,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -5772,14 +5045,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192041,
-		"DataList":[{
-				"MishuName":"归隐山河",
-				"MishuDescribe":"归隐山河的描述",
-				"MishuIcon":19204,
+		"MishuID":19204,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -5807,14 +5078,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192042,
-		"DataList":[{
-				"MishuName":"归隐山河",
-				"MishuDescribe":"归隐山河的描述",
-				"MishuIcon":19204,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -5842,14 +5108,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192043,
-		"DataList":[{
-				"MishuName":"归隐山河",
-				"MishuDescribe":"归隐山河的描述",
-				"MishuIcon":19204,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -5877,14 +5138,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192044,
-		"DataList":[{
-				"MishuName":"归隐山河",
-				"MishuDescribe":"归隐山河的描述",
-				"MishuIcon":19204,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -5912,14 +5168,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192045,
-		"DataList":[{
-				"MishuName":"归隐山河",
-				"MishuDescribe":"归隐山河的描述",
-				"MishuIcon":19204,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -5947,14 +5198,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192051,
-		"DataList":[{
-				"MishuName":"百毒不侵",
-				"MishuDescribe":"百毒不侵的描述",
-				"MishuIcon":19205,
+		"MishuID":19205,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -5982,14 +5231,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192052,
-		"DataList":[{
-				"MishuName":"百毒不侵",
-				"MishuDescribe":"百毒不侵的描述",
-				"MishuIcon":19205,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -6017,14 +5261,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192053,
-		"DataList":[{
-				"MishuName":"百毒不侵",
-				"MishuDescribe":"百毒不侵的描述",
-				"MishuIcon":19205,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -6052,14 +5291,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192054,
-		"DataList":[{
-				"MishuName":"百毒不侵",
-				"MishuDescribe":"百毒不侵的描述",
-				"MishuIcon":19205,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -6087,14 +5321,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192055,
-		"DataList":[{
-				"MishuName":"百毒不侵",
-				"MishuDescribe":"百毒不侵的描述",
-				"MishuIcon":19205,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -6122,14 +5351,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192061,
-		"DataList":[{
-				"MishuName":"青云得路",
-				"MishuDescribe":"青云得路的描述",
-				"MishuIcon":19206,
+		"MishuID":19206,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -6157,14 +5384,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192062,
-		"DataList":[{
-				"MishuName":"青云得路",
-				"MishuDescribe":"青云得路的描述",
-				"MishuIcon":19206,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -6192,14 +5414,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192063,
-		"DataList":[{
-				"MishuName":"青云得路",
-				"MishuDescribe":"青云得路的描述",
-				"MishuIcon":19206,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -6227,14 +5444,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192064,
-		"DataList":[{
-				"MishuName":"青云得路",
-				"MishuDescribe":"青云得路的描述",
-				"MishuIcon":19206,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -6262,14 +5474,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192065,
-		"DataList":[{
-				"MishuName":"青云得路",
-				"MishuDescribe":"青云得路的描述",
-				"MishuIcon":19206,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -6297,14 +5504,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192071,
-		"DataList":[{
-				"MishuName":"枯木逢春",
-				"MishuDescribe":"枯木逢春的描述",
-				"MishuIcon":19207,
+		"MishuID":19207,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -6332,14 +5537,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192072,
-		"DataList":[{
-				"MishuName":"枯木逢春",
-				"MishuDescribe":"枯木逢春的描述",
-				"MishuIcon":19207,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -6367,14 +5567,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192073,
-		"DataList":[{
-				"MishuName":"枯木逢春",
-				"MishuDescribe":"枯木逢春的描述",
-				"MishuIcon":19207,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -6402,14 +5597,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192074,
-		"DataList":[{
-				"MishuName":"枯木逢春",
-				"MishuDescribe":"枯木逢春的描述",
-				"MishuIcon":19207,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -6437,14 +5627,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192075,
-		"DataList":[{
-				"MishuName":"枯木逢春",
-				"MishuDescribe":"枯木逢春的描述",
-				"MishuIcon":19207,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -6472,14 +5657,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192081,
-		"DataList":[{
-				"MishuName":"青峰门八",
-				"MishuDescribe":"青峰门八的描述",
-				"MishuIcon":19208,
+		"MishuID":19208,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -6507,14 +5690,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192082,
-		"DataList":[{
-				"MishuName":"青峰门八",
-				"MishuDescribe":"青峰门八的描述",
-				"MishuIcon":19208,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -6542,14 +5720,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192083,
-		"DataList":[{
-				"MishuName":"青峰门八",
-				"MishuDescribe":"青峰门八的描述",
-				"MishuIcon":19208,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -6577,14 +5750,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192084,
-		"DataList":[{
-				"MishuName":"青峰门八",
-				"MishuDescribe":"青峰门八的描述",
-				"MishuIcon":19208,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -6612,14 +5780,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192085,
-		"DataList":[{
-				"MishuName":"青峰门八",
-				"MishuDescribe":"青峰门八的描述",
-				"MishuIcon":19208,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -6647,14 +5810,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192091,
-		"DataList":[{
-				"MishuName":"包扎",
-				"MishuDescribe":"包扎的描述",
-				"MishuIcon":19209,
+		"MishuID":19209,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -6682,14 +5843,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192092,
-		"DataList":[{
-				"MishuName":"包扎",
-				"MishuDescribe":"包扎的描述",
-				"MishuIcon":19209,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -6717,14 +5873,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192093,
-		"DataList":[{
-				"MishuName":"包扎",
-				"MishuDescribe":"包扎的描述",
-				"MishuIcon":19209,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -6752,14 +5903,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192094,
-		"DataList":[{
-				"MishuName":"包扎",
-				"MishuDescribe":"包扎的描述",
-				"MishuIcon":19209,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -6787,14 +5933,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192095,
-		"DataList":[{
-				"MishuName":"包扎",
-				"MishuDescribe":"包扎的描述",
-				"MishuIcon":19209,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -6822,14 +5963,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192101,
-		"DataList":[{
-				"MishuName":"青峰门十",
-				"MishuDescribe":"青峰门十的描述",
-				"MishuIcon":19210,
+		"MishuID":19210,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -6857,14 +5996,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192102,
-		"DataList":[{
-				"MishuName":"青峰门十",
-				"MishuDescribe":"青峰门十的描述",
-				"MishuIcon":19210,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -6892,14 +6026,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192103,
-		"DataList":[{
-				"MishuName":"青峰门十",
-				"MishuDescribe":"青峰门十的描述",
-				"MishuIcon":19210,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -6927,14 +6056,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192104,
-		"DataList":[{
-				"MishuName":"青峰门十",
-				"MishuDescribe":"青峰门十的描述",
-				"MishuIcon":19210,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -6962,14 +6086,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192105,
-		"DataList":[{
-				"MishuName":"青峰门十",
-				"MishuDescribe":"青峰门十的描述",
-				"MishuIcon":19210,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -6997,14 +6116,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191011,
-		"DataList":[{
-				"MishuName":"剑罡破芒",
-				"MishuDescribe":"剑罡破芒的描述",
-				"MishuIcon":19101,
+		"MishuID":19101,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -7032,14 +6149,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191012,
-		"DataList":[{
-				"MishuName":"剑罡破芒",
-				"MishuDescribe":"剑罡破芒的描述",
-				"MishuIcon":19101,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -7067,14 +6179,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191013,
-		"DataList":[{
-				"MishuName":"剑罡破芒",
-				"MishuDescribe":"剑罡破芒的描述",
-				"MishuIcon":19101,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -7102,14 +6209,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191014,
-		"DataList":[{
-				"MishuName":"剑罡破芒",
-				"MishuDescribe":"剑罡破芒的描述",
-				"MishuIcon":19101,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -7137,14 +6239,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191015,
-		"DataList":[{
-				"MishuName":"剑罡破芒",
-				"MishuDescribe":"剑罡破芒的描述",
-				"MishuIcon":19101,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -7172,14 +6269,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191021,
-		"DataList":[{
-				"MishuName":"御剑飞行",
-				"MishuDescribe":"御剑飞行的描述",
-				"MishuIcon":19102,
+		"MishuID":19102,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -7207,14 +6302,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191022,
-		"DataList":[{
-				"MishuName":"御剑飞行",
-				"MishuDescribe":"御剑飞行的描述",
-				"MishuIcon":19102,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -7242,14 +6332,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191023,
-		"DataList":[{
-				"MishuName":"御剑飞行",
-				"MishuDescribe":"御剑飞行的描述",
-				"MishuIcon":19102,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -7277,14 +6362,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191024,
-		"DataList":[{
-				"MishuName":"御剑飞行",
-				"MishuDescribe":"御剑飞行的描述",
-				"MishuIcon":19102,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -7312,14 +6392,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191025,
-		"DataList":[{
-				"MishuName":"御剑飞行",
-				"MishuDescribe":"御剑飞行的描述",
-				"MishuIcon":19102,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -7347,14 +6422,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191031,
-		"DataList":[{
-				"MishuName":"剑影飘渺",
-				"MishuDescribe":"剑影飘渺的描述",
-				"MishuIcon":19103,
+		"MishuID":19103,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -7382,14 +6455,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191032,
-		"DataList":[{
-				"MishuName":"剑影飘渺",
-				"MishuDescribe":"剑影飘渺的描述",
-				"MishuIcon":19103,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -7417,14 +6485,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191033,
-		"DataList":[{
-				"MishuName":"剑影飘渺",
-				"MishuDescribe":"剑影飘渺的描述",
-				"MishuIcon":19103,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -7452,14 +6515,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191034,
-		"DataList":[{
-				"MishuName":"剑影飘渺",
-				"MishuDescribe":"剑影飘渺的描述",
-				"MishuIcon":19103,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -7487,14 +6545,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191035,
-		"DataList":[{
-				"MishuName":"剑影飘渺",
-				"MishuDescribe":"剑影飘渺的描述",
-				"MishuIcon":19103,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -7522,14 +6575,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191041,
-		"DataList":[{
-				"MishuName":"剑影无踪",
-				"MishuDescribe":"剑影无踪的描述",
-				"MishuIcon":19104,
+		"MishuID":19104,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -7557,14 +6608,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191042,
-		"DataList":[{
-				"MishuName":"剑影无踪",
-				"MishuDescribe":"剑影无踪的描述",
-				"MishuIcon":19104,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -7592,14 +6638,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191043,
-		"DataList":[{
-				"MishuName":"剑影无踪",
-				"MishuDescribe":"剑影无踪的描述",
-				"MishuIcon":19104,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -7627,14 +6668,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191044,
-		"DataList":[{
-				"MishuName":"剑影无踪",
-				"MishuDescribe":"剑影无踪的描述",
-				"MishuIcon":19104,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -7662,14 +6698,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191045,
-		"DataList":[{
-				"MishuName":"剑影无踪",
-				"MishuDescribe":"剑影无踪的描述",
-				"MishuIcon":19104,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -7697,14 +6728,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191051,
-		"DataList":[{
-				"MishuName":"以静制动",
-				"MishuDescribe":"以静制动的描述",
-				"MishuIcon":19105,
+		"MishuID":19105,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -7732,14 +6761,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191052,
-		"DataList":[{
-				"MishuName":"以静制动",
-				"MishuDescribe":"以静制动的描述",
-				"MishuIcon":19105,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -7767,14 +6791,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191053,
-		"DataList":[{
-				"MishuName":"以静制动",
-				"MishuDescribe":"以静制动的描述",
-				"MishuIcon":19105,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -7802,14 +6821,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191054,
-		"DataList":[{
-				"MishuName":"以静制动",
-				"MishuDescribe":"以静制动的描述",
-				"MishuIcon":19105,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -7837,14 +6851,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191055,
-		"DataList":[{
-				"MishuName":"以静制动",
-				"MishuDescribe":"以静制动的描述",
-				"MishuIcon":19105,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -7872,14 +6881,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191061,
-		"DataList":[{
-				"MishuName":"剑灵明心",
-				"MishuDescribe":"剑灵明心的描述",
-				"MishuIcon":19106,
+		"MishuID":19106,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -7907,14 +6914,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191062,
-		"DataList":[{
-				"MishuName":"剑灵明心",
-				"MishuDescribe":"剑灵明心的描述",
-				"MishuIcon":19106,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -7942,14 +6944,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191063,
-		"DataList":[{
-				"MishuName":"剑灵明心",
-				"MishuDescribe":"剑灵明心的描述",
-				"MishuIcon":19106,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -7977,14 +6974,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191064,
-		"DataList":[{
-				"MishuName":"剑灵明心",
-				"MishuDescribe":"剑灵明心的描述",
-				"MishuIcon":19106,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -8012,14 +7004,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191065,
-		"DataList":[{
-				"MishuName":"剑灵明心",
-				"MishuDescribe":"剑灵明心的描述",
-				"MishuIcon":19106,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -8047,14 +7034,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191071,
-		"DataList":[{
-				"MishuName":"杀意",
-				"MishuDescribe":"杀意的描述",
-				"MishuIcon":19107,
+		"MishuID":19107,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -8082,14 +7067,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191072,
-		"DataList":[{
-				"MishuName":"杀意",
-				"MishuDescribe":"杀意的描述",
-				"MishuIcon":19107,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -8117,14 +7097,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191073,
-		"DataList":[{
-				"MishuName":"杀意",
-				"MishuDescribe":"杀意的描述",
-				"MishuIcon":19107,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -8152,14 +7127,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191074,
-		"DataList":[{
-				"MishuName":"杀意",
-				"MishuDescribe":"杀意的描述",
-				"MishuIcon":19107,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -8187,14 +7157,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191075,
-		"DataList":[{
-				"MishuName":"杀意",
-				"MishuDescribe":"杀意的描述",
-				"MishuIcon":19107,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -8222,14 +7187,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191081,
-		"DataList":[{
-				"MishuName":"咫尺天涯",
-				"MishuDescribe":"咫尺天涯的描述",
-				"MishuIcon":19108,
+		"MishuID":19108,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -8257,14 +7220,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191082,
-		"DataList":[{
-				"MishuName":"咫尺天涯",
-				"MishuDescribe":"咫尺天涯的描述",
-				"MishuIcon":19108,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -8292,14 +7250,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191083,
-		"DataList":[{
-				"MishuName":"咫尺天涯",
-				"MishuDescribe":"咫尺天涯的描述",
-				"MishuIcon":19108,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -8327,14 +7280,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191084,
-		"DataList":[{
-				"MishuName":"咫尺天涯",
-				"MishuDescribe":"咫尺天涯的描述",
-				"MishuIcon":19108,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -8362,14 +7310,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191085,
-		"DataList":[{
-				"MishuName":"咫尺天涯",
-				"MishuDescribe":"咫尺天涯的描述",
-				"MishuIcon":19108,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -8397,14 +7340,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191091,
-		"DataList":[{
-				"MishuName":"无极剑阵",
-				"MishuDescribe":"无极剑阵的描述",
-				"MishuIcon":19109,
+		"MishuID":19109,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -8432,14 +7373,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191092,
-		"DataList":[{
-				"MishuName":"无极剑阵",
-				"MishuDescribe":"无极剑阵的描述",
-				"MishuIcon":19109,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -8467,14 +7403,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191093,
-		"DataList":[{
-				"MishuName":"无极剑阵",
-				"MishuDescribe":"无极剑阵的描述",
-				"MishuIcon":19109,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -8502,14 +7433,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191094,
-		"DataList":[{
-				"MishuName":"无极剑阵",
-				"MishuDescribe":"无极剑阵的描述",
-				"MishuIcon":19109,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -8537,14 +7463,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191095,
-		"DataList":[{
-				"MishuName":"无极剑阵",
-				"MishuDescribe":"无极剑阵的描述",
-				"MishuIcon":19109,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -8572,14 +7493,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":191101,
-		"DataList":[{
-				"MishuName":"无极剑宗十",
-				"MishuDescribe":"无极剑宗十的描述",
-				"MishuIcon":19110,
+		"MishuID":19110,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -8607,14 +7526,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191102,
-		"DataList":[{
-				"MishuName":"无极剑宗十",
-				"MishuDescribe":"无极剑宗十的描述",
-				"MishuIcon":19110,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -8642,14 +7556,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191103,
-		"DataList":[{
-				"MishuName":"无极剑宗十",
-				"MishuDescribe":"无极剑宗十的描述",
-				"MishuIcon":19110,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -8677,14 +7586,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191104,
-		"DataList":[{
-				"MishuName":"无极剑宗十",
-				"MishuDescribe":"无极剑宗十的描述",
-				"MishuIcon":19110,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -8712,14 +7616,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":191105,
-		"DataList":[{
-				"MishuName":"无极剑宗十",
-				"MishuDescribe":"无极剑宗十的描述",
-				"MishuIcon":19110,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -8747,14 +7646,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194011,
-		"DataList":[{
-				"MishuName":"引火烧身",
-				"MishuDescribe":"引火烧身的描述",
-				"MishuIcon":19401,
+		"MishuID":19401,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -8782,14 +7679,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194012,
-		"DataList":[{
-				"MishuName":"引火烧身",
-				"MishuDescribe":"引火烧身的描述",
-				"MishuIcon":19401,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -8817,14 +7709,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194013,
-		"DataList":[{
-				"MishuName":"引火烧身",
-				"MishuDescribe":"引火烧身的描述",
-				"MishuIcon":19401,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -8852,14 +7739,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194014,
-		"DataList":[{
-				"MishuName":"引火烧身",
-				"MishuDescribe":"引火烧身的描述",
-				"MishuIcon":19401,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -8887,14 +7769,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194015,
-		"DataList":[{
-				"MishuName":"引火烧身",
-				"MishuDescribe":"引火烧身的描述",
-				"MishuIcon":19401,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -8922,14 +7799,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194021,
-		"DataList":[{
-				"MishuName":"风火轮",
-				"MishuDescribe":"风火轮的描述",
-				"MishuIcon":19402,
+		"MishuID":19402,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -8957,14 +7832,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194022,
-		"DataList":[{
-				"MishuName":"风火轮",
-				"MishuDescribe":"风火轮的描述",
-				"MishuIcon":19402,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -8992,14 +7862,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194023,
-		"DataList":[{
-				"MishuName":"风火轮",
-				"MishuDescribe":"风火轮的描述",
-				"MishuIcon":19402,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -9027,14 +7892,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194024,
-		"DataList":[{
-				"MishuName":"风火轮",
-				"MishuDescribe":"风火轮的描述",
-				"MishuIcon":19402,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -9062,14 +7922,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194025,
-		"DataList":[{
-				"MishuName":"风火轮",
-				"MishuDescribe":"风火轮的描述",
-				"MishuIcon":19402,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -9097,14 +7952,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194031,
-		"DataList":[{
-				"MishuName":"火雨",
-				"MishuDescribe":"火雨的描述",
-				"MishuIcon":19403,
+		"MishuID":19403,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -9132,14 +7985,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194032,
-		"DataList":[{
-				"MishuName":"火雨",
-				"MishuDescribe":"火雨的描述",
-				"MishuIcon":19403,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -9167,14 +8015,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194033,
-		"DataList":[{
-				"MishuName":"火雨",
-				"MishuDescribe":"火雨的描述",
-				"MishuIcon":19403,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -9202,14 +8045,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194034,
-		"DataList":[{
-				"MishuName":"火雨",
-				"MishuDescribe":"火雨的描述",
-				"MishuIcon":19403,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -9237,14 +8075,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194035,
-		"DataList":[{
-				"MishuName":"火雨",
-				"MishuDescribe":"火雨的描述",
-				"MishuIcon":19403,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -9272,14 +8105,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194041,
-		"DataList":[{
-				"MishuName":"洞若观火",
-				"MishuDescribe":"洞若观火的描述",
-				"MishuIcon":19404,
+		"MishuID":19404,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -9307,14 +8138,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194042,
-		"DataList":[{
-				"MishuName":"洞若观火",
-				"MishuDescribe":"洞若观火的描述",
-				"MishuIcon":19404,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -9342,14 +8168,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194043,
-		"DataList":[{
-				"MishuName":"洞若观火",
-				"MishuDescribe":"洞若观火的描述",
-				"MishuIcon":19404,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -9377,14 +8198,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194044,
-		"DataList":[{
-				"MishuName":"洞若观火",
-				"MishuDescribe":"洞若观火的描述",
-				"MishuIcon":19404,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -9412,14 +8228,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194045,
-		"DataList":[{
-				"MishuName":"洞若观火",
-				"MishuDescribe":"洞若观火的描述",
-				"MishuIcon":19404,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -9447,14 +8258,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194051,
-		"DataList":[{
-				"MishuName":"烈火燎原",
-				"MishuDescribe":"烈火燎原的描述",
-				"MishuIcon":19405,
+		"MishuID":19405,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -9482,14 +8291,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194052,
-		"DataList":[{
-				"MishuName":"烈火燎原",
-				"MishuDescribe":"烈火燎原的描述",
-				"MishuIcon":19405,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -9517,14 +8321,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194053,
-		"DataList":[{
-				"MishuName":"烈火燎原",
-				"MishuDescribe":"烈火燎原的描述",
-				"MishuIcon":19405,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -9552,14 +8351,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194054,
-		"DataList":[{
-				"MishuName":"烈火燎原",
-				"MishuDescribe":"烈火燎原的描述",
-				"MishuIcon":19405,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -9587,14 +8381,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194055,
-		"DataList":[{
-				"MishuName":"烈火燎原",
-				"MishuDescribe":"烈火燎原的描述",
-				"MishuIcon":19405,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -9622,14 +8411,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194061,
-		"DataList":[{
-				"MishuName":"火环",
-				"MishuDescribe":"火环的描述",
-				"MishuIcon":19406,
+		"MishuID":19406,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -9657,14 +8444,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194062,
-		"DataList":[{
-				"MishuName":"火环",
-				"MishuDescribe":"火环的描述",
-				"MishuIcon":19406,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -9692,14 +8474,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194063,
-		"DataList":[{
-				"MishuName":"火环",
-				"MishuDescribe":"火环的描述",
-				"MishuIcon":19406,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -9727,14 +8504,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194064,
-		"DataList":[{
-				"MishuName":"火环",
-				"MishuDescribe":"火环的描述",
-				"MishuIcon":19406,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -9762,14 +8534,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194065,
-		"DataList":[{
-				"MishuName":"火环",
-				"MishuDescribe":"火环的描述",
-				"MishuIcon":19406,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -9797,14 +8564,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194071,
-		"DataList":[{
-				"MishuName":"火舞",
-				"MishuDescribe":"火舞的描述",
-				"MishuIcon":19407,
+		"MishuID":19407,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -9832,14 +8597,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194072,
-		"DataList":[{
-				"MishuName":"火舞",
-				"MishuDescribe":"火舞的描述",
-				"MishuIcon":19407,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -9867,14 +8627,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194073,
-		"DataList":[{
-				"MishuName":"火舞",
-				"MishuDescribe":"火舞的描述",
-				"MishuIcon":19407,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -9902,14 +8657,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194074,
-		"DataList":[{
-				"MishuName":"火舞",
-				"MishuDescribe":"火舞的描述",
-				"MishuIcon":19407,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -9937,14 +8687,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194075,
-		"DataList":[{
-				"MishuName":"火舞",
-				"MishuDescribe":"火舞的描述",
-				"MishuIcon":19407,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -9972,14 +8717,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194081,
-		"DataList":[{
-				"MishuName":"焚天宗八",
-				"MishuDescribe":"焚天宗八的描述",
-				"MishuIcon":19408,
+		"MishuID":19408,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -10007,14 +8750,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194082,
-		"DataList":[{
-				"MishuName":"焚天宗八",
-				"MishuDescribe":"焚天宗八的描述",
-				"MishuIcon":19408,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -10042,14 +8780,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194083,
-		"DataList":[{
-				"MishuName":"焚天宗八",
-				"MishuDescribe":"焚天宗八的描述",
-				"MishuIcon":19408,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -10077,14 +8810,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194084,
-		"DataList":[{
-				"MishuName":"焚天宗八",
-				"MishuDescribe":"焚天宗八的描述",
-				"MishuIcon":19408,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -10112,14 +8840,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194085,
-		"DataList":[{
-				"MishuName":"焚天宗八",
-				"MishuDescribe":"焚天宗八的描述",
-				"MishuIcon":19408,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -10147,14 +8870,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194091,
-		"DataList":[{
-				"MishuName":"火之灵",
-				"MishuDescribe":"火之灵的描述",
-				"MishuIcon":19409,
+		"MishuID":19409,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -10182,14 +8903,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194092,
-		"DataList":[{
-				"MishuName":"火之灵",
-				"MishuDescribe":"火之灵的描述",
-				"MishuIcon":19409,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -10217,14 +8933,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194093,
-		"DataList":[{
-				"MishuName":"火之灵",
-				"MishuDescribe":"火之灵的描述",
-				"MishuIcon":19409,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -10252,14 +8963,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194094,
-		"DataList":[{
-				"MishuName":"火之灵",
-				"MishuDescribe":"火之灵的描述",
-				"MishuIcon":19409,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -10287,14 +8993,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194095,
-		"DataList":[{
-				"MishuName":"火之灵",
-				"MishuDescribe":"火之灵的描述",
-				"MishuIcon":19409,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -10322,14 +9023,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":194101,
-		"DataList":[{
-				"MishuName":"焚天宗十",
-				"MishuDescribe":"焚天宗十的描述",
-				"MishuIcon":19410,
+		"MishuID":19410,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -10357,14 +9056,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194102,
-		"DataList":[{
-				"MishuName":"焚天宗十",
-				"MishuDescribe":"焚天宗十的描述",
-				"MishuIcon":19410,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -10392,14 +9086,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194103,
-		"DataList":[{
-				"MishuName":"焚天宗十",
-				"MishuDescribe":"焚天宗十的描述",
-				"MishuIcon":19410,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -10427,14 +9116,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194104,
-		"DataList":[{
-				"MishuName":"焚天宗十",
-				"MishuDescribe":"焚天宗十的描述",
-				"MishuIcon":19410,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -10462,14 +9146,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":194105,
-		"DataList":[{
-				"MishuName":"焚天宗十",
-				"MishuDescribe":"焚天宗十的描述",
-				"MishuIcon":19410,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -10497,14 +9176,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192111,
-		"DataList":[{
-				"MishuName":"封山印",
-				"MishuDescribe":"封山印的描述",
-				"MishuIcon":19211,
+		"MishuID":19211,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -10532,14 +9209,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192112,
-		"DataList":[{
-				"MishuName":"封山印",
-				"MishuDescribe":"封山印的描述",
-				"MishuIcon":19211,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -10567,14 +9239,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192113,
-		"DataList":[{
-				"MishuName":"封山印",
-				"MishuDescribe":"封山印的描述",
-				"MishuIcon":19211,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -10602,14 +9269,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192114,
-		"DataList":[{
-				"MishuName":"封山印",
-				"MishuDescribe":"封山印的描述",
-				"MishuIcon":19211,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -10637,14 +9299,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192115,
-		"DataList":[{
-				"MishuName":"封山印",
-				"MishuDescribe":"封山印的描述",
-				"MishuIcon":19211,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -10672,14 +9329,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192121,
-		"DataList":[{
-				"MishuName":"行云流水",
-				"MishuDescribe":"行云流水的描述",
-				"MishuIcon":19212,
+		"MishuID":19212,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -10707,14 +9362,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192122,
-		"DataList":[{
-				"MishuName":"行云流水",
-				"MishuDescribe":"行云流水的描述",
-				"MishuIcon":19212,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -10742,14 +9392,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192123,
-		"DataList":[{
-				"MishuName":"行云流水",
-				"MishuDescribe":"行云流水的描述",
-				"MishuIcon":19212,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -10777,14 +9422,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192124,
-		"DataList":[{
-				"MishuName":"行云流水",
-				"MishuDescribe":"行云流水的描述",
-				"MishuIcon":19212,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -10812,14 +9452,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192125,
-		"DataList":[{
-				"MishuName":"行云流水",
-				"MishuDescribe":"行云流水的描述",
-				"MishuIcon":19212,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -10847,14 +9482,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192131,
-		"DataList":[{
-				"MishuName":"沧浪盾",
-				"MishuDescribe":"沧浪盾的描述",
-				"MishuIcon":19213,
+		"MishuID":19213,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -10882,14 +9515,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192132,
-		"DataList":[{
-				"MishuName":"沧浪盾",
-				"MishuDescribe":"沧浪盾的描述",
-				"MishuIcon":19213,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -10917,14 +9545,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192133,
-		"DataList":[{
-				"MishuName":"沧浪盾",
-				"MishuDescribe":"沧浪盾的描述",
-				"MishuIcon":19213,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -10952,14 +9575,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192134,
-		"DataList":[{
-				"MishuName":"沧浪盾",
-				"MishuDescribe":"沧浪盾的描述",
-				"MishuIcon":19213,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -10987,14 +9605,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192135,
-		"DataList":[{
-				"MishuName":"沧浪盾",
-				"MishuDescribe":"沧浪盾的描述",
-				"MishuIcon":19213,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -11022,14 +9635,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192141,
-		"DataList":[{
-				"MishuName":"心清如水",
-				"MishuDescribe":"心清如水的描述",
-				"MishuIcon":19214,
+		"MishuID":19214,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -11057,14 +9668,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192142,
-		"DataList":[{
-				"MishuName":"心清如水",
-				"MishuDescribe":"心清如水的描述",
-				"MishuIcon":19214,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -11092,14 +9698,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192143,
-		"DataList":[{
-				"MishuName":"心清如水",
-				"MishuDescribe":"心清如水的描述",
-				"MishuIcon":19214,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -11127,14 +9728,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192144,
-		"DataList":[{
-				"MishuName":"心清如水",
-				"MishuDescribe":"心清如水的描述",
-				"MishuIcon":19214,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -11162,14 +9758,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192145,
-		"DataList":[{
-				"MishuName":"心清如水",
-				"MishuDescribe":"心清如水的描述",
-				"MishuIcon":19214,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -11197,14 +9788,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192151,
-		"DataList":[{
-				"MishuName":"上清诀",
-				"MishuDescribe":"上清诀的描述",
-				"MishuIcon":19215,
+		"MishuID":19215,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -11232,14 +9821,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192152,
-		"DataList":[{
-				"MishuName":"上清诀",
-				"MishuDescribe":"上清诀的描述",
-				"MishuIcon":19215,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -11267,14 +9851,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192153,
-		"DataList":[{
-				"MishuName":"上清诀",
-				"MishuDescribe":"上清诀的描述",
-				"MishuIcon":19215,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -11302,14 +9881,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192154,
-		"DataList":[{
-				"MishuName":"上清诀",
-				"MishuDescribe":"上清诀的描述",
-				"MishuIcon":19215,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -11337,14 +9911,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192155,
-		"DataList":[{
-				"MishuName":"上清诀",
-				"MishuDescribe":"上清诀的描述",
-				"MishuIcon":19215,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -11372,14 +9941,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192161,
-		"DataList":[{
-				"MishuName":"三思而行",
-				"MishuDescribe":"三思而行的描述",
-				"MishuIcon":19216,
+		"MishuID":19216,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -11407,14 +9974,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192162,
-		"DataList":[{
-				"MishuName":"三思而行",
-				"MishuDescribe":"三思而行的描述",
-				"MishuIcon":19216,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -11442,14 +10004,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192163,
-		"DataList":[{
-				"MishuName":"三思而行",
-				"MishuDescribe":"三思而行的描述",
-				"MishuIcon":19216,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -11477,14 +10034,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192164,
-		"DataList":[{
-				"MishuName":"三思而行",
-				"MishuDescribe":"三思而行的描述",
-				"MishuIcon":19216,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -11512,14 +10064,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192165,
-		"DataList":[{
-				"MishuName":"三思而行",
-				"MishuDescribe":"三思而行的描述",
-				"MishuIcon":19216,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -11547,14 +10094,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192171,
-		"DataList":[{
-				"MishuName":"静思",
-				"MishuDescribe":"静思的描述",
-				"MishuIcon":19217,
+		"MishuID":19217,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -11582,14 +10127,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192172,
-		"DataList":[{
-				"MishuName":"静思",
-				"MishuDescribe":"静思的描述",
-				"MishuIcon":19217,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -11617,14 +10157,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192173,
-		"DataList":[{
-				"MishuName":"静思",
-				"MishuDescribe":"静思的描述",
-				"MishuIcon":19217,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -11652,14 +10187,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192174,
-		"DataList":[{
-				"MishuName":"静思",
-				"MishuDescribe":"静思的描述",
-				"MishuIcon":19217,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -11687,14 +10217,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192175,
-		"DataList":[{
-				"MishuName":"静思",
-				"MishuDescribe":"静思的描述",
-				"MishuIcon":19217,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -11722,14 +10247,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192181,
-		"DataList":[{
-				"MishuName":"风轻云淡",
-				"MishuDescribe":"风轻云淡的描述",
-				"MishuIcon":19218,
+		"MishuID":19218,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -11757,14 +10280,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192182,
-		"DataList":[{
-				"MishuName":"风轻云淡",
-				"MishuDescribe":"风轻云淡的描述",
-				"MishuIcon":19218,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -11792,14 +10310,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192183,
-		"DataList":[{
-				"MishuName":"风轻云淡",
-				"MishuDescribe":"风轻云淡的描述",
-				"MishuIcon":19218,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -11827,14 +10340,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192184,
-		"DataList":[{
-				"MishuName":"风轻云淡",
-				"MishuDescribe":"风轻云淡的描述",
-				"MishuIcon":19218,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -11862,14 +10370,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192185,
-		"DataList":[{
-				"MishuName":"风轻云淡",
-				"MishuDescribe":"风轻云淡的描述",
-				"MishuIcon":19218,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -11897,14 +10400,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192191,
-		"DataList":[{
-				"MishuName":"独清",
-				"MishuDescribe":"独清的描述",
-				"MishuIcon":19219,
+		"MishuID":19219,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -11932,14 +10433,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192192,
-		"DataList":[{
-				"MishuName":"独清",
-				"MishuDescribe":"独清的描述",
-				"MishuIcon":19219,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -11967,14 +10463,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192193,
-		"DataList":[{
-				"MishuName":"独清",
-				"MishuDescribe":"独清的描述",
-				"MishuIcon":19219,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -12002,14 +10493,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192194,
-		"DataList":[{
-				"MishuName":"独清",
-				"MishuDescribe":"独清的描述",
-				"MishuIcon":19219,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -12037,14 +10523,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192195,
-		"DataList":[{
-				"MishuName":"独清",
-				"MishuDescribe":"独清的描述",
-				"MishuIcon":19219,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -12072,14 +10553,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":192201,
-		"DataList":[{
-				"MishuName":"三清宗十",
-				"MishuDescribe":"三清宗十的描述",
-				"MishuIcon":19220,
+		"MishuID":19220,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -12107,14 +10586,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192202,
-		"DataList":[{
-				"MishuName":"三清宗十",
-				"MishuDescribe":"三清宗十的描述",
-				"MishuIcon":19220,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -12142,14 +10616,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192203,
-		"DataList":[{
-				"MishuName":"三清宗十",
-				"MishuDescribe":"三清宗十的描述",
-				"MishuIcon":19220,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -12177,14 +10646,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192204,
-		"DataList":[{
-				"MishuName":"三清宗十",
-				"MishuDescribe":"三清宗十的描述",
-				"MishuIcon":19220,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -12212,14 +10676,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":192205,
-		"DataList":[{
-				"MishuName":"三清宗十",
-				"MishuDescribe":"三清宗十的描述",
-				"MishuIcon":19220,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -12247,14 +10706,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195111,
-		"DataList":[{
-				"MishuName":"撒豆成兵",
-				"MishuDescribe":"撒豆成兵的描述",
-				"MishuIcon":19511,
+		"MishuID":19511,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -12282,14 +10739,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195112,
-		"DataList":[{
-				"MishuName":"撒豆成兵",
-				"MishuDescribe":"撒豆成兵的描述",
-				"MishuIcon":19511,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -12317,14 +10769,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195113,
-		"DataList":[{
-				"MishuName":"撒豆成兵",
-				"MishuDescribe":"撒豆成兵的描述",
-				"MishuIcon":19511,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -12352,14 +10799,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195114,
-		"DataList":[{
-				"MishuName":"撒豆成兵",
-				"MishuDescribe":"撒豆成兵的描述",
-				"MishuIcon":19511,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -12387,14 +10829,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195115,
-		"DataList":[{
-				"MishuName":"撒豆成兵",
-				"MishuDescribe":"撒豆成兵的描述",
-				"MishuIcon":19511,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -12422,14 +10859,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195121,
-		"DataList":[{
-				"MishuName":"心驰神往",
-				"MishuDescribe":"心驰神往的描述",
-				"MishuIcon":19512,
+		"MishuID":19512,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -12457,14 +10892,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195122,
-		"DataList":[{
-				"MishuName":"心驰神往",
-				"MishuDescribe":"心驰神往的描述",
-				"MishuIcon":19512,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -12492,14 +10922,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195123,
-		"DataList":[{
-				"MishuName":"心驰神往",
-				"MishuDescribe":"心驰神往的描述",
-				"MishuIcon":19512,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -12527,14 +10952,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195124,
-		"DataList":[{
-				"MishuName":"心驰神往",
-				"MishuDescribe":"心驰神往的描述",
-				"MishuIcon":19512,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -12562,14 +10982,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195125,
-		"DataList":[{
-				"MishuName":"心驰神往",
-				"MishuDescribe":"心驰神往的描述",
-				"MishuIcon":19512,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -12597,14 +11012,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195131,
-		"DataList":[{
-				"MishuName":"勾魂夺魄",
-				"MishuDescribe":"勾魂夺魄的描述",
-				"MishuIcon":19513,
+		"MishuID":19513,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -12632,14 +11045,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195132,
-		"DataList":[{
-				"MishuName":"勾魂夺魄",
-				"MishuDescribe":"勾魂夺魄的描述",
-				"MishuIcon":19513,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -12667,14 +11075,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195133,
-		"DataList":[{
-				"MishuName":"勾魂夺魄",
-				"MishuDescribe":"勾魂夺魄的描述",
-				"MishuIcon":19513,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -12702,14 +11105,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195134,
-		"DataList":[{
-				"MishuName":"勾魂夺魄",
-				"MishuDescribe":"勾魂夺魄的描述",
-				"MishuIcon":19513,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -12737,14 +11135,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195135,
-		"DataList":[{
-				"MishuName":"勾魂夺魄",
-				"MishuDescribe":"勾魂夺魄的描述",
-				"MishuIcon":19513,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -12772,14 +11165,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195141,
-		"DataList":[{
-				"MishuName":"惊魂",
-				"MishuDescribe":"惊魂的描述",
-				"MishuIcon":19514,
+		"MishuID":19514,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -12807,14 +11198,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195142,
-		"DataList":[{
-				"MishuName":"惊魂",
-				"MishuDescribe":"惊魂的描述",
-				"MishuIcon":19514,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -12842,14 +11228,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195143,
-		"DataList":[{
-				"MishuName":"惊魂",
-				"MishuDescribe":"惊魂的描述",
-				"MishuIcon":19514,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -12877,14 +11258,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195144,
-		"DataList":[{
-				"MishuName":"惊魂",
-				"MishuDescribe":"惊魂的描述",
-				"MishuIcon":19514,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -12912,14 +11288,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195145,
-		"DataList":[{
-				"MishuName":"惊魂",
-				"MishuDescribe":"惊魂的描述",
-				"MishuIcon":19514,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -12947,14 +11318,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195151,
-		"DataList":[{
-				"MishuName":"横冲直撞",
-				"MishuDescribe":"横冲直撞的描述",
-				"MishuIcon":19515,
+		"MishuID":19515,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -12982,14 +11351,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195152,
-		"DataList":[{
-				"MishuName":"横冲直撞",
-				"MishuDescribe":"横冲直撞的描述",
-				"MishuIcon":19515,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -13017,14 +11381,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195153,
-		"DataList":[{
-				"MishuName":"横冲直撞",
-				"MishuDescribe":"横冲直撞的描述",
-				"MishuIcon":19515,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -13052,14 +11411,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195154,
-		"DataList":[{
-				"MishuName":"横冲直撞",
-				"MishuDescribe":"横冲直撞的描述",
-				"MishuIcon":19515,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -13087,14 +11441,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195155,
-		"DataList":[{
-				"MishuName":"横冲直撞",
-				"MishuDescribe":"横冲直撞的描述",
-				"MishuIcon":19515,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -13122,14 +11471,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195161,
-		"DataList":[{
-				"MishuName":"魂归故里",
-				"MishuDescribe":"魂归故里的描述",
-				"MishuIcon":19516,
+		"MishuID":19516,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -13157,14 +11504,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195162,
-		"DataList":[{
-				"MishuName":"魂归故里",
-				"MishuDescribe":"魂归故里的描述",
-				"MishuIcon":19516,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -13192,14 +11534,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195163,
-		"DataList":[{
-				"MishuName":"魂归故里",
-				"MishuDescribe":"魂归故里的描述",
-				"MishuIcon":19516,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -13227,14 +11564,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195164,
-		"DataList":[{
-				"MishuName":"魂归故里",
-				"MishuDescribe":"魂归故里的描述",
-				"MishuIcon":19516,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -13262,14 +11594,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195165,
-		"DataList":[{
-				"MishuName":"魂归故里",
-				"MishuDescribe":"魂归故里的描述",
-				"MishuIcon":19516,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -13297,14 +11624,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195171,
-		"DataList":[{
-				"MishuName":"身外化身",
-				"MishuDescribe":"身外化身的描述",
-				"MishuIcon":19517,
+		"MishuID":19517,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":1,
@@ -13332,14 +11657,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195172,
-		"DataList":[{
-				"MishuName":"身外化身",
-				"MishuDescribe":"身外化身的描述",
-				"MishuIcon":19517,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":1,
@@ -13367,14 +11687,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195173,
-		"DataList":[{
-				"MishuName":"身外化身",
-				"MishuDescribe":"身外化身的描述",
-				"MishuIcon":19517,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":1,
@@ -13402,14 +11717,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195174,
-		"DataList":[{
-				"MishuName":"身外化身",
-				"MishuDescribe":"身外化身的描述",
-				"MishuIcon":19517,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":1,
@@ -13437,14 +11747,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195175,
-		"DataList":[{
-				"MishuName":"身外化身",
-				"MishuDescribe":"身外化身的描述",
-				"MishuIcon":19517,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":1,
@@ -13472,14 +11777,12 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 	},{
-		"MishuID":195181,
-		"DataList":[{
-				"MishuName":"天傀宗八",
-				"MishuDescribe":"天傀宗八的描述",
-				"MishuIcon":19518,
+		"MishuID":19518,
+		"mishuSkillDatas":[{
 				"MishuFloor":1,
 				"NeedLevelID":1,
 				"MishuType":2,
@@ -13507,14 +11810,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195182,
-		"DataList":[{
-				"MishuName":"天傀宗八",
-				"MishuDescribe":"天傀宗八的描述",
-				"MishuIcon":19518,
+				"MishuLearnSpeed":0,
+				"NextFloor":2
+		},{
 				"MishuFloor":2,
 				"NeedLevelID":11,
 				"MishuType":2,
@@ -13542,14 +11840,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195183,
-		"DataList":[{
-				"MishuName":"天傀宗八",
-				"MishuDescribe":"天傀宗八的描述",
-				"MishuIcon":19518,
+				"MishuLearnSpeed":0,
+				"NextFloor":3
+		},{
 				"MishuFloor":3,
 				"NeedLevelID":21,
 				"MishuType":2,
@@ -13577,14 +11870,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195184,
-		"DataList":[{
-				"MishuName":"天傀宗八",
-				"MishuDescribe":"天傀宗八的描述",
-				"MishuIcon":19518,
+				"MishuLearnSpeed":0,
+				"NextFloor":4
+		},{
 				"MishuFloor":4,
 				"NeedLevelID":31,
 				"MishuType":2,
@@ -13612,14 +11900,9 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195185,
-		"DataList":[{
-				"MishuName":"天傀宗八",
-				"MishuDescribe":"天傀宗八的描述",
-				"MishuIcon":19518,
+				"MishuLearnSpeed":0,
+				"NextFloor":5
+		},{
 				"MishuFloor":5,
 				"NeedLevelID":41,
 				"MishuType":2,
@@ -13647,356 +11930,7 @@
 				"RolePopularity":0,
 				"ValueHide":0,
 				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195191,
-		"DataList":[{
-				"MishuName":"背水一战",
-				"MishuDescribe":"背水一战的描述",
-				"MishuIcon":19519,
-				"MishuFloor":1,
-				"NeedLevelID":1,
-				"MishuType":1,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[21544],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":1008600,
-				"RoleHP":80,
-				"RoleMP":80,
-				"RoleSoul":40,
-				"BestBlood":100,
-				"AttactPhysical":16,
-				"DefendPhysical":16,
-				"AttactPower":16,
-				"DefendPower":16,
-				"AttactSpeed":4,
-				"MoveSpeed":100,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":20,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195192,
-		"DataList":[{
-				"MishuName":"背水一战",
-				"MishuDescribe":"背水一战的描述",
-				"MishuIcon":19519,
-				"MishuFloor":2,
-				"NeedLevelID":11,
-				"MishuType":1,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[21544],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":2880000,
-				"RoleHP":160,
-				"RoleMP":160,
-				"RoleSoul":80,
-				"BestBlood":200,
-				"AttactPhysical":32,
-				"DefendPhysical":32,
-				"AttactPower":32,
-				"DefendPower":32,
-				"AttactSpeed":8,
-				"MoveSpeed":200,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":40,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195193,
-		"DataList":[{
-				"MishuName":"背水一战",
-				"MishuDescribe":"背水一战的描述",
-				"MishuIcon":19519,
-				"MishuFloor":3,
-				"NeedLevelID":21,
-				"MishuType":1,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[21544],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":6900000,
-				"RoleHP":240,
-				"RoleMP":240,
-				"RoleSoul":120,
-				"BestBlood":300,
-				"AttactPhysical":48,
-				"DefendPhysical":48,
-				"AttactPower":48,
-				"DefendPower":48,
-				"AttactSpeed":12,
-				"MoveSpeed":300,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":60,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195194,
-		"DataList":[{
-				"MishuName":"背水一战",
-				"MishuDescribe":"背水一战的描述",
-				"MishuIcon":19519,
-				"MishuFloor":4,
-				"NeedLevelID":31,
-				"MishuType":1,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[21544],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":16800000,
-				"RoleHP":320,
-				"RoleMP":320,
-				"RoleSoul":160,
-				"BestBlood":400,
-				"AttactPhysical":64,
-				"DefendPhysical":64,
-				"AttactPower":64,
-				"DefendPower":64,
-				"AttactSpeed":16,
-				"MoveSpeed":400,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":80,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195195,
-		"DataList":[{
-				"MishuName":"背水一战",
-				"MishuDescribe":"背水一战的描述",
-				"MishuIcon":19519,
-				"MishuFloor":5,
-				"NeedLevelID":41,
-				"MishuType":1,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[21544],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":0,
-				"RoleHP":400,
-				"RoleMP":400,
-				"RoleSoul":200,
-				"BestBlood":500,
-				"AttactPhysical":80,
-				"DefendPhysical":80,
-				"AttactPower":80,
-				"DefendPower":80,
-				"AttactSpeed":20,
-				"MoveSpeed":500,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":100,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195201,
-		"DataList":[{
-				"MishuName":"天傀宗十",
-				"MishuDescribe":"天傀宗十的描述",
-				"MishuIcon":19520,
-				"MishuFloor":1,
-				"NeedLevelID":1,
-				"MishuType":2,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":1008600,
-				"RoleHP":80,
-				"RoleMP":80,
-				"RoleSoul":40,
-				"BestBlood":100,
-				"AttactPhysical":16,
-				"DefendPhysical":16,
-				"AttactPower":16,
-				"DefendPower":16,
-				"AttactSpeed":4,
-				"MoveSpeed":100,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":20,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195202,
-		"DataList":[{
-				"MishuName":"天傀宗十",
-				"MishuDescribe":"天傀宗十的描述",
-				"MishuIcon":19520,
-				"MishuFloor":2,
-				"NeedLevelID":11,
-				"MishuType":2,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":2880000,
-				"RoleHP":160,
-				"RoleMP":160,
-				"RoleSoul":80,
-				"BestBlood":200,
-				"AttactPhysical":32,
-				"DefendPhysical":32,
-				"AttactPower":32,
-				"DefendPower":32,
-				"AttactSpeed":8,
-				"MoveSpeed":200,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":40,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195203,
-		"DataList":[{
-				"MishuName":"天傀宗十",
-				"MishuDescribe":"天傀宗十的描述",
-				"MishuIcon":19520,
-				"MishuFloor":3,
-				"NeedLevelID":21,
-				"MishuType":2,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":6900000,
-				"RoleHP":240,
-				"RoleMP":240,
-				"RoleSoul":120,
-				"BestBlood":300,
-				"AttactPhysical":48,
-				"DefendPhysical":48,
-				"AttactPower":48,
-				"DefendPower":48,
-				"AttactSpeed":12,
-				"MoveSpeed":300,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":60,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195204,
-		"DataList":[{
-				"MishuName":"天傀宗十",
-				"MishuDescribe":"天傀宗十的描述",
-				"MishuIcon":19520,
-				"MishuFloor":4,
-				"NeedLevelID":31,
-				"MishuType":2,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":16800000,
-				"RoleHP":320,
-				"RoleMP":320,
-				"RoleSoul":160,
-				"BestBlood":400,
-				"AttactPhysical":64,
-				"DefendPhysical":64,
-				"AttactPower":64,
-				"DefendPower":64,
-				"AttactSpeed":16,
-				"MoveSpeed":400,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":80,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
-		}]
-	},{
-		"MishuID":195205,
-		"DataList":[{
-				"MishuName":"天傀宗十",
-				"MishuDescribe":"天傀宗十的描述",
-				"MishuIcon":19520,
-				"MishuFloor":5,
-				"NeedLevelID":41,
-				"MishuType":2,
-				"MishuQuality":4,
-				"MishuProperty":5,
-				"SkillArrayOne":[],
-				"SkillArrayTwo":[],
-				"ExpLevelUp":0,
-				"RoleHP":400,
-				"RoleMP":400,
-				"RoleSoul":200,
-				"BestBlood":500,
-				"AttactPhysical":80,
-				"DefendPhysical":80,
-				"AttactPower":80,
-				"DefendPower":80,
-				"AttactSpeed":20,
-				"MoveSpeed":500,
-				"PhysicalCritProb":0,
-				"MagicCritProb":0,
-				"ReduceCritProb":100,
-				"PhysicalCritDamage":0,
-				"MagicCritDamage":0,
-				"ReduceCritDamage":0,
-				"RolePopularity":0,
-				"ValueHide":0,
-				"GongfaLearnSpeed":0,
-				"MishuLearnSpeed":0
+				"MishuLearnSpeed":0,
+				"NextFloor":0
 		}]
 }]
