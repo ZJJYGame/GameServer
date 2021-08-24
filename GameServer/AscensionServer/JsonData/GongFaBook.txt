@@ -1,282 +1,1 @@
-[
-	{
-		"BookID":13001,
-		"BookProperty":1,
-		"GongfaID":18001,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13002,
-		"BookProperty":2,
-		"GongfaID":18002,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13003,
-		"BookProperty":3,
-		"GongfaID":18003,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13004,
-		"BookProperty":4,
-		"GongfaID":18004,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13005,
-		"BookProperty":5,
-		"GongfaID":18005,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13006,
-		"BookProperty":5,
-		"GongfaID":18501,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13007,
-		"BookProperty":5,
-		"GongfaID":18502,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18501
-	},
-	{
-		"BookID":13008,
-		"BookProperty":5,
-		"GongfaID":18503,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18502
-	},
-	{
-		"BookID":13009,
-		"BookProperty":5,
-		"GongfaID":18504,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18503
-	},
-	{
-		"BookID":13010,
-		"BookProperty":5,
-		"GongfaID":18505,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18504
-	},
-	{
-		"BookID":13011,
-		"BookProperty":3,
-		"GongfaID":18301,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13012,
-		"BookProperty":3,
-		"GongfaID":18302,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18301
-	},
-	{
-		"BookID":13013,
-		"BookProperty":3,
-		"GongfaID":18303,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18302
-	},
-	{
-		"BookID":13014,
-		"BookProperty":3,
-		"GongfaID":18304,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18303
-	},
-	{
-		"BookID":13015,
-		"BookProperty":3,
-		"GongfaID":18305,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18304
-	},
-	{
-		"BookID":13016,
-		"BookProperty":2,
-		"GongfaID":18201,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13017,
-		"BookProperty":2,
-		"GongfaID":18202,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18201
-	},
-	{
-		"BookID":13018,
-		"BookProperty":2,
-		"GongfaID":18203,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18202
-	},
-	{
-		"BookID":13019,
-		"BookProperty":2,
-		"GongfaID":18204,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18203
-	},
-	{
-		"BookID":13020,
-		"BookProperty":2,
-		"GongfaID":18205,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18204
-	},
-	{
-		"BookID":13021,
-		"BookProperty":1,
-		"GongfaID":18101,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13022,
-		"BookProperty":1,
-		"GongfaID":18102,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18101
-	},
-	{
-		"BookID":13023,
-		"BookProperty":1,
-		"GongfaID":18103,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18102
-	},
-	{
-		"BookID":13024,
-		"BookProperty":1,
-		"GongfaID":18104,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18103
-	},
-	{
-		"BookID":13025,
-		"BookProperty":1,
-		"GongfaID":18105,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18104
-	},
-	{
-		"BookID":13026,
-		"BookProperty":4,
-		"GongfaID":18401,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13027,
-		"BookProperty":4,
-		"GongfaID":18402,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18401
-	},
-	{
-		"BookID":13028,
-		"BookProperty":4,
-		"GongfaID":18403,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18402
-	},
-	{
-		"BookID":13029,
-		"BookProperty":4,
-		"GongfaID":18404,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18403
-	},
-	{
-		"BookID":13030,
-		"BookProperty":4,
-		"GongfaID":18405,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18404
-	},
-	{
-		"BookID":13031,
-		"BookProperty":2,
-		"GongfaID":18206,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13032,
-		"BookProperty":2,
-		"GongfaID":18207,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18206
-	},
-	{
-		"BookID":13033,
-		"BookProperty":2,
-		"GongfaID":18208,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18207
-	},
-	{
-		"BookID":13034,
-		"BookProperty":2,
-		"GongfaID":18209,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18208
-	},
-	{
-		"BookID":13035,
-		"BookProperty":2,
-		"GongfaID":18210,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18209
-	},
-	{
-		"BookID":13036,
-		"BookProperty":5,
-		"GongfaID":18506,
-		"NeedRoleLeve":0,
-		"NeedGongfaID":0
-	},
-	{
-		"BookID":13037,
-		"BookProperty":5,
-		"GongfaID":18507,
-		"NeedRoleLeve":11,
-		"NeedGongfaID":18506
-	},
-	{
-		"BookID":13038,
-		"BookProperty":5,
-		"GongfaID":18508,
-		"NeedRoleLeve":21,
-		"NeedGongfaID":18507
-	},
-	{
-		"BookID":13039,
-		"BookProperty":5,
-		"GongfaID":18509,
-		"NeedRoleLeve":31,
-		"NeedGongfaID":18508
-	},
-	{
-		"BookID":13040,
-		"BookProperty":5,
-		"GongfaID":18510,
-		"NeedRoleLeve":41,
-		"NeedGongfaID":18509
-	}
-]
+[	{		"BookID":13001,		"BookProperty":1,		"GongfaID":18001,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13002,		"BookProperty":2,		"GongfaID":18002,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13003,		"BookProperty":3,		"GongfaID":18003,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13004,		"BookProperty":4,		"GongfaID":18004,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13005,		"BookProperty":5,		"GongfaID":18005,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13006,		"BookProperty":5,		"GongfaID":18501,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13007,		"BookProperty":5,		"GongfaID":18502,		"NeedRoleLeve":11,		"NeedGongfaID":18501	},	{		"BookID":13008,		"BookProperty":5,		"GongfaID":18503,		"NeedRoleLeve":21,		"NeedGongfaID":18502	},	{		"BookID":13009,		"BookProperty":5,		"GongfaID":18504,		"NeedRoleLeve":31,		"NeedGongfaID":18503	},	{		"BookID":13010,		"BookProperty":5,		"GongfaID":18505,		"NeedRoleLeve":41,		"NeedGongfaID":18504	},	{		"BookID":13011,		"BookProperty":3,		"GongfaID":18301,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13012,		"BookProperty":3,		"GongfaID":18302,		"NeedRoleLeve":11,		"NeedGongfaID":18301	},	{		"BookID":13013,		"BookProperty":3,		"GongfaID":18303,		"NeedRoleLeve":21,		"NeedGongfaID":18302	},	{		"BookID":13014,		"BookProperty":3,		"GongfaID":18304,		"NeedRoleLeve":31,		"NeedGongfaID":18303	},	{		"BookID":13015,		"BookProperty":3,		"GongfaID":18305,		"NeedRoleLeve":41,		"NeedGongfaID":18304	},	{		"BookID":13016,		"BookProperty":2,		"GongfaID":18201,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13017,		"BookProperty":2,		"GongfaID":18202,		"NeedRoleLeve":11,		"NeedGongfaID":18201	},	{		"BookID":13018,		"BookProperty":2,		"GongfaID":18203,		"NeedRoleLeve":21,		"NeedGongfaID":18202	},	{		"BookID":13019,		"BookProperty":2,		"GongfaID":18204,		"NeedRoleLeve":31,		"NeedGongfaID":18203	},	{		"BookID":13020,		"BookProperty":2,		"GongfaID":18205,		"NeedRoleLeve":41,		"NeedGongfaID":18204	},	{		"BookID":13021,		"BookProperty":1,		"GongfaID":18101,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13022,		"BookProperty":1,		"GongfaID":18102,		"NeedRoleLeve":11,		"NeedGongfaID":18101	},	{		"BookID":13023,		"BookProperty":1,		"GongfaID":18103,		"NeedRoleLeve":21,		"NeedGongfaID":18102	},	{		"BookID":13024,		"BookProperty":1,		"GongfaID":18104,		"NeedRoleLeve":31,		"NeedGongfaID":18103	},	{		"BookID":13025,		"BookProperty":1,		"GongfaID":18105,		"NeedRoleLeve":41,		"NeedGongfaID":18104	},	{		"BookID":13026,		"BookProperty":4,		"GongfaID":18401,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13027,		"BookProperty":4,		"GongfaID":18402,		"NeedRoleLeve":11,		"NeedGongfaID":18401	},	{		"BookID":13028,		"BookProperty":4,		"GongfaID":18403,		"NeedRoleLeve":21,		"NeedGongfaID":18402	},	{		"BookID":13029,		"BookProperty":4,		"GongfaID":18404,		"NeedRoleLeve":31,		"NeedGongfaID":18403	},	{		"BookID":13030,		"BookProperty":4,		"GongfaID":18405,		"NeedRoleLeve":41,		"NeedGongfaID":18404	},	{		"BookID":13031,		"BookProperty":2,		"GongfaID":18206,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13032,		"BookProperty":2,		"GongfaID":18207,		"NeedRoleLeve":11,		"NeedGongfaID":18206	},	{		"BookID":13033,		"BookProperty":2,		"GongfaID":18208,		"NeedRoleLeve":21,		"NeedGongfaID":18207	},	{		"BookID":13034,		"BookProperty":2,		"GongfaID":18209,		"NeedRoleLeve":31,		"NeedGongfaID":18208	},	{		"BookID":13035,		"BookProperty":2,		"GongfaID":18210,		"NeedRoleLeve":41,		"NeedGongfaID":18209	},	{		"BookID":13036,		"BookProperty":5,		"GongfaID":18506,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13037,		"BookProperty":5,		"GongfaID":18507,		"NeedRoleLeve":11,		"NeedGongfaID":18506	},	{		"BookID":13038,		"BookProperty":5,		"GongfaID":18508,		"NeedRoleLeve":21,		"NeedGongfaID":18507	},	{		"BookID":13039,		"BookProperty":5,		"GongfaID":18509,		"NeedRoleLeve":31,		"NeedGongfaID":18508	},	{		"BookID":13040,		"BookProperty":5,		"GongfaID":18509,		"NeedRoleLeve":41,		"NeedGongfaID":18508	},	{		"BookID":13041,		"BookProperty":0,		"GongfaID":18006,		"NeedRoleLeve":0,		"NeedGongfaID":0	},	{		"BookID":13042,		"BookProperty":0,		"GongfaID":18007,		"NeedRoleLeve":11,		"NeedGongfaID":0	},	{		"BookID":13043,		"BookProperty":0,		"GongfaID":18008,		"NeedRoleLeve":21,		"NeedGongfaID":0	},	{		"BookID":13044,		"BookProperty":0,		"GongfaID":18009,		"NeedRoleLeve":31,		"NeedGongfaID":0	},	{		"BookID":13045,		"BookProperty":0,		"GongfaID":18010,		"NeedRoleLeve":41,		"NeedGongfaID":0	}]

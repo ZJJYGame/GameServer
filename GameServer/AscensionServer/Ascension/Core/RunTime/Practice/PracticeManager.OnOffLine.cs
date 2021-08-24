@@ -57,7 +57,7 @@ namespace AscensionServer
             }
 
             var exp = 0;
-            var role= RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleID.ToString()).Result;
+            var role= RedisHelper.Hash.HashGetAsync<Role>(RedisKeyDefine._RolePostfix, roleID.ToString()).Result;
             var redisOnOffLine = await RedisHelper.Hash.HashGetAsync<OnOffLineDTO>(RedisKeyDefine._RoleOnOffLinePostfix, roleID.ToString());
             var redisBottleneck = await RedisHelper.Hash.HashGetAsync<BottleneckDTO>(RedisKeyDefine._RoleBottleneckPostfix, roleID.ToString());
             var redisRoleStatus = await RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString());
@@ -96,7 +96,7 @@ namespace AscensionServer
                                     {
                                         Utility.Debug.LogInfo("YZQ获取离线经验所需要计算的时间"+ interval.TotalSeconds);
                                         exp = (int)interval.TotalSeconds / 5 * redisRoleStatus.GongfaLearnSpeed;
-                                        var bottleneckObj = AddGongFaExp(roleID, redisGongfa.GongFaIDDict[redisOnOffLine.MsGfID], exp, out CultivationMethodDTO method);
+                                        var bottleneckObj = AddGongFaExp(role, redisGongfa.GongFaIDDict[redisOnOffLine.MsGfID], exp, out CultivationMethodDTO method);
 
                                         Utility.Debug.LogInfo("YZQ自动加经验进来了当前人物等级为" + method.CultivationMethodLevel);
 
@@ -121,7 +121,7 @@ namespace AscensionServer
                                             await RedisHelper.Hash.HashSetAsync<RoleStatus>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString(), obj);
                                             await RedisHelper.Hash.HashSetAsync<Bottleneck>(RedisKeyDefine._RoleBottleneckPostfix, roleID.ToString(), bottleneckObj);
                                             await RedisHelper.Hash.HashSetAsync<RoleGongFaDTO>(RedisKeyDefine._RoleGongfaPerfix, roleID.ToString(), redisGongfa);
-                                            await RedisHelper.Hash.HashSetAsync<RoleDTO>(RedisKeyDefine._RolePostfix, roleID.ToString(), role);
+                                            await RedisHelper.Hash.HashSetAsync<Role>(RedisKeyDefine._RolePostfix, roleID.ToString(), role);
                                             await NHibernateQuerier.UpdateAsync(bottleneckObj);
                                             await NHibernateQuerier.UpdateAsync(ChangeDataType(redisGongfa));
                                             await NHibernateQuerier.UpdateAsync(role);
@@ -205,7 +205,7 @@ namespace AscensionServer
                                     Utility.Debug.LogInfo("YZQ自动加经验进来了Redis3");
                                     if (!bottleneckObj.IsBottleneck || !bottleneckObj.IsDemon || !bottleneckObj.IsThunder)
                                     {
-                                        var bottleneckData = AddGongFaExp(onOff.RoleID, gongfaObj.GongFaIDDict[onOff.MsGfID], rolestatusObj.GongfaLearnSpeed, out CultivationMethodDTO methodDTO);
+                                        var bottleneckData = AddGongFaExp(roleObj, gongfaObj.GongFaIDDict[onOff.MsGfID], rolestatusObj.GongfaLearnSpeed, out CultivationMethodDTO methodDTO);
 
                                         Utility.Debug.LogInfo("YZQ自动加经验进来了当前人物等级为" + methodDTO.CultivationMethodLevel);
 
@@ -352,7 +352,7 @@ namespace AscensionServer
                             {
                                 exp = (int)interval.TotalSeconds / 5 * redisRoleStatus.GongfaLearnSpeed;
 
-                                var bottleneckObj = AddGongFaExp(roleID, rolegongfaObj.GongFaIDDict[onOffLineObj.MsGfID], exp, out CultivationMethodDTO method);
+                                var bottleneckObj = AddGongFaExp(role, rolegongfaObj.GongFaIDDict[onOffLineObj.MsGfID], exp, out CultivationMethodDTO method);
                                 bottleneckObj.RoleID = roleID;
                                 rolegongfaObj.GongFaIDDict[method.CultivationMethodID] = method;
                                 role.RoleLevel = method.CultivationMethodLevel;
@@ -448,7 +448,7 @@ namespace AscensionServer
                         if (!bottleneckObj.IsBottleneck || !bottleneckObj.IsDemon || !bottleneckObj.IsThunder)
                         {
                             Utility.Debug.LogInfo("YZQonoffLineMYSQL自动加经验的數值為" + roleStatusObj.GongfaLearnSpeed);
-                            var bottleneckData = AddGongFaExp(onOffLine.RoleID, rolegongfa.GongFaIDDict[onOffLine.MsGfID], roleStatusObj.GongfaLearnSpeed, out var methodDTO);
+                            var bottleneckData = AddGongFaExp(roleObj, rolegongfa.GongFaIDDict[onOffLine.MsGfID], roleStatusObj.GongfaLearnSpeed, out var methodDTO);
                             rolegongfa.GongFaIDDict[onOffLine.MsGfID] = methodDTO;
                             roleObj.RoleLevel = methodDTO.CultivationMethodLevel;
                             bottleneckData.RoleID = onOffLine.RoleID;
@@ -521,59 +521,134 @@ namespace AscensionServer
         /// <summary>
         /// 添加功法经验方法
         /// </summary>
-        Bottleneck AddGongFaExp(int roleID,CultivationMethodDTO cultivation,int exp,out CultivationMethodDTO obj)
-        {
-            Bottleneck bottleneck = new Bottleneck() ;
-            bool isbottleneck;
-            GameEntry. DataManager.TryGetValue<Dictionary<int, RoleLevelData>>(out var roleDict);
-            CultivationMethodDTO cultivationDTO = new CultivationMethodDTO();
-            var result = roleDict.TryGetValue(cultivation.CultivationMethodLevel,out var roleData);
-            if (result&& roleData.IsFinalLevel==0)
-            {
-                if (roleData.ExpLevelUp <= cultivation.CultivationMethodExp + exp)
-                {
-                    Utility.Debug.LogInfo("YZQonoffLineEXP:" + (cultivation.CultivationMethodExp + exp) + "升级需要的" + roleData.ExpLevelUp);
-                    Utility.Debug.LogInfo("YZQonoffLineEXP2当前计算出的经验:" + (cultivation.CultivationMethodExp));
+        #region 待删
+        //Bottleneck AddGongFaExp(int roleID, CultivationMethodDTO cultivation, int exp, out CultivationMethodDTO obj)
+        //{
+        //    Bottleneck bottleneck = new Bottleneck();
+        //    bool isbottleneck;
+        //    GameEntry.DataManager.TryGetValue<Dictionary<int, RoleLevelData>>(out var roleDict);
+        //    CultivationMethodDTO cultivationDTO = new CultivationMethodDTO();
+        //    var result = roleDict.TryGetValue(cultivation.CultivationMethodLevel, out var roleData);
+        //    if (result && roleData.IsFinalLevel == 0)
+        //    {
+        //        if (roleData.ExpLevelUp <= cultivation.CultivationMethodExp + exp)
+        //        {
+        //            Utility.Debug.LogInfo("YZQonoffLineEXP:" + (cultivation.CultivationMethodExp + exp) + "升级需要的" + roleData.ExpLevelUp);
+        //            Utility.Debug.LogInfo("YZQonoffLineEXP2当前计算出的经验:" + (cultivation.CultivationMethodExp));
 
-                    Utility.Debug.LogInfo("YZQonoffLine計算的功法经验升级进来了等级为" + cultivation.CultivationMethodLevel);
-                    bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);
-                    if (bottleneck != null)
+        //            Utility.Debug.LogInfo("YZQonoffLine計算的功法经验升级进来了等级为" + cultivation.CultivationMethodLevel);
+        //            bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);
+        //            if (bottleneck != null)
+        //            {
+        //                if (isbottleneck)
+        //                {
+        //                    Utility.Debug.LogInfo("YZQonoffLine触发瓶颈:");
+        //                    cultivationDTO.CultivationMethodExp = roleData.ExpLevelUp;
+        //                    cultivationDTO.CultivationMethodID = cultivation.CultivationMethodID;
+        //                    cultivationDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
+        //                    cultivationDTO.CultivationMethodLevelSkillArray = cultivation.CultivationMethodLevelSkillArray;
+        //                    obj = cultivationDTO;
+        //                    return bottleneck;
+        //                }
+        //                else
+        //                {
+        //                    cultivation.CultivationMethodExp = cultivation.CultivationMethodExp + exp - roleData.ExpLevelUp;
+        //                    cultivation.CultivationMethodLevel = (short)roleData.NextLevelID;
+        //                    AddGongFaExp(roleID, cultivation, 0, out obj);
+        //                }
+
+        //            }
+        //        }
+        //        else
+        //        {
+        //            Utility.Debug.LogInfo("YZQonoffLine未升級的離綫經驗:" + exp);
+        //            bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);
+        //            cultivationDTO.CultivationMethodExp = cultivation.CultivationMethodExp + exp;
+        //            cultivationDTO.CultivationMethodID = cultivation.CultivationMethodID;
+        //            cultivationDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
+        //            cultivationDTO.CultivationMethodLevelSkillArray = cultivation.CultivationMethodLevelSkillArray;
+        //            obj = cultivationDTO;
+        //            return bottleneck;
+        //        }
+        //    }
+
+        //    obj = cultivation;
+        //    return bottleneck;
+        //}
+        #endregion
+
+        Bottleneck AddGongFaExp(Role role, CultivationMethodDTO cultivation, int exp, out CultivationMethodDTO obj)
+        {
+            GameEntry.DataManager.TryGetValue<Dictionary<int, GongFa>>(out var gongFaDict);
+            Bottleneck bottleneck;
+            if (RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleBottleneckPostfix, role.RoleID.ToString()).Result)
+            {
+                bottleneck = RedisHelper.Hash.HashGetAsync<Bottleneck>(RedisKeyDefine._RoleBottleneckPostfix, role.RoleID.ToString()).Result;
+            }
+            else
+            {
+                NHCriteria nHCriteria = ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", role.RoleID);
+                bottleneck = NHibernateQuerier.CriteriaSelectAsync<Bottleneck>(nHCriteria).Result;
+            }
+            bool isbottleneck;
+            GameEntry.DataManager.TryGetValue<Dictionary<int, RoleLevelData>>(out var roleDict);
+            var result = roleDict.TryGetValue(cultivation.CultivationMethodLevel, out var roleData);
+            obj = cultivation;
+            if (gongFaDict.TryGetValue(cultivation.CultivationMethodID, out var gongFa)&& result)
+            {
+                if (role.RoleLevel <= gongFa.Max_Level_ID)//判断当前等级是否超出所选功法
+                {
+                    if (roleData.IsFinalLevel == 0)//是否处于境界突破
                     {
-                        if (isbottleneck)
+                        if (roleData.ExpLevelUp <= cultivation.CultivationMethodExp + exp)//经验是否满足突破
                         {
-                            Utility.Debug.LogInfo("YZQonoffLine触发瓶颈:");
-                            cultivationDTO.CultivationMethodExp = roleData.ExpLevelUp;
-                            cultivationDTO.CultivationMethodID = cultivation.CultivationMethodID;
-                            cultivationDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
-                            cultivationDTO.CultivationMethodLevelSkillArray = cultivation.CultivationMethodLevelSkillArray;
-                            obj = cultivationDTO;
-                            return bottleneck;
+                            role.RoleLevel += 1;
+                            cultivation.CultivationMethodExp = cultivation.CultivationMethodExp + exp - roleData.ExpLevelUp;
+                            cultivation.CultivationMethodLevel = (short)role.RoleLevel;
+
+                            bottleneck = TriggerBottleneckS2C(role.RoleID, cultivation.CultivationMethodLevel, out isbottleneck);
+                            if (bottleneck!=null)
+                            {
+                                if (!isbottleneck)//是否触发瓶颈
+                                {                        
+                                    AddGongFaExp(role, cultivation, 0, out cultivation);
+                                    return bottleneck;
+                                }
+                                else
+                                {
+                                    //返回瓶颈数据
+                                    return bottleneck;
+                                }
+                            }
+                            else
+                                Utility.Debug.LogError("数据库查询数据查找出错");
+
                         }
                         else
                         {
-                            cultivation.CultivationMethodExp = cultivation.CultivationMethodExp + exp - roleData.ExpLevelUp;
-                            cultivation.CultivationMethodLevel = (short)roleData.NextLevelID;
-                            AddGongFaExp(roleID, cultivation, 0, out obj);
+                            //不足以升级增加经验直接返回
+                            cultivation.CultivationMethodExp +=  exp;
+                           
+             
                         }
+                    }
+                    else
+                    {
+                        //直接返回所需数据,瓶颈数据无需更改
+                        if (roleData.ExpLevelUp <= cultivation.CultivationMethodExp + exp)
+                        { cultivation.CultivationMethodExp = roleData.ExpLevelUp; }
+                        else cultivation.CultivationMethodExp += exp;
 
                     }
                 }
                 else
-                {
-                    Utility.Debug.LogInfo("YZQonoffLine未升級的離綫經驗:" + exp);
-                    bottleneck = TriggerBottleneckS2C(roleID, cultivation.CultivationMethodLevel, out isbottleneck);
-                    cultivationDTO.CultivationMethodExp = cultivation.CultivationMethodExp + exp;
-                    cultivationDTO.CultivationMethodID = cultivation.CultivationMethodID;
-                    cultivationDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
-                    cultivationDTO.CultivationMethodLevelSkillArray = cultivation.CultivationMethodLevelSkillArray;
-                    obj = cultivationDTO;
-                    return bottleneck;
-                }
+                { Utility.Debug.LogError("人物等级超过所修功法"); }
             }
+            else Utility.Debug.LogError("功法Json表数据查找出错");
 
-            obj = cultivation;
             return bottleneck;
         }
+
         /// <summary>
         /// 添加秘术
         /// </summary>

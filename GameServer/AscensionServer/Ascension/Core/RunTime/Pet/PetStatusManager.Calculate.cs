@@ -307,6 +307,7 @@ namespace AscensionServer
                     await RedisHelper.Hash.HashSetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, petObj.ID.ToString(), petAbitilyObj);
                     var petAbitily = ReferencePool.Accquire<PetAbilityPoint>();
                     petAbitily.ID = pet.ID;
+                    petAbitily.AbilityPointSln = Utility.Json.ToJson(petAbitilyObj.AbilityPointSln);
                     await NHibernateQuerier.UpdateAsync(petAbitily);
 
                     var petAptitudeObj = ReferencePool.Accquire<PetAptitudeDTO>();
@@ -333,7 +334,7 @@ namespace AscensionServer
                     dict.Add((byte)ParameterCode.PetStatus, petstatusObj);
                     ResultSuccseS2C(roleid, RolePetOpCode.ResetPetStatus, dict);
                     #region 背包移除
-                    InventoryManager.Remove(roleid, itemid);
+                    InventoryManager.UpdateNewItem(roleid, itemid,1);
                     #endregion
                 }else
                     ResultFailS2C(roleid, RolePetOpCode.ResetPetStatus, "角色等级不足筑基，无法使用");

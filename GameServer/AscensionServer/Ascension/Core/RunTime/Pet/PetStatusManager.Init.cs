@@ -634,7 +634,7 @@ namespace AscensionServer
                     await NHibernateQuerier.UpdateAsync(status);
                     await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PetStatusPerfix, petTemp.ID.ToString(), status);
 
-                    InventoryManager.RemoveCmdS2C(bookID, ringObj, nHCriteriaRingID);
+                    InventoryManager.Remove(roleid, bookid);
                 }
                 else
                 {

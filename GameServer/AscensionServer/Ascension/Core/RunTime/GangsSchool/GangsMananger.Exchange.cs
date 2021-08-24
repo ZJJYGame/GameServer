@@ -62,11 +62,8 @@ namespace AscensionServer
                                     var result = ExchangeObj.ExchangeGoods.ContainsKey(item.Key);
                                     if (!result && item.Value.Contribution <= data.ContributionUp && item.Value.Contribution <= data.ContributionDown)
                                     {
-                                        var ringObj =ReferencePool.Accquire<RingDTO>();
-                                        ringObj.RingItems = new Dictionary<int, RingItemsDTO>();
-                                        ringObj.RingItems.Add(item.Key, new RingItemsDTO());
                                         ExchangeObj.ExchangeGoods.Add(item.Key, item.Value);
-                                        InventoryManager.RemoveCmdS2C(roleID, ringObj, nHCriteria);
+                                        InventoryManager.Remove(roleID, item.Key);
                                     }
                                     else
                                     {
@@ -234,10 +231,7 @@ namespace AscensionServer
                                 if (!result && item.Value.Contribution <= data.ContributionUp && item.Value.Contribution >= data.ContributionDown)
                                 {
                                     goodsDict.Add(item.Key, item.Value);
-                                    var ringObj =ReferencePool.Accquire<RingDTO>();
-                                    ringObj.RingItems = new Dictionary<int, RingItemsDTO>();
-                                    ringObj.RingItems.Add(item.Key, new RingItemsDTO());
-                                    InventoryManager.RemoveCmdS2C(roleID, ringObj, nHCriteria);
+                                    InventoryManager.Remove(roleID, item.Key);
                                 }
                             }
                         }

@@ -717,6 +717,7 @@ namespace AscensionServer
             opData.OperationCode = (byte)OperationCode.SyncInventory;
             opData.SubOperationCode = (byte)subCode;
             GameEntry.RoleManager.SendMessage(roleId, opData);
+            Utility.Debug.LogError("背包物品被移除");
         }
         void ProcessInvHandlerC2S(int sessionId, OperationData packet)
         {

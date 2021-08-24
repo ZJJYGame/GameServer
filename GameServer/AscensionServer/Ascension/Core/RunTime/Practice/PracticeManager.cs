@@ -93,6 +93,7 @@ namespace AscensionServer
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
+            opData.ReturnCode = (short)ReturnCode.Fail;
             var dataDict = new Dictionary<byte, object>();
             dataDict.Add((byte)opcode, Utility.Json.ToJson(data));
             opData.DataMessage = Utility.Json.ToJson(dataDict);
@@ -109,6 +110,7 @@ namespace AscensionServer
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
+            opData.ReturnCode = (short)ReturnCode.Success;
             var dataDict = new Dictionary<byte, object>();
             dataDict.Add((byte)opcode, Utility.Json.ToJson(dict));
             opData.DataMessage = Utility.Json.ToJson(dataDict);

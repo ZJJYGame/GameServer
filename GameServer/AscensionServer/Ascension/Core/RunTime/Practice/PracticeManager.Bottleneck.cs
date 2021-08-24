@@ -177,5 +177,14 @@ namespace AscensionServer
             }
             return index;
         }
+
+        /// <summary>
+        /// 使用瓶颈丹药
+        /// </summary>
+        private void UseBottleneckElixir(int roleid)
+        {
+            BottleneckDTO bottleneckDTO = new BottleneckDTO();
+
+        }
     }
 }

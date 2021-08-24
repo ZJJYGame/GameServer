@@ -90,11 +90,14 @@ namespace AscensionServer
                         return;
                     }
 
-                    if (!role.RoleRoot.Contains(book.BookProperty.ToString()))
+                    if (book.BookProperty!=0)
                     {
-                        Utility.Debug.LogError("学习功法失败5"+ role.RoleRoot);
-                        ResultFailS2C(roleid, PracticeOpcode.AddGongFa);
-                        return;
+                        if (!role.RoleRoot.Contains(book.BookProperty.ToString()))
+                        {
+                            Utility.Debug.LogError("学习功法失败5" + role.RoleRoot);
+                            ResultFailS2C(roleid, PracticeOpcode.AddGongFa);
+                            return;
+                        }
                     }
 
                     if (rolegongfa.GongFaIDDict.Count != 0)
