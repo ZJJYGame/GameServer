@@ -26,17 +26,39 @@ namespace AscensionServer
         {
             return roleHasSkillHash.Contains(skillID);
         }
-
-        public void UseSkill(int skillID,List<int> targetIdList)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="skillID"></param>
+        /// <param name="targetIdList"></param>
+        /// <param name="isCDLimit">是否被CD限制，直接使用需考虑cd，触发无需考虑</param>
+        public void UseSkill(int skillID,List<int> targetIdList,bool isCDLimit)
         {
             nowUseSkillId = skillID;
 
             if (!skillDict.ContainsKey(skillID))
                 skillDict[skillID] = new BattleSkillBase(skillID, owner);
             BattleSkillBase battleSkill = skillDict[skillID];
+            //冷却是否满足以及冷却的处理
+            if (isCDLimit)//如果有CD限制
+            {
+                if (battleSkill.NowCold != 0)
+                {
+                    Utility.Debug.LogError($"技能{battleSkill.SkillID}正在冷却，无法使用,剩余冷却{battleSkill.MaxCold-battleSkill.NowCold}");
+                    return;
+                }
+                else
+                {
+                    battleSkill.EnterCold();
+                }
+            }
             //todo释放条件是否满足
             //todo消耗的判断与扣除
-
+            if (!battleSkill.SkillCost(out var actionCost))
+            {
+                Utility.Debug.LogError($"技能{battleSkill.SkillID}消耗不足，无法释放");
+                return;
+            }
             //获取技能释放目标的实体
             List<BattleCharacterEntity> targetCharacterList = new List<BattleCharacterEntity>();
             for (int i = 0; i < targetIdList.Count; i++)
@@ -54,7 +76,7 @@ namespace AscensionServer
                     if (i > 0)//释放上一次行为信息
                         GameEntry.BattleRoomManager.GetBattleRoomEntity(owner.RoomID).ReleaseBattleTransfer();
                     BattleTransferDTO battleTransferDTO = GameEntry.BattleRoomManager.GetBattleRoomEntity(owner.RoomID).SpawnBattleTransfer();
-                    //判断所有目标是否全部死亡
+                    //判断所有目标是可以成为技能目标
                     bool flag = false;
                     for (int j = 0; j < targetCharacterList.Count; j++)
                     {
@@ -62,6 +84,12 @@ namespace AscensionServer
                     }
                     if (!flag)
                         continue;
+
+                    if (actionCost != null)
+                    {
+                        battleTransferDTO.ActionCost = actionCost;
+                        actionCost = null;
+                    }
 
                     List<BattleDamageData> battleDamageDataList = new List<BattleDamageData>();
                     //生成该次行动战斗数据记录对象

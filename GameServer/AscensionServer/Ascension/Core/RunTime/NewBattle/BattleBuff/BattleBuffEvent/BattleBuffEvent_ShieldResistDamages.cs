@@ -9,9 +9,9 @@ using AscensionProtocol.DTO;
 namespace AscensionServer
 {
     /// <summary>
-    /// 护盾类型buff事件
+    /// 护盾抵挡伤害类型buff事件
     /// </summary>
-    public class BattleBuffEvent_Shield : BattleBuffEventBase
+    public class BattleBuffEvent_ShieldResistDamages : BattleBuffEventBase
     {
         int shieldValue;
 
@@ -49,9 +49,12 @@ namespace AscensionServer
 
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = counteractValue;
+            battleBuffEventTriggerDTO.Num_2 = 0;
         }
-        public BattleBuffEvent_Shield(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
+
+        public BattleBuffEvent_ShieldResistDamages(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
         {
+            Utility.Debug.LogError(battleBuffObj.BuffId);
             if (battleBuffEventData.flag)//数据来自于buff挂载的人
             {
                 shieldValue= battleBuffObj.Owner.CharacterBattleData.GetProperty(battleBuffEventData.buffEvent_Shield_SourceDataType);

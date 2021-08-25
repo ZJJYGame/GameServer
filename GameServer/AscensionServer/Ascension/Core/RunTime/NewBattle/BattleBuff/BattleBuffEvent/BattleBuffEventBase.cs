@@ -102,7 +102,6 @@ namespace AscensionServer
         {
             if (LastBattleTransfer.BattleBuffEventTriggerDTOList == null)
                 LastBattleTransfer.BattleBuffEventTriggerDTOList = new List<BattleBuffEventTriggerDTO>();
-            Utility.Debug.LogError(battleBuffObj.BuffId);
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = new BattleBuffEventTriggerDTO()
             {
                 TriggerId = owner.UniqueID,

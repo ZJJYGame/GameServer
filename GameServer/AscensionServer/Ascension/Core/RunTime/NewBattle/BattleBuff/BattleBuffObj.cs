@@ -147,7 +147,8 @@ namespace AscensionServer
                         battleBuffEventBase = new BattleBuffEvent_DamageOrHeal(battleBuffData.battleBuffEventDataList[i], this);
                         break;
                     case BattleBuffEventType.Shield:
-                        battleBuffEventBase = new BattleBuffEvent_Shield(battleBuffData.battleBuffEventDataList[i], this);
+                        battleBuffEventBase = new BattleBuffEvent_ShieldResistDamages(battleBuffData.battleBuffEventDataList[i], this);
+                        battleBuffEventList.Add(new BattleBuffEvent_ShieldAdd(battleBuffData.battleBuffEventDataList[i], this));
                         break;
                     case BattleBuffEventType.DamageReduce:
                         battleBuffEventBase = new BattleBuffEvent_DamageReduce(battleBuffData.battleBuffEventDataList[i], this);
@@ -245,15 +246,27 @@ namespace AscensionServer
             {
                 battleBuffEventList[i].RemoveEvent();
             }
+            battleBuffEventList.Clear();
+            battleBuffEventConditionList.Clear();
+            buffAddEvent = null;
+            buffRemoveEvent = null;
+            buffCoverEvent = null;
 
             Owner = null;
             OwnerSkill = null;
+            BattleController = null;
             BuffId = 0;
             MaxRound = 0;
             NowRound = 0;
             OverlayLayer = 0;
             MaxOverlayLayer = 0;
             BattleBuffData = null;
+            DamgeAddition = 0;
+            CritProp = 0;
+            CritDamage = 0;
+            IgnoreDefensive = 0;
+            DamagDeduction = 0;
+            DodgeProp = 0;
 
         }
     }

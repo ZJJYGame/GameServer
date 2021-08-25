@@ -1,4 +1,4 @@
-﻿[
+﻿ [
         {
             "name": "普攻",
             "id": 21001,
@@ -10,49 +10,6 @@
             "ignoreDefensive": 0,
             "cd": 1,
             "IsCloseAttack": true,
-            "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 0,
-                "value": 0
-            },
-            "battleSkillFactionType": 0,
-            "battleSkillTargetType": 0,
-            "battleSkillActionType": 0,
-            "attackProcessType": 0,
-            "battleSkillDamageNumDataList": [
-                {
-                    "battleSkillDamageType": 0,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 7,
-                            "mulitity": 100
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                }
-            ],
-            "battleSkillAddBuffList": [ ],
-            "battleSkillRemoveBuffDataList": [],
-            "battleSkillCostData": {
-                "battleSkillCostType": 0,
-                "percentValue": 0,
-                "fixedValue": 0
-            },
-            "battleSkillEventDataList": []
-        }, {
-            "name": "打队友普攻",
-            "id": 21002,
-            "describe": "随便打一下",
-            "TargetNumber": 1,
-            "damageAddition": 0,
-            "critProp": 0,
-            "critDamage": 0,
-            "ignoreDefensive": 0,
-            "cd": 1,
-            "IsCloseAttack": false,
             "battleSkillUseCondition": {
                 "battleSkillUseConditionType": 0,
                 "value": 0
@@ -90,7 +47,7 @@
             "name": "剑雨",
             "id": 21006,
             "describe": "攻击一人三次",
-            "TargetNumber": 5,
+            "TargetNumber": 1,
             "damageAddition": 0,
             "critProp": 0,
             "critDamage": 0,
@@ -114,24 +71,32 @@
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 7,
-                            "mulitity": 100
-                        },
-						{
+                            "mulitity": 80
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                },
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 7,
-                            "mulitity": 100
-                        },
-						{
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 7,
-                            "mulitity": 100
-                        },
-						{
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 7,
-                            "mulitity": 100
-                        },
-						{
+                            "mulitity": 90
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                },
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 7,
                             "mulitity": 100
@@ -141,39 +106,12 @@
                     "extraNumSourceData": []
                 }
             ],
-            "battleSkillAddBuffList": [{
-                    "buffId": 20311,
-                    "round": 99,
-                    "TargetType": false,
-                    "battleSkillAddBuffValueList":[{
-					"percentValue":0,
-					"fixedValue":0
-					}],
-                    "basePropList": [
-                        100,
-						100,
-						100,
-						100,
-						100
-                    ],
-                    "selfAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    },
-                    "targetAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    }
-                }],
+            "battleSkillAddBuffList": [],
             "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
                 "battleSkillCostType": 2,
-                "percentValue": 20,
-                "fixedValue": 10
+                "percentValue": 0,
+                "fixedValue": 0
             },
             "battleSkillEventDataList": []
         },
@@ -205,22 +143,22 @@
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 7000
+                            "mulitity": 70
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 7000
+                            "mulitity": 70
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 7000
+                            "mulitity": 70
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 7000
+                            "mulitity": 70
                         }
                     ],
                     "extraDamageAdditionSourceTarget": false,
@@ -239,7 +177,7 @@
         {
             "name": "水中月",
             "id": 21302,
-            "describe": "封印三人,概率逐个降低",
+            "describe": "封印三人，概率逐个降低",
             "TargetNumber": 3,
             "damageAddition": 0,
             "critProp": 0,
@@ -293,7 +231,8 @@
                         "multiplyPropValue": 100.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [],
@@ -359,7 +298,8 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [
@@ -430,7 +370,8 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [],
@@ -438,44 +379,6 @@
                 "battleSkillCostType": 2,
                 "percentValue": 0,
                 "fixedValue": 50
-            },
-            "battleSkillEventDataList": []
-        },
-        {
-            "name": "影兽",
-            "id": 21512,
-            "describe": "召唤影兽",
-            "TargetNumber": 1,
-            "damageAddition": 0,
-            "critProp": 0,
-            "critDamage": 0,
-            "ignoreDefensive": 0,
-            "cd": 1,
-            "IsCloseAttack": false,
-            "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 5,
-                "value": 23201
-            },
-            "battleSkillFactionType": 1,
-            "battleSkillTargetType": 0,
-            "battleSkillActionType": 3,
-            "attackProcessType": 0,
-            "battleSkillDamageNumDataList": [
-                {
-                    "battleSkillDamageType": 0,
-                    "fixedNum": 50,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                }
-            ],
-            "battleSkillAddBuffList": [],
-            "battleSkillRemoveBuffDataList": [],
-            "battleSkillCostData": {
-                "battleSkillCostType": 2,
-                "percentValue": 30,
-                "fixedValue": 0
             },
             "battleSkillEventDataList": []
         },
@@ -589,13 +492,13 @@
             "cd": 1,
             "IsCloseAttack": true,
             "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 0,
-                "value": 0
+                "battleSkillUseConditionType": 1,
+                "value": 50
             },
             "battleSkillFactionType": 0,
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
-            "attackProcessType": 0,
+            "attackProcessType": 1,
             "battleSkillDamageNumDataList": [
                 {
                     "battleSkillDamageType": 0,
@@ -650,6 +553,150 @@
             "battleSkillEventDataList": []
         },
         {
+            "name": "剑雨",
+            "id": 21112,
+            "describe": "我要打你三下",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": true,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 1,
+                "value": 50
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 1,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 85
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                },
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 95
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                },
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 105
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 1,
+                "percentValue": 8,
+                "fixedValue": 0
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "剑雨",
+            "id": 211123,
+            "describe": "我要打你三下",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": true,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 1,
+                "value": 50
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 1,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 90
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                },
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 100
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                },
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 10
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 1,
+                "percentValue": 10,
+                "fixedValue": 0
+            },
+            "battleSkillEventDataList": []
+        },
+        {
             "name": "剑气",
             "id": 21114,
             "describe": "拿出剑来吓唬敌方三人",
@@ -661,13 +708,13 @@
             "cd": 1,
             "IsCloseAttack": true,
             "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 0,
+                "battleSkillUseConditionType": 1,
                 "value": 0
             },
             "battleSkillFactionType": 0,
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
-            "attackProcessType": 0,
+            "attackProcessType": 1,
             "battleSkillDamageNumDataList": [
                 {
                     "battleSkillDamageType": 0,
@@ -699,7 +746,12 @@
                     "buffId": 20501,
                     "round": 2,
                     "TargetType": true,
-                    "battleSkillAddBuffValueList": [],
+                    "battleSkillAddBuffValueList": [
+                        {
+                            "percentValue": 5,
+                            "fixedValue": 0
+                        }
+                    ],
                     "basePropList": [
                         100,
                         100,
@@ -716,14 +768,15 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
                 "battleSkillCostType": 2,
-                "percentValue": 0,
-                "fixedValue": 50
+                "percentValue": 1,
+                "fixedValue": 300
             },
             "battleSkillEventDataList": []
         },
@@ -745,7 +798,7 @@
             "battleSkillFactionType": 0,
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
-            "attackProcessType": 0,
+            "attackProcessType": 1,
             "battleSkillDamageNumDataList": [
                 {
                     "battleSkillDamageType": 0,
@@ -777,7 +830,12 @@
                     "buffId": 20502,
                     "round": 2,
                     "TargetType": true,
-                    "battleSkillAddBuffValueList": [],
+                    "battleSkillAddBuffValueList": [
+                        {
+                            "percentValue": 10,
+                            "fixedValue": 0
+                        }
+                    ],
                     "basePropList": [
                         100,
                         100,
@@ -794,21 +852,15 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
-            "battleSkillRemoveBuffDataList": [
-                {
-                    "buffIdList": [
-                        20501
-                    ],
-                    "probability": 100
-                }
-            ],
+            "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
                 "battleSkillCostType": 2,
-                "percentValue": 0,
-                "fixedValue": 100
+                "percentValue": 1,
+                "fixedValue": 400
             },
             "battleSkillEventDataList": []
         },
@@ -830,7 +882,7 @@
             "battleSkillFactionType": 0,
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
-            "attackProcessType": 0,
+            "attackProcessType": 1,
             "battleSkillDamageNumDataList": [
                 {
                     "battleSkillDamageType": 0,
@@ -862,7 +914,12 @@
                     "buffId": 20502,
                     "round": 3,
                     "TargetType": true,
-                    "battleSkillAddBuffValueList": [],
+                    "battleSkillAddBuffValueList": [
+                        {
+                            "percentValue": 10,
+                            "fixedValue": 0
+                        }
+                    ],
                     "basePropList": [
                         100,
                         100,
@@ -879,21 +936,15 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
-            "battleSkillRemoveBuffDataList": [
-                {
-                    "buffIdList": [
-                        20502
-                    ],
-                    "probability": 100
-                }
-            ],
+            "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
                 "battleSkillCostType": 2,
-                "percentValue": 0,
-                "fixedValue": 200
+                "percentValue": 1,
+                "fixedValue": 500
             },
             "battleSkillEventDataList": []
         },
@@ -1022,7 +1073,8 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [],
@@ -1095,7 +1147,7 @@
             "battleSkillFactionType": 0,
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
-            "attackProcessType": 1,
+            "attackProcessType": 0,
             "battleSkillDamageNumDataList": [
                 {
                     "battleSkillDamageType": 1,
@@ -1105,22 +1157,22 @@
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 80
+                            "mulitity": 70
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 80
+                            "mulitity": 70
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 80
+                            "mulitity": 70
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 80
+                            "mulitity": 70
                         }
                     ],
                     "extraDamageAdditionSourceTarget": false,
@@ -1130,9 +1182,142 @@
             "battleSkillAddBuffList": [],
             "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
-                "battleSkillCostType": 0,
-                "percentValue": 0,
-                "fixedValue": 200
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 100
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "燎原",
+            "id": 21412,
+            "describe": "5个在看描述的逗比着火了",
+            "TargetNumber": 5,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 250
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "燎原",
+            "id": 21413,
+            "describe": "6个在看描述的逗比着火了",
+            "TargetNumber": 6,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 500
             },
             "battleSkillEventDataList": []
         },
@@ -1345,7 +1530,8 @@
                         "multiplyPropValue": 0.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [],
@@ -1384,54 +1570,144 @@
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 10
+                            "mulitity": 20
                         },
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 8,
-                            "mulitity": 10
+                            "mulitity": 20
                         }
                     ],
                     "extraDamageAdditionSourceTarget": false,
                     "extraNumSourceData": []
                 }
             ],
-            "battleSkillAddBuffList": [
-                {
-                    "buffId": 20951,
-                    "round": 2,
-                    "TargetType": true,
-                    "battleSkillAddBuffValueList": [],
-                    "basePropList": [
-                        100,
-                        100
-                    ],
-                    "selfAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0.0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    },
-                    "targetAddBuffProbability": {
-                        "battleSkillBuffProbSource": 0,
-                        "multiplyPropValue": 0.0,
-                        "fixedPropValue": 0,
-                        "addOrReduce": false
-                    }
-                }
-            ],
+            "battleSkillAddBuffList": [],
             "battleSkillRemoveBuffDataList": [],
             "battleSkillCostData": {
-                "battleSkillCostType": 0,
-                "percentValue": 0,
-                "fixedValue": 50
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 100
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "回春术",
+            "id": 21212,
+            "describe": "回血的技能",
+            "TargetNumber": 3,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 1,
+            "attackProcessType": 1,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 250
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "回春术",
+            "id": 21213,
+            "describe": "回血的技能",
+            "TargetNumber": 4,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 1,
+            "attackProcessType": 1,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 500
             },
             "battleSkillEventDataList": []
         },
         {
             "name": "还魂",
             "id": 21214,
-            "describe": "起死回生,不存在的,想都不要想",
+            "describe": "起死回生，不存在的，想都不要想",
             "TargetNumber": 1,
             "damageAddition": 0,
             "critProp": 0,
@@ -1484,20 +1760,21 @@
                     "conditionPercentNum": 0,
                     "conditionFixedNum": 0,
                     "battleSkillTriggerEventType": 0,
-                    "EventValue": 0
+                    "EventValue": 0,
+                    "isAutoChangeTarget": false
                 }
             ]
         },
         {
             "name": "水中月",
-            "id": 21312,
-            "describe": "产生幻象,使其进入封魔状态",
+            "id": 21311,
+            "describe": "产生幻象，使其进入封魔状态",
             "TargetNumber": 3,
             "damageAddition": 0,
             "critProp": 0,
             "critDamage": 0,
             "ignoreDefensive": 0,
-            "cd": 1,
+            "cd": 2,
             "IsCloseAttack": false,
             "battleSkillUseCondition": {
                 "battleSkillUseConditionType": 0,
@@ -1506,12 +1783,12 @@
             "battleSkillFactionType": 0,
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
-            "attackProcessType": 1,
+            "attackProcessType": 0,
             "battleSkillDamageNumDataList": [],
             "battleSkillAddBuffList": [
                 {
                     "buffId": 20994,
-                    "round": 2,
+                    "round": 1,
                     "TargetType": true,
                     "battleSkillAddBuffValueList": [],
                     "basePropList": [
@@ -1530,7 +1807,8 @@
                         "multiplyPropValue": 1.0,
                         "fixedPropValue": 0,
                         "addOrReduce": false
-                    }
+                    },
+                    "coverBuffIdList": []
                 }
             ],
             "battleSkillRemoveBuffDataList": [
@@ -1540,189 +1818,16 @@
                 }
             ],
             "battleSkillCostData": {
-                "battleSkillCostType": 0,
-                "percentValue": 0,
-                "fixedValue": 0
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 100
             },
             "battleSkillEventDataList": []
         },
         {
-            "name": "null",
-            "id": 0,
-            "describe": "0",
-            "TargetNumber": 0,
-            "damageAddition": 0,
-            "critProp": 0,
-            "critDamage": 0,
-            "ignoreDefensive": 0,
-            "cd": 0,
-            "IsCloseAttack": false,
-            "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 0,
-                "value": 0
-            },
-            "battleSkillFactionType": 0,
-            "battleSkillTargetType": 0,
-            "battleSkillActionType": 0,
-            "attackProcessType": 0,
-            "battleSkillDamageNumDataList": [],
-            "battleSkillAddBuffList": [],
-            "battleSkillRemoveBuffDataList": [],
-            "battleSkillCostData": {
-                "battleSkillCostType": 0,
-                "percentValue": 0,
-                "fixedValue": 0
-            },
-            "battleSkillEventDataList": []
-        }, {
-            "name": "吸星大法",
-            "id": 28214,
-            "describe": "对敌方1个单位造成自身物理攻击力85%的物理伤害,如果暴击则吸血造成伤害的25%",
-            "TargetNumber": 1,
-            "damageAddition": 0,
-            "critProp": 0,
-            "critDamage": 0,
-            "ignoreDefensive": 0,
-            "cd": 1,
-            "IsCloseAttack": false,
-            "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 0,
-                "value": 0
-            },
-            "battleSkillFactionType": 0,
-            "battleSkillTargetType": 0,
-            "battleSkillActionType": 0,
-            "attackProcessType": 0,
-            "battleSkillDamageNumDataList": [
-                {
-                    "battleSkillDamageType": 1,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 8,
-                            "mulitity": 100
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                }
-            ],
-            "battleSkillAddBuffList": [],
-            "battleSkillRemoveBuffDataList": [],
-            "battleSkillCostData": {
-                "battleSkillCostType": 2,
-                "percentValue": 1,
-                "fixedValue": 1
-            },
-            "battleSkillEventDataList": [
-            ]
-        },
-              {
-            "name": "星环",
-            "id": 28215,
-            "describe": "对敌方1个单位造成自身魔法攻击力90%的魔法伤害,如果该技能杀死敌方目标,则随机选择下一个目标再次释放",
-            "TargetNumber": 1,
-            "damageAddition": 0,
-            "critProp": 0,
-            "critDamage": 0,
-            "ignoreDefensive": 0,
-            "cd": 1,
-            "IsCloseAttack": false,
-            "battleSkillUseCondition": {
-                "battleSkillUseConditionType": 0,
-                "value": 0
-            },
-            "battleSkillFactionType": 0,
-            "battleSkillTargetType": 0,
-            "battleSkillActionType": 0,
-            "attackProcessType": 0,
-            "battleSkillDamageNumDataList": [
-                {
-                    "battleSkillDamageType": 1,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 8,
-                            "mulitity": 85
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                },
-				{
-                    "battleSkillDamageType": 1,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 8,
-                            "mulitity": 85
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                },{
-                    "battleSkillDamageType": 1,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 8,
-                            "mulitity": 85
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                },
-				{
-                    "battleSkillDamageType": 1,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 8,
-                            "mulitity": 85
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                },{
-                    "battleSkillDamageType": 1,
-                    "fixedNum": 0,
-                    "baseDamageAdditionSourceTarget": false,
-                    "baseNumSourceDataList": [
-                        {
-                            "battleSkillDamageTargetProperty": 0,
-                            "battleSkillNumSourceType": 8,
-                            "mulitity": 85
-                        }
-                    ],
-                    "extraDamageAdditionSourceTarget": false,
-                    "extraNumSourceData": []
-                }
-            ],
-            "battleSkillAddBuffList": [],
-            "battleSkillRemoveBuffDataList": [],
-            "battleSkillCostData": {
-                "battleSkillCostType": 2,
-                "percentValue": 1,
-                "fixedValue": 1
-            },
-            "battleSkillEventDataList": [
-              
-            ]
-        },
-        {
-            "name": "春晖",
-            "id": 28216,
-            "describe": "对敌方3个目标造成自身魔法攻击力50%的伤害,若目标中存在护盾,则恢复自身5%的最大气血值",
+            "name": "水中月",
+            "id": 21312,
+            "describe": "产生幻象，使其进入封魔状态",
             "TargetNumber": 3,
             "damageAddition": 0,
             "critProp": 0,
@@ -1738,6 +1843,991 @@
             "battleSkillTargetType": 0,
             "battleSkillActionType": 0,
             "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20994,
+                    "round": 1,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        90,
+                        45,
+                        30
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 5,
+                        "multiplyPropValue": 1.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": true
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 5,
+                        "multiplyPropValue": 1.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [
+                {
+                    "buffIdList": [],
+                    "probability": 0
+                }
+            ],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 250
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "水中月",
+            "id": 21313,
+            "describe": "产生幻象，使其进入封魔状态",
+            "TargetNumber": 3,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 2,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20994,
+                    "round": 1,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100,
+                        50,
+                        40
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 5,
+                        "multiplyPropValue": 1.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": true
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 5,
+                        "multiplyPropValue": 1.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [
+                {
+                    "buffIdList": [],
+                    "probability": 0
+                }
+            ],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 500
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "以静制动",
+            "id": 21122,
+            "describe": "为自身添加护盾，护盾存在时，每回合第一次受到物理攻击时，对其发动反击",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 3,
+            "battleSkillActionType": 1,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20702,
+                    "round": 3,
+                    "TargetType": false,
+                    "battleSkillAddBuffValueList": [
+                        {
+                            "percentValue": 50,
+                            "fixedValue": 0
+                        }
+                    ],
+                    "basePropList": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 200
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "枯木逢春",
+            "id": 21233,
+            "describe": "消耗精血，回复1个友方单位10%最大真元。",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 1,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": true,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 1,
+                            "battleSkillNumSourceType": 3,
+                            "mulitity": 10
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 4,
+                "percentValue": 0,
+                "fixedValue": 20
+            },
+            "battleSkillEventDataList": [
+                {
+                    "battleSkillEventTriggerTime": 1,
+                    "battleSkillEventTriggerCondition": 0,
+                    "battleSkillEventTriggerNumSourceType": 0,
+                    "conditionPercentNum": 0,
+                    "conditionFixedNum": 0,
+                    "battleSkillTriggerEventType": 0,
+                    "EventValue": 0,
+                    "isAutoChangeTarget": false
+                }
+            ]
+        },
+        {
+            "name": "神魂刺",
+            "id": 21324,
+            "describe": "对敌方1个单位造成神魂伤害，",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 2,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 2,
+                            "battleSkillNumSourceType": 5,
+                            "mulitity": 10
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20993,
+                    "round": 1,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        5
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 5,
+                        "multiplyPropValue": 1.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": true
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 5,
+                        "multiplyPropValue": 1.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 4,
+                "percentValue": 0,
+                "fixedValue": 20
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "火雨",
+            "id": 21421,
+            "describe": "对3个敌方单位造成自身法术攻击70%的伤害，并添加火种印记，对存在火种印记的单位造成伤害增加40%",
+            "TargetNumber": 3,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 70
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20720,
+                    "round": 2,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100,
+                        100,
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 300
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "嘲讽",
+            "id": 21531,
+            "describe": "吸引仇恨，使对方强制普攻自己",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 2,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20715,
+                    "round": 2,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 200
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "冰甲",
+            "id": 21321,
+            "describe": "在周身覆盖一层冰甲，受到物理攻击时，给对方添加冻伤buff",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20712,
+                    "round": 3,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 50
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "灵魂鼓舞",
+            "id": 21524,
+            "describe": "提供友方一个灵兽的物理和法术攻击。",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 3,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 2,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20515,
+                    "round": 3,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 300
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "医者仁心",
+            "id": 21231,
+            "describe": "回复1个友方单位少量气血，并提供其法术防御力。",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 2,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 1,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 20
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20705,
+                    "round": 2,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [
+                        {
+                            "percentValue": 10,
+                            "fixedValue": 0
+                        }
+                    ],
+                    "basePropList": [
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 250
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "土灵甲",
+            "id": 21511,
+            "describe": "土元素化成的铠甲，增加物理和法术防御力。",
+            "TargetNumber": 2,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 3,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20513,
+                    "round": 3,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100,
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 100
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "土灵甲",
+            "id": 21512,
+            "describe": "土元素化成的铠甲，增加物理和法术防御力。",
+            "TargetNumber": 3,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 3,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20513,
+                    "round": 3,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100,
+                        100,
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 250
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "土灵甲",
+            "id": 21513,
+            "describe": "土元素化成的铠甲，增加物理和法术防御力。",
+            "TargetNumber": 4,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 3,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 1,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [],
+            "battleSkillAddBuffList": [
+                {
+                    "buffId": 20513,
+                    "round": 3,
+                    "TargetType": true,
+                    "battleSkillAddBuffValueList": [],
+                    "basePropList": [
+                        100,
+                        100,
+                        100,
+                        100
+                    ],
+                    "selfAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "targetAddBuffProbability": {
+                        "battleSkillBuffProbSource": 0,
+                        "multiplyPropValue": 0.0,
+                        "fixedPropValue": 0,
+                        "addOrReduce": false
+                    },
+                    "coverBuffIdList": []
+                }
+            ],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 500
+            },
+            "battleSkillEventDataList": []
+        },
+        {
+            "name": "吸星大法",
+            "id": 28214,
+            "describe": "对敌方1个单位造成自身物理攻击力85%的物理伤害，如果暴击则吸血造成伤害的25%",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 0,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 7,
+                            "mulitity": 85
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 1
+            },
+            "battleSkillEventDataList": [
+                {
+                    "battleSkillEventTriggerTime": 1,
+                    "battleSkillEventTriggerCondition": 1,
+                    "battleSkillEventTriggerNumSourceType": 0,
+                    "conditionPercentNum": 0,
+                    "conditionFixedNum": 0,
+                    "battleSkillTriggerEventType": 2,
+                    "EventValue": 25,
+                    "isAutoChangeTarget": false
+                }
+            ]
+        },
+        {
+            "name": "星环",
+            "id": 28215,
+            "describe": "对敌方1个单位造成自身魔法攻击力90%的魔法伤害，如果该技能杀死敌方目标，则随机选择下一个目标再次释放",
+            "TargetNumber": 3,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 90
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 90
+                        },
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 90
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 1
+            },
+            "battleSkillEventDataList": [
+                {
+                    "battleSkillEventTriggerTime": 1,
+                    "battleSkillEventTriggerCondition": 2,
+                    "battleSkillEventTriggerNumSourceType": 0,
+                    "conditionPercentNum": 0,
+                    "conditionFixedNum": 0,
+                    "battleSkillTriggerEventType": 0,
+                    "EventValue": 28215,
+                    "isAutoChangeTarget": false
+                }
+            ]
+        },
+        {
+            "name": "春晖",
+            "id": 28216,
+            "describe": "对敌方3个目标造成自身魔法攻击力50%的伤害，若目标中存在护盾，则恢复自身5%的最大气血值",
+            "TargetNumber": 3,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
             "battleSkillDamageNumDataList": [
                 {
                     "battleSkillDamageType": 1,
@@ -1773,20 +2863,21 @@
             },
             "battleSkillEventDataList": [
                 {
-                    "battleSkillEventTriggerTime": 1,
+                    "battleSkillEventTriggerTime": 0,
                     "battleSkillEventTriggerCondition": 3,
                     "battleSkillEventTriggerNumSourceType": 4,
                     "conditionPercentNum": 0,
                     "conditionFixedNum": 0,
                     "battleSkillTriggerEventType": 1,
-                    "EventValue": 5
+                    "EventValue": 5,
+                    "isAutoChangeTarget": false
                 }
             ]
         },
         {
             "name": "冲冠一怒",
             "id": 28217,
-            "describe": "被攻击后,若自身气血值低于50%则增加自身40%的暴击几率",
+            "describe": "被攻击后，若自身气血值低于50%则增加自身40%的暴击几率",
             "TargetNumber": 1,
             "damageAddition": 0,
             "critProp": 0,
@@ -1798,7 +2889,7 @@
                 "battleSkillUseConditionType": 0,
                 "value": 0
             },
-            "battleSkillFactionType": 1,
+            "battleSkillFactionType": 0,
             "battleSkillTargetType": 3,
             "battleSkillActionType": 1,
             "attackProcessType": 0,
@@ -1818,14 +2909,15 @@
                     "conditionPercentNum": 50,
                     "conditionFixedNum": 0,
                     "battleSkillTriggerEventType": 3,
-                    "EventValue": 40
+                    "EventValue": 40,
+                    "isAutoChangeTarget": false
                 }
             ]
         },
         {
             "name": "落井下石",
             "id": 28218,
-            "describe": "对敌方1个单位造成自身物理攻击力25%的伤害,若目标气血值低于20%则伤害增加50%",
+            "describe": "对敌方1个单位造成自身物理攻击力25%的伤害，若目标气血值低于20%则伤害增加50%",
             "TargetNumber": 1,
             "damageAddition": 0,
             "critProp": 0,
@@ -1872,14 +2964,15 @@
                     "conditionPercentNum": 20,
                     "conditionFixedNum": 0,
                     "battleSkillTriggerEventType": 4,
-                    "EventValue": 50
+                    "EventValue": 50,
+                    "isAutoChangeTarget": false
                 }
             ]
         },
         {
             "name": "穿心剑",
             "id": 28219,
-            "describe": "对敌方1个单位造成自身物理攻击力50%的物理伤害,若目标存在护盾,则增加20%的穿透效果",
+            "describe": "对敌方1个单位造成自身物理攻击力50%的物理伤害，若目标存在护盾，则增加20%的穿透效果",
             "TargetNumber": 1,
             "damageAddition": 0,
             "critProp": 0,
@@ -1926,7 +3019,63 @@
                     "conditionPercentNum": 0,
                     "conditionFixedNum": 0,
                     "battleSkillTriggerEventType": 5,
-                    "EventValue": 20
+                    "EventValue": 20,
+                    "isAutoChangeTarget": false
+                }
+            ]
+        },
+        {
+            "name": "烈火燎原",
+            "id": 21422,
+            "describe": "对1个敌方单位造成法术伤害110%+0点法术伤害，若目标死亡则再次对1个敌方单位释放技能21422",
+            "TargetNumber": 1,
+            "damageAddition": 0,
+            "critProp": 0,
+            "critDamage": 0,
+            "ignoreDefensive": 0,
+            "cd": 1,
+            "IsCloseAttack": false,
+            "battleSkillUseCondition": {
+                "battleSkillUseConditionType": 0,
+                "value": 0
+            },
+            "battleSkillFactionType": 0,
+            "battleSkillTargetType": 0,
+            "battleSkillActionType": 0,
+            "attackProcessType": 0,
+            "battleSkillDamageNumDataList": [
+                {
+                    "battleSkillDamageType": 1,
+                    "fixedNum": 0,
+                    "baseDamageAdditionSourceTarget": false,
+                    "baseNumSourceDataList": [
+                        {
+                            "battleSkillDamageTargetProperty": 0,
+                            "battleSkillNumSourceType": 8,
+                            "mulitity": 110
+                        }
+                    ],
+                    "extraDamageAdditionSourceTarget": false,
+                    "extraNumSourceData": []
+                }
+            ],
+            "battleSkillAddBuffList": [],
+            "battleSkillRemoveBuffDataList": [],
+            "battleSkillCostData": {
+                "battleSkillCostType": 2,
+                "percentValue": 1,
+                "fixedValue": 200
+            },
+            "battleSkillEventDataList": [
+                {
+                    "battleSkillEventTriggerTime": 1,
+                    "battleSkillEventTriggerCondition": 2,
+                    "battleSkillEventTriggerNumSourceType": 0,
+                    "conditionPercentNum": 0,
+                    "conditionFixedNum": 0,
+                    "battleSkillTriggerEventType": 0,
+                    "EventValue": 21422,
+                    "isAutoChangeTarget": true
                 }
             ]
         }

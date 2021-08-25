@@ -17,6 +17,11 @@ namespace AscensionServer
 
         public int SkillID { get { return battleSkillData.id; } }
 
+        //当前冷却
+        public int NowCold { get; private set; }
+        //最大冷却
+        public int MaxCold { get { return battleSkillData.cd; } }
+
         public int DamgeAddition { get { return battleSkillData.damageAddition; } set { } }
         public int CritProp { get { return battleSkillData.critProp; } set { } }
         public int CritDamage { get { return battleSkillData.critDamage; } set { } }
@@ -51,7 +56,17 @@ namespace AscensionServer
             add { skillEventBehindAttack += value; }
             remove { skillEventBehindAttack -= value; }
         }
-
+        //进入冷却
+        public void EnterCold()
+        {
+            NowCold = MaxCold;
+        }
+        //减少冷却
+        public void ReduceCold()
+        {
+            if (NowCold > 0)
+                NowCold--;
+        }
         public bool CanUseSkill(BattleCharacterEntity target)
         {
             if (target.HasDie)
@@ -72,7 +87,47 @@ namespace AscensionServer
                 else return false;
             }
         }
-
+        public bool SkillCost(out ActionCost actionCost)
+        {
+            BattleSkillCostData battleSkillCostData = battleSkillData.battleSkillCostData;
+            int nowData = 0; ;
+            int needData = 0;
+            switch (battleSkillCostData.battleSkillCostType)
+            {
+                case BattleSkillCostType.Health:
+                    nowData = CharacterBattleData.Hp;
+                    needData = CharacterBattleData.MaxHp * battleSkillCostData.percentValue/100 + battleSkillCostData.fixedValue;
+                    break;
+                case BattleSkillCostType.ZhenYuan:
+                    nowData = CharacterBattleData.Mp;
+                    needData = CharacterBattleData.MaxMp * battleSkillCostData.percentValue/100 + battleSkillCostData.fixedValue;
+                    break;
+                case BattleSkillCostType.ShenHun:
+                    nowData = CharacterBattleData.Soul;
+                    needData = CharacterBattleData.MaxSoul * battleSkillCostData.percentValue/100 + battleSkillCostData.fixedValue;
+                    break;
+                case BattleSkillCostType.JingXue:
+                    nowData = CharacterBattleData.BestBlood;
+                    needData = CharacterBattleData.BestBloodMax * battleSkillCostData.percentValue/100 + battleSkillCostData.fixedValue;
+                    break;
+            }
+            if (nowData >= needData)
+            {
+                CharacterBattleData.ChangeProperty(battleSkillCostData.battleSkillCostType, -needData);
+                actionCost = new ActionCost()
+                {
+                    BattleSkillCostType = (byte)battleSkillCostData.battleSkillCostType,
+                    CostNum = -needData,
+                    Cold = NowCold
+                };
+                return true;
+            }
+            else
+            {
+                actionCost = null;
+                return false;
+            }
+        }
         /// <summary>
         /// 获取该技能的伤害
         /// </summary>
@@ -234,7 +289,7 @@ namespace AscensionServer
             GameEntry.DataManager.TryGetValue<Dictionary<int, BattleSkillData>>(out var battleSkillDict);
             battleSkillData = battleSkillDict[skillID];
             OwnerEntity = battleCharacterEntity;
-
+            NowCold = 0;
 
             //添加技能事件
             battleSkillEventBaseList = new List<BattleSkillEventBase>();
@@ -265,6 +320,10 @@ namespace AscensionServer
                         break;
                 }
             }
+
+            //添加冷却刷新事件
+            BattleController battleController= GameEntry.BattleRoomManager.GetBattleRoomEntity(OwnerEntity.RoomID).BattleController;
+            battleController.RoundFinishEvent += ReduceCold;
         }
     }
 }

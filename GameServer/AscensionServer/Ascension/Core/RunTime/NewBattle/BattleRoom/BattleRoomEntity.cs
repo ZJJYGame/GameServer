@@ -53,6 +53,11 @@ namespace AscensionServer
         public BattleTransferDTO ReleaseBattleTransfer()
         {
             BattleTransferDTO result= NowTransferStack.Pop();
+            //剔除无用信息 
+            if ((result.TargetInfos == null || result.TargetInfos.Count == 0)
+                && (result.AddBuffDTOList == null || result.AddBuffDTOList.Count == 0)
+                && (result.BattleBuffEventTriggerDTOList == null || result.BattleBuffEventTriggerDTOList.Count == 0))
+                BattleTransferDTOList.Remove(result);
             return result;
         }
         public BattleTransferDTO GetBattleTransfer()
@@ -151,8 +156,11 @@ namespace AscensionServer
                     SendBattleEndMsgS2C();
                 }
                 else
+                {
                     SendNewRoundStartMsgS2C();
-
+                    //开始等待玩家指令倒计时
+                    StartGetBattleCmdWait();
+                }
             }
             else//有人没表演完成
             {

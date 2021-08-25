@@ -79,7 +79,7 @@ namespace AscensionProtocol.DTO
 
 
 
-  
+
 
     [Serializable]
     public class CharacterBattleDataDTO
@@ -132,6 +132,10 @@ namespace AscensionProtocol.DTO
         /// </summary>
         public int ClientCmdId { get; set; }
         /// <summary>
+        /// 角色行动的消耗
+        /// </summary>
+        public virtual ActionCost ActionCost { get; set; }
+        /// <summary>
         /// 目标行为信息 列表：
         /// </summary>
         public virtual List<TargetInfoDTO> TargetInfos { get; set; }
@@ -163,6 +167,7 @@ namespace AscensionProtocol.DTO
         /// 目标id
         /// </summary>
         public virtual int TargetID { get; set; }
+
         /// <summary>
         /// 目标血量伤害
         /// </summary>
@@ -192,7 +197,7 @@ namespace AscensionProtocol.DTO
         public virtual List<BattleBuffEventTriggerDTO> battleBuffDTOs { get; set; }
 
     }
-    
+
     /// <summary>
     /// 行动添加buff的信息
     /// </summary>
@@ -203,11 +208,22 @@ namespace AscensionProtocol.DTO
         public virtual int BuffId { get; set; }
         public virtual int Round { get; set; }
         public AddBuffDTO() { }
-        public AddBuffDTO(int targetId,int buffId,int round) {
+        public AddBuffDTO(int targetId, int buffId, int round)
+        {
             TargetId = targetId;
             BuffId = buffId;
             Round = round;
         }
+    }
+    /// <summary>
+    /// 行动的消耗
+    /// </summary>
+    [Serializable]
+    public class ActionCost
+    {
+        public byte BattleSkillCostType { get; set; }
+        public int CostNum { get; set; }
+        public int Cold { get; set; }
     }
 
     /*事件对应的参数：
@@ -222,7 +238,7 @@ namespace AscensionProtocol.DTO
         9.驱散buff=>BuffDTOList:移除的buff；
         10.免疫buff=>BuffDTOList：免疫的buff
         11.为他人承受伤害=>Num_1:承担的伤害数字
-        12.护盾=>Num_1:护盾抵挡的数值
+        12.护盾=>Num_1:护盾抵挡的数值,Num_2:0表示护盾添加时的护盾值，1表示护盾抵挡伤害时的值
         13.使用指定技能=>Num_1:使用的技能ID
      */
     /// <summary>
