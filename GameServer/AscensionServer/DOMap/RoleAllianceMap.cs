@@ -23,7 +23,7 @@ namespace AscensionServer.DOMap
             Map(x => x.Offline).Column("offline");
             Map(x => x.RoleName).Column("role_name");
             Map(x => x.ApplyForAlliance).Column("apply_for_alliance_list");
-            Map(x => x.RoleSchool).Column("role_school");
+            Map(x => x.RoleLevel).Column("role_level");
             Table("role_alliance");
         }
     }

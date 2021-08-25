@@ -132,17 +132,20 @@ namespace AscensionServer
             GameEntry.DataManager.TryGetValue<Dictionary<string, AllianceSkillsData>>(out var SkillDict);
             var skillExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAllianceSkillPerfix,roleID.ToString()).Result;
             var assetsExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
-            if (skillExist && assetsExist)
+            var allianceExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString()).Result;
+            if (skillExist && assetsExist&& allianceExist)
             {
                 var skillObj = RedisHelper.Hash.HashGetAsync<RoleAllianceSkill>(RedisKeyDefine._RoleAllianceSkillPerfix, roleID.ToString()).Result;
                 var assetsObj = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
-                if (skillObj != null && assetsObj != null)
+                var allianceObj = RedisHelper.Hash.HashGetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString()).Result;
+                if (skillObj != null && assetsObj != null&& allianceObj!=null)
                 {
                     if (skillDTO.SkillInsight == 1)
                     {
                         var obj = SkillDict["Insight"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillInsight);
-                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillInsight < 150)
+                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillInsight < 150&& allianceObj.Reputation>= obj.AllianceContribution)
                         {
+                            allianceObj.Reputation -= obj.AllianceContribution;
                             assetsObj.SpiritStonesLow -= obj.SpiritStones;
                             skillObj.SkillInsight++;
                         }
@@ -155,8 +158,9 @@ namespace AscensionServer
                     else if (skillDTO.SkillMeditation == 1)
                     {
                         var obj = SkillDict["Meditation"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillMeditation);
-                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillMeditation < 150)
+                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillMeditation < 150 && allianceObj.Reputation >= obj.AllianceContribution)
                         {
+                            allianceObj.Reputation -= obj.AllianceContribution;
                             assetsObj.SpiritStonesLow -= obj.SpiritStones;
                             skillObj.SkillMeditation++;
                         }
@@ -169,8 +173,9 @@ namespace AscensionServer
                     else if (skillDTO.SkillRapid == 1)
                     {
                         var obj = SkillDict["Rapid"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillRapid);
-                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillRapid < 150)
+                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillRapid < 150 && allianceObj.Reputation >= obj.AllianceContribution)
                         {
+                            allianceObj.Reputation -= obj.AllianceContribution;
                             assetsObj.SpiritStonesLow -= obj.SpiritStones;
                             skillObj.SkillRapid++;
                         }
@@ -183,8 +188,9 @@ namespace AscensionServer
                     else if (skillDTO.SkillStrong == 1)
                     {
                         var obj = SkillDict["StrongBody"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillStrong);
-                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillStrong < 150)
+                        if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillStrong < 150 && allianceObj.Reputation >= obj.AllianceContribution)
                         {
+                            allianceObj.Reputation -= obj.AllianceContribution;
                             assetsObj.SpiritStonesLow -= obj.SpiritStones;
                             skillObj.SkillStrong++;
                         }
@@ -196,8 +202,10 @@ namespace AscensionServer
                     }
                     RedisHelper.Hash.HashSet<RoleAllianceSkill>(RedisKeyDefine._RoleAllianceSkillPerfix, roleID.ToString(), skillObj);
                     RedisHelper.Hash.HashSet<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assetsObj);
+                    RedisHelper.Hash.HashSet<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString(), allianceObj);
                     await NHibernateQuerier.UpdateAsync(skillObj);
                     await NHibernateQuerier.UpdateAsync(assetsObj);
+                    await NHibernateQuerier.UpdateAsync(ChangeDataType(allianceObj));
 
                     var status =GameEntry.practiceManager. RoleStatusAlgorithm(roleID, null, null, null, null, null, skillObj);
                     status.RoleID = assetsObj.RoleID;
@@ -206,6 +214,7 @@ namespace AscensionServer
                     dict.Add((byte)ParameterCode.RoleAssets, assetsObj);
                     dict.Add((byte)ParameterCode.RoleAllianceSkill, skillObj);
                     dict.Add((byte)ParameterCode.RoleStatus, status);
+                    dict.Add((byte)ParameterCode.RoleAlliance, allianceObj);
                     RoleStatusSuccessS2C(roleID, AllianceOpCode.UpdateAllianceSkill, dict);
                 }
                 else
@@ -336,7 +345,7 @@ namespace AscensionServer
                                 await RedisHelper.Hash.HashSetAsync<AllianceConstruction>(RedisKeyDefine._AllianceConstructionPerfix, id.ToString(), allianceObj);
                                 await RedisHelper.Hash.HashSetAsync<AllianceStatus>(RedisKeyDefine._AlliancePerfix, id.ToString(), statusObj);
                                 await RedisHelper.Hash.HashSetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assetsObj);
-
+                                await RedisHelper.Hash.HashSetAsync<AllianceSigninDTO>(RedisKeyDefine._AllianceSigninPerfix, roleID.ToString(), signinObj);
 
                                 await NHibernateQuerier.UpdateAsync(assetsObj);
                                 await NHibernateQuerier.UpdateAsync(statusObj);
@@ -482,13 +491,15 @@ namespace AscensionServer
             NHCriteria nHCriteriarole =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var skillObj = NHibernateQuerier.CriteriaSelect<RoleAllianceSkill>(nHCriteriarole);
             var assetsObj = NHibernateQuerier.CriteriaSelect<RoleAssets>(nHCriteriarole);
-            if (skillObj != null && assetsObj != null)
+            var allianceObj = NHibernateQuerier.CriteriaSelect<RoleAlliance>(nHCriteriarole);
+            if (skillObj != null && assetsObj != null&& allianceObj!=null)
             {
                 if (skillDTO.SkillInsight == 1)
                 {
                     var obj = SkillDict["Insight"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillInsight);
-                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillInsight < 150)
+                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillInsight < 150&& allianceObj.Reputation>=obj.AllianceContribution)
                     {
+                        allianceObj.Reputation -= obj.AllianceContribution;
                         assetsObj.SpiritStonesLow -= obj.SpiritStones;
                         skillObj.SkillInsight++;
                     }
@@ -501,8 +512,9 @@ namespace AscensionServer
                 else if (skillDTO.SkillMeditation == 1)
                 {
                     var obj = SkillDict["Meditation"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillMeditation);
-                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillMeditation < 150)
+                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillMeditation < 150 && allianceObj.Reputation >= obj.AllianceContribution)
                     {
+                        allianceObj.Reputation -= obj.AllianceContribution;
                         assetsObj.SpiritStonesLow -= obj.SpiritStones;
                         skillObj.SkillMeditation++;
                     }
@@ -515,8 +527,9 @@ namespace AscensionServer
                 else if (skillDTO.SkillRapid == 1)
                 {
                     var obj = SkillDict["Rapid"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillRapid);
-                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillRapid < 150)
+                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillRapid < 150 && allianceObj.Reputation >= obj.AllianceContribution)
                     {
+                        allianceObj.Reputation -= obj.AllianceContribution;
                         assetsObj.SpiritStonesLow -= obj.SpiritStones;
                         skillObj.SkillRapid++;
                     }
@@ -529,8 +542,9 @@ namespace AscensionServer
                 else if (skillDTO.SkillStrong == 1)
                 {
                     var obj = SkillDict["StrongBody"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillStrong);
-                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillStrong < 150)
+                    if (obj.SpiritStones <= assetsObj.SpiritStonesLow && skillObj.SkillStrong < 150 && allianceObj.Reputation >= obj.AllianceContribution)
                     {
+                        allianceObj.Reputation -= obj.AllianceContribution;
                         assetsObj.SpiritStonesLow -= obj.SpiritStones;
                         skillObj.SkillStrong++;
                     }
@@ -543,12 +557,19 @@ namespace AscensionServer
                 Utility.Debug.LogInfo("角色宗門技能升级2");
                 RedisHelper.Hash.HashSet<RoleAllianceSkill>(RedisKeyDefine._RoleAllianceSkillPerfix, roleID.ToString(), skillObj);
                 RedisHelper.Hash.HashSet<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assetsObj);
+                RedisHelper.Hash.HashSet<RoleAlliance>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), allianceObj);
+
                 await NHibernateQuerier.UpdateAsync(skillObj);
                 await NHibernateQuerier.UpdateAsync(assetsObj);
+                await NHibernateQuerier.UpdateAsync(ChangeDataType(allianceObj));
 
+                var status = GameEntry.practiceManager.RoleStatusAlgorithm(roleID, null, null, null, null, null, skillObj);
+                status.RoleID = assetsObj.RoleID;
                 Dictionary<byte, object> dict = new Dictionary<byte, object>();
                 dict.Add((byte)ParameterCode.RoleAssets, assetsObj);
                 dict.Add((byte)ParameterCode.RoleAllianceSkill, skillObj);
+                dict.Add((byte)ParameterCode.RoleStatus, status);
+                dict.Add((byte)ParameterCode.RoleAlliance, ChangeDataType(allianceObj));
                 RoleStatusSuccessS2C(roleID,AllianceOpCode.UpdateAllianceSkill,dict);
             }
             else

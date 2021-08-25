@@ -285,7 +285,7 @@ namespace AscensionServer
                 Utility.Debug.LogInfo(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>添加副职业成功");
                 #endregion
                 #region 仙盟
-                RoleAlliance roleAlliance = new RoleAlliance() { RoleID = rolestatus.RoleID, RoleName = role.RoleName, ApplyForAlliance = Utility.Json.ToJson(new List<int>()), RoleSchool = 900 };
+                RoleAlliance roleAlliance = new RoleAlliance() { RoleID = rolestatus.RoleID, RoleName = role.RoleName, ApplyForAlliance = Utility.Json.ToJson(new List<int>())};
                 NHibernateQuerier.Insert(roleAlliance);
                 RoleAllianceSkill roleAllianceSkill = new RoleAllianceSkill() { };
                 roleAllianceSkill.RoleID = rolestatus.RoleID;

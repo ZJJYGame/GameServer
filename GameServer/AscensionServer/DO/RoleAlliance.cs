@@ -19,7 +19,7 @@ namespace AscensionServer.Model
         public virtual string Offline { get; set; }
         public virtual string RoleName { get; set; }
         public virtual string ApplyForAlliance { get; set; }
-        public virtual int RoleSchool { get; set; }
+        public virtual int RoleLevel { get; set; }
 
         public override void Release()
         {
@@ -33,7 +33,7 @@ namespace AscensionServer.Model
             Offline = null;
             ApplyForAlliance = null;
 
-            RoleSchool = 0;
+            RoleLevel = 0;
         }
         public RoleAlliance()
         {
@@ -47,7 +47,7 @@ namespace AscensionServer.Model
             Offline = "在线";
  
             ApplyForAlliance = null;
-            RoleSchool = 0;
+            RoleLevel = 0;
         }
 
     }

@@ -645,10 +645,10 @@ namespace AscensionServer
                             statusGF = RedisHelper.Hash.HashGetAsync<RoleStatusAdditionDTO>(RedisKeyDefine._RoleStatusGFPerfix, roleid.ToString()).Result;
                             if (statusGF == null)
                             {
-                                statusGF = new RoleStatusAdditionDTO();
+                                statusGF = AlgorithmGongFa(roleid);
                             }
                         }
-                        else statusGF = new RoleStatusAdditionDTO();
+                        else statusGF = AlgorithmGongFa(roleid);
                     }
                     if (statusMS == null)
                     {
@@ -658,10 +658,10 @@ namespace AscensionServer
                             statusMS = RedisHelper.Hash.HashGetAsync<RoleStatusAdditionDTO>(RedisKeyDefine._RoleStatusMSPerfix, roleid.ToString()).Result;
                             if (statusMS == null)
                             {
-                                statusMS = new RoleStatusAdditionDTO();
+                                statusMS = AlgorithmMiShu(roleid);
                             }
                         }
-                        else statusMS = new RoleStatusAdditionDTO();
+                        else statusMS = AlgorithmMiShu(roleid);
                     }
                     if (statusEquip == null)
                     {

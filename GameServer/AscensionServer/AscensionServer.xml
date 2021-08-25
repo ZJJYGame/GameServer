@@ -3256,7 +3256,7 @@
             </summary>
             <param name="onOffLine"></param>
         </member>
-        <member name="M:AscensionServer.PracticeManager.AddGongFaExp(AscensionServer.Model.Role,AscensionProtocol.DTO.CultivationMethodDTO,System.Int32,AscensionProtocol.DTO.CultivationMethodDTO@)">
+        <member name="M:AscensionServer.PracticeManager.AddGongFaExp(AscensionServer.Model.Role,AscensionProtocol.DTO.CultivationMethodDTO,System.Int32,AscensionProtocol.DTO.CultivationMethodDTO@,System.Int32@)">
             <summary>
             添加功法经验方法
             </summary>
