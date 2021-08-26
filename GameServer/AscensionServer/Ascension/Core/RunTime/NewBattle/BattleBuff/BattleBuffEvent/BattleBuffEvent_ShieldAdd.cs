@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AscensionProtocol.DTO;
-
+using Cosmos;
 namespace AscensionServer
 {
     /// <summary>
@@ -39,6 +39,9 @@ namespace AscensionServer
             {
                 shieldValue = battleBuffObj.OrginRole.CharacterBattleData.GetProperty(battleBuffEventData.buffEvent_Shield_SourceDataType);
             }
+            Utility.Debug.LogError(battleBuffEventData.buffEvent_Shield_SourceDataType);
+            Utility.Debug.LogError(battleBuffEventData.percentValue);
+            Utility.Debug.LogError(battleBuffEventData.fixedValue);
             shieldValue = shieldValue * battleBuffEventData.percentValue / 100 + battleBuffEventData.fixedValue;
             battleBuffTriggerTime = BattleBuffTriggerTime.BuffAdd;
         }

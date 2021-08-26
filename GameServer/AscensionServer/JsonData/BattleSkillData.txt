@@ -626,7 +626,7 @@
         },
         {
             "name": "剑雨",
-            "id": 211123,
+            "id": 21113,
             "describe": "我要打你三下",
             "TargetNumber": 1,
             "damageAddition": 0,
@@ -748,7 +748,7 @@
                     "TargetType": true,
                     "battleSkillAddBuffValueList": [
                         {
-                            "percentValue": 5,
+                            "percentValue": 0,
                             "fixedValue": 0
                         }
                     ],
@@ -832,7 +832,7 @@
                     "TargetType": true,
                     "battleSkillAddBuffValueList": [
                         {
-                            "percentValue": 10,
+                            "percentValue": 0,
                             "fixedValue": 0
                         }
                     ],
@@ -916,7 +916,7 @@
                     "TargetType": true,
                     "battleSkillAddBuffValueList": [
                         {
-                            "percentValue": 10,
+                            "percentValue": 0,
                             "fixedValue": 0
                         }
                     ],
@@ -1974,106 +1974,7 @@
                         }
                     ],
                     "basePropList": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0
+                       100
                     ],
                     "selfAddBuffProbability": {
                         "battleSkillBuffProbSource": 0,
@@ -2140,18 +2041,7 @@
                 "percentValue": 0,
                 "fixedValue": 20
             },
-            "battleSkillEventDataList": [
-                {
-                    "battleSkillEventTriggerTime": 1,
-                    "battleSkillEventTriggerCondition": 0,
-                    "battleSkillEventTriggerNumSourceType": 0,
-                    "conditionPercentNum": 0,
-                    "conditionFixedNum": 0,
-                    "battleSkillTriggerEventType": 0,
-                    "EventValue": 0,
-                    "isAutoChangeTarget": false
-                }
-            ]
+            "battleSkillEventDataList": []
         },
         {
             "name": "神魂刺",
@@ -2195,7 +2085,7 @@
                     "TargetType": true,
                     "battleSkillAddBuffValueList": [],
                     "basePropList": [
-                        5
+                        100
                     ],
                     "selfAddBuffProbability": {
                         "battleSkillBuffProbSource": 5,

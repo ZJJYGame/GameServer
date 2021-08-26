@@ -10,5 +10,6 @@ namespace AscensionServer
     {
         FactionOne=0,
         FactionTwo=1,
+        All=2,
     }
 }

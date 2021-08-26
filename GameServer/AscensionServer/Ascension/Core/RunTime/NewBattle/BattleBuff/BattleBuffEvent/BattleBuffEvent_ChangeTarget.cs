@@ -31,10 +31,15 @@ namespace AscensionServer
                     if (!targetEntity.HasDie)
                     {
                         owner.TargetIDList.Add(battleBuffObj.OrginRole.UniqueID);
-                        BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
-                        battleBuffEventTriggerDTO.Num_2 = targetEntity.UniqueID;
+                        //BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
+                        //battleBuffEventTriggerDTO.Num_2 = targetEntity.UniqueID;
                     }
                     break;
+                case BuffEvent_ChangeTarget_TargetType.RnadomFromAll:
+                    List<int> targetList= BattleRoomEntity.BattleController.RandomGetTarget(1, BattleFactionType.All, true, true, null, new List<int>() { owner.UniqueID });
+
+                    owner.TargetIDList = targetList;
+                    break; 
             }
         }
 

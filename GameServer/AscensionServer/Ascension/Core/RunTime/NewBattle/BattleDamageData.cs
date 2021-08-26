@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Cosmos;
 namespace AscensionServer
 {
     /// <summary>
@@ -50,13 +50,16 @@ namespace AscensionServer
             int defendValue = 0;
             if (battleSkillActionType == BattleSkillActionType.Damage)
             {
-                defendValue = initialDefendValue * (100 - selfCharacterBattleData.IgnoreDef - actorSkillAdditionDataList.Sum(p => p.IgnoreDefensive)) / 100;
+                defendValue = initialDefendValue * (100 - selfCharacterBattleData.IgnoreDef - actorSkillAdditionDataList.Sum(p => p.IgnoreDefensive) - targetSkillAdditionDataList.Sum(p => p.IgnoreDefensive)) / 100;
                 defendValue = defendValue < 0 ? 0 : defendValue;
             }
             int damageValue = 0;
             if (damageType == BattleSkillDamageType.Physic || damageType == BattleSkillDamageType.Magic)
-                damageValue = (attackValue - defendValue) * (100 + selfCharacterBattleData.DamageAddition + actorSkillAdditionDataList.Sum(p=>p.DamgeAddition) - targetCharacterBattleData.DamageDeduction) / 100;
-            else if (damageType == BattleSkillDamageType.Reality)
+            {
+                Utility.Debug.LogError($"对{TargetID}伤害加成{actorSkillAdditionDataList.Sum(p => p.DamgeAddition)}--{targetSkillAdditionDataList.Sum(p => p.DamgeAddition)}");
+                damageValue = (attackValue - defendValue) * (100 + selfCharacterBattleData.DamageAddition + actorSkillAdditionDataList.Sum(p => p.DamgeAddition) + targetSkillAdditionDataList.Sum(p => p.DamgeAddition) - targetCharacterBattleData.DamageDeduction) / 100;
+            }
+            else if (damageType == BattleSkillDamageType.Reality || damageType == BattleSkillDamageType.ShenHun)
                 damageValue = attackValue;
             //计算暴击伤害
             if (isCrit)
@@ -66,7 +69,7 @@ namespace AscensionServer
                     finalCritDamage = selfCharacterBattleData.PhysicalCritDamage - targetCharacterBattleData.ReduceCritDamage;
                 else if (damageType == BattleSkillDamageType.Magic)
                     finalCritDamage = selfCharacterBattleData.MagicCritDamage - targetCharacterBattleData.ReduceCritDamage;
-                damageValue = damageValue * (200 + finalCritDamage + actorSkillAdditionDataList.Sum(p => p.CritDamage)) / 100;
+                damageValue = damageValue * (200 + finalCritDamage + actorSkillAdditionDataList.Sum(p => p.CritDamage) + targetSkillAdditionDataList.Sum(p => p.CritDamage)) / 100;
             }
             damageValue = damageValue <= 0 ? 1 : damageValue;
             damageNum = battleSkillActionType == BattleSkillActionType.Damage ? -damageValue : damageValue;

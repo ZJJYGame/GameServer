@@ -43,9 +43,13 @@ namespace AscensionServer
         //记录当前未结束行为传输信息的栈
         //行为开始时压入栈，行为结束时弹出栈,顶部的即为当前占用的记录对象
         public Stack<BattleTransferDTO> NowTransferStack { get; set; } = new Stack<BattleTransferDTO>();
-        public BattleTransferDTO SpawnBattleTransfer()
+        public BattleTransferDTO SpawnBattleTransfer(int roleId,int clientCmdId,BattleCmd battleCmd)
         {
-            BattleTransferDTO battleTransferDTO = new BattleTransferDTO();
+            BattleTransferDTO battleTransferDTO = new BattleTransferDTO() {
+                RoleId=roleId,
+                ClientCmdId=clientCmdId,
+                BattleCmd=battleCmd
+            };
             NowTransferStack.Push(battleTransferDTO);
             BattleTransferDTOList.Add(battleTransferDTO);
             return battleTransferDTO;

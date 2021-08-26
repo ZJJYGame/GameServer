@@ -24,12 +24,13 @@ namespace AscensionServer
 
         protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
+            Utility.Debug.LogError("触发改变指令事件");
             owner.BattleCmd = BattleCmd.SkillInstruction;
             owner.ActionID = skillId;
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
-            battleBuffEventTriggerDTO.Num_1 = (byte)BattleCmd.SkillInstruction;
-            battleBuffEventTriggerDTO.Num_2 = skillId;
+            //BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
+            //battleBuffEventTriggerDTO.Num_1 = (byte)BattleCmd.SkillInstruction;
+            //battleBuffEventTriggerDTO.Num_2 = skillId;
         }
 
 

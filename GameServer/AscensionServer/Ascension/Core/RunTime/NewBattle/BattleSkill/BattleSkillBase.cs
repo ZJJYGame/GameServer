@@ -196,6 +196,53 @@ namespace AscensionServer
             return battleDamageData;
         }
         
+        public void AddBuff(int targetIndex,BattleCharacterEntity battleCharacterEntity,BattleTransferDTO battleTransferDTO=null)
+        {
+            if (battleTransferDTO == null)
+                battleTransferDTO = GameEntry.BattleRoomManager.GetBattleRoomEntity(OwnerEntity.RoomID).GetBattleTransfer();
+            float baseProp;
+            float selfProp;
+            float targetProp;
+            if (battleTransferDTO.AddBuffDTOList == null)
+                battleTransferDTO.AddBuffDTOList = new List<AddBuffDTO>();
+            for (int i = 0; i < battleSkillData.battleSkillAddBuffList.Count; i++)
+            {
+                BattleSkillAddBuffData battleSkillAddBuffData = battleSkillData.battleSkillAddBuffList[i];
+                if (battleSkillAddBuffData.TargetType)//受击方
+                {
+                        if (CanAddBuff(targetIndex, battleSkillAddBuffData, CharacterBattleData, battleCharacterEntity.CharacterBattleData))
+                        {
+                            BattleBuffObj addBuffObj = battleCharacterEntity.BattleBuffController.AddBuff(battleSkillAddBuffData, this);
+                            //客户端无需知道buff是否被覆盖，只需要同buff替换即可
+                            if (addBuffObj != null)
+                                battleTransferDTO.AddBuffDTOList.Add(new AddBuffDTO()
+                                {
+                                    TargetId = addBuffObj.Owner.UniqueID,
+                                    BuffId = addBuffObj.BuffId,
+                                    Round = addBuffObj.NowRound
+                                });
+                        }
+                }
+                else//给自己加
+                {
+                    baseProp = battleSkillAddBuffData.basePropList[0];
+                    selfProp = CharacterBattleData.GetProperty(battleSkillAddBuffData.selfAddBuffProbability.battleSkillBuffProbSource, null);
+                    selfProp = selfProp * battleSkillAddBuffData.selfAddBuffProbability.multiplyPropValue / 10000 + battleSkillAddBuffData.selfAddBuffProbability.fixedPropValue;
+                    selfProp = battleSkillAddBuffData.selfAddBuffProbability.addOrReduce ? selfProp : -selfProp;
+                    if (CanAddBuff(0, battleSkillAddBuffData, CharacterBattleData, CharacterBattleData))
+                    {
+                        BattleBuffObj addBuffObj = OwnerEntity.BattleBuffController.AddBuff(battleSkillAddBuffData, this);
+                        if (addBuffObj != null)
+                            battleTransferDTO.AddBuffDTOList.Add(new AddBuffDTO()
+                            {
+                                TargetId = addBuffObj.Owner.UniqueID,
+                                BuffId = addBuffObj.BuffId,
+                                Round = addBuffObj.NowRound
+                            });
+                    }
+                }
+            }
+        }
         //为所有目标添加buff
         public void AddAllBuff(List<BattleCharacterEntity> battleCharacterEntitiyList)
         {

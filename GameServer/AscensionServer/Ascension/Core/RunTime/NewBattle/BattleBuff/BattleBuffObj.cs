@@ -210,10 +210,7 @@ namespace AscensionServer
         public void OnCover(BattleBuffData battleBuffData,BattleSkillAddBuffData battleSkillAddBuffData)
         {
             buffCoverEvent?.Invoke();
-            for (int i = 0; i < battleBuffData.battleBuffEventDataList.Count; i++)
-            {
-                battleBuffEventList[i].SetValue(battleBuffData.battleBuffEventDataList[i], battleSkillAddBuffData.battleSkillAddBuffValueList[i]);
-            }
+
             MaxRound = battleSkillAddBuffData.round;
             NowRound = MaxRound;
             OnAdd();

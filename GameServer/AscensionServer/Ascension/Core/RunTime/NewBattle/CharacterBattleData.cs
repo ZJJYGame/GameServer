@@ -159,6 +159,8 @@ namespace AscensionServer
                 case BuffEvent_Shield_SourceDataType.ReceiveDamageNum:
                     //todo 根据造成伤害值获取暂定
                     return 0;
+                case BuffEvent_Shield_SourceDataType.PhysicalAttack:
+                    return PhysicalAtk;
             }
             return 0;
         }
@@ -322,7 +324,6 @@ namespace AscensionServer
             }
 
             //触发伤害前buff事件（目前仅针对护盾）
-            Utility.Debug.LogError(owner.UniqueID + "触发伤害前buff事件"); 
             owner.BattleBuffController.TriggerBuffEventBeforePropertyChange(owner, battleDamageData: battleDamageData);
 
             ChangeProperty(battleDamageData.baseDamageTargetProperty, battleDamageData.damageNum);

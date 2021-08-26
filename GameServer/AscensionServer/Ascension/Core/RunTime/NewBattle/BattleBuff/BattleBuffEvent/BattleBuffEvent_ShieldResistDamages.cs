@@ -18,10 +18,13 @@ namespace AscensionServer
         protected override void AddTriggerEvent()
         {
             owner.BattleBuffController.BeforePropertyChangeEvent += Trigger;
+            owner.BattleBuffController.BehindOnHitEvent += AutoRemove;
         }
         public override void RemoveEvent()
         {
             owner.BattleBuffController.BeforePropertyChangeEvent -= Trigger;
+            owner.BattleBuffController.BehindOnHitEvent -= AutoRemove;
+
         }
         protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
@@ -44,12 +47,23 @@ namespace AscensionServer
                 battleDamageData.shieldDamage = -shieldValue;
                 battleDamageData.damageNum += shieldValue;
                 shieldValue = 0;
-                owner.BattleBuffController.RemoveBuff(battleBuffObj);
+               
+            }
+            if (counteractValue != 0)
+            {
+                BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
+                battleBuffEventTriggerDTO.Num_1 = counteractValue;
+                battleBuffEventTriggerDTO.Num_2 = 0;
             }
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
-            battleBuffEventTriggerDTO.Num_1 = counteractValue;
-            battleBuffEventTriggerDTO.Num_2 = 0;
+        }
+
+        void AutoRemove(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
+        {
+            if (shieldValue <= 0)
+            {
+                owner.BattleBuffController.RemoveBuff(battleBuffObj);
+            }
         }
 
         public BattleBuffEvent_ShieldResistDamages(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)

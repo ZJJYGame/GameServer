@@ -385,7 +385,8 @@ namespace AscensionServer
         MaxZhenYuan,
         MaxShenHun,
         TakeDamageNum,
-        ReceiveDamageNum
+        ReceiveDamageNum,
+        PhysicalAttack
     }
     public enum BuffEvent_TakeDamageForOther_TargetType : byte
     {
@@ -400,6 +401,7 @@ namespace AscensionServer
     public enum BuffEvent_ChangeTarget_TargetType : byte
     {
         BuffOrginer,
+        RnadomFromAll
     }
     #endregion
 }

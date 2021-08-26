@@ -1213,6 +1213,16 @@
             玩家上架拍卖品的事件
             </summary>
         </member>
+        <member name="T:AscensionServer.BattleBuffEvent_ShieldAdd">
+            <summary>
+            添加护盾buff事件
+            </summary>
+        </member>
+        <member name="T:AscensionServer.BattleBuffEvent_ShieldResistDamages">
+            <summary>
+            护盾抵挡伤害类型buff事件
+            </summary>
+        </member>
         <member name="T:AscensionServer.TargetType">
             <summary>
             技能目标类型
@@ -2121,11 +2131,6 @@
             <param name="battleDamageData"></param>
             <param name="skillAdditionData"></param>
         </member>
-        <member name="M:AscensionServer.BattleBuffEventBase.SetValue(AscensionServer.BattleBuffEventData,AscensionServer.BattleSkillAddBuffValue)">
-            <summary>
-            buff覆盖时重新设置buff参数
-            </summary>
-        </member>
         <member name="M:AscensionServer.BattleBuffEventBase.ToTransferData">
             <summary>
             转为发送数据
@@ -2154,11 +2159,6 @@
         <member name="T:AscensionServer.BattleBuffEvent_ShareDamageForOther">
             <summary>
             分担伤害buff事件
-            </summary>
-        </member>
-        <member name="T:AscensionServer.BattleBuffEvent_Shield">
-            <summary>
-            护盾类型buff事件
             </summary>
         </member>
         <member name="T:AscensionServer.BattleBuffEvent_UseDesignateSkill">
@@ -2295,7 +2295,7 @@
             获取角色实体对象
             </summary>
         </member>
-        <member name="M:AscensionServer.BattleController.RandomGetTarget(System.Int32,AscensionServer.BattleFactionType,System.Boolean,System.Boolean,System.Collections.Generic.List{System.Int32})">
+        <member name="M:AscensionServer.BattleController.RandomGetTarget(System.Int32,AscensionServer.BattleFactionType,System.Boolean,System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
             <summary>
             随机获得行为目标列表
             </summary>
@@ -2303,6 +2303,7 @@
             <param name="battleSkillFactionType"></param>
             <param name="targetIsAlive">目标是否是活着的状态</param>
             <param name="targetIDList"></param>
+            <param name="forbiddenTargetList">不参与随机的id</param>
             <returns></returns>
         </member>
         <member name="M:AscensionServer.BattleController.BattleIsEnd">
@@ -2457,6 +2458,14 @@
             <summary>
             战斗角色技能控制器,每个角色实体持有，用来管理角色技能
             </summary>
+        </member>
+        <member name="M:AscensionServer.BattleSkillController.UseSkill(System.Int32,System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="skillID"></param>
+            <param name="targetIdList"></param>
+            <param name="isCDLimit">是否被CD限制，直接使用需考虑cd，触发无需考虑</param>
         </member>
         <member name="T:AscensionServer.BattleSkillEventBase">
             <summary>

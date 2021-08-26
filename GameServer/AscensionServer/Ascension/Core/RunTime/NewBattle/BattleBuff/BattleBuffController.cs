@@ -194,6 +194,7 @@ namespace AscensionServer
         {
             ISkillAdditionData skillAdditionData = new SkillAdditionData();
             beforeAttackEvent?.Invoke( target, battleDamageData, skillAdditionData);
+            Utility.Debug.LogError(skillAdditionData.DamgeAddition);
             return skillAdditionData;
         }
         public ISkillAdditionData TriggerBuffEventBehindAttack( BattleCharacterEntity target = null, BattleDamageData battleDamageData = null)

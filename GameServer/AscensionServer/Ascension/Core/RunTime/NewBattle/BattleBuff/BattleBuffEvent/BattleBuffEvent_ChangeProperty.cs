@@ -116,10 +116,14 @@ namespace AscensionServer
 
         protected override void TriggerEventMethod( BattleCharacterEntity target,BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
+            Utility.Debug.LogError(buffRolePropertyChange_SourceDataType);
+            Utility.Debug.LogError(percentValue);
+            Utility.Debug.LogError(fixedValue);
             float  baseValue = owner.CharacterBattleData.GetBaseProperty(buffRolePropertyChange_SourceDataType, battleBuffObj.OwnerSkill) * percentValue / 100 + fixedValue;
             float nowChangeValue = baseValue * OverlayLayer*triggerCount;
             owner.BattleBuffController.BuffCharacterData.ChangeProperty(nowChangeValue-changeValue, battleBuffEventType_RolePropertyChange);
             changeValue = nowChangeValue;
+            Utility.Debug.LogError("buff属性变动事件" + baseValue);
 
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = (byte)battleBuffEventType_RolePropertyChange;
@@ -135,6 +139,7 @@ namespace AscensionServer
             battleBuffEventType_RolePropertyChange = battleBuffEventData.battleBuffEventType_RolePropertyChange;
             buffRolePropertyChange_SourceDataType = battleBuffEventData.buffRolePropertyChange_SourceDataType;
             fixedValue = battleBuffEventData.fixedValue + battleSkillAddBuffValue.fixedValue;
+            Utility.Debug.LogError($" battleBuffEventData.percentValue{ battleBuffEventData.percentValue}--battleSkillAddBuffValue.percentValue{battleSkillAddBuffValue.percentValue}");
             percentValue = battleBuffEventData.percentValue + battleSkillAddBuffValue.percentValue;
         }
     }

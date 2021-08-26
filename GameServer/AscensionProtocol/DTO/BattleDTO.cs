@@ -113,10 +113,6 @@ namespace AscensionProtocol.DTO
         /// </summary>
         //public virtual TimerManager timer { get; set; }
         public BattleTransferDTO petBattleTransferDTO { get; set; }
-        /// <summary>
-        /// 是否结束
-        /// </summary>
-        public bool isFinish { get; set; }
 
         /// <summary>
         /// 结束行动的角色ID

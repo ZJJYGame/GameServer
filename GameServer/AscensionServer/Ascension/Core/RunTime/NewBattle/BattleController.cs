@@ -74,8 +74,7 @@ namespace AscensionServer
             BattleCharacterEntity actCharacter;
 
             //回合开始事件统一触发
-            BattleTransferDTO roundStartTransfer= battleRoomEntity.SpawnBattleTransfer();
-            roundStartTransfer.RoleId = -1;
+            BattleTransferDTO roundStartTransfer= battleRoomEntity.SpawnBattleTransfer(-1,0,0);
             Utility.Debug.LogError("回合开始事件触发");
             roundStartEvent?.Invoke(null,null,null);
             battleRoomEntity.ReleaseBattleTransfer();
@@ -85,16 +84,15 @@ namespace AscensionServer
                 //检测是否有一个阵营全部死亡
 
                 actCharacter = AllCharacterEntities[i];
-
                 //分配角色行为
                 actCharacter.AllocationBattleAction();
+
                 //开始计算角色行动
                 actCharacter.Action();
             }
 
             //回合结束事件统一开始触发
-            BattleTransferDTO roundEndTransfer=battleRoomEntity.SpawnBattleTransfer();
-            roundEndTransfer.RoleId = -1;
+            BattleTransferDTO roundEndTransfer=battleRoomEntity.SpawnBattleTransfer(-1,0,0);
             roundEndEvent?.Invoke(null,null,null);
             battleRoomEntity.ReleaseBattleTransfer();
 
@@ -111,8 +109,9 @@ namespace AscensionServer
         /// <param name="battleSkillFactionType"></param>
         /// <param name="targetIsAlive">目标是否是活着的状态</param>
         /// <param name="targetIDList"></param>
+        /// <param name="forbiddenTargetList">不参与随机的id</param>
         /// <returns></returns>
-        public List<int> RandomGetTarget(int count,BattleFactionType battleSkillFactionType,bool targetIsAlive,bool isAutoChangeTarget,List<int> targetIDList=null)
+        public List<int> RandomGetTarget(int count,BattleFactionType battleSkillFactionType,bool targetIsAlive,bool isAutoChangeTarget,List<int> targetIDList=null,List<int> forbiddenTargetList=null)
         {
             List<int> resultList = new List<int>();
             List<BattleCharacterEntity> targetCharacterList;
@@ -120,6 +119,18 @@ namespace AscensionServer
                 targetCharacterList = FactionOneCharacterEntites;
             else
                 targetCharacterList = FactionTwoCharacterEntites;
+            switch (battleSkillFactionType)
+            {
+                case BattleFactionType.FactionOne:
+                    targetCharacterList = FactionOneCharacterEntites;
+                    break;
+                case BattleFactionType.FactionTwo:
+                    targetCharacterList = FactionTwoCharacterEntites;
+                    break;
+                case BattleFactionType.All:
+                    targetCharacterList = AllCharacterEntities;
+                    break;
+            }
             //筛选出未死亡或者死亡的目标列表
             List<BattleCharacterEntity> battleCharacterEntities = new List<BattleCharacterEntity>();
             for (int i = 0; i < targetCharacterList.Count; i++)
@@ -141,12 +152,20 @@ namespace AscensionServer
                 {
                     //判断当前选中目标是否可以作为目标
                     BattleCharacterEntity tempEntity = targetCharacterList.Find((k) => k.UniqueID == targetIDList[i]);
-                    if (tempEntity==null&&isAutoChangeTarget)
+                    BattleCharacterEntity tempEntity2=AllCharacterEntities.Find((k) => k.UniqueID == targetIDList[i]);
+                    if (tempEntity==null&& tempEntity2 ==null&& isAutoChangeTarget)
                         continue;
                     AllIndexList.Remove(targetCharacterList.IndexOf(tempEntity));
                     resultList.Add(targetIDList[i]);
                 }
-
+            }
+            if (forbiddenTargetList != null)
+            {
+                for (int i = 0; i < forbiddenTargetList.Count; i++)
+                {
+                    if (AllIndexList.Contains(forbiddenTargetList[i]))
+                        AllIndexList.Remove(forbiddenTargetList[i]);
+                }
             }
 
             while (resultList.Count < count)
