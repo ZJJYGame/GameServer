@@ -229,7 +229,7 @@ namespace AscensionServer
                     break;
                 case AllianceOpCode.DissolveAlliance:
                     roleAllianceObj = Utility.Json.ToObject<RoleAllianceDTO>(packet.DataMessage.ToString());
-                    DissolveAllianceS2C(roleAllianceObj.RoleID, roleAllianceObj.AllianceID, roleAllianceObj.RoleName);
+                    DeleteDissolveAlliance( roleAllianceObj.AllianceID);
                     break;
                 default:
                     break;
@@ -244,6 +244,7 @@ namespace AscensionServer
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncRoleAlliance;
             opData.SubOperationCode = (byte)oPcode;
+            opData.ReturnCode = (short)ReturnCode.Success;
             opData.DataMessage = Utility.Json.ToJson(data);
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }
@@ -255,6 +256,7 @@ namespace AscensionServer
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncRoleAlliance;
             opData.SubOperationCode = (byte)oPcode;
+            opData.ReturnCode = (short)ReturnCode.Fail;
             opData.DataMessage = tips;
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }

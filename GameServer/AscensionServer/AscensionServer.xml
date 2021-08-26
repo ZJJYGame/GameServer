@@ -1568,7 +1568,7 @@
         </member>
         <member name="M:AscensionServer.GangsMananger.DissolveAllianceS2C(System.Int32,System.Int32,System.String)">
             <summary>
-            退出宗门
+            解散宗门
             </summary>
         </member>
         <member name="M:AscensionServer.GangsMananger.ApplyJoinAllianceMySql(System.Int32,System.Int32)">
@@ -3187,15 +3187,46 @@
             <param name="CraryVaule"></param>
             <returns></returns>
         </member>
-        <member name="M:AscensionServer.PracticeManager.UseBottleneckElixir(System.Int32)">
+        <member name="M:AscensionServer.PracticeManager.UseBottleneckElixir(System.Int32,System.Int32)">
             <summary>
             使用瓶颈丹药
+            </summary>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.EstimatedRUG(System.Int32,System.Int32,AscensionServer.DrugType,AscensionServer.DrugData@)">
+            <summary>
+            判断丹药是否存在及类型
+            </summary>
+            <param name="roleid"></param>
+            <param name="itemID"></param>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.UpdateBottleneckAsync(AscensionProtocol.DTO.RoleDTO)">
+            <summary>
+            突破瓶颈暂用
+            </summary>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.UpdateBottleneckAsync2(AscensionProtocol.DTO.RoleDTO)">
+            <summary>
+            突破瓶颈
+            </summary>
+            <param name="role"></param>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.DemonicBattle(AscensionProtocol.DTO.RoleDTO)">
+            <summary>
+            触发心魔战斗
             </summary>
         </member>
         <member name="M:AscensionServer.PracticeManager.ResultFailS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.String)">
             <summary>
             失败返回
             </summary>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.ResultNotFoundS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.String)">
+            <summary>
+            数据未找到返回
+            </summary>
+            <param name="roleID"></param>
+            <param name="opcode"></param>
+            <param name="tips"></param>
         </member>
         <member name="M:AscensionServer.PracticeManager.ResultSuccseS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.Object)">
             <summary>
@@ -3265,7 +3296,7 @@
             </summary>
             <param name="onOffLine"></param>
         </member>
-        <member name="M:AscensionServer.PracticeManager.AddGongFaExp(AscensionServer.Model.Role,AscensionProtocol.DTO.CultivationMethodDTO,System.Int32,AscensionProtocol.DTO.CultivationMethodDTO@,System.Int32@)">
+        <member name="M:AscensionServer.PracticeManager.AddGongFaExp(AscensionServer.Model.Role,AscensionProtocol.DTO.CultivationMethodDTO,System.Int32,AscensionServer.Model.Role@)">
             <summary>
             添加功法经验方法
             </summary>

@@ -202,7 +202,9 @@ namespace AscensionServer
 
                         for (int i = 0; i < unit.Count; i++)
                         {
-                            InventoryManager.Remove(roleID, unit[i]);
+                            //InventoryManager.Remove(roleID, unit[i]);
+                            InventoryManager.UpdateNewItem(roleID, unit[i], 1);
+                            puppetUnit.PuppetUnitInfoDict.Remove(unit[i]);
                         }
 
 
@@ -218,6 +220,7 @@ namespace AscensionServer
                         dict.Add((byte)ParameterCode.JobPuppet, puppet);
                         dict.Add((byte)ParameterCode.GetPuppetIndividual, puppetObj);
                         dict.Add((byte)ParameterCode.RolePuppet, rolepuppet);
+                        dict.Add((byte)ParameterCode.GetPuppetUnit, puppetUnit);
                         RoleStatusSuccessS2C(roleID, SecondaryJobOpCode.AssemblePuppet, dict);
 
                         await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RolePuppetPerfix, roleID.ToString(), rolepuppet);

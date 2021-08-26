@@ -21,6 +21,7 @@ namespace AscensionServer.Model
         public virtual string RoleRoot { get; set; }
         public virtual string RoleName { get; set; }
         public virtual int RoleLevel { get; set; }
+        public virtual int roleExp { get; set; }
         public override void Release()
         {
             RoleID = -1;
@@ -29,6 +30,7 @@ namespace AscensionServer.Model
             RoleRoot = null;
             RoleName = null;
             RoleLevel = 0;
+            roleExp = 0;
         }
     }
 }

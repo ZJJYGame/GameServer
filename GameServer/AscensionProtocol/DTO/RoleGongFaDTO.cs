@@ -24,8 +24,6 @@ namespace AscensionProtocol.DTO
     public class CultivationMethodDTO : DataTransferObject
     {
         public virtual int CultivationMethodID { get; set; }
-        public virtual int CultivationMethodExp { get; set; }
-        public virtual short CultivationMethodLevel { get; set; }
         public virtual List<int> CultivationMethodLevelSkillArray { get; set; }
         public CultivationMethodDTO()
         {
@@ -34,8 +32,6 @@ namespace AscensionProtocol.DTO
         public override void Release()
         {
             CultivationMethodID = 0;
-            CultivationMethodExp = 0;
-            CultivationMethodLevel = 0;
             CultivationMethodLevelSkillArray.Clear();
         }
     }

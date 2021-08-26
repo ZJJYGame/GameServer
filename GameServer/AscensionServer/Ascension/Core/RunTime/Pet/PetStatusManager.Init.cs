@@ -432,7 +432,7 @@ namespace AscensionServer
                             pet.PetLevel += 1;
                             pet= PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
                         }
-                        else if (level == role.RoleLevel&& petLevelDataDict[pet.PetLevel].ExpLevelUp>= pet.PetExp)
+                        else if (level == role.RoleLevel&& petLevelDataDict[pet.PetLevel].ExpLevelUp<= pet.PetExp)
                         {
                             pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
                         }
@@ -968,22 +968,26 @@ namespace AscensionServer
             }
             else
             {
-                pet.PetExp = exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                var level = pet.PetLevel;
-                if (pet.PetExp >= 0)
+                pet.PetExp = pet.PetExp + exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                if ((pet.PetExp + exp) > petLevelDataDict[pet.PetLevel].ExpLevelUp)
                 {
+                    var level = pet.PetLevel;
                     if (level < role.RoleLevel)
                     {
                         pet.PetLevel += 1;
-                        PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
+                        pet.PetExp = pet.PetExp + exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                        PetUpdateLevel(petLevelDataDict, pet, role, 0);
                     }
-                    else
+                    else if (level == role.RoleLevel)
                     {
-                        pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                        if ((pet.PetExp + exp) >= petLevelDataDict[pet.PetLevel].ExpLevelUp)
+                        {
+                            pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                        }
+                        else
+                            pet.PetExp += exp;
                     }
                 }
-                else
-                    pet.PetExp = exp;
             }
             return pet;
         }

@@ -112,7 +112,6 @@ namespace AscensionServer
                         {
                             CultivationMethodDTO cultivationMethodDTO = new CultivationMethodDTO();
                             cultivationMethodDTO.CultivationMethodID = book.GongfaID;
-                            cultivationMethodDTO.CultivationMethodLevel = (short)book.NeedRoleLeve;
                             for (int i = 0; i < gongfaDict[book.GongfaID].Skill_One.Count; i++)
                             {
                                 if (role.RoleLevel >= gongfaDict[book.GongfaID].Skill_One_At_Level[i])
@@ -138,7 +137,6 @@ namespace AscensionServer
                     {
                         CultivationMethodDTO cultivationMethodDTO = new CultivationMethodDTO();
                         cultivationMethodDTO.CultivationMethodID = book.GongfaID;
-                        cultivationMethodDTO.CultivationMethodLevel = 1;
                         cultivationMethodDTO.CultivationMethodLevelSkillArray.Add(gongfaDict[book.GongfaID].Skill_One[0]);
 
                         rolegongfa.GongFaIDDict.Add(cultivationMethodDTO.CultivationMethodID, cultivationMethodDTO);
@@ -298,9 +296,7 @@ namespace AscensionServer
         CultivationMethodDTO ChangeGongFa(CultivationMethod cultivation)
         {
             CultivationMethodDTO cultivationMethodDTO = new CultivationMethodDTO();
-            cultivationMethodDTO.CultivationMethodExp = cultivation.CultivationMethodExp;
             cultivationMethodDTO.CultivationMethodID = cultivation.CultivationMethodID;
-            cultivationMethodDTO.CultivationMethodLevel = cultivation.CultivationMethodLevel;
             cultivationMethodDTO.CultivationMethodLevelSkillArray = Utility.Json.ToObject<List<int>>(cultivation.CultivationMethodLevelSkillArray);
             return cultivationMethodDTO;
         }

@@ -140,6 +140,7 @@ namespace AscensionServer
                 var allianceObj = RedisHelper.Hash.HashGetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString()).Result;
                 if (skillObj != null && assetsObj != null&& allianceObj!=null)
                 {
+                    Utility.Debug.LogError("开始升级宗门技能");
                     if (skillDTO.SkillInsight == 1)
                     {
                         var obj = SkillDict["Insight"].AllianceSkillData.Find((x) => x.SkillLevel == skillObj.SkillInsight);
@@ -151,6 +152,7 @@ namespace AscensionServer
                         }
                         else
                         {
+                            Utility.Debug.LogError("升级宗门技能失败1");
                             RoleStatusFailS2C(roleID, AllianceOpCode.UpdateAllianceSkill);
                             return;
                         }
@@ -166,6 +168,7 @@ namespace AscensionServer
                         }
                         else
                         {
+                            Utility.Debug.LogError("升级宗门技能失败2");
                             RoleStatusFailS2C(roleID, AllianceOpCode.UpdateAllianceSkill);
                             return;
                         }
@@ -181,6 +184,7 @@ namespace AscensionServer
                         }
                         else
                         {
+                            Utility.Debug.LogError("升级宗门技能失败3");
                             RoleStatusFailS2C(roleID, AllianceOpCode.UpdateAllianceSkill);
                             return;
                         }
@@ -196,6 +200,7 @@ namespace AscensionServer
                         }
                         else
                         {
+                            Utility.Debug.LogError("升级宗门技能失败4");
                             RoleStatusFailS2C(roleID, AllianceOpCode.UpdateAllianceSkill);
                             return;
                         }
@@ -219,11 +224,13 @@ namespace AscensionServer
                 }
                 else
                 {
+                    Utility.Debug.LogError("开始升级宗门技能5");
                     UpdateAllianceSkillMySql(roleID, skillDTO);
                 }
             }
             else
             {
+                Utility.Debug.LogError("开始升级宗门技能6");
                 UpdateAllianceSkillMySql(roleID, skillDTO);
             }
 

@@ -500,7 +500,7 @@ namespace AscensionServer
 
         }
         /// <summary>
-        /// 退出宗门
+        /// 解散宗门
         /// </summary>
         async void DissolveAllianceS2C(int roleid,int allianceid,string name)
         {
@@ -519,30 +519,88 @@ namespace AscensionServer
         void RefreshDissolve(string key)
         { RedisManager.Instance.AddKeyExpireListener(key, DeleteSignin); }
 
-        async void DeleteDissolveAlliance(string key)
+        async void DeleteDissolveAlliance(int id)
         {
             //TODO具体解散的逻辑，假设key包含仙盟id，先从仙盟列表删除，再删除每人的仙盟然后慢慢清除仙盟数据
-            int id = 0;
+            //int id = 0;
             var allianceMemberExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AllianceMemberPerfix, id.ToString()).Result;
             if (allianceMemberExist)
             {
-                var alliance = RedisHelper.Hash.HashGetAsync<AllianceMemberDTO>(RedisKeyDefine._AllianceMemberPerfix, id.ToString()).Result;
-                for (int i = 0; i < alliance.Member.Count; i++)
+                var allianceMember = RedisHelper.Hash.HashGetAsync<AllianceMemberDTO>(RedisKeyDefine._AllianceMemberPerfix, id.ToString()).Result;
+                for (int i = 0; i < allianceMember.Member.Count; i++)
                 {
-                    var roleAllianceExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAlliancePerfix, alliance.Member[i].ToString()).Result;
+                    var roleAllianceExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAlliancePerfix, allianceMember.Member[i].ToString()).Result;
                     if (roleAllianceExist)
                     {
-                        var roleAlliance = RedisHelper.Hash.HashGetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, alliance.Member[i].ToString()).Result;
+                        var roleAlliance = RedisHelper.Hash.HashGetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, allianceMember.Member[i].ToString()).Result;
                         if (roleAlliance!=null)
                         {
                             roleAlliance.AllianceID = 0;
-
-
+                            roleAlliance.AllianceJob = 0;
+                            roleAlliance.Reputation = 0;
+                            roleAlliance.ReputationHistroy = 0;
+                            roleAlliance.ReputationMonth = 0;
                             RoleStatusSuccessS2C(roleAlliance.RoleID, AllianceOpCode.DissolveAlliance, roleAlliance);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAlliancePerfix, allianceMember.Member[i].ToString(), roleAlliance);
+                            await NHibernateQuerier.UpdateAsync(ChangeDataType(roleAlliance));                     
                         }
                     }
                 }
+
+                var ConstructionExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AllianceConstructionPerfix, id.ToString()).Result;
+                if (ConstructionExist)
+                {
+                    var ConstructionObj = RedisHelper.Hash.HashGetAsync<AllianceConstruction>(RedisKeyDefine._AllianceConstructionPerfix, id.ToString()).Result;
+                }
             }
+            #region Mysql更新
+            AllianceConstruction allianceConstruction = ReferencePool.Accquire<AllianceConstruction>();
+            allianceConstruction.AllianceID = id;
+            await NHibernateQuerier.DeleteAsync(allianceConstruction);
+
+            AllianceDongFu allianceDongFu = ReferencePool.Accquire<AllianceDongFu>();
+            allianceDongFu.AllianceID = id;
+            await NHibernateQuerier.DeleteAsync(allianceDongFu);
+
+            AllianceExchangeGoods allianceExchangeGoods = ReferencePool.Accquire<AllianceExchangeGoods>();
+            allianceExchangeGoods.AllianceID = id;
+            await NHibernateQuerier.DeleteAsync(allianceExchangeGoods);
+
+            AllianceStatus allianceStatus = ReferencePool.Accquire<AllianceStatus>();
+            allianceStatus.ID = id;
+            await NHibernateQuerier.DeleteAsync(allianceStatus);
+
+            AllianceMember member = ReferencePool.Accquire<AllianceMember>();
+            member.AllianceID = id;
+            await NHibernateQuerier.DeleteAsync(member);
+
+            NHCriteria nHCriteriaAlliance = ReferencePool.Accquire<NHCriteria>().SetValue("ID", 1);
+            var alliance = NHibernateQuerier.CriteriaSelect<Alliances>(nHCriteriaAlliance);
+            if (alliance != null)
+            {
+                List<int> alliances = Utility.Json.ToObject<List<int>>(alliance.AllianceList);
+                alliances.Remove(id);
+                alliance.AllianceList = Utility.Json.ToJson(alliances);
+                await NHibernateQuerier.UpdateAsync(alliance);
+            }
+            #endregion
+
+            #region Redis更新
+            await RedisHelper.Hash.HashDeleteAsync(RedisKeyDefine._AllianceConstructionPerfix, id.ToString());
+            await RedisHelper.Hash.HashDeleteAsync(RedisKeyDefine._AllianceDongFuPostfix, id.ToString());
+            await RedisHelper.Hash.HashDeleteAsync(RedisKeyDefine._AllianceExchangeGoodsPerfix, id.ToString());
+            await RedisHelper.Hash.HashDeleteAsync(RedisKeyDefine._AllianceMemberPerfix, id.ToString());
+            await RedisHelper.Hash.HashDeleteAsync(RedisKeyDefine._AllianceSigninPerfix, id.ToString());
+            await RedisHelper.Hash.HashDeleteAsync(RedisKeyDefine._AlliancePerfix, id.ToString());
+            var alliancelist = RedisHelper.String.StringGetAsync(RedisKeyDefine._AllianceListPerfix).Result;
+            if (alliancelist!=null)
+            {
+                List<int> alliances = Utility.Json.ToObject<List<int>>(alliancelist);
+                alliances.Remove(id);
+                alliancelist = Utility.Json.ToJson(alliances);
+                await RedisHelper.String.StringSetAsync(RedisKeyDefine._AllianceListPerfix, alliancelist);
+            }
+            #endregion
         }
         #endregion
 

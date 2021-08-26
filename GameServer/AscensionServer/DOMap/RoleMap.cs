@@ -18,6 +18,7 @@ namespace AscensionServer
             Map(x => x.RoleRoot).Column("role_root");
             Map(x => x.RoleName).Column("role_name").Unique();
             Map(x => x.RoleLevel).Column("role_level");
+            Map(x => x.roleExp).Column("role_exp");
             Table("role");
         }
     }

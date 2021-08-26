@@ -756,7 +756,6 @@ namespace AscensionServer
                     break;
             }
             ReferencePool.Release(nHCriteriaRoleID);
-            ReferencePool.Release(nHCriteriaRingID);
         }
         protected override void OnPreparatory()
         {

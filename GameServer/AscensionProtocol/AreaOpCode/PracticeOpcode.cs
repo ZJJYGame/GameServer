@@ -17,9 +17,9 @@ namespace AscensionProtocol
         UploadingExp = 7,//上传经验
         GetOffLineExp = 8,//获得离线经验
         TriggerBottleneck = 9,//触发瓶颈
-        UseBottleneckElixir = 10,//使用丹药突破瓶颈
+        UseBottleneckElixir = 10,//使用丹药突破瓶颈(如果有多种丹药使用修改成统一使用丹药)
         UpdateBottleneck = 11,//更新瓶颈状态
         DemonicBattle= 12,//触发心魔战斗
-        ThunderRoundBattle = 13//触发天劫战斗
+        ThunderRoundBattle = 13,//触发天劫战斗
     }
 }
