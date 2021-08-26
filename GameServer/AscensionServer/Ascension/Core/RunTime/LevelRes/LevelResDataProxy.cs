@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cosmos;
-namespace Cosmos.Mvvm
+
+namespace AscensionServer
 {
-    public abstract class NotifyArgs : EventArgs
+    public class LevelResDataProxy
     {
     }
 }
