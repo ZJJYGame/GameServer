@@ -21,7 +21,7 @@
     <OutputPath>..\..\..\Server\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\Cache\</OutputPath>
     <OutputPath>..\..\..\Server\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
     <OutputPath>..\..\..\..\..\Localphotonserver\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
-    <OutputPath>..\..\..\..\..\localproject\Photon-OnPremise-Server-SDK_v4-0-29-11263\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\..\localproject\Photon-OnPremise-Server-SDK_v4-0-29-11263\deploy\Ascension\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SERVER;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -245,6 +245,8 @@
     <Compile Include="Ascension\Core\RunTime\Auction\AuctionManager.Message.cs" />
     <Compile Include="Ascension\Core\RunTime\Auction\AuctionManager.Method.cs" />
     <Compile Include="Ascension\Core\RunTime\Auction\IAuctionManager.cs" />
+    <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_ShieldAdd.cs" />
+    <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_ShieldResistDamages.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\ServerBattleManager.enum.cs" />
     <Compile Include="Ascension\Core\RunTime\CharacterStatus\CharacterStatusManager.cs" />
     <Compile Include="Ascension\Core\RunTime\CharacterStatus\ICharacterStatusManager.cs" />
@@ -320,7 +322,6 @@
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_DispelBuff.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_ImmuneBuff.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_ShareDamageForOther.cs" />
-    <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_Shield.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_UseDesignateSkill.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffObj.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BuffCharacterData.cs" />

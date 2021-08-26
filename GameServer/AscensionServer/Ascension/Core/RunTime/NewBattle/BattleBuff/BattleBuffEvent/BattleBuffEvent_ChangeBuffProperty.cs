@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AscensionProtocol.DTO;
-
+using Cosmos;
 namespace AscensionServer
 {
     /// <summary>
@@ -36,6 +36,7 @@ namespace AscensionServer
         }
         public override void RemoveEvent()
         {
+
             switch (battleBuffTriggerTime)
             {
                 case BattleBuffTriggerTime.BeforeUseSkill:
@@ -55,6 +56,7 @@ namespace AscensionServer
 
         protected override void TriggerEventMethod(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
+            Utility.Debug.LogError($"触发buff加成事件:{buffEvent_PropertyChangeType}{percentValue}");
             switch (buffEvent_PropertyChangeType)
             {
                 case BuffEvent_PropertyChangeType.DamageAddition:
@@ -77,6 +79,7 @@ namespace AscensionServer
 
         public BattleBuffEvent_ChangeBuffProperty(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
         {
+
             buffEvent_PropertyChangeType = battleBuffEventData.buffPropertyChangeType;
             fixedValue = battleBuffEventData.fixedValue;
             percentValue = battleBuffEventData.percentValue;

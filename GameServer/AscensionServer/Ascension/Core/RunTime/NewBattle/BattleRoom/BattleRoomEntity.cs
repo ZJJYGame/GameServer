@@ -43,9 +43,13 @@ namespace AscensionServer
         //记录当前未结束行为传输信息的栈
         //行为开始时压入栈，行为结束时弹出栈,顶部的即为当前占用的记录对象
         public Stack<BattleTransferDTO> NowTransferStack { get; set; } = new Stack<BattleTransferDTO>();
-        public BattleTransferDTO SpawnBattleTransfer()
+        public BattleTransferDTO SpawnBattleTransfer(int roleId,int clientCmdId,BattleCmd battleCmd)
         {
-            BattleTransferDTO battleTransferDTO = new BattleTransferDTO();
+            BattleTransferDTO battleTransferDTO = new BattleTransferDTO() {
+                RoleId=roleId,
+                ClientCmdId=clientCmdId,
+                BattleCmd=battleCmd
+            };
             NowTransferStack.Push(battleTransferDTO);
             BattleTransferDTOList.Add(battleTransferDTO);
             return battleTransferDTO;
@@ -53,6 +57,11 @@ namespace AscensionServer
         public BattleTransferDTO ReleaseBattleTransfer()
         {
             BattleTransferDTO result= NowTransferStack.Pop();
+            //剔除无用信息 
+            if ((result.TargetInfos == null || result.TargetInfos.Count == 0)
+                && (result.AddBuffDTOList == null || result.AddBuffDTOList.Count == 0)
+                && (result.BattleBuffEventTriggerDTOList == null || result.BattleBuffEventTriggerDTOList.Count == 0))
+                BattleTransferDTOList.Remove(result);
             return result;
         }
         public BattleTransferDTO GetBattleTransfer()
@@ -151,8 +160,11 @@ namespace AscensionServer
                     SendBattleEndMsgS2C();
                 }
                 else
+                {
                     SendNewRoundStartMsgS2C();
-
+                    //开始等待玩家指令倒计时
+                    StartGetBattleCmdWait();
+                }
             }
             else//有人没表演完成
             {

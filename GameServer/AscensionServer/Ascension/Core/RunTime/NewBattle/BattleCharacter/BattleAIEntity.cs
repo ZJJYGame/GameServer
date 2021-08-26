@@ -15,8 +15,6 @@ namespace AscensionServer
             Init();
             CharacterBattleData =ReferencePool.Accquire<CharacterBattleData>();
             GameEntry.DataManager.TryGetValue<Dictionary<int, MonsterDatas>>(out var monsterDict);
-            Utility.Debug.LogError("怪物ID" + aIID);
-            Utility.Debug.LogError(monsterDict);
             if (monsterDict.ContainsKey(aIID))
                 CharacterBattleData.Init(monsterDict[aIID],this);
             UniqueID = uniqueID;
@@ -54,11 +52,11 @@ namespace AscensionServer
             base.AllocationBattleAction();
             //todo 先临时将AI的行为设置为普通攻击
             BattleCmd = BattleCmd.SkillInstruction;
-            ActionID = 21002;
+            ActionID = 21001;
             TargetIDList.Clear();
             //指令决定前buff触发事件
             BattleBuffController.TriggerBuffEventBeforeAllocationAction();
-            TargetIDList = GetTargetIdList(ActionID,true);
+            TargetIDList = GetTargetIdList(ActionID,true,TargetIDList);
         }
 
         public override void Release()

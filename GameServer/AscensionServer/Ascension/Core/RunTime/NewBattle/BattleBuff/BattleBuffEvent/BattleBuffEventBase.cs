@@ -83,13 +83,7 @@ namespace AscensionServer
         {
 
         }
-        /// <summary>
-        /// buff覆盖时重新设置buff参数
-        /// </summary>
-        public virtual void SetValue(BattleBuffEventData battleBuffEventData, BattleSkillAddBuffValue battleSkillAddBuffValue)
-        {
-
-        }
+  
         /// <summary>
         /// 转为发送数据
         /// </summary>
@@ -102,7 +96,6 @@ namespace AscensionServer
         {
             if (LastBattleTransfer.BattleBuffEventTriggerDTOList == null)
                 LastBattleTransfer.BattleBuffEventTriggerDTOList = new List<BattleBuffEventTriggerDTO>();
-            Utility.Debug.LogError(battleBuffObj.BuffId);
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = new BattleBuffEventTriggerDTO()
             {
                 TriggerId = owner.UniqueID,

@@ -130,7 +130,7 @@ namespace AscensionServer
                 case BattleCmd.PropsInstruction:
                     break;
                 case BattleCmd.SkillInstruction:
-                     BattleSkillController.UseSkill(ActionID, TargetIDList);
+                     BattleSkillController.UseSkill(ActionID, TargetIDList,true);
                     if (battleTransferDTOList.Count > 1)
                         battleTransferDTOList[battleTransferDTOList.Count - 1].FinishActionRoleID = UniqueID;
                     else if (battleTransferDTOList.Count == 1)

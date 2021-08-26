@@ -72,7 +72,7 @@ namespace AscensionServer
             if (!battleSkillEventConditionBase.CanTrigger(battleDamageData))
                 return;
             List<int> tempTargetList = ownerSkill.OwnerEntity.GetTargetIdList(triggerSkillID,battleSkillEventData.isAutoChangeTarget, new List<int>() { battleDamageData.TargetID });
-            ownerSkill.OwnerEntity.BattleSkillController.UseSkill(triggerSkillID, tempTargetList);
+            ownerSkill.OwnerEntity.BattleSkillController.UseSkill(triggerSkillID, tempTargetList,false);
         }
 
         public BattleSkillEvent_Skill(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)

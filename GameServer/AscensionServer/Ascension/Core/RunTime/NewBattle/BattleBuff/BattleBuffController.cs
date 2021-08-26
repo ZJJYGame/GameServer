@@ -158,7 +158,7 @@ namespace AscensionServer
             newBbattleBuffObj.OnAdd();
 
             battleBuffObj.OnCover(battleBuffData, battleSkillAddBuffData);
-            battleBuffObjDict8Type[battleBuffObj.BattleBuffData.buffCoverType].Remove(battleBuffObj);
+            battleBuffObjDict8Type[newBbattleBuffObj.BattleBuffData.buffCoverType].Remove(battleBuffObj);
             battleBuffObjDict8Id[newBbattleBuffObj.BuffId].Remove(battleBuffObj);
             ReferencePool.Release(battleBuffObj);
 
@@ -194,6 +194,7 @@ namespace AscensionServer
         {
             ISkillAdditionData skillAdditionData = new SkillAdditionData();
             beforeAttackEvent?.Invoke( target, battleDamageData, skillAdditionData);
+            Utility.Debug.LogError(skillAdditionData.DamgeAddition);
             return skillAdditionData;
         }
         public ISkillAdditionData TriggerBuffEventBehindAttack( BattleCharacterEntity target = null, BattleDamageData battleDamageData = null)
@@ -262,7 +263,7 @@ namespace AscensionServer
                         {
                             newBattleBuffObj=CoverBuff(battleBuffObj, battleSkillAddBuffData, battleBuffData, battleSkillBase);
                         }
-                        
+
                         return false;
                     }
                     else

@@ -62,7 +62,7 @@ namespace AscensionServer
             {
                 TargetIDList.Add(battleTransferDTO.TargetInfos[i].TargetID);
             }
-            if (PetID != 0)
+            if (PetID != 0&&battleTransferDTO.petBattleTransferDTO!=null)
             {
                 GameEntry.BattleCharacterManager.GetCharacterEntity(PetID).SetBattleAction(battleTransferDTO.petBattleTransferDTO.BattleCmd, battleTransferDTO.petBattleTransferDTO);
             }

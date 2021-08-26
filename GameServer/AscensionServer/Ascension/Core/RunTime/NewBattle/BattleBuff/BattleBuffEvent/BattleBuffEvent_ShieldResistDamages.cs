@@ -9,19 +9,22 @@ using AscensionProtocol.DTO;
 namespace AscensionServer
 {
     /// <summary>
-    /// 护盾类型buff事件
+    /// 护盾抵挡伤害类型buff事件
     /// </summary>
-    public class BattleBuffEvent_Shield : BattleBuffEventBase
+    public class BattleBuffEvent_ShieldResistDamages : BattleBuffEventBase
     {
         int shieldValue;
 
         protected override void AddTriggerEvent()
         {
             owner.BattleBuffController.BeforePropertyChangeEvent += Trigger;
+            owner.BattleBuffController.BehindOnHitEvent += AutoRemove;
         }
         public override void RemoveEvent()
         {
             owner.BattleBuffController.BeforePropertyChangeEvent -= Trigger;
+            owner.BattleBuffController.BehindOnHitEvent -= AutoRemove;
+
         }
         protected override void TriggerEventMethod( BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
@@ -44,14 +47,28 @@ namespace AscensionServer
                 battleDamageData.shieldDamage = -shieldValue;
                 battleDamageData.damageNum += shieldValue;
                 shieldValue = 0;
-                owner.BattleBuffController.RemoveBuff(battleBuffObj);
+               
+            }
+            if (counteractValue != 0)
+            {
+                BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
+                battleBuffEventTriggerDTO.Num_1 = counteractValue;
+                battleBuffEventTriggerDTO.Num_2 = 0;
             }
 
-            BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(owner.UniqueID, owner.UniqueID);
-            battleBuffEventTriggerDTO.Num_1 = counteractValue;
         }
-        public BattleBuffEvent_Shield(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
+
+        void AutoRemove(BattleCharacterEntity target, BattleDamageData battleDamageData, ISkillAdditionData skillAdditionData)
         {
+            if (shieldValue <= 0)
+            {
+                owner.BattleBuffController.RemoveBuff(battleBuffObj);
+            }
+        }
+
+        public BattleBuffEvent_ShieldResistDamages(BattleBuffEventData battleBuffEventData, BattleBuffObj battleBuffObj) : base(battleBuffEventData, battleBuffObj)
+        {
+            Utility.Debug.LogError(battleBuffObj.BuffId);
             if (battleBuffEventData.flag)//数据来自于buff挂载的人
             {
                 shieldValue= battleBuffObj.Owner.CharacterBattleData.GetProperty(battleBuffEventData.buffEvent_Shield_SourceDataType);

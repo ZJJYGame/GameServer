@@ -12,56 +12,56 @@ namespace AscensionServer
     /// <summary>
     /// 用于进行战斗中角色的属性数据处理
     /// </summary>
-    public class CharacterBattleData : IReference,ICharacterBattleData
+    public class CharacterBattleData : IReference, ICharacterBattleData
     {
         BattleCharacterEntity owner;
 
         int hp;
-        public int Hp { get { return hp+buffCharacterData.Hp; } }
+        public int Hp { get { return hp + buffCharacterData.Hp; } }
         int maxHp;
-        public int MaxHp { get { return maxHp+ buffCharacterData.MaxHp; } }
+        public int MaxHp { get { return maxHp + buffCharacterData.MaxHp; } }
         int mp;
-        public int Mp { get { return mp+ buffCharacterData.Mp; } }
+        public int Mp { get { return mp + buffCharacterData.Mp; } }
         int maxMp;
-        public int MaxMp { get { return maxMp+ buffCharacterData.MaxMp; } }
+        public int MaxMp { get { return maxMp + buffCharacterData.MaxMp; } }
         int soul;
-        public int Soul { get { return soul+ buffCharacterData.Soul; } }
+        public int Soul { get { return soul + buffCharacterData.Soul; } }
         int maxSoul;
-        public int MaxSoul { get { return maxSoul+ buffCharacterData.MaxSoul; } }
+        public int MaxSoul { get { return maxSoul + buffCharacterData.MaxSoul; } }
         int bestBlood;
-        public int BestBlood { get { return bestBlood+ buffCharacterData.BestBlood; } }
+        public int BestBlood { get { return bestBlood + buffCharacterData.BestBlood; } }
         int bestBloodMax;
-        public int BestBloodMax { get { return bestBloodMax+ buffCharacterData.BestBloodMax; } }
+        public int BestBloodMax { get { return bestBloodMax + buffCharacterData.BestBloodMax; } }
         float attackSpeed;
-        public float AttackSpeed { get { return attackSpeed+ buffCharacterData.AttackSpeed; } }
+        public float AttackSpeed { get { return attackSpeed + buffCharacterData.AttackSpeed; } }
         int physicalAtk;
-        public int PhysicalAtk { get { return physicalAtk+ buffCharacterData.PhysicalAtk; } }
+        public int PhysicalAtk { get { return physicalAtk + buffCharacterData.PhysicalAtk; } }
         int physicalDef;
-        public int PhysicalDef { get { return physicalDef+ buffCharacterData.PhysicalDef; } }
+        public int PhysicalDef { get { return physicalDef + buffCharacterData.PhysicalDef; } }
         int powerAtk;
-        public int PowerAtk { get { return powerAtk+ buffCharacterData.PowerAtk; } }
+        public int PowerAtk { get { return powerAtk + buffCharacterData.PowerAtk; } }
         int powerDef;
-        public int PowerDef { get { return powerDef+ buffCharacterData.PowerDef; } }
+        public int PowerDef { get { return powerDef + buffCharacterData.PowerDef; } }
         float physicalCritProb;
-        public float PhysicalCritProb { get { return physicalCritProb+ buffCharacterData.PhysicalCritProb; } }
+        public float PhysicalCritProb { get { return physicalCritProb + buffCharacterData.PhysicalCritProb; } }
         float magicCritProb;
-        public float MagicCritProb { get { return magicCritProb+ buffCharacterData.MagicCritProb; } }
+        public float MagicCritProb { get { return magicCritProb + buffCharacterData.MagicCritProb; } }
         float reduceCritProb;
-        public float ReduceCritProb { get { return reduceCritProb+ buffCharacterData.ReduceCritProb; } }
+        public float ReduceCritProb { get { return reduceCritProb + buffCharacterData.ReduceCritProb; } }
         int physicalCritDamage;
-        public int PhysicalCritDamage { get { return physicalCritDamage+ buffCharacterData.PhysicalCritDamage; } }
+        public int PhysicalCritDamage { get { return physicalCritDamage + buffCharacterData.PhysicalCritDamage; } }
         int magicCritDamage;
-        public int MagicCritDamage { get { return magicCritDamage+ buffCharacterData.MagicCritDamage; } }
+        public int MagicCritDamage { get { return magicCritDamage + buffCharacterData.MagicCritDamage; } }
         int reduceCritDamage;
-        public int ReduceCritDamage { get { return reduceCritDamage+ buffCharacterData.ReduceCritDamage; } }
+        public int ReduceCritDamage { get { return reduceCritDamage + buffCharacterData.ReduceCritDamage; } }
         int ignoreDef;
-        public int IgnoreDef { get { return ignoreDef+ buffCharacterData.IgnoreDef; } }
+        public int IgnoreDef { get { return ignoreDef + buffCharacterData.IgnoreDef; } }
         int damageAddition;
-        public int DamageAddition { get { return damageAddition+ buffCharacterData.DamageAddition; } }
+        public int DamageAddition { get { return damageAddition + buffCharacterData.DamageAddition; } }
         int damageDeduction;
-        public int DamageDeduction { get { return damageDeduction+ buffCharacterData.DamageDeduction; } }
+        public int DamageDeduction { get { return damageDeduction + buffCharacterData.DamageDeduction; } }
         int shield;
-        public int Shield { get { return shield+ buffCharacterData.Shield; } }
+        public int Shield { get { return shield + buffCharacterData.Shield; } }
         int dodgeProp;
         public int DodgeProp { get { return dodgeProp + buffCharacterData.DodgeProp; } }
         int physicDodgeProp;
@@ -75,7 +75,7 @@ namespace AscensionServer
         /// <summary>
         /// 获取对应属性
         /// </summary>
-        public float GetProperty(BattleSkillNumSourceType battleSkillNumSourceType,BattleDamageData battleDamageData)
+        public float GetProperty(BattleSkillNumSourceType battleSkillNumSourceType, BattleDamageData battleDamageData)
         {
             switch (battleSkillNumSourceType)
             {
@@ -159,6 +159,8 @@ namespace AscensionServer
                 case BuffEvent_Shield_SourceDataType.ReceiveDamageNum:
                     //todo 根据造成伤害值获取暂定
                     return 0;
+                case BuffEvent_Shield_SourceDataType.PhysicalAttack:
+                    return PhysicalAtk;
             }
             return 0;
         }
@@ -197,11 +199,12 @@ namespace AscensionServer
                     return 0;
             }
         }
+   
 
         /// <summary>
         /// 获取基础对应属性
         /// </summary>
-        public float GetBaseProperty(BuffEvent_RolePropertyChange_SourceDataType buffEvent_RolePropertyChange_SourceDataType,BattleSkillBase battleSkillBase)
+        public float GetBaseProperty(BuffEvent_RolePropertyChange_SourceDataType buffEvent_RolePropertyChange_SourceDataType, BattleSkillBase battleSkillBase)
         {
             switch (buffEvent_RolePropertyChange_SourceDataType)
             {
@@ -235,10 +238,10 @@ namespace AscensionServer
             switch (battleSkillEventTriggerNumSourceType)
             {
                 case BattleSkillEventTriggerNumSourceType.Health:
-                    Utility.Debug.LogError("获取血量百分比"+Hp+"/"+MaxHp+"/"+ Hp * 100 / MaxHp);
-                    return Hp*100 / MaxHp;
+                    Utility.Debug.LogError("获取血量百分比" + Hp + "/" + MaxHp + "/" + Hp * 100 / MaxHp);
+                    return Hp * 100 / MaxHp;
                 case BattleSkillEventTriggerNumSourceType.ShenHun:
-                    return Soul*100 / MaxSoul;
+                    return Soul * 100 / MaxSoul;
                 case BattleSkillEventTriggerNumSourceType.PhysicDefense:
                 case BattleSkillEventTriggerNumSourceType.MagicDefense:
                 case BattleSkillEventTriggerNumSourceType.Shield:
@@ -265,7 +268,7 @@ namespace AscensionServer
         }
 
 
-        public void ChangeProperty(BattleSkillDamageTargetProperty baseDamageTargetProperty,int damageNum)
+        public void ChangeProperty(BattleSkillDamageTargetProperty baseDamageTargetProperty, int damageNum)
         {
             if (damageNum == 0)
                 return;
@@ -286,9 +289,9 @@ namespace AscensionServer
                     soul = soul < 0 ? 0 : soul;
                     soul = soul > MaxSoul ? MaxSoul : soul;
                     break;
-            }  
+            }
         }
-        public void ChangeProperty(BuffEvent_DamageOrHeal_EffectTargetType buffEvent_DamageOrHeal_EffectTargetType,int damageNum)
+        public void ChangeProperty(BuffEvent_DamageOrHeal_EffectTargetType buffEvent_DamageOrHeal_EffectTargetType, int damageNum)
         {
             switch (buffEvent_DamageOrHeal_EffectTargetType)
             {
@@ -314,19 +317,45 @@ namespace AscensionServer
             //死亡前事件触发
             if (battleDamageData.battleSkillActionType == BattleSkillActionType.Damage)
             {
-                if(Hp+ battleDamageData.damageNum+ battleDamageData.extraDamageNum <= 0)
+                if (Hp + battleDamageData.damageNum + battleDamageData.extraDamageNum <= 0)
                 {
                     owner.BattleBuffController.TriggerBuffEventBeforeRoleDie(null, battleDamageData: battleDamageData);
                 }
             }
 
             //触发伤害前buff事件（目前仅针对护盾）
-            owner.BattleBuffController.TriggerBuffEventBeforePropertyChange(owner,battleDamageData:battleDamageData);
+            owner.BattleBuffController.TriggerBuffEventBeforePropertyChange(owner, battleDamageData: battleDamageData);
 
             ChangeProperty(battleDamageData.baseDamageTargetProperty, battleDamageData.damageNum);
             ChangeProperty(battleDamageData.extraDamageTargetProperty, battleDamageData.extraDamageNum);
 
             owner.BattleBuffController.TriggerBuffEventAfterPropertyChange();
+        }
+        public void ChangeProperty(BattleSkillCostType battleSkillCostType,int costNum)
+        {
+            switch (battleSkillCostType)
+            {
+                case BattleSkillCostType.Health:
+                    hp += costNum;
+                    hp = hp < 0 ? 0 : hp;
+                    hp = hp > MaxHp ? MaxHp : hp;
+                    break;
+                case BattleSkillCostType.ZhenYuan:
+                    mp += costNum;
+                    mp = mp < 0 ? 0 : mp;
+                    mp = mp > MaxMp ? MaxMp : mp;
+                    break;
+                case BattleSkillCostType.ShenHun:
+                    soul += costNum;
+                    soul = soul < 0 ? 0 : soul;
+                    soul = soul > MaxSoul ? MaxSoul : soul;
+                    break;
+                case BattleSkillCostType.JingXue:
+                    bestBlood += costNum;
+                    bestBlood = bestBlood < 0 ? 0 : bestBlood;
+                    bestBlood = bestBlood > BestBloodMax ? BestBloodMax : bestBlood;
+                    break;
+            }
         }
         public void Init(RoleStatus roleStatus, BattleCharacterEntity owner)
         {

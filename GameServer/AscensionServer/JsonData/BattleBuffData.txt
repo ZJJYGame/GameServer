@@ -3,9 +3,10 @@
             "name": "回血",
             "id": 20001,
             "describe": "每回合结束时，恢复自身最大气血的1%",
-            "battleBuffTriggerTime": 7,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -15,12 +16,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -32,13 +37,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 1,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -47,9 +73,10 @@
             "name": "破甲",
             "id": 20007,
             "describe": "普攻时，无视目标10%的物理防御，对拥有兽防和高级兽防的单位造成伤害提高10%",
-            "battleBuffTriggerTime": 2,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -59,6 +86,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -74,12 +102,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 1,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -91,13 +123,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 10,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -109,12 +162,16 @@
                         ],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 1,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -126,13 +183,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 10,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -141,9 +219,10 @@
             "name": "连击",
             "id": 20009,
             "describe": "普攻时，10%的概率再普攻一次，触发连击时造成伤害值55%的伤害",
-            "battleBuffTriggerTime": 2,
-            "probability": 10,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -153,6 +232,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -168,12 +248,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 4,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -185,13 +269,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 55,
                     "percentValue": 0,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 24001
+                    "id": 24001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -200,9 +305,10 @@
             "name": "吸血",
             "id": 20011,
             "describe": "普攻时，50%的概率恢复自身气血，恢复值为造成伤害的25%",
-            "battleBuffTriggerTime": 2,
-            "probability": 50,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -212,6 +318,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -227,12 +334,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -244,13 +355,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 25,
                     "idList": [],
                     "flag": false,
                     "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -259,9 +391,10 @@
             "name": "吸灵",
             "id": 20013,
             "describe": "普攻时，50%的概率扣除目标受到伤害值 5%的真元，对拥有兽灵和高级兽灵的目标额外扣除其最大真元的1%。",
-            "battleBuffTriggerTime": 2,
-            "probability": 50,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -271,6 +404,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -286,12 +420,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -303,13 +441,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 5,
                     "idList": [],
                     "flag": true,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -321,12 +480,16 @@
                         ],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -338,13 +501,34 @@
                     "BattleSkillDamageType": 1,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 1,
                     "idList": [],
                     "flag": true,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -353,9 +537,10 @@
             "name": "流血",
             "id": 20015,
             "describe": "普攻时，10%概率造成目标1级流血",
-            "battleBuffTriggerTime": 2,
-            "probability": 10,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -365,6 +550,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -380,12 +566,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 9,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -397,13 +587,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 2,
                     "percentValue": 0,
                     "idList": [],
                     "flag": true,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 20901
+                    "id": 20901,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -412,9 +623,10 @@
             "name": "流血状态",
             "id": 20901,
             "describe": "持续流失气血",
-            "battleBuffTriggerTime": 7,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -424,12 +636,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -441,13 +657,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 1,
                     "idList": [],
                     "flag": true,
                     "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -456,9 +693,10 @@
             "name": "附灵",
             "id": 20019,
             "describe": "普攻时，10%的概率额外造成自身真元值1%的物理伤害",
-            "battleBuffTriggerTime": 2,
-            "probability": 10,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -468,6 +706,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -483,12 +722,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -500,13 +743,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 1,
                     "idList": [],
                     "flag": true,
                     "flag_2": true,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -515,9 +779,10 @@
             "name": "格挡",
             "id": 20021,
             "describe": "受到物理攻击时，10%的概率格挡，受到的伤害降低20%",
-            "battleBuffTriggerTime": 3,
-            "probability": 10,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 5,
@@ -525,6 +790,7 @@
                     "idList": [],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -540,12 +806,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 1,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -557,13 +827,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": -20,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -572,9 +863,10 @@
             "name": "闪避",
             "id": 20023,
             "describe": "受到物理攻击时，5%的概率闪避不受到伤害，闪避后无法发动反击和反震",
-            "battleBuffTriggerTime": 3,
-            "probability": 5,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 5,
@@ -582,6 +874,7 @@
                     "idList": [],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -597,12 +890,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 1,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -614,13 +911,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 100,
                     "percentValue": 100,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -629,12 +947,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 2,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -646,6 +968,7 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 5,
                     "idList": [
@@ -657,7 +980,27 @@
                     "flag": true,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -666,9 +1009,10 @@
             "name": "反击",
             "id": 20025,
             "describe": "受到近身物理攻击时，10%的概率反击，造成70%的物理伤害",
-            "battleBuffTriggerTime": 3,
-            "probability": 10,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 11,
@@ -676,6 +1020,7 @@
                     "idList": [],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -688,6 +1033,7 @@
                     "idList": [],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -703,12 +1049,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 4,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -720,13 +1070,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 70,
                     "percentValue": 0,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 24001
+                    "id": 24001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -735,9 +1106,10 @@
             "name": "反震",
             "id": 20027,
             "describe": "受到普攻时，使攻击者受到伤害，伤害数值等于自身扣除气血的10%",
-            "battleBuffTriggerTime": 3,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 1,
@@ -747,6 +1119,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -762,12 +1135,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -779,13 +1156,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 10,
                     "percentValue": 0,
                     "idList": [],
                     "flag": true,
                     "flag_2": true,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -794,9 +1192,10 @@
             "name": "勇气",
             "id": 20029,
             "describe": "受到伤害时，物理攻击、法术攻击增加5%，持续2回合",
-            "battleBuffTriggerTime": 3,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -806,12 +1205,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 4,
                     "buffRolePropertyChange_SourceDataType": 3,
@@ -823,13 +1226,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 5,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -838,12 +1262,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 6,
                     "buffRolePropertyChange_SourceDataType": 4,
@@ -855,13 +1283,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 5,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -870,9 +1319,10 @@
             "name": "神佑",
             "id": 20077,
             "describe": "死亡时，有20%概率复活并回复20%的气血，存在鬼魂时无法触发",
-            "battleBuffTriggerTime": 5,
-            "probability": 20,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 3,
@@ -883,6 +1333,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -898,12 +1349,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 9,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -915,13 +1370,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 5,
                     "percentValue": 0,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 20996
+                    "id": 20996,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -930,9 +1406,10 @@
             "name": "复活5",
             "id": 20996,
             "describe": "鬼魂术之复活",
-            "battleBuffTriggerTime": 8,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -942,12 +1419,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -959,13 +1440,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 50,
                     "idList": [],
                     "flag": false,
                     "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -974,12 +1476,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -991,13 +1497,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 50,
                     "idList": [],
                     "flag": false,
                     "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -1006,12 +1533,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1023,13 +1554,34 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 50,
                     "idList": [],
                     "flag": false,
                     "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1038,9 +1590,10 @@
             "name": "审判",
             "id": 20081,
             "describe": "对神佑目标造成伤害提高10%，击杀目标后使其无法触发神佑",
-            "battleBuffTriggerTime": 2,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 2,
@@ -1051,6 +1604,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -1066,12 +1620,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 1,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1083,13 +1641,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 10,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -1098,12 +1677,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 2,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1115,6 +1698,7 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 0,
                     "idList": [
@@ -1124,7 +1708,27 @@
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1133,9 +1737,10 @@
             "name": "驱鬼",
             "id": 20083,
             "describe": "对鬼魂单位造成伤害增加50%，击杀后打出场",
-            "battleBuffTriggerTime": 2,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [
                 {
                     "battleBuffConditionType": 2,
@@ -1146,6 +1751,7 @@
                     ],
                     "targetCount": 0,
                     "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
                     "battleBuffCondition_SourcePropertyType": 0,
                     "criticalValue": 0,
                     "isUp": false,
@@ -1161,12 +1767,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 1,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1178,13 +1788,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 50,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1193,9 +1824,10 @@
             "name": "剑气",
             "id": 20501,
             "describe": "拿出剑来吓唬敌方三人",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1205,12 +1837,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 5,
                     "buffRolePropertyChange_SourceDataType": 5,
@@ -1222,13 +1858,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": -5,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1237,9 +1894,10 @@
             "name": "剑气",
             "id": 20502,
             "describe": "拿出剑来吓唬敌方三人",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1249,12 +1907,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 5,
                     "buffRolePropertyChange_SourceDataType": 5,
@@ -1266,13 +1928,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": -10,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1281,9 +1964,10 @@
             "name": "剑心",
             "id": 20503,
             "describe": "心中有剑，剑心合一",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1293,12 +1977,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 4,
                     "buffRolePropertyChange_SourceDataType": 3,
@@ -1310,13 +1998,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 10,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1325,9 +2034,10 @@
             "name": "万剑归一",
             "id": 20505,
             "describe": "砍一万剑手都酸死了",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1337,12 +2047,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 5,
                     "buffRolePropertyChange_SourceDataType": 5,
@@ -1354,13 +2068,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": -20,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 },
                 {
                     "eventTriggerCondition": {
@@ -1369,12 +2104,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 0,
                     "battleBuffEventType_RolePropertyChange": 7,
                     "buffRolePropertyChange_SourceDataType": 6,
@@ -1386,13 +2125,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": -20,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1401,9 +2161,10 @@
             "name": "炎盾",
             "id": 20506,
             "describe": "火焰围绕自身，抵挡伤害",
-            "battleBuffTriggerTime": 1,
-            "probability": 100,
             "coldTime": 5,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1413,12 +2174,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 6,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1430,13 +2195,34 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 1,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 10,
                     "idList": [],
                     "flag": true,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
@@ -1445,9 +2231,10 @@
             "name": "5级燃烧",
             "id": 20915,
             "describe": "燃烧状态，不断流失气血",
-            "battleBuffTriggerTime": 7,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1457,12 +2244,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1474,24 +2265,46 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 10,
                     "percentValue": 5,
                     "idList": [],
                     "flag": true,
                     "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
-            "isShow": true
+            "isShow": false
         },
         {
             "name": "回春术",
             "id": 20951,
             "describe": "持续回血buff",
-            "battleBuffTriggerTime": 7,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1501,12 +2314,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
+                    "probability": 0,
+                    "maxTriggerCount": 0,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 5,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -1518,24 +2335,46 @@
                     "BattleSkillDamageType": 3,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 10,
                     "percentValue": 1,
                     "idList": [],
                     "flag": false,
-                    "flag_2": false,
+                    "flag_2": true,
                     "flag_3": true,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
-            "isShow": true
+            "isShow": false
         },
         {
             "name": "水中月",
             "id": 20994,
             "describe": "封魔",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 0,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -1545,13 +2384,17 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 3,
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 2,
+                    "battleBuffEventType": 4,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
                     "buffPropertyChangeType": 0,
@@ -1562,438 +2405,65 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
-                    "percentValue": 0,
+                    "percentValue": 100,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 20001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
-            "isShow": true
+            "isShow": false
         },
         {
-            "name": "Buff",
-            "id": 0,
-            "describe": "Describe",
-            "battleBuffTriggerTime": 4,
-            "probability": 0,
+            "name": "以静制动",
+            "id": 20702,
+            "describe": "周围形成护盾，防守反击",
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
                     "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
+                        "battleBuffConditionType": 5,
                         "battleBuffCondition_TargetCharacterType": 0,
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 3,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 0,
-                    "percentValue": 0,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-
-       {
-            "name": "20301",
-            "id": 20301,
-            "describe": "物理攻击力增加10%+100点",
-            "battleBuffTriggerTime": 1,
-            "probability": 100,
-            "coldTime": 0,
-			"buffCoverType":0,
-			"maxSuperpositionCount":1,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 0,
-					"probability":100,
-					"maxTriggerCount":1,
-					"battleBuffTriggerTime":0,
-                    "battleBuffEventType_RolePropertyChange": 4,
-                    "buffRolePropertyChange_SourceDataType": 3,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-					"buffEvent_ChangeTarget_TargetType":0,
-                    "fixedValue": 10,
-                    "percentValue": 0,
-                    "idList": [],
-                    "flag": true,
-                    "flag_2": true,
-                    "flag_3": true,
-                    "id": 21001
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20311",
-            "id": 20311,
-            "describe": "物理攻击力减少10点",
-            "battleBuffTriggerTime": 0,
-            "probability": 50,
-            "coldTime": 0,
-			"buffCoverType":0,
-			"maxSuperpositionCount":1,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {},
-                    "battleBuffEventType": 9,
-					"maxTriggerCount":-1,					
-					"probability":100,
-					"battleBuffTriggerTime":8,
-                    "battleBuffEventType_RolePropertyChange": 4,
-                    "buffRolePropertyChange_SourceDataType": 3,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 1,
-					"buffEvent_CallOterShareDamage_TargetType":0,
-					"buffEvent_ChangeTarget_TargetType":0,
-                    "fixedValue": 10,
-                    "percentValue": 0,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 21002,
-					"battleSkillAddBuffData":{
-							"buffId": 20301,
-							"round": 99,
-							"TargetType": false,
-							"battleSkillAddBuffValueList":[{
-							"percentValue":0,
-							"fixedValue":0
-							}],
-							"basePropList": [
-							    100
-							],
-							"selfAddBuffProbability": {
-							    "battleSkillBuffProbSource": 0,
-							    "multiplyPropValue": 0,
-							    "fixedPropValue": 0,
-							    "addOrReduce": false
-							},
-							"targetAddBuffProbability": {
-							    "battleSkillBuffProbSource": 0,
-							    "multiplyPropValue": 0,
-							    "fixedPropValue": 0,
-							    "addOrReduce": false
-							}
-                }
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20312",
-            "id": 20312,
-			"describe": "偷袭",
-            "battleBuffTriggerTime": 0,
-            "probability": 50,
-            "coldTime": 0,
-			"buffCoverType":0,
-			"maxSuperpositionCount":1,
-            "battleBuffTriggerConditionList": [{
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [21001],
-                        "targetCount": 2,
-                        "battleBuffCondition_DamageType": 0,
-						"battleSkillDamageType":0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 150,
-                        "isUp": true,
-                        "flag": true,
-                        "battleBuffCondition_CharacterType": 0
-                    }],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 1,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [21001],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 0,
-					"maxTriggerCount":1,					
-					"probability":100,
-					"battleBuffTriggerTime":0,
-                    "battleBuffEventType_RolePropertyChange": 4,
-                    "buffRolePropertyChange_SourceDataType": 3,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-					"buffEvent_ChangeTarget_TargetType":0,
-                    "fixedValue": 50,
-                    "percentValue": 0,
-                    "idList": [],
-                    "flag": true,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 21002
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20313",
-            "id": 20313,
-            "describe": "无视目标20%+10点的防御",
-            "battleBuffTriggerTime": 2,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 1,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 2,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 10,
-                    "percentValue": 20,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20314",
-            "id": 20314,
-            "describe": "闪避率增加50%",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 1,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 3,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 0,
-                    "percentValue": 50,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20321",
-            "id": 20321,
-            "describe": "自身禁用buff",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 2,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 0,
-                    "percentValue": 0,
-                    "idList": [
-                        20951
-                    ],
-                    "flag": true,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20331",
-            "id": 20331,
-            "describe": "眩晕状态",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 3,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 0,
-                    "percentValue": 0,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20341",
-            "id": 20341,
-            "describe": "反击",
-            "battleBuffTriggerTime": 3,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 8,
                     "battleBuffEventType": 4,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -2005,26 +2475,35 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 50,
-                    "percentValue": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 100,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 21001
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20351",
-            "id": 20351,
-            "describe": "流血",
-            "battleBuffTriggerTime": 7,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
+                    "id": 21001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                },
                 {
                     "eventTriggerCondition": {
                         "battleBuffConditionType": 0,
@@ -2032,100 +2511,16 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 5,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 3,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 10,
-                    "percentValue": 1,
-                    "idList": [],
-                    "flag": true,
-                    "flag_2": true,
-                    "flag_3": true,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20352",
-            "id": 20352,
-            "describe": "回血",
-            "battleBuffTriggerTime": 7,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 5,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 3,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 20,
-                    "percentValue": 2,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": true,
-                    "flag_3": true,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20361",
-            "id": 20361,
-            "describe": "回合开始时，给自己加10%气血+100点的护盾",
-            "battleBuffTriggerTime": 1,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
                     "battleBuffEventType": 6,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
@@ -2135,114 +2530,48 @@
                     "buffEvent_DamageOrHeal_SourceDataType": 0,
                     "buffEvent_DamageOrHeal_EffectTargetType": 0,
                     "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_Shield_SourceDataType": 5,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 100,
-                    "percentValue": 10,
-                    "idList": [],
-                    "flag": true,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20371",
-            "id": 20371,
-            "describe": "该次伤害减免20%，冷却5回合",
-            "battleBuffTriggerTime": 3,
-            "probability": 100,
-            "coldTime": 5,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 7,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 0,
-                    "percentValue": 20,
-                    "idList": [],
-                    "flag": false,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20381",
-            "id": 20381,
-            "describe": "为队友承受50%的伤害",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 8,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 1,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 50,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 20001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
         },
         {
-            "name": "20391",
-            "id": 20391,
-            "describe": "给打我的人添加buff",
-            "battleBuffTriggerTime": 3,
-            "probability": 100,
+            "name": "神魂刺",
+            "id": 20993,
+            "describe": "造成神魂伤害，有一定概率使目标混乱。",
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -2252,13 +2581,17 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 9,
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 2,
+                    "battleBuffEventType": 13,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
                     "buffPropertyChangeType": 0,
@@ -2269,86 +2602,53 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
-                    "fixedValue": 5,
-                    "percentValue": 0,
-                    "idList": [],
-                    "flag": true,
-                    "flag_2": false,
-                    "flag_3": false,
-                    "id": 20351
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20401",
-            "id": 20401,
-            "describe": "驱散流血buff",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
-                    "eventTriggerCondition": {
-                        "battleBuffConditionType": 0,
-                        "battleBuffCondition_TargetCharacterType": 0,
-                        "idList": [],
-                        "targetCount": 0,
-                        "battleBuffCondition_DamageType": 0,
-                        "battleBuffCondition_SourcePropertyType": 0,
-                        "criticalValue": 0,
-                        "isUp": false,
-                        "flag": false,
-                        "battleBuffCondition_CharacterType": 0
-                    },
-                    "battleBuffEventType": 10,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
-                    "buffPropertyChangeType": 0,
-                    "buffRoleStateChangeType": 0,
-                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
-                    "buffEvent_DamageOrHeal_SourceDataType": 0,
-                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
-                    "BattleSkillDamageType": 0,
-                    "buffEvent_Shield_SourceDataType": 0,
-                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
-                    "percentValue": 0,
-                    "idList": [
-                        20351
-                    ],
-                    "flag": true,
+                    "percentValue": 100,
+                    "idList": [],
+                    "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
-                }
-            ],
-            "isShow": false
-        },
-        {
-            "name": "20411",
-            "id": 20411,
-            "describe": "使目标无法复活",
-            "battleBuffTriggerTime": 5,
-            "probability": 100,
-            "coldTime": 0,
-            "battleBuffTriggerConditionList": [],
-            "battleBuffEventDataList": [
-                {
+                    "id": 21001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                },
+				{
                     "eventTriggerCondition": {
                         "battleBuffConditionType": 0,
                         "battleBuffCondition_TargetCharacterType": 0,
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 11,
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 2,
+                    "battleBuffEventType": 14,
                     "battleBuffEventType_RolePropertyChange": 0,
                     "buffRolePropertyChange_SourceDataType": 0,
                     "buffPropertyChangeType": 0,
@@ -2359,24 +2659,259 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 1,
+                    "fixedValue": 0,
+                    "percentValue": 100,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 21001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                }
+            ],
+            "isShow": false
+        },
+        {
+            "name": "火种印记",
+            "id": 20720,
+            "describe": "受到火雨攻击后留下的火种印记",
+            "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
+            "battleBuffTriggerConditionList": [
+                {
+                    "battleBuffConditionType": 1,
+                    "battleBuffCondition_TargetCharacterType": 0,
+                    "idList": [
+                        21421
+                    ],
+                    "targetCount": 0,
+                    "battleBuffCondition_DamageType": 0,
+                    "battleSkillDamageType": 0,
+                    "battleBuffCondition_SourcePropertyType": 0,
+                    "criticalValue": 0,
+                    "isUp": false,
+                    "flag": false,
+                    "battleBuffCondition_CharacterType": 0
+                }
+            ],
+            "battleBuffEventDataList": [
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 7,
+                    "battleBuffEventType": 1,
+                    "battleBuffEventType_RolePropertyChange": 0,
+                    "buffRolePropertyChange_SourceDataType": 0,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 40,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                }
+            ],
+            "isShow": false
+        },
+        {
+            "name": "嘲讽",
+            "id": 20715,
+            "describe": "来打我呀，略略略",
+            "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
+            "battleBuffTriggerConditionList": [],
+            "battleBuffEventDataList": [
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": -1,
+                    "battleBuffTriggerTime": 2,
+                    "battleBuffEventType": 4,
+                    "battleBuffEventType_RolePropertyChange": 0,
+                    "buffRolePropertyChange_SourceDataType": 0,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 100,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 20001,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                },
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": -1,
+                    "battleBuffTriggerTime": 2,
+                    "battleBuffEventType": 14,
+                    "battleBuffEventType_RolePropertyChange": 0,
+                    "buffRolePropertyChange_SourceDataType": 0,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
                     "percentValue": 0,
                     "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
         },
         {
-            "name": "20421",
-            "id": 20421,
-            "describe": "免疫流血、回血buff",
-            "battleBuffTriggerTime": 0,
-            "probability": 100,
+            "name": "灵魂鼓舞",
+            "id": 20515,
+            "describe": "提高目标物理和法术攻击力",
             "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
             "battleBuffTriggerConditionList": [],
             "battleBuffEventDataList": [
                 {
@@ -2386,15 +2921,19 @@
                         "idList": [],
                         "targetCount": 0,
                         "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
                         "battleBuffCondition_SourcePropertyType": 0,
                         "criticalValue": 0,
                         "isUp": false,
                         "flag": false,
                         "battleBuffCondition_CharacterType": 0
                     },
-                    "battleBuffEventType": 12,
-                    "battleBuffEventType_RolePropertyChange": 0,
-                    "buffRolePropertyChange_SourceDataType": 0,
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
+                    "battleBuffEventType": 0,
+                    "battleBuffEventType_RolePropertyChange": 4,
+                    "buffRolePropertyChange_SourceDataType": 3,
                     "buffPropertyChangeType": 0,
                     "buffRoleStateChangeType": 0,
                     "buffEvent_DamageOrHeal_ChangeDataType": 0,
@@ -2403,18 +2942,291 @@
                     "BattleSkillDamageType": 0,
                     "buffEvent_Shield_SourceDataType": 0,
                     "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
                     "fixedValue": 0,
-                    "percentValue": 0,
-                    "idList": [
-                        20351,
-                        20352
-                    ],
+                    "percentValue": 10,
+                    "idList": [],
                     "flag": false,
                     "flag_2": false,
                     "flag_3": false,
-                    "id": 0
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                },
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
+                    "battleBuffEventType": 0,
+                    "battleBuffEventType_RolePropertyChange": 6,
+                    "buffRolePropertyChange_SourceDataType": 4,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 10,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
                 }
             ],
             "isShow": false
-        }     
+        },
+        {
+            "name": "医者仁心",
+            "id": 20705,
+            "describe": "提高法术防御力",
+            "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
+            "battleBuffTriggerConditionList": [],
+            "battleBuffEventDataList": [
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
+                    "battleBuffEventType": 0,
+                    "battleBuffEventType_RolePropertyChange": 7,
+                    "buffRolePropertyChange_SourceDataType": 6,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 10,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                }
+            ],
+            "isShow": false
+        },
+        {
+            "name": "土灵甲",
+            "id": 20513,
+            "describe": "提高目标的物理和法术防御力。",
+            "coldTime": 0,
+            "buffCoverType": 0,
+            "buffLayer": 0,
+            "maxSuperpositionCount": 1,
+            "battleBuffTriggerConditionList": [],
+            "battleBuffEventDataList": [
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
+                    "battleBuffEventType": 0,
+                    "battleBuffEventType_RolePropertyChange": 5,
+                    "buffRolePropertyChange_SourceDataType": 3,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 10,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                },
+                {
+                    "eventTriggerCondition": {
+                        "battleBuffConditionType": 0,
+                        "battleBuffCondition_TargetCharacterType": 0,
+                        "idList": [],
+                        "targetCount": 0,
+                        "battleBuffCondition_DamageType": 0,
+                        "battleSkillDamageType": 0,
+                        "battleBuffCondition_SourcePropertyType": 0,
+                        "criticalValue": 0,
+                        "isUp": false,
+                        "flag": false,
+                        "battleBuffCondition_CharacterType": 0
+                    },
+                    "probability": 100,
+                    "maxTriggerCount": 1,
+                    "battleBuffTriggerTime": 0,
+                    "battleBuffEventType": 0,
+                    "battleBuffEventType_RolePropertyChange": 7,
+                    "buffRolePropertyChange_SourceDataType": 4,
+                    "buffPropertyChangeType": 0,
+                    "buffRoleStateChangeType": 0,
+                    "buffEvent_DamageOrHeal_ChangeDataType": 0,
+                    "buffEvent_DamageOrHeal_SourceDataType": 0,
+                    "buffEvent_DamageOrHeal_EffectTargetType": 0,
+                    "BattleSkillDamageType": 0,
+                    "buffEvent_Shield_SourceDataType": 0,
+                    "buffEvent_TakeDamageForOther_TargetType": 0,
+                    "buffEvent_ChangeTarget_TargetType": 0,
+                    "fixedValue": 0,
+                    "percentValue": 10,
+                    "idList": [],
+                    "flag": false,
+                    "flag_2": false,
+                    "flag_3": false,
+                    "id": 0,
+                    "battleSkillAddBuffData": {
+                        "buffId": 0,
+                        "round": 0,
+                        "TargetType": false,
+                        "battleSkillAddBuffValueList": [],
+                        "basePropList": [],
+                        "selfAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "targetAddBuffProbability": {
+                            "battleSkillBuffProbSource": 0,
+                            "multiplyPropValue": 0.0,
+                            "fixedPropValue": 0,
+                            "addOrReduce": false
+                        },
+                        "coverBuffIdList": []
+                    }
+                }
+            ],
+            "isShow": false
+        }
     ]
+

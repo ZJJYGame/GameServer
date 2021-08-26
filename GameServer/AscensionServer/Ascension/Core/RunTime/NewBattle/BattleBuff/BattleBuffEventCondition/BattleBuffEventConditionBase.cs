@@ -26,10 +26,15 @@ namespace AscensionServer
     //使用指定技能
     public class BattleBuffEventCondition_UseDesignatedSkill : BattleBuffEventConditionBase
     {
+        bool isSelf;
         List<uint> skillIdList;
         public override bool CanTrigger(BattleCharacterEntity target, BattleDamageData battleDamageData)
         {
-            int nowUseSkillId = Owner.BattleSkillController.nowUseSkillId;
+            int nowUseSkillId;
+            if(isSelf)
+                nowUseSkillId = Owner.BattleSkillController.nowUseSkillId;
+            else
+                nowUseSkillId = target.BattleSkillController.nowUseSkillId;
             Utility.Debug.LogError("当前使用的技能=>" + nowUseSkillId);
             if (skillIdList.Contains((uint)nowUseSkillId))
                 return true;
@@ -38,6 +43,7 @@ namespace AscensionServer
         }
         public BattleBuffEventCondition_UseDesignatedSkill(BattleBuffTriggerCondition battleBuffTriggerCondition, BattleBuffObj battleBuffObj) : base(battleBuffTriggerCondition, battleBuffObj)
         {
+            isSelf = battleBuffTriggerCondition.flag;
             skillIdList = battleBuffTriggerCondition.idList;
         }
     }
