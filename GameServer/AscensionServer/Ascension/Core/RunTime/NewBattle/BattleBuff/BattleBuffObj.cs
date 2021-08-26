@@ -131,7 +131,10 @@ namespace AscensionServer
                 switch (battleBuffData.battleBuffEventDataList[i].battleBuffEventType)
                 {
                     case BattleBuffEventType.RolePropertyChange:
-                        battleBuffEventBase = new BattleBuffEvent_ChangeProperty(battleBuffData.battleBuffEventDataList[i], this, battleSkillAddBuffData.battleSkillAddBuffValueList[i]);
+                        if(battleSkillAddBuffData.battleSkillAddBuffValueList.Count>i)
+                            battleBuffEventBase = new BattleBuffEvent_ChangeProperty(battleBuffData.battleBuffEventDataList[i], this, battleSkillAddBuffData.battleSkillAddBuffValueList[i]);
+                        else
+                            battleBuffEventBase = new BattleBuffEvent_ChangeProperty(battleBuffData.battleBuffEventDataList[i], this, null);
                         break;
                     case BattleBuffEventType.BuffPropertyChange:
                         battleBuffEventBase = new BattleBuffEvent_ChangeBuffProperty(battleBuffData.battleBuffEventDataList[i], this);

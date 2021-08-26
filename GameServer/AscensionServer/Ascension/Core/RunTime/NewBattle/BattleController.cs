@@ -153,7 +153,7 @@ namespace AscensionServer
                     //判断当前选中目标是否可以作为目标
                     BattleCharacterEntity tempEntity = targetCharacterList.Find((k) => k.UniqueID == targetIDList[i]);
                     BattleCharacterEntity tempEntity2=AllCharacterEntities.Find((k) => k.UniqueID == targetIDList[i]);
-                    if (tempEntity==null&& tempEntity2 ==null&& isAutoChangeTarget)
+                    if (tempEntity==null&& (tempEntity2 ==null|| tempEntity2.HasDie)&& isAutoChangeTarget)
                         continue;
                     AllIndexList.Remove(targetCharacterList.IndexOf(tempEntity));
                     resultList.Add(targetIDList[i]);

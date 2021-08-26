@@ -56,7 +56,6 @@ namespace AscensionServer
             int damageValue = 0;
             if (damageType == BattleSkillDamageType.Physic || damageType == BattleSkillDamageType.Magic)
             {
-                Utility.Debug.LogError($"对{TargetID}伤害加成{actorSkillAdditionDataList.Sum(p => p.DamgeAddition)}--{targetSkillAdditionDataList.Sum(p => p.DamgeAddition)}");
                 damageValue = (attackValue - defendValue) * (100 + selfCharacterBattleData.DamageAddition + actorSkillAdditionDataList.Sum(p => p.DamgeAddition) + targetSkillAdditionDataList.Sum(p => p.DamgeAddition) - targetCharacterBattleData.DamageDeduction) / 100;
             }
             else if (damageType == BattleSkillDamageType.Reality || damageType == BattleSkillDamageType.ShenHun)

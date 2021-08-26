@@ -680,7 +680,7 @@
                         {
                             "battleSkillDamageTargetProperty": 0,
                             "battleSkillNumSourceType": 7,
-                            "mulitity": 10
+                            "mulitity": 110
                         }
                     ],
                     "extraDamageAdditionSourceTarget": false,
@@ -776,7 +776,7 @@
             "battleSkillCostData": {
                 "battleSkillCostType": 2,
                 "percentValue": 1,
-                "fixedValue": 300
+                "fixedValue": 1
             },
             "battleSkillEventDataList": []
         },
@@ -2266,7 +2266,16 @@
                     "buffId": 20712,
                     "round": 3,
                     "TargetType": true,
-                    "battleSkillAddBuffValueList": [],
+                     "battleSkillAddBuffValueList": [
+                        {
+                            "percentValue": 0,
+                            "fixedValue": 0
+                        },
+						{
+                            "percentValue": 0,
+                            "fixedValue": 0
+                        }
+                    ],
                     "basePropList": [
                         100
                     ],
@@ -2419,7 +2428,7 @@
         },
         {
             "name": "土灵甲",
-            "id": 21511,
+            "id": 21511,	
             "describe": "土元素化成的铠甲，增加物理和法术防御力。",
             "TargetNumber": 2,
             "damageAddition": 0,

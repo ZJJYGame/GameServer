@@ -138,9 +138,16 @@ namespace AscensionServer
         {
             battleBuffEventType_RolePropertyChange = battleBuffEventData.battleBuffEventType_RolePropertyChange;
             buffRolePropertyChange_SourceDataType = battleBuffEventData.buffRolePropertyChange_SourceDataType;
-            fixedValue = battleBuffEventData.fixedValue + battleSkillAddBuffValue.fixedValue;
-            Utility.Debug.LogError($" battleBuffEventData.percentValue{ battleBuffEventData.percentValue}--battleSkillAddBuffValue.percentValue{battleSkillAddBuffValue.percentValue}");
-            percentValue = battleBuffEventData.percentValue + battleSkillAddBuffValue.percentValue;
+            if (battleSkillAddBuffValue != null)
+            {
+                fixedValue = battleBuffEventData.fixedValue + battleSkillAddBuffValue.fixedValue;
+                percentValue = battleBuffEventData.percentValue + battleSkillAddBuffValue.percentValue;
+            }
+            else
+            {
+                fixedValue = battleBuffEventData.fixedValue;
+                percentValue = battleBuffEventData.percentValue;
+            }
         }
     }
 }

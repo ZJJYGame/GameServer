@@ -52,7 +52,8 @@ namespace AscensionServer
             base.AllocationBattleAction();
             //todo 先临时将AI的行为设置为普通攻击
             BattleCmd = BattleCmd.SkillInstruction;
-            ActionID = 21001;
+            ActionID = 21114;
+            //ActionID = 21001;
             TargetIDList.Clear();
             //指令决定前buff触发事件
             BattleBuffController.TriggerBuffEventBeforeAllocationAction();

@@ -72,7 +72,7 @@ namespace AscensionServer
                 tempTargetList = owner.GetTargetIdList(skillID, false);
 
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(tempTargetList[0],owner.UniqueID);
-            battleBuffEventTriggerDTO.Num_1 = owner.BattleSkillController.nowUseSkillId;
+            battleBuffEventTriggerDTO.Num_1 = skillID;
 
             //用于恢复记录当前使用的技能
             int oldUseSkillId = owner.BattleSkillController.nowUseSkillId;
