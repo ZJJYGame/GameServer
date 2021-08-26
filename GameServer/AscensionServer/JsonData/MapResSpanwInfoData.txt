@@ -2,82 +2,60 @@
   "MapResSpawnInfoDict": {
     "0": {
       "ResId": 11001,
-      "ResAmount": 5,
+      "ResAmount": 26,
       "ResSpawnPositon": {
-        "X": 4500,
+        "X": -43600,
         "Y": 0,
-        "Z": -15800
+        "Z": -23700
       },
-      "ResSpawnRange": 5,
+      "ResSpawnRange": 50,
       "ResType": 2
     },
     "1": {
       "ResId": 11002,
-      "ResAmount": 6,
+      "ResAmount": 17,
       "ResSpawnPositon": {
-        "X": -3000,
+        "X": -19600,
         "Y": 0,
-        "Z": 13740
+        "Z": 59500
       },
-      "ResSpawnRange": 10,
+      "ResSpawnRange": 52,
       "ResType": 2
     },
     "2": {
       "ResId": 11006,
-      "ResAmount": 2,
+      "ResAmount": 10,
       "ResSpawnPositon": {
-        "X": -29100,
+        "X": -53000,
         "Y": 0,
-        "Z": 15200
+        "Z": 15500
       },
-      "ResSpawnRange": 10,
+      "ResSpawnRange": 26,
       "ResType": 2
     },
     "3": {
       "ResId": 11016,
-      "ResAmount": 1,
+      "ResAmount": 8,
       "ResSpawnPositon": {
         "X": 7080,
         "Y": 0,
         "Z": -13080
       },
-      "ResSpawnRange": 16,
+      "ResSpawnRange": 33,
       "ResType": 2
     },
     "4": {
       "ResId": 11403,
-      "ResAmount": 1,
+      "ResAmount": 24,
       "ResSpawnPositon": {
-        "X": 8380,
+        "X": -42400,
         "Y": 0,
-        "Z": -12030
+        "Z": -10800
       },
-      "ResSpawnRange": 20,
+      "ResSpawnRange": 92,
       "ResType": 2
     },
     "5": {
-      "ResId": 22001,
-      "ResAmount": 3,
-      "ResSpawnPositon": {
-        "X": 35600,
-        "Y": 0,
-        "Z": 12700
-      },
-      "ResSpawnRange": 10,
-      "ResType": 1
-    },
-    "6": {
-      "ResId": 22002,
-      "ResAmount": 3,
-      "ResSpawnPositon": {
-        "X": 9860,
-        "Y": 0,
-        "Z": -9660
-      },
-      "ResSpawnRange": 10,
-      "ResType": 1
-    },
-    "7": {
       "ResId": 22011,
       "ResAmount": 5,
       "ResSpawnPositon": {
@@ -85,10 +63,10 @@
         "Y": 0,
         "Z": -25400
       },
-      "ResSpawnRange": 16,
+      "ResSpawnRange": 69,
       "ResType": 1
     },
-    "8": {
+    "6": {
       "ResId": 22012,
       "ResAmount": 5,
       "ResSpawnPositon": {
@@ -99,7 +77,7 @@
       "ResSpawnRange": 10,
       "ResType": 1
     },
-    "9": {
+    "7": {
       "ResId": 22015,
       "ResAmount": 3,
       "ResSpawnPositon": {
@@ -110,16 +88,27 @@
       "ResSpawnRange": 20,
       "ResType": 1
     },
-    "10": {
+    "8": {
       "ResId": 11001,
-      "ResAmount": 10,
+      "ResAmount": 18,
       "ResSpawnPositon": {
-        "X": 36900,
+        "X": 74000,
         "Y": 0,
-        "Z": 57700
+        "Z": 15800
       },
-      "ResSpawnRange": 26,
+      "ResSpawnRange": 78,
       "ResType": 2
+    },
+    "9": {
+      "ResId": 22014,
+      "ResAmount": 19,
+      "ResSpawnPositon": {
+        "X": 23700,
+        "Y": 0,
+        "Z": 26200
+      },
+      "ResSpawnRange": 54,
+      "ResType": 1
     }
   }
 }

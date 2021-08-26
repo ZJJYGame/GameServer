@@ -26,7 +26,14 @@ namespace AscensionServer
             CommandEventCore.Instance.AddEventListener((byte)OperationCode.LevelRes, ProcessHandlerC2S);
             GameEntry.LevelManager.OnRoleEnterLevel += SYNResS2C;
             GameEntry.LevelManager.OnRoleExitLevel += FINResS2C;
-            SpawnRes();
+            try
+            {
+                SpawnRes();
+            }
+            catch (Exception e)
+            {
+                Utility.Debug.LogError(e);
+            }
         }
 
         void SpawnRes()
