@@ -44,6 +44,8 @@ namespace AscensionServer
             NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             var ExchangeExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._AllianceExchangeGoodsPerfix, goodsDTO.AllianceID.ToString()).Result;
             var roleExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleAlliancePerfix, roleID.ToString()).Result;
+            var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
+            var nHCriteriaRingID = ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
             if (ExchangeExist&& roleExist)
             {
                 var ExchangeObj= RedisHelper.Hash.HashGetAsync<AllianceExchangeGoodsDTO>(RedisKeyDefine._AllianceExchangeGoodsPerfix, goodsDTO.AllianceID.ToString()).Result;
@@ -56,7 +58,7 @@ namespace AscensionServer
                         {
                             if (exchangeDict.TryGetValue(item.Key, out var data))
                             {
-                                var hasgoods = InventoryManager.VerifyIsExist(item.Key, nHCriteria);
+                                var hasgoods = InventoryManager.VerifyIsExist(item.Key, nHCriteriaRingID);
                                 if (hasgoods)
                                 {
                                     var result = ExchangeObj.ExchangeGoods.ContainsKey(item.Key);
@@ -169,6 +171,11 @@ namespace AscensionServer
 
                             await RedisHelper.Hash.HashSetAsync<RoleAllianceDTO>(RedisKeyDefine._RoleAlliancePerfix, roleid.ToString(), rolealliance);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(rolealliance));
+                        }
+                        else
+                        {
+                            //TODO增加常量提示
+                            RoleStatusFailS2C(roleid, AllianceOpCode.ExchangeScripturesPlatform, "物品兑换失败");
                         }
                     }
                     else

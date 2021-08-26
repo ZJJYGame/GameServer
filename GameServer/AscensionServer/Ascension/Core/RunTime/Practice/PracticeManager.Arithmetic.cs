@@ -134,9 +134,7 @@ namespace AscensionServer
                 {
                     foreach (var item in roleMiShu.MiShuIDDict)
                     {
-                        NHCriteria nHCriteriamishu =ReferencePool.Accquire<NHCriteria>().SetValue("ID", item.Key);
-                        var mishuObj = NHibernateQuerier.CriteriaSelect<MiShu>(nHCriteriamishu);
-                        var temp = mishuDict[item.Key].mishuSkillDatas.Find(t=>t.MishuFloor== mishuObj.MiShuLevel);
+                        var temp = mishuDict[item.Key].mishuSkillDatas.Find(t=>t.MishuFloor== item.Value.MiShuLevel);
                         if (temp != null)
                             mishuStudyDict.Add(item.Key,temp);
                     }

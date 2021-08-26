@@ -15,7 +15,7 @@ namespace AscensionProtocol.DTO
         public virtual string RoleRoot { get; set; }
         public virtual string RoleName { get; set; }
         public virtual int RoleLevel { get; set; }
-
+        public virtual int RoleExp { get; set; }
         #region team  
         public virtual TeamInstructions teamInstructions { get; set; }
         public virtual TeamDTO teamDTO { get; set; } 
@@ -35,6 +35,7 @@ namespace AscensionProtocol.DTO
             RoleLevel = 0;
             teamInstructions = 0;
             teamDTO = null;
+            RoleExp = 0;
         }
         public override string ToString()
         {

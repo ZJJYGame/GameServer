@@ -21,7 +21,8 @@ namespace AscensionServer
             Map(x => x.CraryVaule).Column("craryvaule");
             Map(x => x.DemonID).Column("demon_id");
             Map(x => x.IsDemon).Column("isdemon");
-            Map(x => x.DrugNum).Column("drugnum");
+            Map(x => x.DrugID).Column("drugid");
+            Map(x => x.DrugPercent).Column("drugpercent");
             Table("role_bottleneck");
         }
     }

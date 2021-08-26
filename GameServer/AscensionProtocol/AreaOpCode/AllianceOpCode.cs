@@ -132,5 +132,6 @@ namespace AscensionProtocol
         /// 取消解散
         /// </summary>
         CancelDissolve = 34,
+
     }
 }

@@ -21,10 +21,10 @@ namespace AscensionProtocol.DTO
     [Serializable]
     public class BottleneckDTO : DataTransferObject
     {
-       public virtual int RoleID { get; set; }
+        public virtual int RoleID { get; set; }
         public virtual bool IsBottleneck { get; set; }
-        public virtual int  RoleLevel { get; set; }
-        public virtual bool IsThunder{ get; set; }
+        public virtual int RoleLevel { get; set; }
+        public virtual bool IsThunder { get; set; }
         public virtual bool IsDemon { get; set; }
         public virtual int SpiritualRootVaule { get; set; }
         public virtual int ThunderRound { get; set; }
@@ -32,21 +32,40 @@ namespace AscensionProtocol.DTO
         public virtual int BreakThroughVauleMax { get; set; }
         public virtual int CraryVaule { get; set; }
         public virtual int DemonID { get; set; }
-        public virtual int DrugNum { get; set; }
+        public virtual int DrugPercent { get; set; }
+        public virtual int DrugID { get; set; }
+
+        public BottleneckDTO()
+            {
+            IsBottleneck = false;
+            RoleLevel = 0;
+            IsThunder = false;
+            SpiritualRootVaule = 0;
+            ThunderRound = 0;
+            BreakThroughVauleNow = 0;
+            BreakThroughVauleMax = 0;
+            CraryVaule = 0;
+            DemonID = 0;
+            DrugID = 0;
+            IsDemon = false;
+            DrugPercent = 0;
+        }
+
         public override void Release()
         {
             RoleID = -1;
             IsBottleneck = false;
-            RoleLevel = -1;
+            RoleLevel = 0;
             IsThunder = false;
-            SpiritualRootVaule = -1;
-            ThunderRound = -1;
-            BreakThroughVauleNow = -1;
-            BreakThroughVauleMax = -1;
-            CraryVaule = -1;
-            DemonID = -1;
-            DrugNum = -1;
+            SpiritualRootVaule = 0;
+            ThunderRound = 0;
+            BreakThroughVauleNow = 0;
+            BreakThroughVauleMax = 0;
+            CraryVaule = 0;
+            DemonID = 0;
+            DrugID =0;
             IsDemon = false;
+            DrugPercent = 0;
         }
     }
 }

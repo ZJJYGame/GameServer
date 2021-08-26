@@ -24,6 +24,7 @@ namespace AscensionServer
             Utility.Debug.LogInfo("YZQjueseid为" + Convert.ToString(packet.DataMessage));
             RoleDTO role;
             OnOffLineDTO onOffLine;
+            BottleneckDTO bottleneckDTO;
             foreach (var item in dict)
             {
                 switch ((PracticeOpcode)item.Key)
@@ -58,10 +59,16 @@ namespace AscensionServer
                         GetOffLineExpS2C(role.RoleID);
                         break;
                     case PracticeOpcode.UseBottleneckElixir:
+                        bottleneckDTO=Utility.Json.ToObject<BottleneckDTO>(item.Value.ToString());
+                        UseBottleneckElixir(bottleneckDTO.RoleID, bottleneckDTO.DrugID);
                         break;
                     case PracticeOpcode.UpdateBottleneck://突破使用
+                        role = Utility.Json.ToObject<RoleDTO>(item.Value.ToString());
+                        UpdateBottleneckAsync(role);
                         break;
                     case PracticeOpcode.DemonicBattle:
+                        role = Utility.Json.ToObject<RoleDTO>(item.Value.ToString());
+                        DemonicBattle(role);
                         break;
                     case PracticeOpcode.ThunderRoundBattle:
                         break;
@@ -70,7 +77,6 @@ namespace AscensionServer
                 }
             }
         }
-
         /// <summary>
         /// 失败返回
         /// </summary>
@@ -78,6 +84,23 @@ namespace AscensionServer
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
+            opData.ReturnCode = (short)ReturnCode.Fail;
+            var dataDict = new Dictionary<byte, object>();
+            dataDict.Add((byte)opcode, tips);
+            opData.DataMessage = Utility.Json.ToJson(dataDict);
+            GameEntry.RoleManager.SendMessage(roleID, opData);
+        }
+        /// <summary>
+        /// 数据未找到返回
+        /// </summary>
+        /// <param name="roleID"></param>
+        /// <param name="opcode"></param>
+        /// <param name="tips"></param>
+        void ResultNotFoundS2C(int roleID, PracticeOpcode opcode, string tips = null)
+        {
+            OperationData opData = new OperationData();
+            opData.OperationCode = (byte)OperationCode.SyncPractice;
+            opData.ReturnCode = (short)ReturnCode.ItemNotFound;
             var dataDict = new Dictionary<byte, object>();
             dataDict.Add((byte)opcode, tips);
             opData.DataMessage = Utility.Json.ToJson(dataDict);
@@ -93,7 +116,7 @@ namespace AscensionServer
         {
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
-            opData.ReturnCode = (short)ReturnCode.Fail;
+            opData.ReturnCode = (short)ReturnCode.Success;
             var dataDict = new Dictionary<byte, object>();
             dataDict.Add((byte)opcode, Utility.Json.ToJson(data));
             opData.DataMessage = Utility.Json.ToJson(dataDict);
