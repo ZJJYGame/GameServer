@@ -360,7 +360,7 @@
             9.增加宠物资质
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:AscensionServer.Faction_LevelType" -->
+        <!-- 对于成员“T:AscensionServer.Faction_LevelType”忽略有格式错误的 XML 注释 -->
         <member name="T:AscensionServer.FactionItemType">
             <summary>
             藏宝阁主库
@@ -405,7 +405,7 @@
             5.传说的
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:AscensionServer.MapResSpanwInfoData" -->
+        <!-- 对于成员“T:AscensionServer.MapResSpanwInfoData”忽略有格式错误的 XML 注释 -->
         <member name="P:AscensionServer.MapResSpanwInfoData.MapResSpawnInfoDict">
             <summary>
             此数据为：地图资源的生成信息。将数据转换Fix类型后用于传输；
@@ -687,7 +687,7 @@
             <param name="type">mp标记的对象类型</param>
             <returns>反序列化后的对象</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:AscensionServer.ImplMessagePackHelper.SerializeToJson``1(``0)" -->
+        <!-- 对于成员“M:AscensionServer.ImplMessagePackHelper.SerializeToJson``1(``0)”忽略有格式错误的 XML 注释 -->
         <member name="M:AscensionServer.ImplMessagePackHelper.SerializeToJsonBytes``1(``0)">
             <summary>
             对象序列化成json的bytes；
@@ -3201,11 +3201,6 @@
         </member>
         <member name="M:AscensionServer.PracticeManager.UpdateBottleneckAsync(AscensionProtocol.DTO.RoleDTO)">
             <summary>
-            突破瓶颈暂用
-            </summary>
-        </member>
-        <member name="M:AscensionServer.PracticeManager.UpdateBottleneckAsync2(AscensionProtocol.DTO.RoleDTO)">
-            <summary>
             突破瓶颈
             </summary>
             <param name="role"></param>
@@ -3215,10 +3210,23 @@
             触发心魔战斗
             </summary>
         </member>
+        <member name="M:AscensionServer.PracticeManager.ThunderRoundBattle(AscensionProtocol.DTO.RoleDTO)">
+            <summary>
+            触发天劫战斗
+            </summary>
+        </member>
         <member name="M:AscensionServer.PracticeManager.ResultFailS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.String)">
             <summary>
             失败返回
             </summary>
+        </member>
+        <member name="M:AscensionServer.PracticeManager.ResultEmptyS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="roleID"></param>
+            <param name="opcode"></param>
+            <param name="tips"></param>
         </member>
         <member name="M:AscensionServer.PracticeManager.ResultNotFoundS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.String)">
             <summary>
@@ -3235,14 +3243,6 @@
             <param name="roleID"></param>
             <param name="opcode"></param>
             <param name="data"></param>
-        </member>
-        <member name="M:AscensionServer.PracticeManager.ResultSuccseS2C(System.Int32,AscensionProtocol.PracticeOpcode,System.Collections.Generic.Dictionary{System.Byte,System.Object})">
-            <summary>
-            结果成功返回多参数
-            </summary>
-            <param name="roleID"></param>
-            <param name="opcode"></param>
-            <param name="dict"></param>
         </member>
         <member name="M:AscensionServer.PracticeManager.GetRoleGongFaS2C(System.Int32)">
             <summary>
@@ -4423,7 +4423,7 @@
             发送消息到remotePeer
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:AscensionServer.AscensionPeer.SendEventMsg(System.Byte,System.Collections.Generic.Dictionary{System.Byte,System.Object})" -->
+        <!-- 对于成员“M:AscensionServer.AscensionPeer.SendEventMsg(System.Byte,System.Collections.Generic.Dictionary{System.Byte,System.Object})”忽略有格式错误的 XML 注释 -->
         <member name="M:AscensionServer.AscensionPeer.OnMessage(System.Object,Photon.SocketServer.SendParameters)">
             <summary>
             接收到客户端消息；

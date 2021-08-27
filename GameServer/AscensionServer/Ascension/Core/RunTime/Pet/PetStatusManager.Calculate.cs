@@ -275,8 +275,7 @@ namespace AscensionServer
             NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             var role = NHibernateQuerier.CriteriaSelect<Role>(nHCriteria);
             var ringServer = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
-            var nHCriteriaRingID =ReferencePool.Accquire<NHCriteria>().SetValue("ID", ringServer.RingIdArray);
-            if (!InventoryManager.VerifyIsExist(itemid, nHCriteriaRingID))
+            if (!InventoryManager.VerifyIsExist(itemid, petLevelDataDict[pet.PetID].NeedItemNumber, ringServer.RingIdArray))
             {
                 //发送失败
                 ResultFailS2C(roleid, RolePetOpCode.ResetPetStatus,"背包物品不存在");

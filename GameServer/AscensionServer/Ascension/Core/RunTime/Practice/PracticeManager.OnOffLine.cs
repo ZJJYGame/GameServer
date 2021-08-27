@@ -97,7 +97,7 @@ namespace AscensionServer
                                         Utility.Debug.LogInfo("YZQ获取离线经验所需要计算的时间"+ interval.TotalSeconds);
                                         exp = (int)interval.TotalSeconds / 5 * redisRoleStatus.GongfaLearnSpeed;
                                         var bottleneckObj = AddGongFaExp(role, redisGongfa.GongFaIDDict[redisOnOffLine.MsGfID], exp, out Role roleObj);
-
+                                        Utility.Debug.LogError("YZQonoffLine判断瓶颈进来了3" + Utility.Json.ToJson(bottleneckObj));
                                         var status = RoleStatusAlgorithm(roleID, null, null, null, null, null, null, role.RoleLevel);
 
                                         dict = new Dictionary<byte, object>();
@@ -352,10 +352,8 @@ namespace AscensionServer
                                 return;
                             }else
                             {
-                                exp = (int)interval.TotalSeconds / 5 * redisRoleStatus.GongfaLearnSpeed;
-
-                                var bottleneckObj = AddGongFaExp(role, rolegongfaObj.GongFaIDDict[onOffLineObj.MsGfID], exp, out Role roleObj);
-                                bottleneckObj.RoleID = roleID;
+                                exp = (int)interval.TotalSeconds / 5 * redisRoleStatus.GongfaLearnSpeed;                   var bottleneckObj = AddGongFaExp(role, rolegongfaObj.GongFaIDDict[onOffLineObj.MsGfID], exp, out Role roleObj);
+                                Utility.Debug.LogError("YZQonoffLine判断瓶颈进来了3" + Utility.Json.ToJson(bottleneckObj));
                                 role = roleObj;
                                 rolealliance.RoleLevel = roleObj.RoleLevel;
                                 dict = new Dictionary<byte, object>();
@@ -389,8 +387,6 @@ namespace AscensionServer
                                     await NHibernateQuerier.UpdateAsync(rolealliance);
                                     #endregion
                                 }
-
-
                             }
                         }
                         else
@@ -597,50 +593,42 @@ namespace AscensionServer
             bool isbottleneck;
             GameEntry.DataManager.TryGetValue<Dictionary<int, RoleLevelData>>(out var roleDict);
             var result = roleDict.TryGetValue(role.RoleLevel, out var roleData);
-            if (gongFaDict.TryGetValue(cultivation.CultivationMethodID, out var gongFa)&& result)
+            if (gongFaDict.TryGetValue(cultivation.CultivationMethodID, out var gongFa) && result)
             {
                 if (role.RoleLevel < gongFa.Max_Level_ID)//判断当前等级是否超出所选功法
                 {
-                    if (roleData.IsFinalLevel == 0)//是否处于境界突破
+                    if (roleData.ExpLevelUp <= role.roleExp + exp)//经验是否满足突破
                     {
-                        if (roleData.ExpLevelUp <= role.roleExp + exp)//经验是否满足突破
+                        bottleneck = TriggerBottleneckS2C(role.RoleID, role.RoleLevel, out isbottleneck);
+                        Utility.Debug.LogError("YZQonoffLine判断瓶颈进来了" + Utility.Json.ToJson(bottleneck));
+                        if (bottleneck != null)
                         {
-                            role.RoleLevel = roleData.NextLevelID;
-                            role.roleExp = role.roleExp + exp - roleData.ExpLevelUp;
-
-                            bottleneck = TriggerBottleneckS2C(role.RoleID, role.RoleLevel, out isbottleneck);
-                            if (bottleneck!=null)
+                            if (!isbottleneck)//是否触发瓶颈
                             {
-                                if (!isbottleneck)//是否触发瓶颈
-                                {
-                                    AddGongFaExp(role, cultivation, 0, out roleObj);
-                                    return bottleneck;
-                                }
-                                else
-                                {
-                                    roleObj = role;
-                                    //返回瓶颈数据
-                                    return bottleneck;
-                                }
+                                role.RoleLevel = roleData.NextLevelID;
+                                role.roleExp = role.roleExp + exp - roleData.ExpLevelUp;
+                                Utility.Debug.LogError("YZQonoffLine判断瓶颈进来了01" + Utility.Json.ToJson(bottleneck));
+                                return AddGongFaExp(role, cultivation, 0, out roleObj);
+                                //return bottleneck;
                             }
                             else
-                                Utility.Debug.LogError("数据库查询数据查找出错");
-
+                            {
+                                role.roleExp = roleData.ExpLevelUp;
+                                roleObj = role;
+                                //返回瓶颈数据
+                                Utility.Debug.LogError("YZQonoffLine判断瓶颈进来了02" + Utility.Json.ToJson(bottleneck));
+                                return bottleneck;
+                            }
                         }
                         else
-                        {
-                            //不足以升级增加经验直接返回
-                            role.roleExp +=  exp;
-                           
-             
-                        }
+                            Utility.Debug.LogError("数据库查询数据查找出错");
+
                     }
                     else
                     {
-                        //直接返回所需数据,瓶颈数据无需更改
-                        if (roleData.ExpLevelUp <= role.roleExp + exp)
-                        { role.roleExp = roleData.ExpLevelUp; }
-                        else role.roleExp += exp;
+                        //不足以升级增加经验直接返回
+                        role.roleExp += exp;
+                        Utility.Debug.LogError("YZQonoffLine未判断瓶颈");
 
                     }
                 }
@@ -649,6 +637,7 @@ namespace AscensionServer
             }
             else Utility.Debug.LogError("功法Json表数据查找出错");
             roleObj = role;
+            Utility.Debug.LogError("YZQonoffLine判断瓶颈进来了2" + Utility.Json.ToJson(bottleneck));
             return bottleneck;
         }
 
@@ -753,5 +742,6 @@ namespace AscensionServer
             roleAlliance.RoleName = roleAllianceDTO.RoleName;
             return roleAlliance;
         }
+
     }
 }
