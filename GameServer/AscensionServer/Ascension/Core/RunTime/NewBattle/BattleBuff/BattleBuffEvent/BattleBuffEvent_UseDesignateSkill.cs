@@ -67,9 +67,9 @@ namespace AscensionServer
         {
             List<int> tempTargetList;
             if (target != null)
-                tempTargetList = owner.GetTargetIdList(skillID, false, new List<int>() { target.UniqueID });
+                tempTargetList = owner.GetSkillTargetIdList(skillID, false, new List<int>() { target.UniqueID });
             else
-                tempTargetList = owner.GetTargetIdList(skillID, false);
+                tempTargetList = owner.GetSkillTargetIdList(skillID, false);
 
             BattleBuffEventTriggerDTO battleBuffEventTriggerDTO = GetBuffEventTriggerDTO(tempTargetList[0],owner.UniqueID);
             battleBuffEventTriggerDTO.Num_1 = skillID;

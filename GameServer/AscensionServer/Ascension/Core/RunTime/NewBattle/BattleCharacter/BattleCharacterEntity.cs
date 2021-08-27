@@ -99,7 +99,7 @@ namespace AscensionServer
         /// <param name="skillID">技能id</param>
         /// <param name="targetList">初始指定的目标列表</param>
         /// <returns></returns>
-        public virtual List<int> GetTargetIdList(int skillID, bool isAutoChangeTarget, List<int> targetList = null)
+        public virtual List<int> GetSkillTargetIdList(int skillID, bool isAutoChangeTarget, List<int> targetList = null)
         {
             List<int> resultList = new List<int>();
             GameEntry.DataManager.TryGetValue<Dictionary<int, BattleSkillData>>(out var battleskillDataDict);

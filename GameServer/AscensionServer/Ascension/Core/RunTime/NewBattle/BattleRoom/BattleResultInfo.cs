@@ -10,5 +10,14 @@ namespace AscensionServer
     {
         public bool isWin;
         public int[] CharacterId;
+        public bool ContainsCharacter(int characterId)
+        {
+            if (CharacterId == null)
+                return false;
+            if (CharacterId.Contains(characterId))
+                return true;
+            else
+                return false;
+        }
     }
 }

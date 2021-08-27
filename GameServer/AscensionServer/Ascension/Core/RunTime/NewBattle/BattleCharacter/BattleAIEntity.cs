@@ -57,7 +57,7 @@ namespace AscensionServer
             TargetIDList.Clear();
             //指令决定前buff触发事件
             BattleBuffController.TriggerBuffEventBeforeAllocationAction();
-            TargetIDList = GetTargetIdList(ActionID,true,TargetIDList);
+            TargetIDList = GetSkillTargetIdList(ActionID,true,TargetIDList);
         }
 
         public override void Release()

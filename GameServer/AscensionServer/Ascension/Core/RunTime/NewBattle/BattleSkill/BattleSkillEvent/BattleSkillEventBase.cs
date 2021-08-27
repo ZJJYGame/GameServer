@@ -72,7 +72,7 @@ namespace AscensionServer
             Utility.Debug.LogError("触发释放技能事件");
             if (!battleSkillEventConditionBase.CanTrigger(battleDamageData))
                 return;
-            List<int> tempTargetList = ownerSkill.OwnerEntity.GetTargetIdList(triggerSkillID,battleSkillEventData.isAutoChangeTarget, new List<int>() { battleDamageData.TargetID });
+            List<int> tempTargetList = ownerSkill.OwnerEntity.GetSkillTargetIdList(triggerSkillID,battleSkillEventData.isAutoChangeTarget, new List<int>() { battleDamageData.TargetID });
             ownerSkill.OwnerEntity.BattleSkillController.UseSkill(triggerSkillID, tempTargetList,false);
             Utility.Debug.LogError("触发释放技能事件成功");
         }

@@ -13,6 +13,7 @@ namespace AscensionServer
     {
         //上场的宠物ID；
         public int PetID { get; protected set; }
+        public bool Gender { get; protected set; }
 
         public void InitPlayer(int roomID, int roleID,BattleFactionType battleFactionType)
         {
@@ -27,6 +28,7 @@ namespace AscensionServer
             UniqueID = roleID;
             GlobalID = 0;
             MasterID = -1;
+            Gender = role.RoleGender;
             BattleFactionType = battleFactionType;
             Name = role.RoleName;
             RoomID = roomID;
@@ -37,9 +39,9 @@ namespace AscensionServer
             CharacterBattleDataDTO characterBattleDataDTO = new CharacterBattleDataDTO()
             {
                 UniqueId = UniqueID,
-                GlobalId=0,
-                MasterId=0,
-                ModelPath= "MC_fashion_Female_01_Prefab",
+                GlobalId = 0,
+                MasterId = 0,
+                ModelPath = Gender ? "MC_Battle_Male_01_Prefab" : "MC_fashion_Female_01_Prefab",
                 CharacterName =Name,
                 MaxHealth = CharacterBattleData.MaxHp,
                 Health = CharacterBattleData.Hp,
@@ -73,7 +75,26 @@ namespace AscensionServer
             //todo 先临时将AI的行为设置为普通攻击
             //指令决定前buff触发事件
             BattleBuffController.TriggerBuffEventBeforeAllocationAction();
-            TargetIDList = GetTargetIdList(ActionID, true, TargetIDList);
+            switch (BattleCmd)
+            {
+                case BattleCmd.PropsInstruction:
+                    break;
+                case BattleCmd.SkillInstruction:
+                    TargetIDList = GetSkillTargetIdList(ActionID, true, TargetIDList);
+                    break;
+                case BattleCmd.RunAwayInstruction:
+                    break;
+                case BattleCmd.MagicWeapon:
+                    break;
+                case BattleCmd.CatchPet:
+                    break;
+                case BattleCmd.SummonPet:
+                    break;
+                case BattleCmd.Tactical:
+                    break;
+                case BattleCmd.Defend:
+                    break;
+            }
         }
 
         public void SendMessage(OperationData opData)
