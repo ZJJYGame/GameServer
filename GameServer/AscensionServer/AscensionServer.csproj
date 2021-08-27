@@ -245,6 +245,7 @@
     <Compile Include="Ascension\Core\RunTime\Auction\AuctionManager.Message.cs" />
     <Compile Include="Ascension\Core\RunTime\Auction\AuctionManager.Method.cs" />
     <Compile Include="Ascension\Core\RunTime\Auction\IAuctionManager.cs" />
+    <Compile Include="Ascension\Core\RunTime\LevelRes\LevelResDataProxy.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_ShieldAdd.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\BattleBuff\BattleBuffEvent\BattleBuffEvent_ShieldResistDamages.cs" />
     <Compile Include="Ascension\Core\RunTime\NewBattle\ServerBattleManager.enum.cs" />
