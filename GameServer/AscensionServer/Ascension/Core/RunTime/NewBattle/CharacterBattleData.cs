@@ -204,7 +204,7 @@ namespace AscensionServer
         /// <summary>
         /// 获取基础对应属性
         /// </summary>
-        public float GetBaseProperty(BuffEvent_RolePropertyChange_SourceDataType buffEvent_RolePropertyChange_SourceDataType, BattleSkillBase battleSkillBase)
+        public float GetBaseProperty(BuffEvent_RolePropertyChange_SourceDataType buffEvent_RolePropertyChange_SourceDataType, BattleSkillObj battleSkillBase)
         {
             switch (buffEvent_RolePropertyChange_SourceDataType)
             {

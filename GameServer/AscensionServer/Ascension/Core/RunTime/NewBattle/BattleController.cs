@@ -215,7 +215,7 @@ namespace AscensionServer
         {
             for (int i = 0; i < battleCharacterEntities.Count; i++)
             {
-                if (tempDict[battleCharacterEntities[i].BattleCharacterType] == null)
+                if (!tempDict.ContainsKey(battleCharacterEntities[i].BattleCharacterType))
                     tempDict[battleCharacterEntities[i].BattleCharacterType] = new List<BattleResultInfo>();
                 BattleResultInfo battleResultInfo = default;
                 switch (battleCharacterEntities[i].BattleCharacterType)

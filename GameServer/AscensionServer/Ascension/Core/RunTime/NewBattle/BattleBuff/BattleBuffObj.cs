@@ -16,7 +16,7 @@ namespace AscensionServer
         public BattleCharacterEntity Owner { get; protected set; }
         //buff的来源
         public BattleCharacterEntity OrginRole { get { return OwnerSkill.OwnerEntity; } }
-        public BattleSkillBase OwnerSkill { get; protected set; }
+        public BattleSkillObj OwnerSkill { get; protected set; }
         public BattleController BattleController { get; protected set; }
 
         public int BuffId { get; protected set; }
@@ -58,7 +58,7 @@ namespace AscensionServer
             remove { buffCoverEvent -= value; }
         }
 
-        public void SetData(BattleBuffData battleBuffData,BattleCharacterEntity owner,BattleSkillBase battleSkillBase, BattleSkillAddBuffData battleSkillAddBuffData)
+        public void SetData(BattleBuffData battleBuffData,BattleCharacterEntity owner,BattleSkillObj battleSkillBase, BattleSkillAddBuffData battleSkillAddBuffData)
         {
             Owner = owner;
             OwnerSkill = battleSkillBase;
