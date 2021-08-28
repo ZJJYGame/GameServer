@@ -212,14 +212,13 @@ namespace AscensionServer
                         if (bottleneckObj.IsBottleneck && bottleneckObj.BreakThroughVauleNow < bottleneckObj.BreakThroughVauleMax)
                         {
                             var num = drugData.Drug_Value  * (bottleneckObj.BreakThroughVauleMax / 100);
-                            if ((bottleneckObj.BreakThroughVauleNow + num) < bottleneckObj.BreakThroughVauleMax && bottleneckObj.DrugPercent < 100)
+                            if ((bottleneckObj.BreakThroughVauleNow + num) < bottleneckObj.BreakThroughVauleMax)
                             {
                                 bottleneckObj.BreakThroughVauleNow += num;
                             }
                             else
                                 bottleneckObj.BreakThroughVauleNow = bottleneckObj.BreakThroughVauleMax;
 
-                            bottleneckObj.DrugPercent += drugData.Drug_Value;
                             ResultSuccseS2C(roleid, PracticeOpcode.UseBottleneckElixir, bottleneckObj);
                             InventoryManager.UpdateNewItem(roleid, itemid, 1);
 

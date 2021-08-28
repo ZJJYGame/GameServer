@@ -179,6 +179,12 @@ namespace AscensionServer
                                 }
                             }
                         }
+                        for (int i = 0; i < formulaData.NeedItemArray.Count; i++)
+                        {
+                            InventoryManager.UpdateNewItem(roleID, formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i]);
+                        }
+
+
                         role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
                         InventoryManager.AddNewItem(roleID, formulaData.ItemID, 1);
@@ -313,6 +319,11 @@ namespace AscensionServer
                                 }
                             }
                         }
+                        for (int i = 0; i < formulaData.NeedItemArray.Count; i++)
+                        {
+                            InventoryManager.UpdateNewItem(roleID, formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i]);
+                        }
+
                         role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
                         InventoryManager.AddNewItem(roleID, formulaData.ItemID, 1);

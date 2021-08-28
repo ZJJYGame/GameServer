@@ -68,7 +68,7 @@ namespace AscensionServer
                     abilityPointDTO.AbilityPointSln = pointSlnDict;
                     petAbilityPoint.AbilityPointSln = Utility.Json.ToJson(pointSlnDict);
 
-                    var status = VerifyPetAllStatus(petAbilityPoint.ID, ChangeDataType(petAbilityPoint), null, null);
+                    var status = VerifyPetAllStatus(abilityPointDTO.ID, ChangeDataType(petAbilityPoint), null, null);
                     status.PetID = abilityPointDTO.ID;
                     Dictionary<byte, object> dict = new Dictionary<byte, object>();
                     dict.Add((byte)ParameterCode.PetStatus, status);

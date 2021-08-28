@@ -411,42 +411,19 @@ namespace AscensionServer
             {
                 Utility.Debug.LogError("收到宠物使用丹药8");
                 var role = RedisHelper.Hash.HashGetAsync<RoleDTO>(RedisKeyDefine._RolePostfix , roleid.ToString()).Result;
-                pet.PetExp += drugData.Drug_Value;
-                Utility.Debug.LogInfo("yzqData宠物即将使用加经验丹药" + pet.PetExp);
-                if (petLevelDataDict[pet.PetLevel].ExpLevelUp <= pet.PetExp)
+                var level = pet.PetLevel;
+                if (pet.PetLevel <= role.RoleLevel)
                 {
-                    if (petLevelDataDict[pet.PetLevel].IsFinalLevel)
-                    {
-                        pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                        Utility.Debug.LogInfo("yzqData使用加经验丹药即将进阶");
-                        //todo使用丹药失败                    
-                        ResultFailS2C(roleid, RolePetOpCode.PetDrugFresh);
-                        return;
-                    }
-                    else
-                    {
-                        pet.PetExp = pet.PetExp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                        var level = pet.PetLevel;
-                        if (level < role.RoleLevel)
-                        {
-                            pet.PetLevel += 1;
-                            pet= PetUpdateLevel(petLevelDataDict, pet, role, pet.PetExp);
-                        }
-                        else if (level == role.RoleLevel&& petLevelDataDict[pet.PetLevel].ExpLevelUp<= pet.PetExp)
-                        {
-                            pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                        }
-                        else
-                        {
-                            //增加升级判断提示，不能大于人物等级
-                            //todo使用丹药失败
-                            ResultFailS2C(roleid, RolePetOpCode.PetDrugFresh);
-                            return;
+                    pet = PetUpdateLevel(petLevelDataDict, pet, role, drugData.Drug_Value);
+                }
 
-                        }
-                        //TODO刷新寵物所有屬性
-                        Utility.Debug.LogInfo("yzqData使用加经验丹药" + pet.PetExp);
-                    }
+                else
+                {
+                    //增加升级判断提示，不能大于人物等级
+                    //todo使用丹药失败
+                    ResultFailS2C(roleid, RolePetOpCode.PetDrugFresh);
+                    return;
+
                 }
                 await NHibernateQuerier.UpdateAsync(pet);
                 var petAbility = await RedisHelper.Hash.HashGetAsync<PetAbilityPointDTO>(RedisKeyDefine._PetAbilityPointPerfix, pet.ID.ToString());
@@ -957,41 +934,39 @@ namespace AscensionServer
         /// <summary>
         /// 宠物升级判断处理
         /// </summary>
-        Pet PetUpdateLevel(Dictionary<int, PetLevelData> petLevelDataDict,Pet pet, RoleDTO role,int exp)
+        Pet PetUpdateLevel(Dictionary<int, PetLevelData> petLevelDataDict, Pet pet, RoleDTO role, int exp)
         {
-            
+
             if (petLevelDataDict[pet.PetLevel].IsFinalLevel)
             {
-                if (petLevelDataDict[pet.PetLevel].ExpLevelUp <= pet.PetExp)
+                if (petLevelDataDict[pet.PetLevel].ExpLevelUp <= (pet.PetExp + exp))
                 {
                     pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
                     Utility.Debug.LogInfo("yzqData使用加经验丹药即将进阶");
                 }
-
+                else
+                    pet.PetExp += exp;
             }
             else
             {
-                pet.PetExp = pet.PetExp + exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                if ((pet.PetExp + exp) > petLevelDataDict[pet.PetLevel].ExpLevelUp)
+                if ((pet.PetExp + exp) >= petLevelDataDict[pet.PetLevel].ExpLevelUp)
                 {
                     var level = pet.PetLevel;
                     if (level < role.RoleLevel)
                     {
-                        pet.PetLevel += 1;
                         pet.PetExp = pet.PetExp + exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                       return PetUpdateLevel(petLevelDataDict, pet, role, 0);
+                        pet.PetLevel = petLevelDataDict[pet.PetLevel].NextLevelID;
+                        return PetUpdateLevel(petLevelDataDict, pet, role, 0);
                     }
                     else if (level == role.RoleLevel)
                     {
-                        if ((pet.PetExp + exp) >= petLevelDataDict[pet.PetLevel].ExpLevelUp)
-                        {
-                            pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                        }
-                        else
-                            pet.PetExp += exp;
-                        return pet;
+                        pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
                     }
+                    else
+                        return pet;
                 }
+                else
+                    pet.PetExp += exp;
             }
             return pet;
         }
