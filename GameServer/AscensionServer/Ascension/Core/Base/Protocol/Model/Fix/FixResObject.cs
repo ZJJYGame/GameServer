@@ -9,13 +9,13 @@ namespace AscensionServer
     [Serializable]
     public class FixResObject:IDisposable
     {
-        public int Id { get; set; }
+        public int Index { get; set; }
         public bool Occupied { get; set; }
         public FixTransform FixTransform { get; set; }
         public void Dispose()
         {
             FixTransform = FixTransform.Zero;
-            Id = -1;
+            Index = -1;
             Occupied = false;
         }
     }

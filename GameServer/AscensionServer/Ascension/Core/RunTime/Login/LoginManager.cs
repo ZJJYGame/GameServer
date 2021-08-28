@@ -40,7 +40,7 @@ namespace AscensionServer
                 {
                     roleIdListInt.Add(int.Parse(roleIdListStr[i]));
                 }
-                return  roleIdListInt.ToArray();
+                return roleIdListInt.ToArray();
             }
             return null;
         }
@@ -107,7 +107,7 @@ namespace AscensionServer
         }
         void CreateRoleS2C(int sessionId, Dictionary<byte, object> dataMessage)
         {
-            var createRoleHelper =ReferencePool.Accquire(createRoleHelperType) as ICreateRoleHelper;
+            var createRoleHelper = ReferencePool.Accquire(createRoleHelperType) as ICreateRoleHelper;
             var opData = createRoleHelper.CreateRole(dataMessage);
             opData.OperationCode = (byte)OperationCode.LoginArea;
             opData.SubOperationCode = (short)LoginAreaOpCode.CreateRole;
@@ -127,9 +127,11 @@ namespace AscensionServer
             var roleExist = GameEntry.RoleManager.TryGetValue(roleObj.RoleID, out var remoteRole);
             if (roleExist)
             {
-                GameEntry.PeerManager.TryGetValue(remoteRole.SessionId, out var pa);
-                pa.SendMessage((byte)OperationCode.LoginArea, (short)LoginAreaOpCode.LogoffRole, null);//从这里发送挤下线消息；
-                GameEntry.RoleManager.TryRemove(roleObj.RoleID);
+                if (GameEntry.PeerManager.TryGetValue(remoteRole.SessionId, out var pa))
+                {
+                    pa.SendMessage((byte)OperationCode.LoginArea, (short)LoginAreaOpCode.LogoffRole, null);//从这里发送挤下线消息；
+                    GameEntry.RoleManager.TryRemove(roleObj.RoleID);
+                }
             }
             IPeerEntity peerAgent;
             var result = GameEntry.PeerManager.TryGetValue(sessionId, out peerAgent);

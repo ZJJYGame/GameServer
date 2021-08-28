@@ -12,7 +12,10 @@ namespace AscensionServer
         /// <summary>
         /// GId;
         /// </summary>
-        public int Id { get; set; }
+        public int GId { get; set; }
+        /// <summary>
+        /// EleId---FixResObject;
+        /// </summary>
         public Dictionary<int, FixResObject> CombatableDict { get; set; }
         public void RenewalAll()
         {
@@ -30,7 +33,7 @@ namespace AscensionServer
         }
         public void Dispose()
         {
-            Id = -1;
+            GId = -1;
             CombatableDict.Clear();
         }
     }

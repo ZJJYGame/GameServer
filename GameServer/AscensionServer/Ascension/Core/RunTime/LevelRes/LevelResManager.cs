@@ -66,6 +66,7 @@ namespace AscensionServer
         }
         void FINResS2C(LevelTypeEnum levelType, int levelId, int roleId)
         {
+            adventureLevelResEntity.ReleaseCombat(roleId);
             Utility.Debug.LogWarning("FINResS2C");
         }
         void GatherS2C(int sessionId, OperationData packet)

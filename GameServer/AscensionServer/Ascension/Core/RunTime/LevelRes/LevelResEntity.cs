@@ -48,7 +48,7 @@ namespace AscensionServer
             GameEntry.DataManager.TryGetValue<MapResSpanwInfoData>(out var resSpawnInfoData);
             levelResEntityDataProxy.InitEntityRes(resSpawnInfoData);
         }
-        public void SetCallback(Action<int,LevelResObject>combatSuccess, Action<int, LevelResObject> combatFailure)
+        public void SetCallback(Action<int, LevelResObject> combatSuccess, Action<int, LevelResObject> combatFailure)
         {
             this.combatSuccess = combatSuccess;
             this.combatFailure = combatFailure;
@@ -89,6 +89,11 @@ namespace AscensionServer
         {
             LevelId = 0;
             LevelType = LevelTypeEnum.None;
+        }
+        public void ReleaseCombat(int roleId)
+        {
+            if (roleResObjDict.Remove(roleId, out var levelResObject))
+                levelResEntityDataProxy.OnCombatFailure(levelResObject.Index, levelResObject.GId, levelResObject.EleId);
         }
         public static LevelResEntity Create(LevelTypeEnum levelType, int levelId)
         {
@@ -131,7 +136,7 @@ namespace AscensionServer
         }
         void OnCombatSuccess(int roleId, LevelResObject levelResObject)
         {
-             levelResEntityDataProxy.OnCombatSuccess(levelResObject.Index, levelResObject.GId, levelResObject.EleId);
+            levelResEntityDataProxy.OnCombatSuccess(levelResObject.Index, levelResObject.GId, levelResObject.EleId);
             combatSuccess.Invoke(roleId, levelResObject);
         }
         void OnCombatFailure(int roleId, LevelResObject levelResObject)

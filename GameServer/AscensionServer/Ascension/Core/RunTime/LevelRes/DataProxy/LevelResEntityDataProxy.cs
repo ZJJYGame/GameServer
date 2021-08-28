@@ -56,14 +56,13 @@ namespace AscensionServer
             Random random = new Random();
             var dict = resSpawnInfoData.MapResSpawnInfoDict;
             foreach (var res in dict)
-
             {
                 switch (res.Value.ResType)
                 {
                     case LevelResType.Collectable:
                         {
                             var fc = new FixCollectable();
-                            fc.Id = res.Value.ResId;
+                            fc.GId = res.Value.ResId;
                             fc.CollectableDict = new Dictionary<int, FixResObject>();
                             var length = res.Value.ResAmount;
                             for (int i = 0; i < length; i++)
@@ -77,7 +76,7 @@ namespace AscensionServer
                     case LevelResType.Combatable:
                         {
                             var fc = new FixCombatable();
-                            fc.Id = res.Value.ResId;
+                            fc.GId = res.Value.ResId;
                             fc.CombatableDict = new Dictionary<int, FixResObject>();
                             var length = res.Value.ResAmount;
                             for (int i = 0; i < length; i++)
@@ -102,7 +101,7 @@ namespace AscensionServer
         {
             if (collectableDict.TryGetValue(index, out var col))
             {
-                if (col.Id != gId)
+                if (col.GId != gId)
                 {
                     return false;
                 }
@@ -110,14 +109,14 @@ namespace AscensionServer
                 if (!uncollectableDict.ContainsKey(index))
                 {
                     gatherObj = new FixCollectable();
-                    gatherObj.Id = gId;
+                    gatherObj.GId = gId;
                     gatherObj.CollectableDict = new Dictionary<int, FixResObject>();
                     uncollectableDict.Add(index, gatherObj);
                 }
                 else
                 {
                     uncollectableDict.TryGetValue(index, out var fc);
-                    if (fc.Id != gId)
+                    if (fc.GId != gId)
                         return false;
                     gatherObj = fc;
                 }
@@ -136,39 +135,19 @@ namespace AscensionServer
         {
             if (combatableDict.TryGetValue(index, out var combatable))
             {
-                if (combatable.Id != gId)
-                {
+                if (combatable.GId != gId)
                     return false;
-                }
-                FixCombatable combatObj = null; ;
-                //若不在不可战斗缓存中；
-                if (!uncombatableDict.ContainsKey(index))
+                if (!combatable.CombatableDict.Remove(eleId, out var resObj))
+                    return false;
+                if (!pendingCombatableDict.TryGetValue(index, out var combatObj))
                 {
-                    //将对象移至挂起缓存中；
                     combatObj = new FixCombatable();
-                    combatObj.Id = gId;
+                    combatObj.GId = gId;
                     combatObj.CombatableDict = new Dictionary<int, FixResObject>();
                     pendingCombatableDict.Add(index, combatObj);
                 }
-                else
-                {
-                    //若在不可战斗缓存中，则可能存在于挂起或者未被挂起的缓存中；
-                    var isPending = pendingCombatableDict.TryGetValue(index, out var pending);
-                    combatObj = pending;
-                    if (isPending)
-                    {
-                        if (combatObj.Id != gId)
-                            return false;
-                    }
-                }
-                if (combatable.CombatableDict.Remove(gId, out var fixResObject))
-                {
-                    if (combatObj.CombatableDict.TryAdd(eleId, fixResObject))
-                    {
-                        fixResObject.Occupied = true;
-                        return true;
-                    }
-                }
+                combatObj.CombatableDict.Add(eleId, resObj);
+                return true;
             }
             return false;
         }
@@ -176,78 +155,46 @@ namespace AscensionServer
         {
             if (!pendingCombatableDict.TryGetValue(index, out var pendingObj))
                 return false;
-            if (pendingObj.Id != gId)
+            if (pendingObj.GId != gId)
                 return false;
             if (!pendingObj.CombatableDict.Remove(eleId, out var pendingElet))
                 return false;
-            FixCombatable combatObj = null;
             //战斗成功，将挂起的对象转移到不可战斗缓存中；
-            if (!uncombatableDict.ContainsKey(index))
+            if (!uncombatableDict.TryGetValue(index, out var combatObj))
             {
                 combatObj = new FixCombatable();
                 combatObj.CombatableDict = new Dictionary<int, FixResObject>();
-                combatObj.Id = gId;
+                combatObj.GId = gId;
                 combatObj.CombatableDict.Add(eleId, pendingElet);
-                uncombatableDict.Add(index, combatObj);
             }
-            else
-            {
-                var temp = uncombatableDict[index];
-                if (temp.Id != gId)
-                    return false;
-                combatObj = temp;
-            }
-            if(pendingObj.CombatableDict.Remove(eleId,out var pendingEle))
-            {
-                pendingCombatableDict.Remove(index);
-                if( combatObj.CombatableDict.TryAdd(eleId, pendingEle))
-                {
-                    pendingEle.Occupied = true;
-                    return true;
-                }
-            }
-            return false;
+            pendingElet.Occupied = true;
+            uncombatableDict.Add(index, combatObj);
+            return true;
         }
         public bool OnCombatFailure(int index, int gId, int eleId)
         {
             if (!pendingCombatableDict.TryGetValue(index, out var pendingObj))
                 return false;
-            if (pendingObj.Id != gId)
+            if (pendingObj.GId != gId)
                 return false;
             if (!pendingObj.CombatableDict.Remove(eleId, out var pendingElet))
                 return false;
-            FixCombatable combatObj = null;
             //战斗失败，将挂起的对象转移到可战斗缓存中；
-            if (!combatableDict.ContainsKey(index))
+            if (!combatableDict.TryGetValue(index,out var combatObj))
             {
                 combatObj = new FixCombatable();
                 combatObj.CombatableDict = new Dictionary<int, FixResObject>();
-                combatObj.Id = gId;
+                combatObj.GId = gId;
                 combatObj.CombatableDict.Add(eleId, pendingElet);
-                uncombatableDict.Add(index, combatObj);
             }
-            else
-            {
-                var temp= combatableDict[index];
-                if (temp.Id != gId)
-                    return false;
-                combatObj = temp;
-            }
-            if (pendingObj.CombatableDict.Remove(eleId, out var pendingEle))
-            {
-                pendingCombatableDict.Remove(index);
-                if (combatObj.CombatableDict.TryAdd(eleId, pendingEle))
-                {
-                    pendingEle.Occupied = false;
-                    return true;
-                }
-            }
+            pendingElet.Occupied = false;
+            combatObj.CombatableDict.Add(eleId,pendingElet);
             return false;
         }
         FixResObject SpawnResObject(Random random, MapResSpawnInfo spawnInfo, int index)
         {
             var resObject = new FixResObject();
-            resObject.Id = index;
+            resObject.Index = index;
             resObject.Occupied = false;
             var vec = spawnInfo.ResSpawnPositon.GetVector();
             var xSign = Sign();

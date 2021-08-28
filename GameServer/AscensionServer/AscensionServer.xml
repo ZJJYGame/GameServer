@@ -703,9 +703,14 @@
             <param name="roleId">离线账号</param>
             <param name="data">新上线账号</param>
         </member>
-        <member name="P:AscensionServer.FixCombatable.Id">
+        <member name="P:AscensionServer.FixCombatable.GId">
             <summary>
             GId;
+            </summary>
+        </member>
+        <member name="P:AscensionServer.FixCombatable.CombatableDict">
+            <summary>
+            EleId---FixResObject;
             </summary>
         </member>
         <member name="T:AscensionServer.RedisData.ReidsDataProcessing">
@@ -1977,9 +1982,14 @@
             <param name="eleId">元素id</param>
             <returns>是否采集成功</returns>
         </member>
-        <member name="P:AscensionServer.FixCollectable.Id">
+        <member name="P:AscensionServer.FixCollectable.GId">
             <summary>
             GId
+            </summary>
+        </member>
+        <member name="P:AscensionServer.FixCollectable.CollectableDict">
+            <summary>
+            EleId---FixResObject
             </summary>
         </member>
         <member name="P:AscensionServer.OperationData.OperationCode">
