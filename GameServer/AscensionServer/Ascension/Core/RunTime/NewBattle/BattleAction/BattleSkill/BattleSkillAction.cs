@@ -11,12 +11,12 @@ namespace AscensionServer
     /// <summary>
     /// 战斗角色技能控制器,每个角色实体持有，用来管理角色技能
     /// </summary>
-    public class BattleSkillController
+    public class BattleSkillAction
     {
         //控制器拥有者
         BattleCharacterEntity owner;
         //角色技能对象缓存,key=>技能id,value=>技能对象
-        Dictionary<int, BattleSkillBase> skillDict;
+        Dictionary<int, BattleSkillObj> skillDict;
         //角色拥有的技能id集合
         HashSet<int> roleHasSkillHash;
         //用于记录当前使用的技能id
@@ -37,8 +37,8 @@ namespace AscensionServer
             nowUseSkillId = skillID;
 
             if (!skillDict.ContainsKey(skillID))
-                skillDict[skillID] = new BattleSkillBase(skillID, owner);
-            BattleSkillBase battleSkill = skillDict[skillID];
+                skillDict[skillID] = new BattleSkillObj(skillID, owner);
+            BattleSkillObj battleSkill = skillDict[skillID];
             //冷却是否满足以及冷却的处理
             if (isCDLimit)//如果有CD限制
             {
@@ -303,10 +303,10 @@ namespace AscensionServer
             else return null;
         }
 
-        public BattleSkillController(BattleCharacterEntity owner)
+        public BattleSkillAction(BattleCharacterEntity owner)
         {
             this.owner = owner;
-            skillDict = new Dictionary<int, BattleSkillBase>();
+            skillDict = new Dictionary<int, BattleSkillObj>();
             roleHasSkillHash = new HashSet<int>() { 21001};
         }
     }

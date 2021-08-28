@@ -43,7 +43,7 @@ namespace AscensionServer
         public int ActionID { get;  set; }
         public List<int> TargetIDList { get;  set; }
 
-        public BattleSkillController BattleSkillController { get; protected set; }
+        public BattleSkillAction BattleSkillController { get; protected set; }
         public BattleBuffController BattleBuffController { get; protected set; }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace AscensionServer
         {
             FriendCharacterEntities = new List<BattleCharacterEntity>();
             EnemyCharacterEntities = new List<BattleCharacterEntity>();
-            BattleSkillController = new BattleSkillController(this);
+            BattleSkillController = new BattleSkillAction(this);
             BattleBuffController = new BattleBuffController(this);
             TargetIDList = new List<int>();
 

@@ -8,7 +8,7 @@ using AscensionProtocol.DTO;
 
 namespace AscensionServer
 {
-    public class BattleSkillBase: ISkillAdditionData
+    public class BattleSkillObj: ISkillAdditionData
     {
         //角色的属性
         CharacterBattleData CharacterBattleData { get { return OwnerEntity.CharacterBattleData; } }
@@ -331,7 +331,7 @@ namespace AscensionServer
         }
 
 
-        public BattleSkillBase(int skillID,BattleCharacterEntity battleCharacterEntity)
+        public BattleSkillObj(int skillID,BattleCharacterEntity battleCharacterEntity)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, BattleSkillData>>(out var battleSkillDict);
             battleSkillData = battleSkillDict[skillID];

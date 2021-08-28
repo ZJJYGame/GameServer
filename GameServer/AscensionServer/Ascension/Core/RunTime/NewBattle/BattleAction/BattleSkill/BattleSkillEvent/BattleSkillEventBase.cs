@@ -14,7 +14,7 @@ namespace AscensionServer
     public class BattleSkillEventBase
     {
         public BattleCharacterEntity OwnerEntity { get { return ownerSkill.OwnerEntity; } }
-        public BattleSkillBase ownerSkill;
+        public BattleSkillObj ownerSkill;
         protected BattleSkillEventConditionBase battleSkillEventConditionBase;
         protected BattleSkillEventData battleSkillEventData;
         protected BattleRoomEntity BattleRoomEntity { get { return GameEntry.BattleRoomManager.GetBattleRoomEntity(OwnerEntity.RoomID); } }
@@ -26,7 +26,7 @@ namespace AscensionServer
                 return;
 
         }
-        public BattleSkillEventBase(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData)
+        public BattleSkillEventBase(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData)
         {
             ownerSkill = battleSkillBase;
             this.battleSkillEventData = battleSkillEventData;
@@ -77,7 +77,7 @@ namespace AscensionServer
             Utility.Debug.LogError("触发释放技能事件成功");
         }
 
-        public BattleSkillEvent_Skill(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_Skill(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             triggerSkillID = battleSkillEventData.EventValue;
         }
@@ -103,7 +103,7 @@ namespace AscensionServer
             
         }
 
-        public BattleSkillEvent_Heal(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_Heal(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             healValue = battleSkillEventData.EventValue;
         }
@@ -125,7 +125,7 @@ namespace AscensionServer
             });
         }
 
-        public BattleSkillEvent_SuckBlood(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_SuckBlood(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             healValue = battleSkillEventData.EventValue;
         }
@@ -142,7 +142,7 @@ namespace AscensionServer
             //ownerSkill.damageAdditionList.Add(addDamageValue);
             skillAdditionData.DamgeAddition += addDamageValue;
         }
-        public BattleSkillEvent_AddDamage(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_AddDamage(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             addDamageValue = battleSkillEventData.EventValue;
         }
@@ -161,7 +161,7 @@ namespace AscensionServer
             BattleDamageData temp = ownerSkill.IsCrit(battleDamageData.attackSection, GameEntry.BattleCharacterManager.GetCharacterEntity(battleDamageData.TargetID), skillAdditionData);
             battleDamageData.isCrit = temp.isCrit;
         }
-        public BattleSkillEvent_AddCritProp(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_AddCritProp(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             addCritPropValue = battleSkillEventData.EventValue;
         }
@@ -178,7 +178,7 @@ namespace AscensionServer
             //ownerSkill.critDamageList.Add(addCritDamageValue);
             skillAdditionData.CritDamage += addCritDamageValue;
         }
-        public BattleSkillEvent_AddCritDamage(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_AddCritDamage(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             addCritDamageValue = battleSkillEventData.EventValue;
         }
@@ -195,7 +195,7 @@ namespace AscensionServer
             //ownerSkill.ignoreDefensiveList.Add(addIgnoreDefenseValue);
             skillAdditionData.IgnoreDefensive += addIgnoreDefenseValue;
         }
-        public BattleSkillEvent_AddIgnoreDefence(BattleSkillBase battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
+        public BattleSkillEvent_AddIgnoreDefence(BattleSkillObj battleSkillBase, BattleSkillEventData battleSkillEventData) : base(battleSkillBase, battleSkillEventData)
         {
             addIgnoreDefenseValue = battleSkillEventData.EventValue;
         }
