@@ -24,7 +24,7 @@ namespace AscensionServer
         public int PlayerCount { get; private set; }
 
 
-        public void OnComplete(Action<BattleResultInfo[]> battleInfo)
+        public void OnComplete(Action<Dictionary<BattleCharacterType, List<BattleResultInfo>>> battleInfo)
         {
             GameEntry.BattleRoomManager.GetBattleRoomEntity(RoomId).OnBattleEnd += battleInfo;
         }

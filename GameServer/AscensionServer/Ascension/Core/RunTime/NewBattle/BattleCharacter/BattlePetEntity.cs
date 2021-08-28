@@ -33,6 +33,7 @@ namespace AscensionServer
             BattleFactionType = battleFactionType;
             Name = pet.PetName;
             RoomID = roomID;
+            BattleCharacterType = BattleCharacterType.Pet;
         }
 
 

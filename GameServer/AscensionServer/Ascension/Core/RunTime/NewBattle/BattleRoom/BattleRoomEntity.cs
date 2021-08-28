@@ -31,12 +31,12 @@ namespace AscensionServer
         /// byte 1 表示阵营一
         /// byte 2 表示阵营二
         /// </summary>
-        public event Action<BattleResultInfo[]> OnBattleEnd
+        public event Action<Dictionary<BattleCharacterType, List<BattleResultInfo>>> OnBattleEnd
         {
             add { onBattleEnd += value; }
             remove{ onBattleEnd -= value; }
         }
-        public Action<BattleResultInfo[]> onBattleEnd;
+        public Action<Dictionary<BattleCharacterType, List<BattleResultInfo>>> onBattleEnd;
 
         //一次性传输战斗信息的集合
         public List<BattleTransferDTO> BattleTransferDTOList { get; set; } = new List<BattleTransferDTO>();

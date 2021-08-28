@@ -23,6 +23,7 @@ namespace AscensionServer
             BattleFactionType= battleFactionType;
             Name = monsterDict[aIID].Monster_Name;
             RoomID = roomID;
+            BattleCharacterType = BattleCharacterType.AI;
         }
 
         public override CharacterBattleDataDTO ToBattleDataBase()

@@ -34,6 +34,7 @@ namespace AscensionServer
         /// </summary>
         public CharacterBattleData CharacterBattleData { get; protected set; }
         public BattleFactionType BattleFactionType { get; protected set; }
+        public BattleCharacterType BattleCharacterType { get; protected set; }
 
         public List<BattleCharacterEntity> FriendCharacterEntities { get; protected set; }
         public List<BattleCharacterEntity> EnemyCharacterEntities { get; protected set; }
