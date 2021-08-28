@@ -1289,6 +1289,57 @@
             <param name="eleId">元素id</param>
             <returns>是否采集成功</returns>
         </member>
+        <member name="T:AscensionServer.BattleActionObjBase">
+            <summary>
+            战斗所有行动的基类
+            </summary>
+        </member>
+        <member name="M:AscensionServer.BattleItemObj.CheckCountEnougth">
+            <summary>
+            检查背包物品数量或耐久是否足够
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AscensionServer.BattleItemObj.ReduceBagCount">
+             <summary>
+            减少背包中道具的数量或者耐久
+             </summary>
+        </member>
+        <member name="T:AscensionServer.BattleSkillAction">
+            <summary>
+            战斗角色技能控制器,每个角色实体持有，用来管理角色技能
+            </summary>
+        </member>
+        <member name="M:AscensionServer.BattleSkillAction.UseSkill(System.Int32,System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="skillID"></param>
+            <param name="targetIdList"></param>
+            <param name="isCDLimit">是否被CD限制，直接使用需考虑cd，触发无需考虑</param>
+        </member>
+        <member name="T:AscensionServer.BattleSkillEventBase">
+            <summary>
+            战斗技能事件基类
+            </summary>
+        </member>
+        <member name="M:AscensionServer.BattleSkillObj.GetDamageData(System.Int32,System.Int32,AscensionServer.BattleCharacterEntity,AscensionServer.BattleDamageData)">
+            <summary>
+            获取该技能的伤害
+            </summary>
+            <param name="index">第几段伤害</param>
+            <param name="targetIndex">第几个目标</param>
+        </member>
+        <member name="M:AscensionServer.BattleSkillObj.TriggerSkillEventBeforeAttack(AscensionServer.BattleDamageData)">
+            <summary>
+            攻击前事件触发
+            </summary>
+        </member>
+        <member name="M:AscensionServer.BattleSkillObj.TriggerSkillEventBehindAttack(AscensionServer.BattleDamageData)">
+            <summary>
+            攻击后事件触发
+            </summary>
+        </member>
         <member name="T:AscensionServer.BattleBuffEvent_ShieldAdd">
             <summary>
             添加护盾buff事件
@@ -2168,7 +2219,7 @@
             全局技能Id
             </summary>
         </member>
-        <member name="M:AscensionServer.BattleBuffController.AddBuff(AscensionServer.BattleSkillAddBuffData,AscensionServer.BattleSkillBase)">
+        <member name="M:AscensionServer.BattleBuffController.AddBuff(AscensionServer.BattleSkillAddBuffData,AscensionServer.BattleSkillObj)">
             <summary>
             
             </summary>
@@ -2512,41 +2563,6 @@
             <param name="roleId">玩家id</param>
             <param name="enemyGlobalIds">敌人公共id集合</param>
         </member>
-        <member name="M:AscensionServer.BattleSkillBase.GetDamageData(System.Int32,System.Int32,AscensionServer.BattleCharacterEntity,AscensionServer.BattleDamageData)">
-            <summary>
-            获取该技能的伤害
-            </summary>
-            <param name="index">第几段伤害</param>
-            <param name="targetIndex">第几个目标</param>
-        </member>
-        <member name="M:AscensionServer.BattleSkillBase.TriggerSkillEventBeforeAttack(AscensionServer.BattleDamageData)">
-            <summary>
-            攻击前事件触发
-            </summary>
-        </member>
-        <member name="M:AscensionServer.BattleSkillBase.TriggerSkillEventBehindAttack(AscensionServer.BattleDamageData)">
-            <summary>
-            攻击后事件触发
-            </summary>
-        </member>
-        <member name="T:AscensionServer.BattleSkillController">
-            <summary>
-            战斗角色技能控制器,每个角色实体持有，用来管理角色技能
-            </summary>
-        </member>
-        <member name="M:AscensionServer.BattleSkillController.UseSkill(System.Int32,System.Collections.Generic.List{System.Int32},System.Boolean)">
-            <summary>
-            
-            </summary>
-            <param name="skillID"></param>
-            <param name="targetIdList"></param>
-            <param name="isCDLimit">是否被CD限制，直接使用需考虑cd，触发无需考虑</param>
-        </member>
-        <member name="T:AscensionServer.BattleSkillEventBase">
-            <summary>
-            战斗技能事件基类
-            </summary>
-        </member>
         <member name="T:AscensionServer.CharacterBattleData">
             <summary>
             用于进行战斗中角色的属性数据处理
@@ -2557,7 +2573,7 @@
             获取对应属性
             </summary>
         </member>
-        <member name="M:AscensionServer.CharacterBattleData.GetBaseProperty(AscensionServer.BuffEvent_RolePropertyChange_SourceDataType,AscensionServer.BattleSkillBase)">
+        <member name="M:AscensionServer.CharacterBattleData.GetBaseProperty(AscensionServer.BuffEvent_RolePropertyChange_SourceDataType,AscensionServer.BattleSkillObj)">
             <summary>
             获取基础对应属性
             </summary>
