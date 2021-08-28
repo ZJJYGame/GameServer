@@ -703,6 +703,11 @@
             <param name="roleId">离线账号</param>
             <param name="data">新上线账号</param>
         </member>
+        <member name="P:AscensionServer.FixCombatable.Id">
+            <summary>
+            GId;
+            </summary>
+        </member>
         <member name="T:AscensionServer.RedisData.ReidsDataProcessing">
             <summary>
             数据库数据的向Redis储存的处理类
@@ -1213,10 +1218,71 @@
             玩家上架拍卖品的事件
             </summary>
         </member>
-        <member name="T:AscensionServer.LevelResPendingDataProxy">
+        <member name="T:AscensionServer.LevelResObject">
             <summary>
-            角色id与战斗房间id的映射；
+            场景资源对象；
             </summary>
+        </member>
+        <member name="P:AscensionServer.LevelResObject.Index">
+            <summary>
+            元素生成时的序号；
+            </summary>
+        </member>
+        <member name="P:AscensionServer.LevelResObject.GId">
+            <summary>
+            资源的全局id;
+            </summary>
+        </member>
+        <member name="P:AscensionServer.LevelResObject.EleId">
+            <summary>
+            被生成时，某一类型的单个元素的序号；
+            大组(index)---小组(gId)---元素(eleId)；
+            </summary>
+        </member>
+        <member name="T:AscensionServer.LevelResEntityDataProxy">
+            <summary>
+            LevelResEntity的数据代理；
+            </summary>
+        </member>
+        <member name="F:AscensionServer.LevelResEntityDataProxy.collectableDict">
+            <summary>
+            index---collectable
+            </summary>
+        </member>
+        <member name="F:AscensionServer.LevelResEntityDataProxy.uncollectableDict">
+            <summary>
+            index---collectable
+            </summary>
+        </member>
+        <member name="F:AscensionServer.LevelResEntityDataProxy.combatableDict">
+            <summary>
+            index---combatable
+            </summary>
+        </member>
+        <member name="F:AscensionServer.LevelResEntityDataProxy.uncombatableDict">
+            <summary>
+            index---combatable
+            </summary>
+        </member>
+        <member name="F:AscensionServer.LevelResEntityDataProxy.pendingCombatableDict">
+            <summary>
+            index---combatable
+            </summary>
+        </member>
+        <member name="M:AscensionServer.LevelResEntityDataProxy.InitEntityRes(AscensionServer.MapResSpanwInfoData)">
+            <summary>
+            初始化levelEntity的数据；
+            </summary>
+            <param name="resSpawnInfoData"></param>
+        </member>
+        <member name="M:AscensionServer.LevelResEntityDataProxy.Gather(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            采集；
+            </summary>
+            <param name="index">资源生成时的id</param>
+            <param name="gId">全局id</param>
+            <param name="eleId">元素id</param>
+            <returns>是否采集成功</returns>
         </member>
         <member name="T:AscensionServer.BattleBuffEvent_ShieldAdd">
             <summary>
@@ -1882,37 +1948,17 @@
              </summary>
              <param name="packet">进入的请求数据</param>
         </member>
+        <member name="F:AscensionServer.LevelResEntity.roleResObjDict">
+            <summary>
+            RoleId---LevelResObject
+            </summary>
+        </member>
         <member name="P:AscensionServer.LevelResEntity.CollectableDict">
             <summary>
             index---collectable
             </summary>
         </member>
-        <member name="F:AscensionServer.LevelResEntity.collectableDict">
-            <summary>
-            index---collectable
-            </summary>
-        </member>
-        <member name="F:AscensionServer.LevelResEntity.uncollectableDict">
-            <summary>
-            index---collectable
-            </summary>
-        </member>
-        <member name="F:AscensionServer.LevelResEntity.combatableDict">
-            <summary>
-            index---combatable
-            </summary>
-        </member>
-        <member name="F:AscensionServer.LevelResEntity.uncombatableDict">
-            <summary>
-            index---combatable
-            </summary>
-        </member>
-        <member name="F:AscensionServer.LevelResEntity.pendingCombatableDict">
-            <summary>
-            index---combatable
-            </summary>
-        </member>
-        <member name="M:AscensionServer.LevelResEntity.Combat(System.Int32,System.Int32,System.Int32)">
+        <member name="M:AscensionServer.LevelResEntity.Combat(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             表示进入战斗是否成功；
             如果进入战斗成功，则这只怪会进入pending状态，其他玩家就无法再与之战斗；
@@ -1921,6 +1967,20 @@
             <param name="gId">全局id</param>
             <param name="eleId">元素id</param>
             <returns>是否进入战斗成功</returns>
+        </member>
+        <member name="M:AscensionServer.LevelResEntity.Gather(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            采集；
+            </summary>
+            <param name="index">资源生成时的id</param>
+            <param name="gId">全局id</param>
+            <param name="eleId">元素id</param>
+            <returns>是否采集成功</returns>
+        </member>
+        <member name="P:AscensionServer.FixCollectable.Id">
+            <summary>
+            GId
+            </summary>
         </member>
         <member name="P:AscensionServer.OperationData.OperationCode">
             <summary>

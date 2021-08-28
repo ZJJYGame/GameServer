@@ -12,13 +12,13 @@ namespace AscensionServer
     //前资源是否在可采集的列表中。若可采集，则将可采集容器中
     //的对象移至不可采集容器中，并返回true。否则就返回false。
     //
-   //战斗：
-   //          1、玩家与怪物进行战斗时，会对怪进行占用。
-   //          2、当怪被占用时其他玩家则无法与这个被占用的怪进行战斗。
-   //          3、被占用的怪会进入pending容器中，直到战斗成功、
-   //          失败的结果返回，再通知玩家显示怪的状态。
-   //          4、战斗失败则玩家触发死亡，怪进行保留。
-   //          5、战斗成功则玩家/获得奖励，怪被移至不可战斗容器中。
+    //战斗：
+    //          1、玩家与怪物进行战斗时，会对怪进行占用。
+    //          2、当怪被占用时其他玩家则无法与这个被占用的怪进行战斗。
+    //          3、被占用的怪会进入pending容器中，直到战斗成功、
+    //          失败的结果返回，再通知玩家显示怪的状态。
+    //          4、战斗失败则玩家触发死亡，怪进行保留。
+    //          5、战斗成功则玩家/获得奖励，怪被移至不可战斗容器中。
     //========================================
     public class LevelResEntity : IDisposable
     {
@@ -27,45 +27,31 @@ namespace AscensionServer
         {
             levelResEntityPool = new ConcurrentPool<LevelResEntity>(() => new LevelResEntity(), lre => { lre.Dispose(); });
         }
+
         public int LevelId { get; private set; }
         public LevelTypeEnum LevelType { get; private set; }
+        LevelResEntityDataProxy levelResEntityDataProxy = new LevelResEntityDataProxy();
+
+        /// <summary>
+        /// RoleId---LevelResObject
+        /// </summary>
+        Dictionary<int, LevelResObject> roleResObjDict = new Dictionary<int, LevelResObject>();
         /// <summary>
         /// index---collectable
         /// </summary>
-        public Dictionary<int, FixCollectable> CollectableDict { get { return collectableDict; } }
-        public Dictionary<int, FixCombatable> CombatableDict { get { return combatableDict; } }
-        /// <summary>
-        /// index---collectable
-        /// </summary>
-        Dictionary<int, FixCollectable> collectableDict;
-        /// <summary>
-        /// index---collectable
-        /// </summary>
-        Dictionary<int, FixCollectable> uncollectableDict;
-
-
-        /// <summary>
-        /// index---combatable
-        /// </summary>
-        Dictionary<int, FixCombatable> combatableDict;
-        /// <summary>
-        /// index---combatable
-        /// </summary>
-        Dictionary<int, FixCombatable> uncombatableDict;
-        /// <summary>
-        /// index---combatable
-        /// </summary>
-        Dictionary<int, FixCombatable> pendingCombatableDict;
-
-
-
-        public LevelResEntity()
+        public Dictionary<int, FixCollectable> CollectableDict { get { return levelResEntityDataProxy.CollectableDict; } }
+        public Dictionary<int, FixCombatable> CombatableDict { get { return levelResEntityDataProxy.CombatableDict; } }
+        Action<int, LevelResObject> combatSuccess;
+        Action<int, LevelResObject> combatFailure;
+        public void InitEntityRes()
         {
-            collectableDict = new Dictionary<int, FixCollectable>();
-            uncollectableDict = new Dictionary<int, FixCollectable>();
-            combatableDict = new Dictionary<int, FixCombatable>();
-            uncombatableDict = new Dictionary<int, FixCombatable>();
-            pendingCombatableDict = new Dictionary<int, FixCombatable>();
+            GameEntry.DataManager.TryGetValue<MapResSpanwInfoData>(out var resSpawnInfoData);
+            levelResEntityDataProxy.InitEntityRes(resSpawnInfoData);
+        }
+        public void SetCallback(Action<int,LevelResObject>combatSuccess, Action<int, LevelResObject> combatFailure)
+        {
+            this.combatSuccess = combatSuccess;
+            this.combatFailure = combatFailure;
         }
         /// <summary>
         /// 表示进入战斗是否成功；
@@ -75,88 +61,34 @@ namespace AscensionServer
         /// <param name="gId">全局id</param>
         /// <param name="eleId">元素id</param>
         /// <returns>是否进入战斗成功</returns>
-        public bool Combat(int index, int gId, int eleId)
+        public bool Combat(int roleId, int index, int gId, int eleId)
         {
-            if (combatableDict.TryGetValue(index, out var col))
+            var enter = levelResEntityDataProxy.Combat(index, gId, eleId);
+            if (enter)
             {
-                if (col.Id != gId)
-                {
-                    return false;
-                }
-                FixCombatable fixCombatable= null; ;
-                if (!uncollectableDict.ContainsKey(index))
-                {
-                    fixCombatable = new  FixCombatable();
-                    fixCombatable.Id = gId;
-                    fixCombatable.CombatableDict= new Dictionary<int, FixResObject>();
-                    pendingCombatableDict.Add(index, fixCombatable);
-                }
-                else
-                {
-                    pendingCombatableDict.TryGetValue(index, out var fc);
-                    if (fc.Id != gId)
-                        return false;
-                    fixCombatable = fc;
-                }
-                if (col.CombatableDict.Remove(eleId, out var removeEle))
-                {
-                    if (fixCombatable.CombatableDict.TryAdd(eleId, removeEle))
-                    {
-                        removeEle.Occupied = true;
-                        return true;
-                    }
-                }
+                StartCombat(roleId, index, gId, eleId);
             }
-            return false;
+            return enter;
         }
+        /// <summary>
+        /// 采集；
+        /// </summary>
+        /// <param name="index">资源生成时的id</param>
+        /// <param name="gId">全局id</param>
+        /// <param name="eleId">元素id</param>
+        /// <returns>是否采集成功</returns>
         public bool Gather(int index, int gId, int eleId)
         {
-            if (collectableDict.TryGetValue(index, out var col))
-            {
-                if (col.Id != gId)
-                {
-                    return false;
-                }
-                FixCollectable fixCollectable = null; ;
-                if (!uncollectableDict.ContainsKey(index))
-                {
-                    fixCollectable = new FixCollectable();
-                    fixCollectable.Id = gId;
-                    fixCollectable.CollectableDict = new Dictionary<int, FixResObject>();
-                    uncollectableDict.Add(index, fixCollectable);
-                }
-                else
-                {
-                    uncollectableDict.TryGetValue(index, out var fc);
-                    if (fc.Id != gId)
-                        return false;
-                    fixCollectable = fc;
-                }
-                if (col.CollectableDict.Remove(eleId, out var removeEle))
-                {
-                    if (fixCollectable.CollectableDict.TryAdd(eleId, removeEle))
-                    {
-                        removeEle.Occupied= true;
-                        return true;
-                    }
-                }
-            }
-            return false;
+            return levelResEntityDataProxy.Gather(index, gId, eleId);
         }
         public void BroadCast2AllS2C(OperationData opData)
         {
             GameEntry.LevelManager.SendMessageToLevelS2C(LevelType, LevelId, opData);
         }
-
         public void Dispose()
         {
             LevelId = 0;
             LevelType = LevelTypeEnum.None;
-            collectableDict.Clear();
-            uncollectableDict.Clear();
-            combatableDict.Clear();
-            uncombatableDict.Clear();
-            pendingCombatableDict.Clear();
         }
         public static LevelResEntity Create(LevelTypeEnum levelType, int levelId)
         {
@@ -168,6 +100,44 @@ namespace AscensionServer
         public static void Release(LevelResEntity levelResEntity)
         {
             levelResEntityPool.Despawn(levelResEntity);
+        }
+        void StartCombat(int roleId, int index, int gId, int eleId)
+        {
+            var levelResObj = new LevelResObject() { EleId = eleId, Index = index, GId = gId };
+            roleResObjDict.Add(roleId, levelResObj);
+            var roleInfo = GameEntry.BattleRoomManager.CreateRoom(roleId, new List<int>() { gId });
+            roleInfo.OnComplete(OnCombatComplete);
+        }
+        void OnCombatComplete(Dictionary<BattleCharacterType, List<BattleResultInfo>> rstInfos)
+        {
+            if (rstInfos == null)
+            {
+                Utility.Debug.LogInfo("OnCombatComplete rstInfos is invalid !");
+                return;
+            }
+            var playerInfo = rstInfos[BattleCharacterType.Player];
+            //var aiInfo = rstInfos[BattleCharacterType.AI];
+            var battleRst = playerInfo[0];
+            var roleId = battleRst.CharacterId;
+            var levelResObj = roleResObjDict[roleId];
+            if (battleRst.IsWin)
+            {
+                OnCombatSuccess(roleId, levelResObj);
+            }
+            else
+            {
+                OnCombatFailure(roleId, levelResObj);
+            }
+        }
+        void OnCombatSuccess(int roleId, LevelResObject levelResObject)
+        {
+             levelResEntityDataProxy.OnCombatSuccess(levelResObject.Index, levelResObject.GId, levelResObject.EleId);
+            combatSuccess.Invoke(roleId, levelResObject);
+        }
+        void OnCombatFailure(int roleId, LevelResObject levelResObject)
+        {
+            levelResEntityDataProxy.OnCombatFailure(levelResObject.Index, levelResObject.GId, levelResObject.EleId);
+            combatFailure.Invoke(roleId, levelResObject);
         }
     }
 }

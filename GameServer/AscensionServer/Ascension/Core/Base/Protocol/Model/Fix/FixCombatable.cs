@@ -9,6 +9,9 @@ namespace AscensionServer
     [Serializable]
     public class FixCombatable
     {
+        /// <summary>
+        /// GId;
+        /// </summary>
         public int Id { get; set; }
         public Dictionary<int, FixResObject> CombatableDict { get; set; }
         public void RenewalAll()

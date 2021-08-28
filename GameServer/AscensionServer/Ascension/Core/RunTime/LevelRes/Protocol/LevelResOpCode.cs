@@ -11,7 +11,8 @@ namespace AscensionServer
         None=0,
         SYN=1,
         Gather=2,
-        Combat= 3,
-        FIN=4
+        StartCombat= 3,
+        FIN=4,
+        CombatResult= 5,
     }
 }

@@ -9,6 +9,9 @@ namespace AscensionServer
     [Serializable]
     public class FixCollectable : IDisposable
     {
+        /// <summary>
+        /// GId
+        /// </summary>
         public int Id { get; set; }
         public Dictionary<int, FixResObject> CollectableDict { get; set; }
         public void RenewalAll()
