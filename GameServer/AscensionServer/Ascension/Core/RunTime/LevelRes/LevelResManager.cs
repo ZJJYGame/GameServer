@@ -17,9 +17,11 @@ namespace AscensionServer
         LevelResEntity adventureLevelResEntity;
         Pool<OperationData> opDataPool;
         Pool<Dictionary<byte, object>> messageDataPool;
+        LevelResPendingDataProxy levelResPendingData;
         protected override void OnPreparatory()
         {
             adventureLevelResEntity = LevelResEntity.Create(LevelTypeEnum.Adventure, 701);
+            levelResPendingData = new LevelResPendingDataProxy();
             opDataPool = new Pool<OperationData>
                 (() => { return new OperationData(); }, d => { d.OperationCode = (byte)OperationCode.LevelRes; }, d => { d.Dispose(); });
             messageDataPool = new Pool<Dictionary<byte, object>>(() => new Dictionary<byte, object>(), md => { md.Clear(); });
@@ -171,8 +173,9 @@ namespace AscensionServer
                 opdata.ReturnCode = (byte)ReturnCode.Success;
                 adventureLevelResEntity.BroadCast2AllS2C(opdata);
                 Utility.Debug.LogInfo($"进入战斗 成功");
-                var info = GameEntry.BattleRoomManager.CreateRoom(roleId, new List<int>() { gid });
-
+                var roleInfo = GameEntry.BattleRoomManager.CreateRoom(roleId, new List<int>() { gid });
+                levelResPendingData.AddPending(roleId, roleInfo);
+                roleInfo.OnComplete(OnCombatComplete);
             }
             else
             {
@@ -182,6 +185,10 @@ namespace AscensionServer
                 Utility.Debug.LogWarning($"进入战斗 失败");
             }
             opDataPool.Despawn(opdata);
+        }
+        void OnCombatComplete(BattleResultInfo[] rstInfos)
+        {
+            
         }
         bool IsOdd(int n)
         {

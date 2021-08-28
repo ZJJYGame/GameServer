@@ -360,7 +360,7 @@
             9.增加宠物资质
             </summary>
         </member>
-        <!-- 对于成员“T:AscensionServer.Faction_LevelType”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "T:AscensionServer.Faction_LevelType" -->
         <member name="T:AscensionServer.FactionItemType">
             <summary>
             藏宝阁主库
@@ -405,7 +405,7 @@
             5.传说的
             </summary>
         </member>
-        <!-- 对于成员“T:AscensionServer.MapResSpanwInfoData”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "T:AscensionServer.MapResSpanwInfoData" -->
         <member name="P:AscensionServer.MapResSpanwInfoData.MapResSpawnInfoDict">
             <summary>
             此数据为：地图资源的生成信息。将数据转换Fix类型后用于传输；
@@ -687,7 +687,7 @@
             <param name="type">mp标记的对象类型</param>
             <returns>反序列化后的对象</returns>
         </member>
-        <!-- 对于成员“M:AscensionServer.ImplMessagePackHelper.SerializeToJson``1(``0)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:AscensionServer.ImplMessagePackHelper.SerializeToJson``1(``0)" -->
         <member name="M:AscensionServer.ImplMessagePackHelper.SerializeToJsonBytes``1(``0)">
             <summary>
             对象序列化成json的bytes；
@@ -1211,6 +1211,11 @@
         <member name="M:AscensionServer.IAuctionManager.PutAwayAuctionGoods(AscensionProtocol.DTO.AuctionGoodsDTO,System.Int32)">
             <summary>
             玩家上架拍卖品的事件
+            </summary>
+        </member>
+        <member name="T:AscensionServer.LevelResPendingDataProxy">
+            <summary>
+            角色id与战斗房间id的映射；
             </summary>
         </member>
         <member name="T:AscensionServer.BattleBuffEvent_ShieldAdd">
@@ -2237,7 +2242,7 @@
             出手前判断并分配战斗行为
             </summary>
         </member>
-        <member name="M:AscensionServer.BattleCharacterEntity.GetTargetIdList(System.Int32,System.Boolean,System.Collections.Generic.List{System.Int32})">
+        <member name="M:AscensionServer.BattleCharacterEntity.GetSkillTargetIdList(System.Int32,System.Boolean,System.Collections.Generic.List{System.Int32})">
             <summary>
             获取技能目标ID列表
             </summary>
@@ -4423,7 +4428,7 @@
             发送消息到remotePeer
             </summary>
         </member>
-        <!-- 对于成员“M:AscensionServer.AscensionPeer.SendEventMsg(System.Byte,System.Collections.Generic.Dictionary{System.Byte,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:AscensionServer.AscensionPeer.SendEventMsg(System.Byte,System.Collections.Generic.Dictionary{System.Byte,System.Object})" -->
         <member name="M:AscensionServer.AscensionPeer.OnMessage(System.Object,Photon.SocketServer.SendParameters)">
             <summary>
             接收到客户端消息；
