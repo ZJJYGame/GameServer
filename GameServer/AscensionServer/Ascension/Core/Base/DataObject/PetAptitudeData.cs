@@ -20,6 +20,7 @@ namespace AscensionServer
         public List<int> NaturalDefendPower { get; set; }
         public List<int> NaturalGrowUp { get; set; }
         public List<int> SkillArray { get; set; }
+        public int NeedItemNumber { get; set; }        
     }
 }
 

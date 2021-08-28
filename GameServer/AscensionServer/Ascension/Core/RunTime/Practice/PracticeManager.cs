@@ -71,6 +71,8 @@ namespace AscensionServer
                         DemonicBattle(role);
                         break;
                     case PracticeOpcode.ThunderRoundBattle:
+                        role = Utility.Json.ToObject<RoleDTO>(item.Value.ToString());
+                        ThunderRoundBattle(role);
                         break;
                     default:
                         break;
@@ -85,9 +87,23 @@ namespace AscensionServer
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
             opData.ReturnCode = (short)ReturnCode.Fail;
-            var dataDict = new Dictionary<byte, object>();
-            dataDict.Add((byte)opcode, tips);
-            opData.DataMessage = Utility.Json.ToJson(dataDict);
+            opData.SubOperationCode = (byte)opcode;
+            opData.DataMessage = tips;
+            GameEntry.RoleManager.SendMessage(roleID, opData);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roleID"></param>
+        /// <param name="opcode"></param>
+        /// <param name="tips"></param>
+        void ResultEmptyS2C(int roleID, PracticeOpcode opcode, string tips = null)
+        {
+            OperationData opData = new OperationData();
+            opData.OperationCode = (byte)OperationCode.SyncPractice;
+            opData.ReturnCode = (short)ReturnCode.Empty;
+            opData.SubOperationCode = (byte)opcode;
+            opData.DataMessage = tips;
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }
         /// <summary>
@@ -101,9 +117,8 @@ namespace AscensionServer
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
             opData.ReturnCode = (short)ReturnCode.ItemNotFound;
-            var dataDict = new Dictionary<byte, object>();
-            dataDict.Add((byte)opcode, tips);
-            opData.DataMessage = Utility.Json.ToJson(dataDict);
+            opData.SubOperationCode = (byte)opcode;
+            opData.DataMessage = tips;
             GameEntry.RoleManager.SendMessage(roleID, opData);
         }
         /// <summary>
@@ -117,28 +132,11 @@ namespace AscensionServer
             OperationData opData = new OperationData();
             opData.OperationCode = (byte)OperationCode.SyncPractice;
             opData.ReturnCode = (short)ReturnCode.Success;
-            var dataDict = new Dictionary<byte, object>();
-            dataDict.Add((byte)opcode, Utility.Json.ToJson(data));
-            opData.DataMessage = Utility.Json.ToJson(dataDict);
+            opData.SubOperationCode = (byte)opcode;
+            opData.DataMessage = Utility.Json.ToJson(data);
             GameEntry.RoleManager.SendMessage(roleID, opData);
             Utility.Debug.LogInfo("yzqjueseid发送成功" + Utility.Json.ToJson(opData));
         }
-        /// <summary>
-        /// 结果成功返回多参数
-        /// </summary>
-        /// <param name="roleID"></param>
-        /// <param name="opcode"></param>
-        /// <param name="dict"></param>
-        void ResultSuccseS2C(int roleID, PracticeOpcode opcode, Dictionary<byte,object> dict)
-        {
-            OperationData opData = new OperationData();
-            opData.OperationCode = (byte)OperationCode.SyncPractice;
-            opData.ReturnCode = (short)ReturnCode.Success;
-            var dataDict = new Dictionary<byte, object>();
-            dataDict.Add((byte)opcode, Utility.Json.ToJson(dict));
-            opData.DataMessage = Utility.Json.ToJson(dataDict);
-            GameEntry.RoleManager.SendMessage(roleID, opData);
-            Utility.Debug.LogInfo("YZQonoffLine发送成功" + (byte)opcode + ">>" + Utility.Json.ToJson(dict));
-        }
+    
     }
 }

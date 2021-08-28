@@ -962,8 +962,11 @@ namespace AscensionServer
             
             if (petLevelDataDict[pet.PetLevel].IsFinalLevel)
             {
-                pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                Utility.Debug.LogInfo("yzqData使用加经验丹药即将进阶");
+                if (petLevelDataDict[pet.PetLevel].ExpLevelUp <= pet.PetExp)
+                {
+                    pet.PetExp = petLevelDataDict[pet.PetLevel].ExpLevelUp;
+                    Utility.Debug.LogInfo("yzqData使用加经验丹药即将进阶");
+                }
 
             }
             else
@@ -976,7 +979,7 @@ namespace AscensionServer
                     {
                         pet.PetLevel += 1;
                         pet.PetExp = pet.PetExp + exp - petLevelDataDict[pet.PetLevel].ExpLevelUp;
-                        PetUpdateLevel(petLevelDataDict, pet, role, 0);
+                       return PetUpdateLevel(petLevelDataDict, pet, role, 0);
                     }
                     else if (level == role.RoleLevel)
                     {
@@ -986,6 +989,7 @@ namespace AscensionServer
                         }
                         else
                             pet.PetExp += exp;
+                        return pet;
                     }
                 }
             }
