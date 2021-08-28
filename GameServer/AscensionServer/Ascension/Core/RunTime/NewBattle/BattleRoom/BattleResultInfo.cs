@@ -8,16 +8,20 @@ namespace AscensionServer
 {
     public struct BattleResultInfo
     {
-        public bool isWin;
-        public int[] CharacterId;
-        public bool ContainsCharacter(int characterId)
+        public int CharacterId { get;private set; }
+        public bool IsWin { get;private set; }
+        public BattleCharacterType BattleCharacterType { get; private set; }
+        public BattleResultInfo(int characterId,bool isWin,BattleCharacterType battleCharacterType)
         {
-            if (CharacterId == null)
-                return false;
-            if (CharacterId.Contains(characterId))
-                return true;
-            else
-                return false;
+            CharacterId = characterId;
+            IsWin = isWin;
+            BattleCharacterType = battleCharacterType;
         }
+    }
+    public enum BattleCharacterType
+    {
+        Player=0,
+        Pet=1,
+        AI=2,
     }
 }

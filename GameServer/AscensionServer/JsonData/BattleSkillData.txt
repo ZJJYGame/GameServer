@@ -489,7 +489,7 @@
             "critProp": 0,
             "critDamage": 0,
             "ignoreDefensive": 0,
-            "cd": 1,
+            "cd": 2,
             "IsCloseAttack": true,
             "battleSkillUseCondition": {
                 "battleSkillUseConditionType": 1,
@@ -561,7 +561,7 @@
             "critProp": 0,
             "critDamage": 0,
             "ignoreDefensive": 0,
-            "cd": 1,
+            "cd": 2,
             "IsCloseAttack": true,
             "battleSkillUseCondition": {
                 "battleSkillUseConditionType": 1,
@@ -633,7 +633,7 @@
             "critProp": 0,
             "critDamage": 0,
             "ignoreDefensive": 0,
-            "cd": 1,
+            "cd": 2,
             "IsCloseAttack": true,
             "battleSkillUseCondition": {
                 "battleSkillUseConditionType": 1,

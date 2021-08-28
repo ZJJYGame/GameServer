@@ -201,37 +201,37 @@ namespace AscensionServer
             //如果战斗结束，回调战斗胜利失败信息
             if(resultFlagOne || resultFlagTwo)
             {
-                BattleResultInfo battleResultInfoOne = new BattleResultInfo();
-                BattleResultInfo battleResultInfoTwo = new BattleResultInfo();
-                BattleResultInfo[] battleResultInfos = new BattleResultInfo[2] { battleResultInfoOne , battleResultInfoTwo };
-                battleResultInfoOne.isWin = !resultFlagOne;
-                battleResultInfoOne.CharacterId = GetCharactID2Adventure(FactionOneCharacterEntites);
-                battleResultInfoTwo.isWin = !resultFlagTwo;
-                battleResultInfoTwo.CharacterId = GetCharactID2Adventure(FactionTwoCharacterEntites);
-                battleRoomEntity.onBattleEnd?.Invoke(battleResultInfos);
+                Dictionary<BattleCharacterType, List<BattleResultInfo>> tempDict = new Dictionary<BattleCharacterType, List<BattleResultInfo>>();
+
+                GetCharactID2Adventure( !resultFlagOne, FactionOneCharacterEntites, tempDict);
+                GetCharactID2Adventure( !resultFlagTwo, FactionTwoCharacterEntites, tempDict);
+                battleRoomEntity.onBattleEnd?.Invoke(tempDict);
+
             }
             return resultFlagOne || resultFlagTwo;
         }
 
-        int[] GetCharactID2Adventure(List<BattleCharacterEntity> battleCharacterEntities)
+        void GetCharactID2Adventure(bool isWin,List<BattleCharacterEntity> battleCharacterEntities, Dictionary<BattleCharacterType, List<BattleResultInfo>> tempDict)
         {
-            int[] arr = new int[battleCharacterEntities.Count];
             for (int i = 0; i < battleCharacterEntities.Count; i++)
             {
-                switch (battleCharacterEntities[i].GetType().Name)
+                if (tempDict[battleCharacterEntities[i].BattleCharacterType] == null)
+                    tempDict[battleCharacterEntities[i].BattleCharacterType] = new List<BattleResultInfo>();
+                BattleResultInfo battleResultInfo = default;
+                switch (battleCharacterEntities[i].BattleCharacterType)
                 {
-                    case "BattlePlayerEntity":
-                        arr[i] = battleCharacterEntities[i].UniqueID;
+                    case BattleCharacterType.Player:
+                        battleResultInfo = new BattleResultInfo(battleCharacterEntities[i].UniqueID, isWin, battleCharacterEntities[i].BattleCharacterType);
                         break;
-                    case "BattlePetEntity":
-                        arr[i] = battleCharacterEntities[i].UniqueID;
+                    case BattleCharacterType.Pet:
+                        battleResultInfo = new BattleResultInfo(battleCharacterEntities[i].UniqueID, isWin, battleCharacterEntities[i].BattleCharacterType);
                         break;
-                    case "BattleAIEntity":
-                        arr[i] = battleCharacterEntities[i].GlobalID;
+                    case BattleCharacterType.AI:
+                        battleResultInfo = new BattleResultInfo(battleCharacterEntities[i].GlobalID, isWin, battleCharacterEntities[i].BattleCharacterType);
                         break;
                 }
+                tempDict[battleCharacterEntities[i].BattleCharacterType].Add(battleResultInfo);
             }
-            return arr;
         }
 
         public void Release()

@@ -32,6 +32,7 @@ namespace AscensionServer
             BattleFactionType = battleFactionType;
             Name = role.RoleName;
             RoomID = roomID;
+            BattleCharacterType = BattleCharacterType.Player;
         }
 
         public override CharacterBattleDataDTO ToBattleDataBase()
