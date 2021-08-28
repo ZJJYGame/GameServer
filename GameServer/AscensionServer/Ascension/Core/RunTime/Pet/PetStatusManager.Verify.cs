@@ -64,6 +64,7 @@ namespace AscensionServer
         /// </summary>
         public PetStatus VerifyPetAllStatus(int petid,PetAbilityPointDTO petAbilityPoint=null, PetAptitude petAptitude=null,PetStatus petStatus=null,Pet pet=null)
         {
+            NHCriteria nHCriteriapetStatus = ReferencePool.Accquire<NHCriteria>().SetValue("ID", petid);
             if (petAbilityPoint==null)
             {
                 var petAbilityPointexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PetAbilityPointPerfix, petid.ToString()).Result;
@@ -84,15 +85,15 @@ namespace AscensionServer
                    var petAptitudeTemp = RedisHelper.Hash.HashGetAsync<PetAptitudeDTO>(RedisKeyDefine._PetAptitudePerfix, petid.ToString()).Result;
                     if (petAptitudeTemp == null)
                     {
-                        petAptitude = new PetAptitude();
+                        petAptitude  = NHibernateQuerier.CriteriaSelect<PetAptitude>(nHCriteriapetStatus);
                     }
                     else
                     {
                         petAptitude = AssignSameFieldValue(new PetAptitude(), petAptitudeTemp); 
                     }
-                }
+                }else
+                    petAptitude = NHibernateQuerier.CriteriaSelect<PetAptitude>(nHCriteriapetStatus);
             }
-
             if (petStatus == null)
             {
                 var petStatusexist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PetStatusPerfix, petid.ToString()).Result;
@@ -101,9 +102,10 @@ namespace AscensionServer
                      petStatus = RedisHelper.Hash.HashGetAsync<PetStatus>(RedisKeyDefine._PetStatusPerfix, petid.ToString()).Result;
                     if (petStatus == null)
                     {
-                        petStatus = new PetStatus();
+                        petStatus = NHibernateQuerier.CriteriaSelect<PetStatus>(nHCriteriapetStatus);
                     }
-                }
+                }else
+                    petStatus = NHibernateQuerier.CriteriaSelect<PetStatus>(nHCriteriapetStatus);
             }
             if (pet == null)
             {
@@ -113,13 +115,14 @@ namespace AscensionServer
                   var  petObj = RedisHelper.Hash.HashGetAsync<PetDTO>(RedisKeyDefine._PetPerfix, petid.ToString()).Result;
                     if (petObj == null)
                     {
-                        pet = new Pet();
+                        pet = NHibernateQuerier.CriteriaSelect<Pet>(nHCriteriapetStatus);
                     }
                     else
                     {
                         pet= ChangeDataType(petObj);
                     }
-                }
+                }else
+                    pet = NHibernateQuerier.CriteriaSelect<Pet>(nHCriteriapetStatus);
             }
 
             GameEntry. DataManager.TryGetValue<Dictionary<int, PetLevelData>>(out var petLevelDataDict);

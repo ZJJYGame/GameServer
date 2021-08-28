@@ -3129,7 +3129,7 @@
             计算技能加成
             </summary>
         </member>
-        <member name="M:AscensionServer.PracticeManager.RoleStatusAlgorithm(System.Int32,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleAllianceSkill,System.Int32)">
+        <member name="M:AscensionServer.PracticeManager.RoleStatusAlgorithm(System.Int32,AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleStatusAdditionDTO,AscensionServer.Model.RoleAllianceSkill,System.Int32)">
             <summary>
             获取Redis各部分加成
             </summary>
@@ -3139,7 +3139,7 @@
             <param name="statusPoint">加点加成</param>
             <param name="statusEquip">装备加成</param>
         </member>
-        <member name="M:AscensionServer.PracticeManager.StatusVerify(AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleStatusDTO,AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleStatusDTO)">
+        <member name="M:AscensionServer.PracticeManager.StatusVerify(AscensionServer.Model.RoleStatus,AscensionProtocol.DTO.RoleStatusDTO,AscensionServer.Model.RoleStatus,AscensionServer.Model.RoleStatus)">
             <summary>
             切换加点方案武器装备飞行法器等
             </summary>

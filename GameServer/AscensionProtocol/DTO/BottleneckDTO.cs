@@ -32,7 +32,6 @@ namespace AscensionProtocol.DTO
         public virtual int BreakThroughVauleMax { get; set; }
         public virtual int CraryVaule { get; set; }
         public virtual int DemonID { get; set; }
-        public virtual int DrugPercent { get; set; }
         public virtual int DrugID { get; set; }
 
         public BottleneckDTO()
@@ -48,7 +47,6 @@ namespace AscensionProtocol.DTO
             DemonID = 0;
             DrugID = 0;
             IsDemon = false;
-            DrugPercent = 0;
         }
 
         public override void Release()
@@ -65,7 +63,6 @@ namespace AscensionProtocol.DTO
             DemonID = 0;
             DrugID =0;
             IsDemon = false;
-            DrugPercent = 0;
         }
     }
 }

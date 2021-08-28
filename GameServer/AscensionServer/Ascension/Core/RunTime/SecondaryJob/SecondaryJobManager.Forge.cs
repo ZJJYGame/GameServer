@@ -110,8 +110,9 @@ namespace AscensionServer
             {
                 var forge = RedisHelper.Hash.HashGetAsync<ForgeDTO>(RedisKeyDefine._ForgePerfix, roleID.ToString()).Result;
                 var role = RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
-                var assest = RedisHelper.Hash.HashGetAsync<RoleAssetsDTO>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
+                var assest = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
                 var roleweapon = RedisHelper.Hash.HashGetAsync<RoleWeaponDTO>(RedisKeyDefine._RoleWeaponPostfix, roleID.ToString()).Result;
+                secondary.TryGetValue((byte)FormulaDrugType.Forge, out var secondaryJob);
                 if (forge != null && role != null && assest != null && roleweapon != null)
                 {
                     var forgeid = 0;//锻造出来的装备法宝唯一ID
@@ -136,13 +137,45 @@ namespace AscensionServer
                         Utility.Debug.LogError("随机出的数据为" + randNum + "成功率为" + formulaData.SuccessRate);
                         if (randNum > formulaData.SuccessRate)
                         {
-                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundForge, default);
+                            forge.JobLevelExp += formulaData.MasteryValue ;
+                            if (secondaryJob.SecondaryJobLevel.Contains(forge.JobLevel))
+                            {
+                                var index = secondaryJob.SecondaryJobLevel.FindIndex(f => f == forge.JobLevel);
+                                if (forge.JobLevel < 5)
+                                {
+                                    if (secondaryJob.SecondaryJobExp[index] <= forge.JobLevelExp)
+                                    {
+                                        forge.JobLevelExp -= secondaryJob.SecondaryJobExp[index];
+                                        forge.JobLevel += 1;
+                                    }
+                                }
+                                else if (forge.JobLevel == 5)
+                                {
+                                    if (secondaryJob.SecondaryJobExp[index] <= forge.JobLevelExp)
+                                    {
+                                        forge.JobLevelExp = secondaryJob.SecondaryJobExp[index];
+                                    }
+                                }
+                                Utility.Debug.LogInfo("YZQ鍛造增加的经验：" + forge.JobLevelExp);
+                            }
+                            role.Vitality -= formulaData.NeedVitality;
+                            assest.SpiritStonesLow -= formulaData.NeedMoney;
+                            Dictionary<byte, object> dict = new Dictionary<byte, object>();
+                            dict.Add((byte)ParameterCode.JobForge, forge);
+                            dict.Add((byte)ParameterCode.RoleAssets, assest);
+                            dict.Add((byte)ParameterCode.RoleStatus, role);
+                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundForge, dict);
                             Utility.Debug.LogInfo("YZQ鍛造失敗随机数：" + randNum + "成功率：" + formulaData.SuccessRate);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._ForgePerfix, roleID.ToString(), forge);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString(), assest);
+                            await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString(), role);
+                            await NHibernateQuerier.UpdateAsync(role);
+                            await NHibernateQuerier.UpdateAsync(assest);
+                            await NHibernateQuerier.UpdateAsync(ChangeDataType(forge));
                             return;
                         }
-                        forge.JobLevelExp += formulaData.MasteryValue;
+                        forge.JobLevelExp += formulaData.MasteryValue*2;
                         Utility.Debug.LogInfo("YZQ鍛造增加的经验：" + forge.JobLevelExp);
-                        secondary.TryGetValue((byte)FormulaDrugType.Forge, out var secondaryJob);
                         if (secondaryJob.SecondaryJobLevel.Contains(forge.JobLevel))
                         {
                             var index = secondaryJob.SecondaryJobLevel.FindIndex(f => f == forge.JobLevel);
@@ -203,6 +236,10 @@ namespace AscensionServer
                                 }
                             }
 
+                            for (int i = 0; i < formulaData.NeedItemArray.Count; i++)
+                            {
+                                InventoryManager.UpdateNewItem(roleID, formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i]);
+                            }
                             roleweapon.RoleID = roleID;
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleWeaponPostfix, roleID.ToString(), roleweapon);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(roleweapon));

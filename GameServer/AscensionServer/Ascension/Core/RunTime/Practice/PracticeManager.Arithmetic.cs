@@ -223,7 +223,7 @@ namespace AscensionServer
         /// <returns></returns>
         public async Task<RoleStatus> RoleAblility(RoleStatusPointDTO pointDTO, RoleStatus roleStatus)
         {
-            RoleStatusDTO roleStatusDTO = new RoleStatusDTO();
+            RoleStatus roleStatusDTO = new RoleStatus();
             roleStatusDTO.RoleID = roleStatus.RoleID;
             if (pointDTO.AbilityPointSln.TryGetValue(pointDTO.SlnNow, out var abilityDTO))
             {
@@ -256,7 +256,7 @@ namespace AscensionServer
         /// <returns></returns>
         public async Task<RoleStatus> RoleSwitchAblility(RoleStatusPointDTO pointDTO, RoleStatus roleStatus)
         {
-            RoleStatusDTO roleStatusDTO = new RoleStatusDTO();
+            RoleStatus roleStatusDTO = new RoleStatus();
             roleStatusDTO.RoleID = pointDTO.RoleID;
             if (pointDTO.AbilityPointSln.TryGetValue(pointDTO.SlnNow, out var abilityDTO))
             {
@@ -470,7 +470,7 @@ namespace AscensionServer
 
           await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._RoleStatusEquipPerfix, statusObj.RoleID.ToString(), roleStatus);
 
-            return StatusVerify(statusObj, status,new RoleStatus(),new RoleStatusDTO()); 
+            return StatusVerify(statusObj, status,new RoleStatus(),new RoleStatus()); 
         }
         #endregion
 
@@ -478,7 +478,7 @@ namespace AscensionServer
         public async Task<RoleStatus> RoleFlyMagicTool(FlyMagicToolDTO flyMagic, RoleStatus roleStatus)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, FlyMagicToolData>>(out var flytool);
-            RoleStatusDTO Status = new RoleStatusDTO();
+            RoleStatus Status = new RoleStatus();
             foreach (var item in flyMagic.FlyToolLayoutDict)
             {
                 if (flytool.TryGetValue(item.Value, out var flyMagicToolData))
@@ -508,7 +508,7 @@ namespace AscensionServer
         public async Task<RoleStatus> RoleSwitchFlyMagicTool(FlyMagicToolDTO flyMagic, RoleStatus roleStatus)
         {
             GameEntry.DataManager.TryGetValue<Dictionary<int, FlyMagicToolData>>(out var flytool);
-            RoleStatusDTO Status = new RoleStatusDTO();
+            RoleStatus Status = new RoleStatus();
             foreach (var item in flyMagic.FlyToolLayoutDict)
             {
                 if (flytool.TryGetValue(item.Value, out var flyMagicToolData))
@@ -604,8 +604,9 @@ namespace AscensionServer
         /// <param name="statusMS">秘术加成</param>
         /// <param name="statusPoint">加点加成</param>
         /// <param name="statusEquip">装备加成</param>
-        public  RoleStatusDTO RoleStatusAlgorithm (int roleid, RoleStatusDTO statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatusDTO statusPoint = null, RoleStatusAdditionDTO statusEquip = null,RoleAllianceSkill roleAllianceSkill=null,int rolelevel = 0)
+        public  RoleStatusDTO RoleStatusAlgorithm (int roleid, RoleStatus statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatus statusPoint = null, RoleStatusAdditionDTO statusEquip = null,RoleAllianceSkill roleAllianceSkill=null,int rolelevel = 0)
         {
+            NHCriteria nHCriteria = ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleid);
             SkillsData hp=new SkillsData();
             SkillsData soul = new SkillsData();
             SkillsData mp = new SkillsData();
@@ -626,14 +627,14 @@ namespace AscensionServer
                         if (flyExist)
                         {
                             Utility.Debug.LogError("234");
-                            statusFly = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatusFlyPerfix, roleid.ToString()).Result;
+                            statusFly = RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatusFlyPerfix, roleid.ToString()).Result;
                             if (statusFly == null)
                             {
-                                statusFly = new RoleStatusDTO();
+                                statusFly = new RoleStatus();
 
                             }
                         }
-                        else statusFly = new RoleStatusDTO();
+                        else statusFly = new RoleStatus();
                     }
                     if (statusGF == null)
                     {
@@ -679,13 +680,13 @@ namespace AscensionServer
                         var statusPointExist = RedisHelper.Hash.HashExistAsync(RedisKeyDefine._RoleStatusAddPointPerfix, roleid.ToString()).Result;
                         if (statusPointExist)
                         {
-                            statusPoint = RedisHelper.Hash.HashGetAsync<RoleStatusDTO>(RedisKeyDefine._RoleStatusAddPointPerfix, roleid.ToString()).Result;
+                            statusPoint = RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatusAddPointPerfix, roleid.ToString()).Result;
                             if (statusPoint == null)
                             {
-                                statusPoint = new RoleStatusDTO();
+                                statusPoint = NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteria); 
                             }
                         }
-                        else statusPoint = new RoleStatusDTO();
+                        else statusPoint = NHibernateQuerier.CriteriaSelect<RoleStatus>(nHCriteria);
                     }
                     if (roleAllianceSkill == null)
                     {
@@ -888,7 +889,7 @@ namespace AscensionServer
         /// <param name="reducesStatus"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        public RoleStatus StatusVerify(RoleStatus roleStatus,RoleStatusDTO obj,RoleStatus reducesStatus,RoleStatusDTO status)
+        public RoleStatus StatusVerify(RoleStatus roleStatus,RoleStatusDTO obj,RoleStatus reducesStatus,RoleStatus status)
         {
             Utility.Debug.LogInfo("数据库获取的 数据" + Utility.Json.ToJson(roleStatus));
             Utility.Debug.LogInfo("加成的数据的 数据" + Utility.Json.ToJson(obj));

@@ -26,6 +26,7 @@ namespace AscensionServer
             var puppetUnitExist= RedisHelper.Hash.HashExistAsync(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
             NHCriteria nHCriteria =ReferencePool.Accquire<NHCriteria>().SetValue("RoleID", roleID);
             GameEntry.DataManager.TryGetValue<Dictionary<byte, SecondaryJobData>>(out var secondary);
+            secondary.TryGetValue((byte)FormulaDrugType.Puppet, out var secondaryJob);
             var rolering = NHibernateQuerier.CriteriaSelect<RoleRing>(nHCriteria);
             if (puppetExist && roleExist && assestExist&& puppetUnitExist)
             {
@@ -33,6 +34,7 @@ namespace AscensionServer
                 var role = RedisHelper.Hash.HashGetAsync<RoleStatus>(RedisKeyDefine._RoleStatsuPerfix, roleID.ToString()).Result;
                 var assest = RedisHelper.Hash.HashGetAsync<RoleAssets>(RedisKeyDefine._RoleAssetsPerfix, roleID.ToString()).Result;
                 var puppetUnit = RedisHelper.Hash.HashGetAsync<PuppetUnitDTO>(RedisKeyDefine._PuppetUnitPerfix, roleID.ToString()).Result;
+
                 if (puppet != null && role != null && assest != null && puppetUnit!=null)
                 {
                     var unitid = 0;//部件唯一id
@@ -64,14 +66,40 @@ namespace AscensionServer
                         Utility.Debug.LogError("随机出的数据为" + randNum + "成功率为" + formulaData.SuccessRate);
                         if (randNum > formulaData.SuccessRate)
                         {
-                                Utility.Debug.LogInfo("YZQ收到的副职业请求3");
-                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet,default);
+                            puppet.JobLevelExp += formulaData.MasteryValue ;
+
+                            if (secondaryJob.SecondaryJobLevel.Contains(puppet.JobLevel))
+                            {
+                                var index = secondaryJob.SecondaryJobLevel.FindIndex(f => f == puppet.JobLevel);
+                                if (puppet.JobLevel < 5)
+                                {
+                                    if (secondaryJob.SecondaryJobExp[index] <= puppet.JobLevelExp)
+                                    {
+                                        puppet.JobLevelExp -= secondaryJob.SecondaryJobExp[index];
+                                        puppet.JobLevel += 1;
+                                    }
+                                }
+                                else if (puppet.JobLevel == 5)
+                                {
+                                    if (secondaryJob.SecondaryJobExp[index] <= puppet.JobLevelExp)
+                                    {
+                                        puppet.JobLevelExp = secondaryJob.SecondaryJobExp[index];
+                                    }
+                                }
+                            }
+                            role.Vitality -= formulaData.NeedVitality;
+                            assest.SpiritStonesLow -= formulaData.NeedMoney;
+                            Dictionary<byte, object> dict = new Dictionary<byte, object>();
+                            dict.Add((byte)ParameterCode.RoleAssets, assest);
+                            dict.Add((byte)ParameterCode.RoleStatus, role);
+                            dict.Add((byte)ParameterCode.JobPuppet, puppet);
+                            Utility.Debug.LogInfo("YZQ收到的副职业请求3");
+                            RoleStatusCompoundFailS2C(roleID, SecondaryJobOpCode.CompoundPuppet, dict);
                                 //鍛造失敗
                                 return;
                             }
                         
-                        puppet.JobLevelExp += formulaData.MasteryValue;
-                        secondary.TryGetValue((byte)FormulaDrugType.Puppet,out var secondaryJob);
+                        puppet.JobLevelExp += formulaData.MasteryValue*2;
                         if (secondaryJob.SecondaryJobLevel.Contains(puppet.JobLevel))
                         {
                            var index =secondaryJob.SecondaryJobLevel.FindIndex(f=>f== puppet.JobLevel);
@@ -91,7 +119,7 @@ namespace AscensionServer
                                 }
                             }
                         }
-                        // role.Vitality -= formulaData.NeedVitality;
+                         role.Vitality -= formulaData.NeedVitality;
                         assest.SpiritStonesLow -= formulaData.NeedMoney;
 
                         var puppetObj = PuppetStatusAlgorithm(formulaData.ItemID);
@@ -137,7 +165,12 @@ namespace AscensionServer
                             await RedisHelper.Hash.HashSetAsync(RedisKeyDefine._PuppetPerfix, roleID.ToString(), puppet);
                             await NHibernateQuerier.UpdateAsync(ChangeDataType(puppet));
                             #endregion
-
+                            #region 背包材料移除
+                            for (int i = 0; i < formulaData.NeedItemArray.Count; i++)
+                            {
+                                InventoryManager.UpdateNewItem(roleID, formulaData.NeedItemArray[i], formulaData.NeedItemNumber[i]);
+                            }
+                            #endregion
                         }
                         else
                         {

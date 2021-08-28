@@ -48,6 +48,6 @@ namespace AscensionServer
         /// <returns></returns>
         Task<RoleStatus> RoleSwitchFlyMagicTool(FlyMagicToolDTO flyMagic, RoleStatus roleStatus);
 
-        RoleStatusDTO RoleStatusAlgorithm(int roleid, RoleStatusDTO statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatusDTO statusPoint = null, RoleStatusAdditionDTO statusEquip = null, RoleAllianceSkill roleAllianceSkill = null, int rolelevel = 0);
+        RoleStatusDTO RoleStatusAlgorithm(int roleid, RoleStatus statusFly = null, RoleStatusAdditionDTO statusGF = null, RoleStatusAdditionDTO statusMS = null, RoleStatus statusPoint = null, RoleStatusAdditionDTO statusEquip = null, RoleAllianceSkill roleAllianceSkill = null, int rolelevel = 0);
     }
 }
